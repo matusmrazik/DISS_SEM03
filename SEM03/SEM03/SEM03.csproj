@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{A650F5D9-1039-46D7-B58E-CDFD3902FDCE}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>SEM03</RootNamespace>
     <AssemblyName>SEM03</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ABACore, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -49,14 +52,51 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainWindow.cs">
+    <Compile Include="Agents\AgentCarService.cs" />
+    <Compile Include="Agents\AgentEnvironment.cs" />
+    <Compile Include="Agents\AgentModel.cs" />
+    <Compile Include="Agents\AgentService.cs" />
+    <Compile Include="Agents\AgentWorkshop.cs" />
+    <Compile Include="ContinualAssistants\ProcessCarRepair.cs" />
+    <Compile Include="ContinualAssistants\ProcessCarReturn.cs" />
+    <Compile Include="ContinualAssistants\ProcessCarTakeover.cs" />
+    <Compile Include="ContinualAssistants\ProcessCrossArrivalRamp.cs" />
+    <Compile Include="ContinualAssistants\ProcessCrossDepartureRamp.cs" />
+    <Compile Include="ContinualAssistants\ProcessLeaveCarPark.cs" />
+    <Compile Include="ContinualAssistants\ProcessOrderEntry.cs" />
+    <Compile Include="ContinualAssistants\ProcessParkCar.cs" />
+    <Compile Include="ContinualAssistants\ProcessParkFromWorkshop.cs" />
+    <Compile Include="ContinualAssistants\ProcessParkToWorkshop.cs" />
+    <Compile Include="ContinualAssistants\SchedulerCustomerArrival.cs" />
+    <Compile Include="ContinualAssistants\SchedulerWorkdayEnd.cs" />
+    <Compile Include="Entities\Customer.cs" />
+    <Compile Include="Entities\Mechanic.cs" />
+    <Compile Include="Entities\ParkingPlace.cs" />
+    <Compile Include="Entities\Worker.cs" />
+    <Compile Include="Entities\WorkerWithCustomers.cs" />
+    <Compile Include="GUI\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainWindow.Designer.cs">
+    <Compile Include="GUI\MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="InstantAssistants\ActionAssignMechanic.cs" />
+    <Compile Include="InstantAssistants\ActionAssignParkingPlace.cs" />
+    <Compile Include="InstantAssistants\ActionAssignWorker.cs" />
+    <Compile Include="InstantAssistants\ActionParkRepairedCar.cs" />
+    <Compile Include="Managers\ManagerCarService.cs" />
+    <Compile Include="Managers\ManagerEnvironment.cs" />
+    <Compile Include="Managers\ManagerModel.cs" />
+    <Compile Include="Managers\ManagerService.cs" />
+    <Compile Include="Managers\ManagerWorkshop.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Simulation\Mc.cs" />
+    <Compile Include="Simulation\MsgCarService.cs" />
+    <Compile Include="Simulation\SimCarService.cs" />
+    <Compile Include="Simulation\SimConfig.cs" />
+    <Compile Include="Simulation\SimId.cs" />
+    <Compile Include="Simulation\SimTimeHelper.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -79,5 +119,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RandomLib\RandomLib.csproj">
+      <Project>{6d958413-4540-42dc-adfe-593ae914f7b2}</Project>
+      <Name>RandomLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

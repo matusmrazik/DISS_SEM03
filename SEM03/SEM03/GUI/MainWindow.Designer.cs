@@ -1,4 +1,4 @@
-﻿namespace SEM03
+﻿namespace SEM03.GUI
 {
     partial class MainWindow
     {
