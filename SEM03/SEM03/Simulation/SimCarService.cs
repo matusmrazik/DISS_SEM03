@@ -1,6 +1,7 @@
 ﻿using System;
 using RandomLib;
 using SEM03.Agents;
+using SEM03.Statistics;
 
 namespace SEM03.Simulation
 {
@@ -24,6 +25,22 @@ namespace SEM03.Simulation
         public UniformRealDistributionGenerator GeneratorOrderEntryDuration { get; private set; }
         public UniformRealDistributionGenerator GeneratorCarTakeoverDuration { get; private set; }
         public UniformRealDistributionGenerator GeneratorCarReturnDuration { get; private set; }
+
+        public Stat StatisticWaitForRepair => AgentService.StatisticWaitForRepair;
+        public Stat StatisticWaitInQueue => AgentService.StatisticWaitInQueue;
+        public WStat StatisticQueueLength => AgentService.StatisticQueueLength;
+        public WStat StatisticCarsForRepairQueueLength => AgentWorkshop.StatisticCarsForRepairQueueLength;
+        public WStat StatisticRepairedQueueLength => AgentService.StatisticRepairedQueueLength;
+        public WStat StatisticReadyToReturnQueueLength => AgentService.StatisticReadyToReturnQueueLength;
+        public Stat StatisticTimeInService => AgentEnvironment.StatisticTimeInService;
+
+        public Stat StatisticWaitForRepairTotal { get; private set; }
+        public Stat StatisticWaitInQueueTotal { get; private set; }
+        public Stat StatisticQueueLengthTotal { get; private set; }
+        public Stat StatisticCarsForRepairQueueLengthTotal { get; private set; }
+        public Stat StatisticRepairedQueueLengthTotal { get; private set; }
+        public Stat StatisticReadyToReturnQueueLengthTotal { get; private set; }
+        public Stat StatisticTimeInServiceTotal { get; private set; }
 
         public SimCarService()
         {
@@ -54,25 +71,47 @@ namespace SEM03.Simulation
         protected override void PrepareSimulation()
         {
             base.PrepareSimulation();
-            // Create global statistcis
+
+            StatisticWaitForRepairTotal.Clear();
+            StatisticWaitInQueueTotal.Clear();
+            StatisticQueueLengthTotal.Clear();
+            StatisticCarsForRepairQueueLengthTotal.Clear();
+            StatisticRepairedQueueLengthTotal.Clear();
+            StatisticReadyToReturnQueueLengthTotal.Clear();
+            StatisticTimeInServiceTotal.Clear();
         }
 
         protected override void PrepareReplication()
         {
             base.PrepareReplication();
-            // Reset entities, queues, local statistics, etc...
+
+            Console.WriteLine(@"Replication {0}", CurrentReplication);
         }
 
         protected override void ReplicationFinished()
         {
             base.ReplicationFinished();
-            // Collect local statistics into global, update UI, etc...
+
+            StatisticWaitForRepairTotal.AddSample(StatisticWaitForRepair.Mean);
+            StatisticWaitInQueueTotal.AddSample(StatisticWaitInQueue.Mean);
+            StatisticQueueLengthTotal.AddSample(StatisticQueueLength.Mean);
+            StatisticCarsForRepairQueueLengthTotal.AddSample(StatisticCarsForRepairQueueLength.Mean);
+            StatisticRepairedQueueLengthTotal.AddSample(StatisticRepairedQueueLength.Mean);
+            StatisticReadyToReturnQueueLengthTotal.AddSample(StatisticReadyToReturnQueueLength.Mean);
+            StatisticTimeInServiceTotal.AddSample(StatisticTimeInService.Mean);
         }
 
         protected override void SimulationFinished()
         {
             base.SimulationFinished();
-            // Display simulation results
+
+            Console.WriteLine(@"Priemerný čas čakania na opravu: {0}", SimTimeHelper.DurationAsString(StatisticWaitForRepairTotal.Mean));
+            Console.WriteLine(@"Priemerný čas čakania vo fronte: {0}", SimTimeHelper.DurationAsString(StatisticWaitInQueueTotal.Mean));
+            Console.WriteLine(@"Priemerná dĺžka frontu čakajúcich: {0}", StatisticQueueLengthTotal.Mean);
+            Console.WriteLine(@"Priemerný počet áut na opravu: {0}", StatisticCarsForRepairQueueLengthTotal.Mean);
+            Console.WriteLine(@"Priemerný počet opravených áut: {0}", StatisticRepairedQueueLengthTotal.Mean);
+            Console.WriteLine(@"Priemerný počet áut na odovzdanie: {0}", StatisticReadyToReturnQueueLengthTotal.Mean);
+            Console.WriteLine(@"Priemerný čas strávený v servise: {0}", SimTimeHelper.DurationAsString(StatisticTimeInServiceTotal.Mean));
         }
 
         private void Init()
@@ -113,6 +152,14 @@ namespace SEM03.Simulation
             GeneratorOrderEntryDuration = new UniformRealDistributionGenerator(70, 310, GeneratorSeed.Next());
             GeneratorCarTakeoverDuration = new UniformRealDistributionGenerator(80, 160, GeneratorSeed.Next());
             GeneratorCarReturnDuration = new UniformRealDistributionGenerator(123, 257, GeneratorSeed.Next());
+
+            StatisticWaitForRepairTotal = new Stat(this);
+            StatisticWaitInQueueTotal = new Stat(this);
+            StatisticQueueLengthTotal = new Stat(this);
+            StatisticCarsForRepairQueueLengthTotal = new Stat(this);
+            StatisticRepairedQueueLengthTotal = new Stat(this);
+            StatisticReadyToReturnQueueLengthTotal = new Stat(this);
+            StatisticTimeInServiceTotal = new Stat(this);
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using OSPABA;
+﻿using OSPABA;
 using SEM03.Agents;
 using SEM03.Simulation;
 using Action = OSPABA.Action;
@@ -40,6 +39,7 @@ namespace SEM03.Managers
             if (msg.Mechanic == null)
             {
                 MyAgent.OrdersQueue.Enqueue(msg);
+                MyAgent.StatisticCarsForRepairQueueLength.AddSample(MyAgent.OrdersQueue.Count);
             }
             else
             {
@@ -88,6 +88,7 @@ namespace SEM03.Managers
             }
 
             var msgNew = MyAgent.OrdersQueue.Dequeue();
+            MyAgent.StatisticCarsForRepairQueueLength.AddSample(MyAgent.OrdersQueue.Count);
             msgNew.Mechanic = mechanic;
             mechanic.StartWork(msgNew.Customer);
             var parkingPlace = msgNew.ParkingPlace;

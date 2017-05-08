@@ -5,6 +5,7 @@ using SEM03.Entities;
 using SEM03.InstantAssistants;
 using SEM03.Managers;
 using SEM03.Simulation;
+using SEM03.Statistics;
 
 namespace SEM03.Agents
 {
@@ -14,6 +15,8 @@ namespace SEM03.Agents
         public List<ParkingPlace> CarPark { get; private set; }
         public Queue<MsgCarService> OrdersQueue { get; private set; }
         public Queue<MsgCarService> ParkingPlaceRequests { get; private set; }
+
+        public WStat StatisticCarsForRepairQueueLength { get; private set; }
 
         public AgentWorkshop(int id, OSPABA.Simulation mySim, Agent parent)
             : base(id, mySim, parent)
@@ -27,6 +30,8 @@ namespace SEM03.Agents
 
             OrdersQueue.Clear();
             ParkingPlaceRequests.Clear();
+
+            StatisticCarsForRepairQueueLength.Clear();
 
             ResetWorkers();
             ResetCarPark();
@@ -105,6 +110,8 @@ namespace SEM03.Agents
             CarPark = new List<ParkingPlace>();
             OrdersQueue = new Queue<MsgCarService>();
             ParkingPlaceRequests = new Queue<MsgCarService>();
+
+            StatisticCarsForRepairQueueLength = new WStat(MySim);
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using OSPABA;
+﻿using OSPABA;
 using SEM03.Agents;
 using SEM03.Entities;
 using SEM03.Simulation;
@@ -20,6 +19,9 @@ namespace SEM03.Managers
         //meta! sender="AgentModel", id="40", type="Notice"
         public void ProcessCustomerLeft(MessageForm message)
         {
+            var msg = (MsgCarService)message;
+            msg.Customer.LeftService();
+            MyAgent.StatisticTimeInService.AddSample(msg.Customer.TimeInServiceTotal);
         }
 
         //meta! sender="SchedulerCustomerArrival", id="42", type="Finish"

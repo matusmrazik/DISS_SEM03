@@ -5,6 +5,7 @@ using SEM03.Entities;
 using SEM03.InstantAssistants;
 using SEM03.Managers;
 using SEM03.Simulation;
+using SEM03.Statistics;
 
 namespace SEM03.Agents
 {
@@ -15,6 +16,12 @@ namespace SEM03.Agents
         public Queue<MsgCarService> OrdersQueue { get; private set; } // incoming orders
         public Queue<MsgCarService> RepairedQueue { get; private set; } // repaired cars waiting to be parked to car park
         public Queue<MsgCarService> ReturnQueue { get; private set; } // cars ready to be returned to their owners
+
+        public Stat StatisticWaitForRepair { get; private set; }
+        public Stat StatisticWaitInQueue { get; private set; }
+        public WStat StatisticQueueLength { get; private set; }
+        public WStat StatisticRepairedQueueLength { get; private set; }
+        public WStat StatisticReadyToReturnQueueLength { get; private set; }
 
         public AgentService(int id, OSPABA.Simulation mySim, Agent parent)
             : base(id, mySim, parent)
@@ -29,6 +36,12 @@ namespace SEM03.Agents
             OrdersQueue.Clear();
             RepairedQueue.Clear();
             ReturnQueue.Clear();
+
+            StatisticWaitForRepair.Clear();
+            StatisticWaitInQueue.Clear();
+            StatisticQueueLength.Clear();
+            StatisticRepairedQueueLength.Clear();
+            StatisticReadyToReturnQueueLength.Clear();
 
             ResetWorkers();
             ResetCarPark();
@@ -117,6 +130,12 @@ namespace SEM03.Agents
             OrdersQueue = new Queue<MsgCarService>();
             RepairedQueue = new Queue<MsgCarService>();
             ReturnQueue = new Queue<MsgCarService>();
+
+            StatisticWaitForRepair = new Stat(MySim);
+            StatisticWaitInQueue = new Stat(MySim);
+            StatisticQueueLength = new WStat(MySim);
+            StatisticRepairedQueueLength = new WStat(MySim);
+            StatisticReadyToReturnQueueLength = new WStat(MySim);
         }
     }
 }

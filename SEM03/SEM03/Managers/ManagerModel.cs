@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using OSPABA;
 using SEM03.Agents;
 using SEM03.Simulation;

@@ -23,6 +23,7 @@ namespace SEM03.Managers
             if (msg.WorkerWithCustomers == null)
             {
                 MyAgent.ReturnQueue.Enqueue(msg);
+                MyAgent.StatisticReadyToReturnQueueLength.AddSample(MyAgent.ReturnQueue.Count);
             }
             else
             {
@@ -39,6 +40,7 @@ namespace SEM03.Managers
                 }
 
                 var msgNew = MyAgent.RepairedQueue.Dequeue();
+                MyAgent.StatisticRepairedQueueLength.AddSample(MyAgent.RepairedQueue.Count);
                 parkingPlace.SetOccupied();
                 msgNew.ParkingPlace = parkingPlace;
                 Response(msgNew);
@@ -55,6 +57,7 @@ namespace SEM03.Managers
             if (msg.WorkerWithCustomers == null)
             {
                 MyAgent.OrdersQueue.Enqueue(msg);
+                MyAgent.StatisticQueueLength.AddSample(MyAgent.OrdersQueue.Count);
             }
             else
             {
@@ -84,6 +87,7 @@ namespace SEM03.Managers
                 }
 
                 var msgNew = MyAgent.OrdersQueue.Dequeue();
+                MyAgent.StatisticQueueLength.AddSample(MyAgent.OrdersQueue.Count);
                 msgNew.WorkerWithCustomers = worker;
                 worker.StartWork(msgNew.Customer);
                 msgNew.Addressee = MyAgent.FindAssistant(SimId.PROCESS_ORDER_ENTRY);
@@ -92,6 +96,7 @@ namespace SEM03.Managers
             }
 
             var msgNew2 = MyAgent.ReturnQueue.Dequeue();
+            MyAgent.StatisticReadyToReturnQueueLength.AddSample(MyAgent.ReturnQueue.Count);
             msgNew2.WorkerWithCustomers = worker;
             worker.StartWork(msgNew2.Customer);
             var parkingPlace = msgNew2.ParkingPlace;
@@ -107,6 +112,7 @@ namespace SEM03.Managers
             }
 
             var msgNew3 = MyAgent.RepairedQueue.Dequeue();
+            MyAgent.StatisticRepairedQueueLength.AddSample(MyAgent.RepairedQueue.Count);
             parkingPlace.SetOccupied();
             msgNew3.ParkingPlace = parkingPlace;
             Response(msgNew3);
@@ -126,6 +132,7 @@ namespace SEM03.Managers
             var worker = msg.WorkerWithCustomers;
 
             msg.Customer.WaitForRepairFinished();
+            MyAgent.StatisticWaitForRepair.AddSample(msg.Customer.WaitForRepairTotal);
             msg.WorkerWithCustomers.StopWork();
             msg.WorkerWithCustomers = null;
 
@@ -140,6 +147,7 @@ namespace SEM03.Managers
                 }
 
                 var msgNew = MyAgent.OrdersQueue.Dequeue();
+                MyAgent.StatisticQueueLength.AddSample(MyAgent.OrdersQueue.Count);
                 msgNew.WorkerWithCustomers = worker;
                 worker.StartWork(msgNew.Customer);
                 msgNew.Addressee = MyAgent.FindAssistant(SimId.PROCESS_ORDER_ENTRY);
@@ -148,6 +156,7 @@ namespace SEM03.Managers
             }
 
             var msgNew2 = MyAgent.ReturnQueue.Dequeue();
+            MyAgent.StatisticReadyToReturnQueueLength.AddSample(MyAgent.ReturnQueue.Count);
             msgNew2.WorkerWithCustomers = worker;
             worker.StartWork(msgNew2.Customer);
             var parkingPlace = msgNew2.ParkingPlace;
@@ -163,6 +172,7 @@ namespace SEM03.Managers
             }
 
             var msgNew3 = MyAgent.RepairedQueue.Dequeue();
+            MyAgent.StatisticRepairedQueueLength.AddSample(MyAgent.RepairedQueue.Count);
             parkingPlace.SetOccupied();
             msgNew3.ParkingPlace = parkingPlace;
             Response(msgNew3);
@@ -172,6 +182,7 @@ namespace SEM03.Managers
         public void ProcessFinishSchedulerWorkdayEnd(MessageForm message)
         {
             MyAgent.OrdersQueue.Clear();
+            MyAgent.StatisticQueueLength.AddSample(MyAgent.OrdersQueue.Count);
 
             message.Addressee = MyAgent.FindAssistant(SimId.SCHEDULER_WORKDAY_END);
             StartContinualAssistant(message);
@@ -203,6 +214,7 @@ namespace SEM03.Managers
             if (msg.ParkingPlace == null)
             {
                 MyAgent.RepairedQueue.Enqueue(msg);
+                MyAgent.StatisticRepairedQueueLength.AddSample(MyAgent.RepairedQueue.Count);
                 return;
             }
 

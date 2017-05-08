@@ -9,6 +9,7 @@ namespace SEM03.Entities
 
         public double ArrivedToRampTime { get; private set; }
         public double ServiceEnterTime { get; private set; }
+        public double TimeInServiceTotal { get; private set; }
         public double WaitForRepairStart { get; private set; }
         public double WaitForRepairTotal { get; private set; }
         public double WaitInQueueStart { get; private set; }
@@ -22,6 +23,7 @@ namespace SEM03.Entities
         {
             ArrivedToRampTime = 0.0;
             ServiceEnterTime = 0.0;
+            TimeInServiceTotal = 0.0;
             WaitForRepairStart = 0.0;
             WaitForRepairTotal = 0.0;
             WaitInQueueStart = 0.0;
@@ -39,6 +41,11 @@ namespace SEM03.Entities
         public void EnteredService()
         {
             ServiceEnterTime = MySim.CurrentTime;
+        }
+
+        public void LeftService()
+        {
+            TimeInServiceTotal = MySim.CurrentTime - ServiceEnterTime;
         }
 
         public void WaitForRepairStarted()
