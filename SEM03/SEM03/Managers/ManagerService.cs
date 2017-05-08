@@ -58,6 +58,10 @@ namespace SEM03.Managers
             {
                 MyAgent.OrdersQueue.Enqueue(msg);
                 MyAgent.StatisticQueueLength.AddSample(MyAgent.OrdersQueue.Count);
+
+                var msgNew = new MsgLeaveQueue(MySim) { Message = msg };
+                msgNew.Addressee = MyAgent.FindAssistant(SimId.SCHEDULER_LEAVE_QUEUE);
+                StartContinualAssistant(msgNew);
             }
             else
             {
@@ -178,6 +182,21 @@ namespace SEM03.Managers
             Response(msgNew3);
         }
 
+        //meta! sender="SchedulerLeaveQueue", id="118", type="Finish"
+        public void ProcessFinishSchedulerLeaveQueue(MessageForm message)
+        {
+            var msg = ((MsgLeaveQueue)message).Message;
+            if (MyAgent.OrdersQueue.Remove(msg))
+            {
+                MyAgent.StatisticQueueLength.AddSample(MyAgent.OrdersQueue.Count);
+                msg.Customer.WaitInQueueFinished();
+                msg.Customer.Served = false;
+                msg.Code = Mc.PROCESS_ORDER_SERVICE;
+                msg.Addressee = MySim.FindAgent(SimId.AGENT_CAR_SERVICE);
+                Response(msg);
+            }
+        }
+
         //meta! sender="SchedulerWorkdayEnd", id="104", type="Finish"
         public void ProcessFinishSchedulerWorkdayEnd(MessageForm message)
         {
@@ -251,6 +270,9 @@ namespace SEM03.Managers
                             break;
                         case SimId.PROCESS_CAR_RETURN:
                             ProcessFinishProcessCarReturn(message);
+                            break;
+                        case SimId.SCHEDULER_LEAVE_QUEUE:
+                            ProcessFinishSchedulerLeaveQueue(message);
                             break;
                         case SimId.SCHEDULER_WORKDAY_END:
                             ProcessFinishSchedulerWorkdayEnd(message);

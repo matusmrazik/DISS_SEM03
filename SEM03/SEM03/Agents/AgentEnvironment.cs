@@ -8,6 +8,11 @@ namespace SEM03.Agents
 {
     public class AgentEnvironment : Agent
     {
+        public StatCount CustomersArrivedTotal { get; private set; }
+        public StatCount CustomersLeftTotal { get; private set; }
+        public StatCount CustomersLeftServed { get; private set; }
+        public StatCount CustomersLeftNotServed { get; private set; }
+
         public Stat StatisticTimeInService { get; private set; }
 
         public AgentEnvironment(int id, OSPABA.Simulation mySim, Agent parent)
@@ -22,6 +27,11 @@ namespace SEM03.Agents
 
             StatisticTimeInService.Clear();
 
+            CustomersArrivedTotal.Clear();
+            CustomersLeftTotal.Clear();
+            CustomersLeftServed.Clear();
+            CustomersLeftNotServed.Clear();
+
             var message = new MsgCarService(MySim) { Addressee = FindAssistant(SimId.SCHEDULER_CUSTOMER_ARRIVAL) };
             MyManager.StartContinualAssistant(message);
         }
@@ -34,6 +44,11 @@ namespace SEM03.Agents
             AddOwnMessage(Mc.CUSTOMER_LEFT);
 
             StatisticTimeInService = new Stat(MySim);
+
+            CustomersArrivedTotal = new StatCount(MySim);
+            CustomersLeftTotal = new StatCount(MySim);
+            CustomersLeftServed = new StatCount(MySim);
+            CustomersLeftNotServed = new StatCount(MySim);
         }
     }
 }

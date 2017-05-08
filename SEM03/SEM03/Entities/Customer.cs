@@ -18,6 +18,8 @@ namespace SEM03.Entities
         public int RequestedRepairCount { get; private set; }
         public double TotalRepairDuration { get; private set; }
 
+        public bool Served { get; set; }
+
         public Customer(OSPABA.Simulation mySim)
             : base(mySim)
         {
@@ -31,6 +33,8 @@ namespace SEM03.Entities
 
             RequestedRepairCount = 0;
             TotalRepairDuration = 0.0;
+
+            Served = false;
         }
 
         public void ArrivedToRamp()

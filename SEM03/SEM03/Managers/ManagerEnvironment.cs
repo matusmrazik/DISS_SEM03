@@ -22,6 +22,10 @@ namespace SEM03.Managers
             var msg = (MsgCarService)message;
             msg.Customer.LeftService();
             MyAgent.StatisticTimeInService.AddSample(msg.Customer.TimeInServiceTotal);
+
+            MyAgent.CustomersLeftTotal.Add();
+            if (msg.Customer.Served) MyAgent.CustomersLeftServed.Add();
+            else MyAgent.CustomersLeftNotServed.Add();
         }
 
         //meta! sender="SchedulerCustomerArrival", id="42", type="Finish"
@@ -32,6 +36,8 @@ namespace SEM03.Managers
             messageCopy.Code = Mc.CUSTOMER_ARRIVED;
             messageCopy.Customer = new Customer(MySim);
             Notice(messageCopy);
+
+            MyAgent.CustomersArrivedTotal.Add();
 
             message.Addressee = MyAgent.FindAssistant(SimId.SCHEDULER_CUSTOMER_ARRIVAL);
             StartContinualAssistant(message);

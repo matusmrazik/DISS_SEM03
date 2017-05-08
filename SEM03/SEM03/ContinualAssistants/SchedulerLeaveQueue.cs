@@ -4,35 +4,28 @@ using SEM03.Simulation;
 
 namespace SEM03.ContinualAssistants
 {
-    public class ProcessOrderEntry : Process
+    public class SchedulerLeaveQueue : Scheduler
     {
         public new AgentService MyAgent => (AgentService)base.MyAgent;
-        public new SimCarService MySim => (SimCarService)base.MySim;
 
-        public ProcessOrderEntry(int id, OSPABA.Simulation mySim, CommonAgent myAgent)
+        public SchedulerLeaveQueue(int id, OSPABA.Simulation mySim, CommonAgent myAgent)
             : base(id, mySim, myAgent)
         {
-            MyAgent.AddOwnMessage(Mc.CUSTOMER_ORDER_ENTRY_FINISHED);
+            MyAgent.AddOwnMessage(Mc.LEAVE_QUEUE);
         }
 
-        //meta! sender="AgentService", id="73", type="Start"
+        //meta! sender="AgentService", id="118", type="Start"
         public void ProcessStart(MessageForm message)
         {
-            var msg = (MsgCarService)message;
-            msg.Customer.GenerateRepairDuration();
-            msg.Customer.WaitInQueueFinished();
-            msg.Customer.Served = true;
-            MyAgent.StatisticWaitInQueue.AddSample(msg.Customer.WaitInQueueTotal);
-            var time = MySim.GeneratorOrderEntryDuration.Next();
-            message.Code = Mc.CUSTOMER_ORDER_ENTRY_FINISHED;
-            Hold(time, message);
+            message.Code = Mc.LEAVE_QUEUE;
+            Hold(SimConfig.MAX_WAIT_IN_QUEUE_TIME, message);
         }
 
         public void ProcessDefault(MessageForm message)
         {
             switch (message.Code)
             {
-                case Mc.CUSTOMER_ORDER_ENTRY_FINISHED:
+                case Mc.LEAVE_QUEUE:
                     AssistantFinished(message);
                     break;
             }

@@ -68,6 +68,7 @@
     <Compile Include="ContinualAssistants\ProcessParkFromWorkshop.cs" />
     <Compile Include="ContinualAssistants\ProcessParkToWorkshop.cs" />
     <Compile Include="ContinualAssistants\SchedulerCustomerArrival.cs" />
+    <Compile Include="ContinualAssistants\SchedulerLeaveQueue.cs" />
     <Compile Include="ContinualAssistants\SchedulerWorkdayEnd.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\Mechanic.cs" />
@@ -91,13 +92,16 @@
     <Compile Include="Managers\ManagerWorkshop.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Simulation\CustomQueue.cs" />
     <Compile Include="Simulation\Mc.cs" />
     <Compile Include="Simulation\MsgCarService.cs" />
+    <Compile Include="Simulation\MsgLeaveQueue.cs" />
     <Compile Include="Simulation\SimCarService.cs" />
     <Compile Include="Simulation\SimConfig.cs" />
     <Compile Include="Simulation\SimId.cs" />
     <Compile Include="Simulation\SimTimeHelper.cs" />
     <Compile Include="Statistics\Stat.cs" />
+    <Compile Include="Statistics\StatCount.cs" />
     <Compile Include="Statistics\WStat.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

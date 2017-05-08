@@ -13,9 +13,9 @@ namespace SEM03.Agents
     {
         public List<WorkerWithCustomers> Workers { get; private set; }
         public List<ParkingPlace> CarPark { get; private set; }
-        public Queue<MsgCarService> OrdersQueue { get; private set; } // incoming orders
-        public Queue<MsgCarService> RepairedQueue { get; private set; } // repaired cars waiting to be parked to car park
-        public Queue<MsgCarService> ReturnQueue { get; private set; } // cars ready to be returned to their owners
+        public CustomQueue<MsgCarService> OrdersQueue { get; private set; } // incoming orders
+        public CustomQueue<MsgCarService> RepairedQueue { get; private set; } // repaired cars waiting to be parked to car park
+        public CustomQueue<MsgCarService> ReturnQueue { get; private set; } // cars ready to be returned to their owners
 
         public Stat StatisticWaitForRepair { get; private set; }
         public Stat StatisticWaitInQueue { get; private set; }
@@ -116,6 +116,7 @@ namespace SEM03.Agents
             new ProcessCarTakeover(SimId.PROCESS_CAR_TAKEOVER, MySim, this);
             new ProcessParkToWorkshop(SimId.PROCESS_PARK_TO_WORKSHOP, MySim, this);
             new ActionAssignWorker(SimId.ACTION_ASSIGN_WORKER, MySim, this);
+            new SchedulerLeaveQueue(SimId.SCHEDULER_LEAVE_QUEUE, MySim, this);
             new ProcessCarReturn(SimId.PROCESS_CAR_RETURN, MySim, this);
             new ProcessOrderEntry(SimId.PROCESS_ORDER_ENTRY, MySim, this);
             new SchedulerWorkdayEnd(SimId.SCHEDULER_WORKDAY_END, MySim, this);
@@ -127,9 +128,9 @@ namespace SEM03.Agents
 
             Workers = new List<WorkerWithCustomers>();
             CarPark = new List<ParkingPlace>();
-            OrdersQueue = new Queue<MsgCarService>();
-            RepairedQueue = new Queue<MsgCarService>();
-            ReturnQueue = new Queue<MsgCarService>();
+            OrdersQueue = new CustomQueue<MsgCarService>();
+            RepairedQueue = new CustomQueue<MsgCarService>();
+            ReturnQueue = new CustomQueue<MsgCarService>();
 
             StatisticWaitForRepair = new Stat(MySim);
             StatisticWaitInQueue = new Stat(MySim);

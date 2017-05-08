@@ -39,6 +39,14 @@ namespace SEM03.Managers
         //meta! sender="AgentService", id="60", type="Response"
         public void ProcessProcessOrderService(MessageForm message)
         {
+            var msg = (MsgCarService) message;
+            if (msg.Customer.Served == false)
+            {
+                message.Code = Mc.CUSTOMER_SERVICE;
+                Response(message);
+                return;
+            }
+
             message.Code = Mc.REPAIR_CAR;
             message.Addressee = MySim.FindAgent(SimId.AGENT_WORKSHOP);
             Request(message);

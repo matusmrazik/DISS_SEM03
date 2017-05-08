@@ -28,5 +28,6 @@ namespace SEM03.Simulation
         public const int CAR_RETURN_FINISHED = 10;
         public const int LEAVE_CAR_PARK_FINISHED = 11;
         public const int DEPARTURE_RAMP_CROSSED = 12;
+        public const int LEAVE_QUEUE = 13;
     }
 }

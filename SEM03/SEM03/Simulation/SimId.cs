@@ -19,7 +19,8 @@ namespace SEM03.Simulation
         public const int ACTION_ASSIGN_MECHANIC = 1003;
         public const int ACTION_PARK_REPAIRED_CAR = 1004;
         public const int SCHEDULER_CUSTOMER_ARRIVAL = 1011;
-        public const int SCHEDULER_WORKDAY_END = 1012;
+        public const int SCHEDULER_LEAVE_QUEUE = 1012;
+        public const int SCHEDULER_WORKDAY_END = 1013;
         public const int PROCESS_CAR_REPAIR = 1021;
         public const int PROCESS_ORDER_ENTRY = 1022;
         public const int PROCESS_CAR_TAKEOVER = 1023;

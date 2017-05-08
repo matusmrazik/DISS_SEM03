@@ -41,6 +41,7 @@ namespace SEM03.Simulation
         public Stat StatisticRepairedQueueLengthTotal { get; private set; }
         public Stat StatisticReadyToReturnQueueLengthTotal { get; private set; }
         public Stat StatisticTimeInServiceTotal { get; private set; }
+        public Stat StatisticServedPrecentageTotal { get; private set; }
 
         public SimCarService()
         {
@@ -72,6 +73,21 @@ namespace SEM03.Simulation
         {
             base.PrepareSimulation();
 
+            StatisticWaitForRepair.IgnoreBefore = SimConfig.HEAT_UP_TIME;
+            StatisticWaitInQueue.IgnoreBefore = SimConfig.HEAT_UP_TIME;
+            StatisticQueueLength.IgnoreBefore = SimConfig.HEAT_UP_TIME;
+            StatisticCarsForRepairQueueLength.IgnoreBefore = SimConfig.HEAT_UP_TIME;
+            StatisticRepairedQueueLength.IgnoreBefore = SimConfig.HEAT_UP_TIME;
+            StatisticReadyToReturnQueueLength.IgnoreBefore = SimConfig.HEAT_UP_TIME;
+            StatisticTimeInService.IgnoreBefore = SimConfig.HEAT_UP_TIME;
+            StatisticWaitForRepair.IgnoreAfter = SimConfig.REPLICATION_END_TIME;
+            StatisticWaitInQueue.IgnoreAfter = SimConfig.REPLICATION_END_TIME;
+            StatisticQueueLength.IgnoreAfter = SimConfig.REPLICATION_END_TIME;
+            StatisticCarsForRepairQueueLength.IgnoreAfter = SimConfig.REPLICATION_END_TIME;
+            StatisticRepairedQueueLength.IgnoreAfter = SimConfig.REPLICATION_END_TIME;
+            StatisticReadyToReturnQueueLength.IgnoreAfter = SimConfig.REPLICATION_END_TIME;
+            StatisticTimeInService.IgnoreAfter = SimConfig.REPLICATION_END_TIME;
+
             StatisticWaitForRepairTotal.Clear();
             StatisticWaitInQueueTotal.Clear();
             StatisticQueueLengthTotal.Clear();
@@ -79,6 +95,7 @@ namespace SEM03.Simulation
             StatisticRepairedQueueLengthTotal.Clear();
             StatisticReadyToReturnQueueLengthTotal.Clear();
             StatisticTimeInServiceTotal.Clear();
+            StatisticServedPrecentageTotal.Clear();
         }
 
         protected override void PrepareReplication()
@@ -99,6 +116,7 @@ namespace SEM03.Simulation
             StatisticRepairedQueueLengthTotal.AddSample(StatisticRepairedQueueLength.Mean);
             StatisticReadyToReturnQueueLengthTotal.AddSample(StatisticReadyToReturnQueueLength.Mean);
             StatisticTimeInServiceTotal.AddSample(StatisticTimeInService.Mean);
+            StatisticServedPrecentageTotal.AddSample((double)AgentEnvironment.CustomersLeftServed.Count / AgentEnvironment.CustomersLeftTotal.Count);
         }
 
         protected override void SimulationFinished()
@@ -107,11 +125,12 @@ namespace SEM03.Simulation
 
             Console.WriteLine(@"Priemerný čas čakania na opravu: {0}", SimTimeHelper.DurationAsString(StatisticWaitForRepairTotal.Mean));
             Console.WriteLine(@"Priemerný čas čakania vo fronte: {0}", SimTimeHelper.DurationAsString(StatisticWaitInQueueTotal.Mean));
-            Console.WriteLine(@"Priemerná dĺžka frontu čakajúcich: {0}", StatisticQueueLengthTotal.Mean);
-            Console.WriteLine(@"Priemerný počet áut na opravu: {0}", StatisticCarsForRepairQueueLengthTotal.Mean);
-            Console.WriteLine(@"Priemerný počet opravených áut: {0}", StatisticRepairedQueueLengthTotal.Mean);
-            Console.WriteLine(@"Priemerný počet áut na odovzdanie: {0}", StatisticReadyToReturnQueueLengthTotal.Mean);
+            Console.WriteLine(@"Priemerná dĺžka frontu čakajúcich: {0:0.000000}", StatisticQueueLengthTotal.Mean);
+            Console.WriteLine(@"Priemerný počet áut na opravu: {0:0.000000}", StatisticCarsForRepairQueueLengthTotal.Mean);
+            Console.WriteLine(@"Priemerný počet opravených áut: {0:0.000000}", StatisticRepairedQueueLengthTotal.Mean);
+            Console.WriteLine(@"Priemerný počet áut na odovzdanie: {0:0.000000}", StatisticReadyToReturnQueueLengthTotal.Mean);
             Console.WriteLine(@"Priemerný čas strávený v servise: {0}", SimTimeHelper.DurationAsString(StatisticTimeInServiceTotal.Mean));
+            Console.WriteLine(@"Priemerný pomer obslúžených zákazníkov: {0:0.000000} %", StatisticServedPrecentageTotal.Mean * 100.0);
         }
 
         private void Init()
@@ -160,6 +179,7 @@ namespace SEM03.Simulation
             StatisticRepairedQueueLengthTotal = new Stat(this);
             StatisticReadyToReturnQueueLengthTotal = new Stat(this);
             StatisticTimeInServiceTotal = new Stat(this);
+            StatisticServedPrecentageTotal = new Stat(this);
         }
     }
 }
