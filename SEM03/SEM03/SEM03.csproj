@@ -97,6 +97,8 @@
     <Compile Include="Simulation\SimConfig.cs" />
     <Compile Include="Simulation\SimId.cs" />
     <Compile Include="Simulation\SimTimeHelper.cs" />
+    <Compile Include="Statistics\Stat.cs" />
+    <Compile Include="Statistics\WStat.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
