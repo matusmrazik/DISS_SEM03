@@ -39,6 +39,7 @@ namespace SEM03.Statistics
 
         public int Samples => _n;
 
+        public double Sum => _sum;
         public double Mean => _n == 0 ? 0.0 : _sum / _n;
         public double Variance => _n == 0 ? 0.0 : _sumSquare / _n - _sum / _n * (_sum / _n);
         public double Stdev => _n == 0 ? 0.0 : Math.Sqrt(Variance);

@@ -2,17 +2,40 @@
 {
     public static class SimConfig
     {
+        public const double DAYS_IN_MONTH = SimTimeHelper.DAYS_IN_MONTH;
         public const double WORKDAY_HOURS = SimTimeHelper.WORKDAY_HOURS;
         public const double WORKDAY_START_HOUR = SimTimeHelper.WORKDAY_START_HOUR;
         public const double TIME_BETWEEN_CUSTOMERS = 20.0 * SimTimeHelper.MINUTE;
         public const double MAX_WAIT_IN_QUEUE_TIME = 10.0 * SimTimeHelper.MINUTE;
 
         public const double HEAT_UP_TIME = 1.0 * SimTimeHelper.DAY;
-        public const double REPLICATION_START_TIME = HEAT_UP_TIME;
-        public const double REPLICATION_DURATION = 21.0 * SimTimeHelper.DAY;
-        public const double REPLICATION_END_TIME = REPLICATION_START_TIME + REPLICATION_DURATION;
         public const double COOL_DOWN_TIME = 0.0;
-        public const double TOTAL_REPLICATION_DURATION = HEAT_UP_TIME + REPLICATION_DURATION + COOL_DOWN_TIME;
+        public const double REPLICATION_START_TIME = HEAT_UP_TIME;
+        public static double ReplicationDuration { get; set; } = 21.0 * SimTimeHelper.DAY;
+        public static double ReplicationEndTime => REPLICATION_START_TIME + ReplicationDuration;
+        public static double TotalReplicationDuration => HEAT_UP_TIME + ReplicationDuration + COOL_DOWN_TIME;
+
+        public const double WORKER_1_COSTS_MONTH = 1150.0;
+        public const double WORKER_2_COSTS_MONTH = 1600.0;
+        public const double OPERATING_EXPENSES_MONTH = 7000.0;
+        public const double WORK_PRICE_HOUR = 25.0;
+
+        public const double WORKER_1_COSTS_DAY = WORKER_1_COSTS_MONTH / DAYS_IN_MONTH;
+        public const double WORKER_2_COSTS_DAY = WORKER_2_COSTS_MONTH / DAYS_IN_MONTH;
+        public const double OPERATING_EXPENSES_DAY = OPERATING_EXPENSES_MONTH / DAYS_IN_MONTH;
+        public const double WORK_PRICE_DAY = WORK_PRICE_HOUR * WORKDAY_HOURS;
+        public const double WORKER_1_COSTS_HOUR = WORKER_1_COSTS_DAY / WORKDAY_HOURS;
+        public const double WORKER_2_COSTS_HOUR = WORKER_2_COSTS_DAY / WORKDAY_HOURS;
+        public const double OPERATING_EXPENSES_HOUR = OPERATING_EXPENSES_DAY / WORKDAY_HOURS;
+        public const double WORK_PRICE_MONTH = WORK_PRICE_DAY * DAYS_IN_MONTH;
+        public const double WORKER_1_COSTS_MINUTE = WORKER_1_COSTS_HOUR / 60;
+        public const double WORKER_2_COSTS_MINUTE = WORKER_2_COSTS_HOUR / 60;
+        public const double OPERATING_EXPENSES_MINUTE = OPERATING_EXPENSES_HOUR / 60;
+        public const double WORK_PRICE_MINUTE = WORK_PRICE_HOUR / 60;
+        public const double WORKER_1_COSTS_SECOND = WORKER_1_COSTS_MINUTE / 60;
+        public const double WORKER_2_COSTS_SECOND = WORKER_2_COSTS_MINUTE / 60;
+        public const double OPERATING_EXPENSES_SECOND = OPERATING_EXPENSES_MINUTE / 60;
+        public const double WORK_PRICE_SECOND = WORK_PRICE_MINUTE / 60;
 
         public const int CAR_PARK_1_PARKING_PLACES = 6;
         public const int CAR_PARK_2_PARKING_PLACES = 10;

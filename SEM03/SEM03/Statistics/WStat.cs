@@ -21,6 +21,7 @@ namespace SEM03.Statistics
         public int Samples => _n;
         public double SampleSize => _weightSum;
 
+        public double Sum => _sum;
         public double Mean => _n == 0 ? 0.0 : _sum / _weightSum;
         public double Variance => _n == 0 ? 0.0 : _sumSquare / _weightSum - _sum / _weightSum * (_sum / _weightSum);
         public double Stdev => _n == 0 ? 0.0 : Math.Sqrt(Variance);

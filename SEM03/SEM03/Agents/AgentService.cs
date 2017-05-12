@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using OSPABA;
 using SEM03.ContinualAssistants;
 using SEM03.Entities;
@@ -22,6 +23,10 @@ namespace SEM03.Agents
         public WStat StatisticQueueLength { get; private set; }
         public WStat StatisticRepairedQueueLength { get; private set; }
         public WStat StatisticReadyToReturnQueueLength { get; private set; }
+        public Stat StatisticIncomes { get; private set; }
+
+        public int WorkersWorking => Workers.Count(worker => worker.IsWorking);
+        public double TotalWorkingTime => Workers.Sum(worker => worker.TotalWorkingTime);
 
         public AgentService(int id, OSPABA.Simulation mySim, Agent parent)
             : base(id, mySim, parent)
@@ -42,6 +47,7 @@ namespace SEM03.Agents
             StatisticQueueLength.Clear();
             StatisticRepairedQueueLength.Clear();
             StatisticReadyToReturnQueueLength.Clear();
+            StatisticIncomes.Clear();
 
             ResetWorkers();
             ResetCarPark();
@@ -55,7 +61,10 @@ namespace SEM03.Agents
             Workers.Clear();
             for (var i = 0; i < count; ++i)
             {
-                Workers.Add(new WorkerWithCustomers(MySim));
+                var tmpWorker = new WorkerWithCustomers(MySim);
+                tmpWorker.StatisticWorkingDuration.IgnoreBefore = SimConfig.HEAT_UP_TIME;
+                tmpWorker.StatisticWorkingDuration.IgnoreAfter = SimConfig.ReplicationEndTime;
+                Workers.Add(tmpWorker);
             }
         }
 
@@ -137,6 +146,7 @@ namespace SEM03.Agents
             StatisticQueueLength = new WStat(MySim);
             StatisticRepairedQueueLength = new WStat(MySim);
             StatisticReadyToReturnQueueLength = new WStat(MySim);
+            StatisticIncomes = new Stat(MySim);
         }
     }
 }

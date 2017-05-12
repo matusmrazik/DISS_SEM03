@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using OSPABA;
 using SEM03.ContinualAssistants;
 using SEM03.Entities;
@@ -17,6 +18,9 @@ namespace SEM03.Agents
         public CustomQueue<MsgCarService> ParkingPlaceRequests { get; private set; }
 
         public WStat StatisticCarsForRepairQueueLength { get; private set; }
+
+        public int WorkersWorking => Workers.Count(worker => worker.IsWorking);
+        public double TotalWorkingTime => Workers.Sum(worker => worker.TotalWorkingTime);
 
         public AgentWorkshop(int id, OSPABA.Simulation mySim, Agent parent)
             : base(id, mySim, parent)
@@ -42,7 +46,10 @@ namespace SEM03.Agents
             Workers.Clear();
             for (var i = 0; i < count; ++i)
             {
-                Workers.Add(new Mechanic(MySim));
+                var tmpWorker = new Mechanic(MySim);
+                tmpWorker.StatisticWorkingDuration.IgnoreBefore = SimConfig.HEAT_UP_TIME;
+                tmpWorker.StatisticWorkingDuration.IgnoreAfter = SimConfig.ReplicationEndTime;
+                Workers.Add(tmpWorker);
             }
         }
 

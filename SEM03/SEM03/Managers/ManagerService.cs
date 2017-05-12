@@ -210,6 +210,9 @@ namespace SEM03.Managers
         //meta! sender="ProcessOrderEntry", id="73", type="Finish"
         public void ProcessFinishProcessOrderEntry(MessageForm message)
         {
+            var msg = (MsgCarService) message;
+            MyAgent.StatisticIncomes.AddSample(SimTimeHelper.ToHours(msg.Customer.TotalRepairDuration) * SimConfig.WORK_PRICE_HOUR);
+
             message.Code = Mc.RESERVE_PARKING_PLACE_IN_WORKSHOP;
             message.Addressee = MySim.FindAgent(SimId.AGENT_CAR_SERVICE);
             Request(message);

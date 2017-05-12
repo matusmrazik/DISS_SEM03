@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using RandomLib;
 using SEM03.Agents;
 using SEM03.Statistics;
@@ -7,7 +8,21 @@ namespace SEM03.Simulation
 {
     public class SimCarService : OSPABA.Simulation
     {
+        public event Action OnRunFinished;
+        public event Action<int, int, double> OnBestWorkerCountFound;
+
+        public bool Stopped { get; private set; }
+
         public int Seed { get; private set; }
+
+        public int Workers1Count => AgentService.Workers.Count;
+        public int Workers2Count => AgentWorkshop.Workers.Count;
+
+        public int Workers1Working => AgentService.WorkersWorking;
+        public int Workers2Working => AgentWorkshop.WorkersWorking;
+        public int CustomerQueueLength => AgentService.OrdersQueue.Count;
+        public int CarsForRepairQueueLength => AgentWorkshop.OrdersQueue.Count;
+        public int RepairedCarsQueueLength => AgentService.RepairedQueue.Count;
 
         public AgentModel AgentModel { get; private set; }
         public AgentEnvironment AgentEnvironment { get; private set; }
@@ -33,6 +48,7 @@ namespace SEM03.Simulation
         public WStat StatisticRepairedQueueLength => AgentService.StatisticRepairedQueueLength;
         public WStat StatisticReadyToReturnQueueLength => AgentService.StatisticReadyToReturnQueueLength;
         public Stat StatisticTimeInService => AgentEnvironment.StatisticTimeInService;
+        public Stat StatisticIncomes => AgentService.StatisticIncomes;
 
         public Stat StatisticWaitForRepairTotal { get; private set; }
         public Stat StatisticWaitInQueueTotal { get; private set; }
@@ -42,6 +58,7 @@ namespace SEM03.Simulation
         public Stat StatisticReadyToReturnQueueLengthTotal { get; private set; }
         public Stat StatisticTimeInServiceTotal { get; private set; }
         public Stat StatisticServedPrecentageTotal { get; private set; }
+        public Stat StatisticIncomesTotal { get; private set; }
 
         public SimCarService()
         {
@@ -50,6 +67,8 @@ namespace SEM03.Simulation
 
         public void Init(int group1Workers, int group2Workers, int? seed = null)
         {
+            Stopped = false;
+
             Seed = seed ?? new Random().Next();
 
             AgentService.SetWorkersCount(group1Workers);
@@ -69,9 +88,84 @@ namespace SEM03.Simulation
             GeneratorCarReturnDuration.Seed(GeneratorSeed.Next());
         }
 
+        public void SingleRun(int replicationCount, double simEndTime, int workers1Count, int workers2Count, int? seed = null)
+        {
+            Init(workers1Count, workers2Count, seed);
+            Simulate(replicationCount, simEndTime);
+            if (!Stopped)
+            {
+                OnRunFinished?.Invoke();
+            }
+        }
+
+        public Thread SingleRunAsync(int replicationCount, double simEndTime, int workers1Count, int workers2Count, int? seed = null)
+        {
+            var thread = new Thread(() => SingleRun(replicationCount, simEndTime, workers1Count, workers2Count, seed))
+            {
+                Name = "ABASim - simulation thread",
+                IsBackground = true,
+                Priority = ThreadPriority.Highest
+            };
+            thread.Start();
+            return thread;
+        }
+
+        public void MultiRun(int replicationCount, double simEndTime, int workers1Min, int workers1Max, int workers2Min, int workers2Max, int? seed = null)
+        {
+            var seedGen = seed.HasValue ? new Random(seed.Value) : new Random();
+
+            var result = new[] { 0.0, 0.0 };
+            var bestResult = new[] { long.MaxValue, 0.0 };
+            var bestWorkers1 = 0;
+            var bestWorkers2 = 0;
+
+            for (var w1 = workers1Min; w1 <= workers1Max; ++w1)
+            {
+                for (var w2 = workers2Min; w2 <= workers2Max; ++w2)
+                {
+                    Init(w1, w2, seedGen.Next());
+                    Simulate(replicationCount, simEndTime);
+                    if (Stopped) return;
+                    result[0] = StatisticWaitForRepairTotal.Mean;
+                    result[1] = StatisticIncomesTotal.Mean;
+                    if (ComputeProfit(w1, w2, result[0], result[1]) > ComputeProfit(bestWorkers1, bestWorkers2, bestResult[0], bestResult[1]))
+                    {
+                        bestResult[0] = result[0];
+                        bestResult[1] = result[1];
+                        bestWorkers1 = w1;
+                        bestWorkers2 = w2;
+                    }
+                }
+            }
+
+            if (Stopped) return;
+            OnBestWorkerCountFound?.Invoke(bestWorkers1, bestWorkers2, ComputeProfit(bestWorkers1, bestWorkers2, bestResult[0], bestResult[1]));
+            OnRunFinished?.Invoke();
+        }
+
+        public Thread MultiRunAsync(int replicationCount, double simEndTime, int workers1Min, int workers1Max, int workers2Min, int workers2Max, int? seed = null)
+        {
+            var thread = new Thread(() => MultiRun(replicationCount, simEndTime, workers1Min, workers1Max, workers2Min, workers2Max, seed))
+            {
+                Name = "ABASim - simulation thread",
+                IsBackground = true,
+                Priority = ThreadPriority.Highest
+            };
+            thread.Start();
+            return thread;
+        }
+
+        public new void StopSimulation()
+        {
+            base.StopSimulation();
+            Stopped = true;
+        }
+
         protected override void PrepareSimulation()
         {
             base.PrepareSimulation();
+
+            Stopped = false;
 
             StatisticWaitForRepair.IgnoreBefore = SimConfig.HEAT_UP_TIME;
             StatisticWaitInQueue.IgnoreBefore = SimConfig.HEAT_UP_TIME;
@@ -80,13 +174,13 @@ namespace SEM03.Simulation
             StatisticRepairedQueueLength.IgnoreBefore = SimConfig.HEAT_UP_TIME;
             StatisticReadyToReturnQueueLength.IgnoreBefore = SimConfig.HEAT_UP_TIME;
             StatisticTimeInService.IgnoreBefore = SimConfig.HEAT_UP_TIME;
-            StatisticWaitForRepair.IgnoreAfter = SimConfig.REPLICATION_END_TIME;
-            StatisticWaitInQueue.IgnoreAfter = SimConfig.REPLICATION_END_TIME;
-            StatisticQueueLength.IgnoreAfter = SimConfig.REPLICATION_END_TIME;
-            StatisticCarsForRepairQueueLength.IgnoreAfter = SimConfig.REPLICATION_END_TIME;
-            StatisticRepairedQueueLength.IgnoreAfter = SimConfig.REPLICATION_END_TIME;
-            StatisticReadyToReturnQueueLength.IgnoreAfter = SimConfig.REPLICATION_END_TIME;
-            StatisticTimeInService.IgnoreAfter = SimConfig.REPLICATION_END_TIME;
+            StatisticWaitForRepair.IgnoreAfter = SimConfig.ReplicationEndTime;
+            StatisticWaitInQueue.IgnoreAfter = SimConfig.ReplicationEndTime;
+            StatisticQueueLength.IgnoreAfter = SimConfig.ReplicationEndTime;
+            StatisticCarsForRepairQueueLength.IgnoreAfter = SimConfig.ReplicationEndTime;
+            StatisticRepairedQueueLength.IgnoreAfter = SimConfig.ReplicationEndTime;
+            StatisticReadyToReturnQueueLength.IgnoreAfter = SimConfig.ReplicationEndTime;
+            StatisticTimeInService.IgnoreAfter = SimConfig.ReplicationEndTime;
 
             StatisticWaitForRepairTotal.Clear();
             StatisticWaitInQueueTotal.Clear();
@@ -96,6 +190,7 @@ namespace SEM03.Simulation
             StatisticReadyToReturnQueueLengthTotal.Clear();
             StatisticTimeInServiceTotal.Clear();
             StatisticServedPrecentageTotal.Clear();
+            StatisticIncomesTotal.Clear();
         }
 
         protected override void PrepareReplication()
@@ -117,6 +212,7 @@ namespace SEM03.Simulation
             StatisticReadyToReturnQueueLengthTotal.AddSample(StatisticReadyToReturnQueueLength.Mean);
             StatisticTimeInServiceTotal.AddSample(StatisticTimeInService.Mean);
             StatisticServedPrecentageTotal.AddSample((double)AgentEnvironment.CustomersLeftServed.Count / AgentEnvironment.CustomersLeftTotal.Count);
+            StatisticIncomesTotal.AddSample(StatisticIncomes.Sum);
         }
 
         protected override void SimulationFinished()
@@ -131,6 +227,7 @@ namespace SEM03.Simulation
             Console.WriteLine(@"Priemerný počet áut na odovzdanie: {0:0.000000}", StatisticReadyToReturnQueueLengthTotal.Mean);
             Console.WriteLine(@"Priemerný čas strávený v servise: {0}", SimTimeHelper.DurationAsString(StatisticTimeInServiceTotal.Mean));
             Console.WriteLine(@"Priemerný pomer obslúžených zákazníkov: {0:0.000000} %", StatisticServedPrecentageTotal.Mean * 100.0);
+            Console.WriteLine(@"Priemerný zisk: {0:0.00} EUR", StatisticIncomesTotal.Mean);
         }
 
         private void Init()
@@ -180,6 +277,17 @@ namespace SEM03.Simulation
             StatisticReadyToReturnQueueLengthTotal = new Stat(this);
             StatisticTimeInServiceTotal = new Stat(this);
             StatisticServedPrecentageTotal = new Stat(this);
+            StatisticIncomesTotal = new Stat(this);
+        }
+
+        private static double ComputeProfit(int workers1, int workers2, double averageWaitForRepairTime, double totalIncomes)
+        {
+            if (averageWaitForRepairTime > SimTimeHelper.Hours(6)) return double.MinValue;
+
+            var duration = SimTimeHelper.ToDays(SimConfig.ReplicationDuration);
+            var operatingExpenses = duration * SimConfig.OPERATING_EXPENSES_DAY;
+            var workersCosts = workers1 * duration * SimConfig.WORKER_1_COSTS_DAY + workers2 * duration * SimConfig.WORKER_2_COSTS_DAY;
+            return totalIncomes - operatingExpenses - workersCosts;
         }
     }
 }
