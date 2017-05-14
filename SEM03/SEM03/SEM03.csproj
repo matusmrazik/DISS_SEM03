@@ -86,6 +86,7 @@
     <Compile Include="InstantAssistants\ActionAssignParkingPlace.cs" />
     <Compile Include="InstantAssistants\ActionAssignWorker.cs" />
     <Compile Include="InstantAssistants\ActionParkRepairedCar.cs" />
+    <Compile Include="Logging\Logger.cs" />
     <Compile Include="Managers\ManagerCarService.cs" />
     <Compile Include="Managers\ManagerEnvironment.cs" />
     <Compile Include="Managers\ManagerModel.cs" />
