@@ -15,7 +15,7 @@ namespace SEM03.Agents
         public List<Mechanic> Workers { get; private set; }
         public List<ParkingPlace> CarPark { get; private set; }
         public CustomQueue<MsgCarService> OrdersQueue { get; private set; }
-        public CustomQueue<MsgCarService> ParkingPlaceRequests { get; private set; }
+        //public CustomQueue<MsgCarService> ParkingPlaceRequests { get; private set; }
 
         public WStat StatisticCarsForRepairQueueLength { get; private set; }
 
@@ -33,7 +33,7 @@ namespace SEM03.Agents
             base.PrepareReplication();
 
             OrdersQueue.Clear();
-            ParkingPlaceRequests.Clear();
+            //ParkingPlaceRequests.Clear();
 
             StatisticCarsForRepairQueueLength.Clear();
 
@@ -116,7 +116,7 @@ namespace SEM03.Agents
             Workers = new List<Mechanic>();
             CarPark = new List<ParkingPlace>();
             OrdersQueue = new CustomQueue<MsgCarService>();
-            ParkingPlaceRequests = new CustomQueue<MsgCarService>();
+            //ParkingPlaceRequests = new CustomQueue<MsgCarService>();
 
             StatisticCarsForRepairQueueLength = new WStat(MySim);
         }

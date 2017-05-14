@@ -1,5 +1,6 @@
 ﻿using OSPABA;
 using SEM03.Agents;
+using SEM03.Entities;
 using SEM03.Simulation;
 using Action = OSPABA.Action;
 
@@ -20,13 +21,6 @@ namespace SEM03.Managers
         {
             ((Action)MyAgent.FindAssistant(SimId.ACTION_ASSIGN_PARKING_PLACE)).Execute(message);
 
-            var msg = (MsgCarService)message;
-            if (msg.ParkingPlace == null)
-            {
-                MyAgent.ParkingPlaceRequests.Enqueue(msg);
-                return;
-            }
-
             Response(message);
         }
 
@@ -40,26 +34,22 @@ namespace SEM03.Managers
             {
                 MyAgent.OrdersQueue.Enqueue(msg);
                 MyAgent.StatisticCarsForRepairQueueLength.AddSample(MyAgent.OrdersQueue.Count);
+                return;
             }
-            else
+
+            var parkingPlace = msg.ParkingPlace;
+            msg.ParkingPlace = null;
+            parkingPlace.SetFree();
+
+            message.Addressee = MyAgent.FindAssistant(SimId.PROCESS_CAR_REPAIR);
+            StartContinualAssistant(message);
+
+            var msgNew = new MsgCarService(MySim)
             {
-                var parkingPlace = msg.ParkingPlace;
-                msg.ParkingPlace = null;
-                parkingPlace.SetFree();
-
-                message.Addressee = MyAgent.FindAssistant(SimId.PROCESS_CAR_REPAIR);
-                StartContinualAssistant(message);
-
-                if (MyAgent.ParkingPlaceRequests.Count == 0)
-                {
-                    return;
-                }
-
-                var msgNew = MyAgent.ParkingPlaceRequests.Dequeue();
-                parkingPlace.SetReserved();
-                msgNew.ParkingPlace = parkingPlace;
-                Response(msgNew);
-            }
+                Code = Mc.PARKING_PLACE_FREE,
+                Addressee = MySim.FindAgent(SimId.AGENT_CAR_SERVICE)
+            };
+            Notice(msgNew);
         }
 
         //meta! sender="ProcessCarRepair", id="100", type="Finish"
@@ -82,30 +72,7 @@ namespace SEM03.Managers
             message.Code = Mc.REPAIR_CAR;
             Response(message);
 
-            if (MyAgent.OrdersQueue.Count == 0)
-            {
-                return;
-            }
-
-            var msgNew = MyAgent.OrdersQueue.Dequeue();
-            MyAgent.StatisticCarsForRepairQueueLength.AddSample(MyAgent.OrdersQueue.Count);
-            msgNew.Mechanic = mechanic;
-            mechanic.StartWork(msgNew.Customer);
-            var parkingPlace = msgNew.ParkingPlace;
-            msgNew.ParkingPlace = null;
-            parkingPlace.SetFree();
-            msgNew.Addressee = MyAgent.FindAssistant(SimId.PROCESS_CAR_REPAIR);
-            StartContinualAssistant(msgNew);
-
-            if (MyAgent.ParkingPlaceRequests.Count == 0)
-            {
-                return;
-            }
-
-            var msgNew2 = MyAgent.ParkingPlaceRequests.Dequeue();
-            parkingPlace.SetReserved();
-            msgNew2.ParkingPlace = parkingPlace;
-            Response(msgNew2);
+            TryRepairNextCar(mechanic);
         }
 
         public void ProcessDefault(MessageForm message)
@@ -136,6 +103,33 @@ namespace SEM03.Managers
                     ProcessDefault(message);
                     break;
             }
+        }
+
+        private bool TryRepairNextCar(Mechanic mechanic)
+        {
+            if (MyAgent.OrdersQueue.Count == 0)
+            {
+                return false;
+            }
+
+            var msg = MyAgent.OrdersQueue.Dequeue();
+            MyAgent.StatisticCarsForRepairQueueLength.AddSample(MyAgent.OrdersQueue.Count);
+            msg.Mechanic = mechanic;
+            mechanic.StartWork(msg.Customer);
+            var parkingPlace = msg.ParkingPlace;
+            msg.ParkingPlace = null;
+            parkingPlace.SetFree();
+            msg.Addressee = MyAgent.FindAssistant(SimId.PROCESS_CAR_REPAIR);
+            StartContinualAssistant(msg);
+
+            var msgNew = new MsgCarService(MySim)
+            {
+                Code = Mc.PARKING_PLACE_FREE,
+                Addressee = MySim.FindAgent(SimId.AGENT_CAR_SERVICE)
+            };
+            Notice(msgNew);
+
+            return true;
         }
     }
 }

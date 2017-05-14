@@ -25,6 +25,7 @@ namespace SEM03.Agents
             AddOwnMessage(Mc.CUSTOMER_SERVICE);
             AddOwnMessage(Mc.RESERVE_PARKING_PLACE);
             AddOwnMessage(Mc.RETURN_REPAIRED_CAR);
+            AddOwnMessage(Mc.PARKING_PLACE_FREE);
             AddOwnMessage(Mc.PROCESS_ORDER_SERVICE);
             AddOwnMessage(Mc.REPAIR_CAR);
             AddOwnMessage(Mc.PARK_REPAIRED_CAR_TO_WORKSHOP);

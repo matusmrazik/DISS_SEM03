@@ -14,6 +14,8 @@ namespace SEM03.Simulation
         public const int PARK_REPAIRED_CAR = 1008;
         public const int RESERVE_PARKING_PLACE_IN_WORKSHOP = 1009;
         public const int PARK_REPAIRED_CAR_TO_WORKSHOP = 1010;
+        public const int PARKING_PLACE_FREE = 1011;
+        public const int PARKING_PLACE_FREE_IN_WORKSHOP = 1012;
 
         // 1..1000 range reserved for user
         public const int NEW_CUSTOMER = 1;

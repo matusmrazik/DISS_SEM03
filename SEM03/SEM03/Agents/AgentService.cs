@@ -14,7 +14,8 @@ namespace SEM03.Agents
     {
         public List<WorkerWithCustomers> Workers { get; private set; }
         public List<ParkingPlace> CarPark { get; private set; }
-        public CustomQueue<MsgCarService> OrdersQueue { get; private set; } // incoming orders
+        public CustomQueue<MsgCarService> ParkingPlaceQueue { get; private set; } // incoming orders waiting for free parking place in workshop
+        public CustomQueue<MsgCarService> OrdersQueue { get; private set; } // incoming orders waiting for a free worker
         public CustomQueue<MsgCarService> RepairedQueue { get; private set; } // repaired cars waiting to be parked to car park
         public CustomQueue<MsgCarService> ReturnQueue { get; private set; } // cars ready to be returned to their owners
 
@@ -24,8 +25,8 @@ namespace SEM03.Agents
         public WStat StatisticRepairedQueueLength { get; private set; }
         public WStat StatisticReadyToReturnQueueLength { get; private set; }
         public Stat StatisticIncomes { get; private set; }
-        public Stat StatisticWaitForCarTakeover { get; private set; }
 
+        public int QueueLength => ParkingPlaceQueue.Count + OrdersQueue.Count;
         public int WorkersWorking => Workers.Count(worker => worker.IsWorking);
         public double TotalWorkingTime => Workers.Sum(worker => worker.TotalWorkingTime);
 
@@ -39,6 +40,7 @@ namespace SEM03.Agents
         {
             base.PrepareReplication();
 
+            ParkingPlaceQueue.Clear();
             OrdersQueue.Clear();
             RepairedQueue.Clear();
             ReturnQueue.Clear();
@@ -49,7 +51,6 @@ namespace SEM03.Agents
             StatisticRepairedQueueLength.Clear();
             StatisticReadyToReturnQueueLength.Clear();
             StatisticIncomes.Clear();
-            StatisticWaitForCarTakeover.Clear();
 
             ResetWorkers();
             ResetCarPark();
@@ -136,9 +137,11 @@ namespace SEM03.Agents
             AddOwnMessage(Mc.PROCESS_ORDER_SERVICE);
             AddOwnMessage(Mc.PARK_REPAIRED_CAR);
             AddOwnMessage(Mc.RESERVE_PARKING_PLACE_IN_WORKSHOP);
+            AddOwnMessage(Mc.PARKING_PLACE_FREE_IN_WORKSHOP);
 
             Workers = new List<WorkerWithCustomers>();
             CarPark = new List<ParkingPlace>();
+            ParkingPlaceQueue = new CustomQueue<MsgCarService>();
             OrdersQueue = new CustomQueue<MsgCarService>();
             RepairedQueue = new CustomQueue<MsgCarService>();
             ReturnQueue = new CustomQueue<MsgCarService>();
@@ -149,7 +152,6 @@ namespace SEM03.Agents
             StatisticRepairedQueueLength = new WStat(MySim);
             StatisticReadyToReturnQueueLength = new WStat(MySim);
             StatisticIncomes = new Stat(MySim);
-            StatisticWaitForCarTakeover = new Stat(MySim);
         }
     }
 }

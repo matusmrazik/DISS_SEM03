@@ -50,7 +50,6 @@ namespace SEM03.Simulation
         public WStat StatisticReadyToReturnQueueLength => AgentService.StatisticReadyToReturnQueueLength;
         public Stat StatisticTimeInService => AgentEnvironment.StatisticTimeInService;
         public Stat StatisticIncomes => AgentService.StatisticIncomes;
-        public Stat StatisticWaitForCarTakeover => AgentService.StatisticWaitForCarTakeover;
 
         public Stat StatisticWaitForRepairTotal { get; private set; }
         public Stat StatisticWaitInQueueTotal { get; private set; }
@@ -61,8 +60,6 @@ namespace SEM03.Simulation
         public Stat StatisticTimeInServiceTotal { get; private set; }
         public Stat StatisticServedPrecentageTotal { get; private set; }
         public Stat StatisticIncomesTotal { get; private set; }
-        public Stat StatisticWaitForCarTakeoverTotal { get; private set; }
-        public Stat StatisticWaitForCarTakeoverMax { get; private set; }
 
         public SimCarService()
         {
@@ -179,7 +176,6 @@ namespace SEM03.Simulation
             StatisticReadyToReturnQueueLength.IgnoreBefore = SimConfig.HEAT_UP_TIME;
             StatisticTimeInService.IgnoreBefore = SimConfig.HEAT_UP_TIME;
             StatisticIncomes.IgnoreBefore = SimConfig.HEAT_UP_TIME;
-            StatisticWaitForCarTakeover.IgnoreBefore = SimConfig.HEAT_UP_TIME;
             StatisticWaitForRepair.IgnoreAfter = SimConfig.ReplicationEndTime;
             StatisticWaitInQueue.IgnoreAfter = SimConfig.ReplicationEndTime;
             StatisticQueueLength.IgnoreAfter = SimConfig.ReplicationEndTime;
@@ -188,7 +184,6 @@ namespace SEM03.Simulation
             StatisticReadyToReturnQueueLength.IgnoreAfter = SimConfig.ReplicationEndTime;
             StatisticTimeInService.IgnoreAfter = SimConfig.ReplicationEndTime;
             StatisticIncomes.IgnoreAfter = SimConfig.ReplicationEndTime;
-            StatisticWaitForCarTakeover.IgnoreAfter = SimConfig.ReplicationEndTime;
 
             StatisticWaitForRepairTotal.Clear();
             StatisticWaitInQueueTotal.Clear();
@@ -199,8 +194,6 @@ namespace SEM03.Simulation
             StatisticTimeInServiceTotal.Clear();
             StatisticServedPrecentageTotal.Clear();
             StatisticIncomesTotal.Clear();
-            StatisticWaitForCarTakeoverTotal.Clear();
-            StatisticWaitForCarTakeoverMax.Clear();
         }
 
         protected override void PrepareReplication()
@@ -223,8 +216,6 @@ namespace SEM03.Simulation
             StatisticTimeInServiceTotal.AddSample(StatisticTimeInService.Mean);
             StatisticServedPrecentageTotal.AddSample((double)AgentEnvironment.CustomersLeftServed.Count / AgentEnvironment.CustomersLeftTotal.Count);
             StatisticIncomesTotal.AddSample(StatisticIncomes.Sum);
-            StatisticWaitForCarTakeoverTotal.AddSample(StatisticWaitForCarTakeover.Mean);
-            StatisticWaitForCarTakeoverMax.AddSample(StatisticWaitForCarTakeover.Max);
         }
 
         protected override void SimulationFinished()
@@ -242,8 +233,6 @@ namespace SEM03.Simulation
             Logger.LogInfo($@"Priemerný čas strávený v servise: {SimTimeHelper.DurationAsString(StatisticTimeInServiceTotal.Mean)}");
             Logger.LogInfo($@"Priemerný pomer obslúžených zákazníkov: {StatisticServedPrecentageTotal.Mean * 100.0:0.000000} %");
             Logger.LogInfo($@"Priemerný zisk: {StatisticIncomesTotal.Mean:0.00} EUR");
-            Logger.LogInfo($@"Priemerný čas čakania na odovzdanie auta: {SimTimeHelper.DurationAsString(StatisticWaitForCarTakeoverTotal.Mean)}");
-            Logger.LogInfo($@"Priemerný maximálny čas čakania na odovzdanie auta: {SimTimeHelper.DurationAsString(StatisticWaitForCarTakeoverMax.Mean)}");
         }
 
         private void Init()
@@ -294,8 +283,6 @@ namespace SEM03.Simulation
             StatisticTimeInServiceTotal = new Stat(this);
             StatisticServedPrecentageTotal = new Stat(this);
             StatisticIncomesTotal = new Stat(this);
-            StatisticWaitForCarTakeoverTotal = new Stat(this);
-            StatisticWaitForCarTakeoverMax = new Stat(this);
         }
 
         private static double ComputeProfit(int workers1, int workers2, double averageWaitForRepairTime, double totalIncomes)

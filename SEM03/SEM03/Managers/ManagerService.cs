@@ -1,5 +1,6 @@
 ﻿using OSPABA;
 using SEM03.Agents;
+using SEM03.Entities;
 using SEM03.Simulation;
 
 namespace SEM03.Managers
@@ -24,27 +25,17 @@ namespace SEM03.Managers
             {
                 MyAgent.ReturnQueue.Enqueue(msg);
                 MyAgent.StatisticReadyToReturnQueueLength.AddSample(MyAgent.ReturnQueue.Count);
+                return;
             }
-            else
-            {
-                var parkingPlace = msg.ParkingPlace;
-                msg.ParkingPlace = null;
-                parkingPlace.SetFree();
 
-                message.Addressee = MyAgent.FindAssistant(SimId.PROCESS_PARK_FROM_WORKSHOP);
-                StartContinualAssistant(message);
+            var parkingPlace = msg.ParkingPlace;
+            msg.ParkingPlace = null;
+            parkingPlace.SetFree();
 
-                if (MyAgent.RepairedQueue.Count == 0)
-                {
-                    return;
-                }
+            message.Addressee = MyAgent.FindAssistant(SimId.PROCESS_PARK_FROM_WORKSHOP);
+            StartContinualAssistant(message);
 
-                var msgNew = MyAgent.RepairedQueue.Dequeue();
-                MyAgent.StatisticRepairedQueueLength.AddSample(MyAgent.RepairedQueue.Count);
-                parkingPlace.SetOccupied();
-                msgNew.ParkingPlace = parkingPlace;
-                Response(msgNew);
-            }
+            TryParkRepairedCar(parkingPlace);
         }
 
         //meta! sender="AgentCarService", id="60", type="Request"
@@ -52,22 +43,17 @@ namespace SEM03.Managers
         {
             var msg = (MsgCarService)message;
             msg.Customer.WaitInQueueStarted();
-            ((Action)MyAgent.FindAssistant(SimId.ACTION_ASSIGN_WORKER)).Execute(message);
 
-            if (msg.WorkerWithCustomers == null)
+            var msgCopy = new MsgLeaveQueue(MySim)
             {
-                MyAgent.OrdersQueue.Enqueue(msg);
-                MyAgent.StatisticQueueLength.AddSample(MyAgent.OrdersQueue.Count);
+                Message = msg,
+                Addressee = MyAgent.FindAssistant(SimId.SCHEDULER_LEAVE_QUEUE)
+            };
+            StartContinualAssistant(msgCopy);
 
-                var msgNew = new MsgLeaveQueue(MySim) { Message = msg };
-                msgNew.Addressee = MyAgent.FindAssistant(SimId.SCHEDULER_LEAVE_QUEUE);
-                StartContinualAssistant(msgNew);
-            }
-            else
-            {
-                message.Addressee = MyAgent.FindAssistant(SimId.PROCESS_ORDER_ENTRY);
-                StartContinualAssistant(message);
-            }
+            message.Code = Mc.RESERVE_PARKING_PLACE_IN_WORKSHOP;
+            message.Addressee = MySim.FindAgent(SimId.AGENT_CAR_SERVICE);
+            Request(message);
         }
 
         //meta! sender="ProcessParkToWorkshop", id="78", type="Finish"
@@ -83,43 +69,10 @@ namespace SEM03.Managers
             message.Code = Mc.PROCESS_ORDER_SERVICE;
             Response(message);
 
-            if (MyAgent.ReturnQueue.Count == 0)
+            if (!TryReturnRepairedCar(worker))
             {
-                if (MyAgent.OrdersQueue.Count == 0)
-                {
-                    return;
-                }
-
-                var msgNew = MyAgent.OrdersQueue.Dequeue();
-                MyAgent.StatisticQueueLength.AddSample(MyAgent.OrdersQueue.Count);
-                msgNew.WorkerWithCustomers = worker;
-                worker.StartWork(msgNew.Customer);
-                msgNew.Addressee = MyAgent.FindAssistant(SimId.PROCESS_ORDER_ENTRY);
-                StartContinualAssistant(msgNew);
-                return;
+                TryProcessNextOrder(worker);
             }
-
-            var msgNew2 = MyAgent.ReturnQueue.Dequeue();
-            MyAgent.StatisticReadyToReturnQueueLength.AddSample(MyAgent.ReturnQueue.Count);
-            msgNew2.WorkerWithCustomers = worker;
-            worker.StartWork(msgNew2.Customer);
-            var parkingPlace = msgNew2.ParkingPlace;
-            msgNew2.ParkingPlace = null;
-            parkingPlace.SetFree();
-
-            msgNew2.Addressee = MyAgent.FindAssistant(SimId.PROCESS_PARK_FROM_WORKSHOP);
-            StartContinualAssistant(msgNew2);
-
-            if (MyAgent.RepairedQueue.Count == 0)
-            {
-                return;
-            }
-
-            var msgNew3 = MyAgent.RepairedQueue.Dequeue();
-            MyAgent.StatisticRepairedQueueLength.AddSample(MyAgent.RepairedQueue.Count);
-            parkingPlace.SetOccupied();
-            msgNew3.ParkingPlace = parkingPlace;
-            Response(msgNew3);
         }
 
         //meta! sender="ProcessParkFromWorkshop", id="92", type="Finish"
@@ -143,54 +96,34 @@ namespace SEM03.Managers
             message.Code = Mc.RETURN_REPAIRED_CAR;
             Response(message);
 
-            if (MyAgent.ReturnQueue.Count == 0)
+            if (!TryReturnRepairedCar(worker))
             {
-                if (MyAgent.OrdersQueue.Count == 0)
-                {
-                    return;
-                }
-
-                var msgNew = MyAgent.OrdersQueue.Dequeue();
-                MyAgent.StatisticQueueLength.AddSample(MyAgent.OrdersQueue.Count);
-                msgNew.WorkerWithCustomers = worker;
-                worker.StartWork(msgNew.Customer);
-                msgNew.Addressee = MyAgent.FindAssistant(SimId.PROCESS_ORDER_ENTRY);
-                StartContinualAssistant(msgNew);
-                return;
+                TryProcessNextOrder(worker);
             }
-
-            var msgNew2 = MyAgent.ReturnQueue.Dequeue();
-            MyAgent.StatisticReadyToReturnQueueLength.AddSample(MyAgent.ReturnQueue.Count);
-            msgNew2.WorkerWithCustomers = worker;
-            worker.StartWork(msgNew2.Customer);
-            var parkingPlace = msgNew2.ParkingPlace;
-            msgNew2.ParkingPlace = null;
-            parkingPlace.SetFree();
-
-            msgNew2.Addressee = MyAgent.FindAssistant(SimId.PROCESS_PARK_FROM_WORKSHOP);
-            StartContinualAssistant(msgNew2);
-
-            if (MyAgent.RepairedQueue.Count == 0)
-            {
-                return;
-            }
-
-            var msgNew3 = MyAgent.RepairedQueue.Dequeue();
-            MyAgent.StatisticRepairedQueueLength.AddSample(MyAgent.RepairedQueue.Count);
-            parkingPlace.SetOccupied();
-            msgNew3.ParkingPlace = parkingPlace;
-            Response(msgNew3);
         }
 
         //meta! sender="SchedulerLeaveQueue", id="118", type="Finish"
         public void ProcessFinishSchedulerLeaveQueue(MessageForm message)
         {
             var msg = ((MsgLeaveQueue)message).Message;
-            if (MyAgent.OrdersQueue.Remove(msg))
+
+            if (MyAgent.ParkingPlaceQueue.Remove(msg))
             {
-                MyAgent.StatisticQueueLength.AddSample(MyAgent.OrdersQueue.Count);
+                MyAgent.StatisticQueueLength.AddSample(MyAgent.QueueLength);
                 msg.Customer.WaitInQueueFinished();
                 msg.Customer.Served = false;
+                msg.Code = Mc.PROCESS_ORDER_SERVICE;
+                msg.Addressee = MySim.FindAgent(SimId.AGENT_CAR_SERVICE);
+                Response(msg);
+            }
+
+            if (MyAgent.OrdersQueue.Remove(msg))
+            {
+                MyAgent.StatisticQueueLength.AddSample(MyAgent.QueueLength);
+                msg.Customer.WaitInQueueFinished();
+                msg.Customer.Served = false;
+                msg.ParkingPlace.SetFree();
+                msg.ParkingPlace = null;
                 msg.Code = Mc.PROCESS_ORDER_SERVICE;
                 msg.Addressee = MySim.FindAgent(SimId.AGENT_CAR_SERVICE);
                 Response(msg);
@@ -200,8 +133,13 @@ namespace SEM03.Managers
         //meta! sender="SchedulerWorkdayEnd", id="104", type="Finish"
         public void ProcessFinishSchedulerWorkdayEnd(MessageForm message)
         {
+            MyAgent.ParkingPlaceQueue.Clear();
+            foreach (var msg in MyAgent.OrdersQueue)
+            {
+                msg.ParkingPlace.SetFree();
+            }
             MyAgent.OrdersQueue.Clear();
-            MyAgent.StatisticQueueLength.AddSample(MyAgent.OrdersQueue.Count);
+            MyAgent.StatisticQueueLength.AddSample(MyAgent.QueueLength);
 
             message.Addressee = MyAgent.FindAssistant(SimId.SCHEDULER_WORKDAY_END);
             StartContinualAssistant(message);
@@ -211,12 +149,10 @@ namespace SEM03.Managers
         public void ProcessFinishProcessOrderEntry(MessageForm message)
         {
             var msg = (MsgCarService)message;
-            msg.Customer.WaitForCarTakeoverStarted();
             MyAgent.StatisticIncomes.AddSample(SimTimeHelper.ToHours(msg.Customer.TotalRepairDuration) * SimConfig.WORK_PRICE_HOUR);
 
-            message.Code = Mc.RESERVE_PARKING_PLACE_IN_WORKSHOP;
-            message.Addressee = MySim.FindAgent(SimId.AGENT_CAR_SERVICE);
-            Request(message);
+            message.Addressee = MyAgent.FindAssistant(SimId.PROCESS_CAR_TAKEOVER);
+            StartContinualAssistant(message);
         }
 
         //meta! sender="ProcessCarTakeover", id="76", type="Finish"
@@ -248,11 +184,43 @@ namespace SEM03.Managers
         public void ProcessReserveParkingPlaceInWorkshop(MessageForm message)
         {
             var msg = (MsgCarService)message;
-            msg.Customer.WaitForCarTakeoverFinished();
-            MyAgent.StatisticWaitForCarTakeover.AddSample(msg.Customer.WaitForCarTakeoverTotal);
+            if (msg.ParkingPlace == null)
+            {
+                if (MyAgent.ParkingPlaceQueue.Contains(msg)) // TODO remove
+                    throw new OSPExceptions.SimException("Parking place queue already contains msg");
 
-            message.Addressee = MyAgent.FindAssistant(SimId.PROCESS_CAR_TAKEOVER);
-            StartContinualAssistant(message);
+                MyAgent.ParkingPlaceQueue.Enqueue(msg);
+                MyAgent.StatisticQueueLength.AddSample(MyAgent.QueueLength);
+                return;
+            }
+
+            ((Action)MyAgent.FindAssistant(SimId.ACTION_ASSIGN_WORKER)).Execute(message);
+
+            if (msg.WorkerWithCustomers == null)
+            {
+                MyAgent.OrdersQueue.Enqueue(msg);
+                MyAgent.StatisticQueueLength.AddSample(MyAgent.QueueLength);
+            }
+            else
+            {
+                message.Addressee = MyAgent.FindAssistant(SimId.PROCESS_ORDER_ENTRY);
+                StartContinualAssistant(message);
+            }
+        }
+
+        //meta! sender="AgentCarService", id="122", type="Notice"
+        public void ProcessParkingPlaceFreeInWorkshop(MessageForm message)
+        {
+            if (MyAgent.ParkingPlaceQueue.Count == 0)
+            {
+                return;
+            }
+
+            var msg = MyAgent.ParkingPlaceQueue.Dequeue();
+            MyAgent.StatisticQueueLength.AddSample(MyAgent.QueueLength);
+            msg.Code = Mc.RESERVE_PARKING_PLACE_IN_WORKSHOP;
+            msg.Addressee = MySim.FindAgent(SimId.AGENT_CAR_SERVICE);
+            Request(msg);
         }
 
         public void ProcessDefault(MessageForm message)
@@ -296,6 +264,9 @@ namespace SEM03.Managers
                 case Mc.RESERVE_PARKING_PLACE_IN_WORKSHOP:
                     ProcessReserveParkingPlaceInWorkshop(message);
                     break;
+                case Mc.PARKING_PLACE_FREE_IN_WORKSHOP:
+                    ProcessParkingPlaceFreeInWorkshop(message);
+                    break;
                 case Mc.RETURN_REPAIRED_CAR:
                     ProcessReturnRepairedCar(message);
                     break;
@@ -309,6 +280,62 @@ namespace SEM03.Managers
                     ProcessDefault(message);
                     break;
             }
+        }
+
+        private bool TryParkRepairedCar(ParkingPlace parkingPlace)
+        {
+            if (MyAgent.RepairedQueue.Count == 0)
+            {
+                return false;
+            }
+
+            var msg = MyAgent.RepairedQueue.Dequeue();
+            MyAgent.StatisticRepairedQueueLength.AddSample(MyAgent.RepairedQueue.Count);
+            parkingPlace.SetOccupied();
+            msg.ParkingPlace = parkingPlace;
+            Response(msg);
+
+            return true;
+        }
+
+        private bool TryReturnRepairedCar(WorkerWithCustomers worker)
+        {
+            if (MyAgent.ReturnQueue.Count == 0)
+            {
+                return false;
+            }
+
+            var msg = MyAgent.ReturnQueue.Dequeue();
+            MyAgent.StatisticReadyToReturnQueueLength.AddSample(MyAgent.ReturnQueue.Count);
+            msg.WorkerWithCustomers = worker;
+            worker.StartWork(msg.Customer);
+            var parkingPlace = msg.ParkingPlace;
+            msg.ParkingPlace = null;
+            parkingPlace.SetFree();
+
+            msg.Addressee = MyAgent.FindAssistant(SimId.PROCESS_PARK_FROM_WORKSHOP);
+            StartContinualAssistant(msg);
+
+            TryParkRepairedCar(parkingPlace);
+
+            return true;
+        }
+
+        private bool TryProcessNextOrder(WorkerWithCustomers worker)
+        {
+            if (MyAgent.OrdersQueue.Count == 0)
+            {
+                return false;
+            }
+
+            var msg = MyAgent.OrdersQueue.Dequeue();
+            MyAgent.StatisticQueueLength.AddSample(MyAgent.QueueLength);
+            msg.WorkerWithCustomers = worker;
+            worker.StartWork(msg.Customer);
+            msg.Addressee = MyAgent.FindAssistant(SimId.PROCESS_ORDER_ENTRY);
+            StartContinualAssistant(msg);
+
+            return true;
         }
     }
 }

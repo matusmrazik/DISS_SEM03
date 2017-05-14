@@ -36,10 +36,18 @@ namespace SEM03.Managers
             Response(message);
         }
 
+        //meta! sender="AgentWorkshop", id="121", type="Notice"
+        public void ProcessParkingPlaceFree(MessageForm message)
+        {
+            message.Code = Mc.PARKING_PLACE_FREE_IN_WORKSHOP;
+            message.Addressee = MySim.FindAgent(SimId.AGENT_SERVICE);
+            Notice(message);
+        }
+
         //meta! sender="AgentService", id="60", type="Response"
         public void ProcessProcessOrderService(MessageForm message)
         {
-            var msg = (MsgCarService) message;
+            var msg = (MsgCarService)message;
             if (msg.Customer.Served == false)
             {
                 message.Code = Mc.CUSTOMER_SERVICE;
@@ -97,6 +105,9 @@ namespace SEM03.Managers
             {
                 case Mc.PARK_REPAIRED_CAR_TO_WORKSHOP:
                     ProcessParkRepairedCarToWorkshop(message);
+                    break;
+                case Mc.PARKING_PLACE_FREE:
+                    ProcessParkingPlaceFree(message);
                     break;
                 case Mc.PARK_REPAIRED_CAR:
                     ProcessParkRepairedCar(message);
