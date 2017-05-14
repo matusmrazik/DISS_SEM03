@@ -24,6 +24,7 @@ namespace SEM03.Agents
         public WStat StatisticRepairedQueueLength { get; private set; }
         public WStat StatisticReadyToReturnQueueLength { get; private set; }
         public Stat StatisticIncomes { get; private set; }
+        public Stat StatisticWaitForCarTakeover { get; private set; }
 
         public int WorkersWorking => Workers.Count(worker => worker.IsWorking);
         public double TotalWorkingTime => Workers.Sum(worker => worker.TotalWorkingTime);
@@ -48,6 +49,7 @@ namespace SEM03.Agents
             StatisticRepairedQueueLength.Clear();
             StatisticReadyToReturnQueueLength.Clear();
             StatisticIncomes.Clear();
+            StatisticWaitForCarTakeover.Clear();
 
             ResetWorkers();
             ResetCarPark();
@@ -147,6 +149,7 @@ namespace SEM03.Agents
             StatisticRepairedQueueLength = new WStat(MySim);
             StatisticReadyToReturnQueueLength = new WStat(MySim);
             StatisticIncomes = new Stat(MySim);
+            StatisticWaitForCarTakeover = new Stat(MySim);
         }
     }
 }

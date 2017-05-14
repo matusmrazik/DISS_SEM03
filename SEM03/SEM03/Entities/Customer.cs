@@ -15,6 +15,9 @@ namespace SEM03.Entities
         public double WaitInQueueStart { get; private set; }
         public double WaitInQueueTotal { get; private set; }
 
+        public double WaitForCarTakeoverStart { get; private set; }
+        public double WaitForCarTakeoverTotal { get; private set; }
+
         public int RequestedRepairCount { get; private set; }
         public double TotalRepairDuration { get; private set; }
 
@@ -30,6 +33,9 @@ namespace SEM03.Entities
             WaitForRepairTotal = 0.0;
             WaitInQueueStart = 0.0;
             WaitInQueueTotal = 0.0;
+
+            WaitForCarTakeoverStart = 0.0;
+            WaitForCarTakeoverTotal = 0.0;
 
             RequestedRepairCount = 0;
             TotalRepairDuration = 0.0;
@@ -70,6 +76,16 @@ namespace SEM03.Entities
         public void WaitInQueueFinished()
         {
             WaitInQueueTotal = MySim.CurrentTime - WaitInQueueStart;
+        }
+
+        public void WaitForCarTakeoverStarted()
+        {
+            WaitForCarTakeoverStart = MySim.CurrentTime;
+        }
+
+        public void WaitForCarTakeoverFinished()
+        {
+            WaitForCarTakeoverTotal = MySim.CurrentTime - WaitForCarTakeoverStart;
         }
 
         public void GenerateRepairDuration()

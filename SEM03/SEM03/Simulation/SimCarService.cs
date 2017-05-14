@@ -2,6 +2,7 @@
 using System.Threading;
 using RandomLib;
 using SEM03.Agents;
+using SEM03.Logging;
 using SEM03.Statistics;
 
 namespace SEM03.Simulation
@@ -49,6 +50,7 @@ namespace SEM03.Simulation
         public WStat StatisticReadyToReturnQueueLength => AgentService.StatisticReadyToReturnQueueLength;
         public Stat StatisticTimeInService => AgentEnvironment.StatisticTimeInService;
         public Stat StatisticIncomes => AgentService.StatisticIncomes;
+        public Stat StatisticWaitForCarTakeover => AgentService.StatisticWaitForCarTakeover;
 
         public Stat StatisticWaitForRepairTotal { get; private set; }
         public Stat StatisticWaitInQueueTotal { get; private set; }
@@ -59,6 +61,8 @@ namespace SEM03.Simulation
         public Stat StatisticTimeInServiceTotal { get; private set; }
         public Stat StatisticServedPrecentageTotal { get; private set; }
         public Stat StatisticIncomesTotal { get; private set; }
+        public Stat StatisticWaitForCarTakeoverTotal { get; private set; }
+        public Stat StatisticWaitForCarTakeoverMax { get; private set; }
 
         public SimCarService()
         {
@@ -174,6 +178,8 @@ namespace SEM03.Simulation
             StatisticRepairedQueueLength.IgnoreBefore = SimConfig.HEAT_UP_TIME;
             StatisticReadyToReturnQueueLength.IgnoreBefore = SimConfig.HEAT_UP_TIME;
             StatisticTimeInService.IgnoreBefore = SimConfig.HEAT_UP_TIME;
+            StatisticIncomes.IgnoreBefore = SimConfig.HEAT_UP_TIME;
+            StatisticWaitForCarTakeover.IgnoreBefore = SimConfig.HEAT_UP_TIME;
             StatisticWaitForRepair.IgnoreAfter = SimConfig.ReplicationEndTime;
             StatisticWaitInQueue.IgnoreAfter = SimConfig.ReplicationEndTime;
             StatisticQueueLength.IgnoreAfter = SimConfig.ReplicationEndTime;
@@ -181,6 +187,8 @@ namespace SEM03.Simulation
             StatisticRepairedQueueLength.IgnoreAfter = SimConfig.ReplicationEndTime;
             StatisticReadyToReturnQueueLength.IgnoreAfter = SimConfig.ReplicationEndTime;
             StatisticTimeInService.IgnoreAfter = SimConfig.ReplicationEndTime;
+            StatisticIncomes.IgnoreAfter = SimConfig.ReplicationEndTime;
+            StatisticWaitForCarTakeover.IgnoreAfter = SimConfig.ReplicationEndTime;
 
             StatisticWaitForRepairTotal.Clear();
             StatisticWaitInQueueTotal.Clear();
@@ -191,13 +199,15 @@ namespace SEM03.Simulation
             StatisticTimeInServiceTotal.Clear();
             StatisticServedPrecentageTotal.Clear();
             StatisticIncomesTotal.Clear();
+            StatisticWaitForCarTakeoverTotal.Clear();
+            StatisticWaitForCarTakeoverMax.Clear();
         }
 
         protected override void PrepareReplication()
         {
             base.PrepareReplication();
 
-            Console.WriteLine(@"Replication {0}", CurrentReplication);
+            Logger.LogInfo($@"Beží replikácia {CurrentReplication + 1}");
         }
 
         protected override void ReplicationFinished()
@@ -213,21 +223,27 @@ namespace SEM03.Simulation
             StatisticTimeInServiceTotal.AddSample(StatisticTimeInService.Mean);
             StatisticServedPrecentageTotal.AddSample((double)AgentEnvironment.CustomersLeftServed.Count / AgentEnvironment.CustomersLeftTotal.Count);
             StatisticIncomesTotal.AddSample(StatisticIncomes.Sum);
+            StatisticWaitForCarTakeoverTotal.AddSample(StatisticWaitForCarTakeover.Mean);
+            StatisticWaitForCarTakeoverMax.AddSample(StatisticWaitForCarTakeover.Max);
         }
 
         protected override void SimulationFinished()
         {
             base.SimulationFinished();
 
-            Console.WriteLine(@"Priemerný čas čakania na opravu: {0}", SimTimeHelper.DurationAsString(StatisticWaitForRepairTotal.Mean));
-            Console.WriteLine(@"Priemerný čas čakania vo fronte: {0}", SimTimeHelper.DurationAsString(StatisticWaitInQueueTotal.Mean));
-            Console.WriteLine(@"Priemerná dĺžka frontu čakajúcich: {0:0.000000}", StatisticQueueLengthTotal.Mean);
-            Console.WriteLine(@"Priemerný počet áut na opravu: {0:0.000000}", StatisticCarsForRepairQueueLengthTotal.Mean);
-            Console.WriteLine(@"Priemerný počet opravených áut: {0:0.000000}", StatisticRepairedQueueLengthTotal.Mean);
-            Console.WriteLine(@"Priemerný počet áut na odovzdanie: {0:0.000000}", StatisticReadyToReturnQueueLengthTotal.Mean);
-            Console.WriteLine(@"Priemerný čas strávený v servise: {0}", SimTimeHelper.DurationAsString(StatisticTimeInServiceTotal.Mean));
-            Console.WriteLine(@"Priemerný pomer obslúžených zákazníkov: {0:0.000000} %", StatisticServedPrecentageTotal.Mean * 100.0);
-            Console.WriteLine(@"Priemerný zisk: {0:0.00} EUR", StatisticIncomesTotal.Mean);
+            Logger.LogInfo($@"Počet pracovníkov skupiny 1: {Workers1Count}");
+            Logger.LogInfo($@"Počet pracovníkov skupiny 2: {Workers2Count}");
+            Logger.LogInfo($@"Priemerný čas čakania na opravu: {SimTimeHelper.DurationAsString(StatisticWaitForRepairTotal.Mean)}");
+            Logger.LogInfo($@"Priemerný čas čakania vo fronte: {SimTimeHelper.DurationAsString(StatisticWaitInQueueTotal.Mean)}");
+            Logger.LogInfo($@"Priemerná dĺžka frontu čakajúcich: {StatisticQueueLengthTotal.Mean:0.000000}");
+            Logger.LogInfo($@"Priemerný počet áut na opravu: {StatisticCarsForRepairQueueLengthTotal.Mean:0.000000}");
+            Logger.LogInfo($@"Priemerný počet opravených áut: {StatisticRepairedQueueLengthTotal.Mean:0.000000}");
+            Logger.LogInfo($@"Priemerný počet áut na odovzdanie: {StatisticReadyToReturnQueueLengthTotal.Mean:0.000000}");
+            Logger.LogInfo($@"Priemerný čas strávený v servise: {SimTimeHelper.DurationAsString(StatisticTimeInServiceTotal.Mean)}");
+            Logger.LogInfo($@"Priemerný pomer obslúžených zákazníkov: {StatisticServedPrecentageTotal.Mean * 100.0:0.000000} %");
+            Logger.LogInfo($@"Priemerný zisk: {StatisticIncomesTotal.Mean:0.00} EUR");
+            Logger.LogInfo($@"Priemerný čas čakania na odovzdanie auta: {SimTimeHelper.DurationAsString(StatisticWaitForCarTakeoverTotal.Mean)}");
+            Logger.LogInfo($@"Priemerný maximálny čas čakania na odovzdanie auta: {SimTimeHelper.DurationAsString(StatisticWaitForCarTakeoverMax.Mean)}");
         }
 
         private void Init()
@@ -278,6 +294,8 @@ namespace SEM03.Simulation
             StatisticTimeInServiceTotal = new Stat(this);
             StatisticServedPrecentageTotal = new Stat(this);
             StatisticIncomesTotal = new Stat(this);
+            StatisticWaitForCarTakeoverTotal = new Stat(this);
+            StatisticWaitForCarTakeoverMax = new Stat(this);
         }
 
         private static double ComputeProfit(int workers1, int workers2, double averageWaitForRepairTime, double totalIncomes)

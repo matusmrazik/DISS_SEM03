@@ -210,7 +210,8 @@ namespace SEM03.Managers
         //meta! sender="ProcessOrderEntry", id="73", type="Finish"
         public void ProcessFinishProcessOrderEntry(MessageForm message)
         {
-            var msg = (MsgCarService) message;
+            var msg = (MsgCarService)message;
+            msg.Customer.WaitForCarTakeoverStarted();
             MyAgent.StatisticIncomes.AddSample(SimTimeHelper.ToHours(msg.Customer.TotalRepairDuration) * SimConfig.WORK_PRICE_HOUR);
 
             message.Code = Mc.RESERVE_PARKING_PLACE_IN_WORKSHOP;
@@ -246,6 +247,10 @@ namespace SEM03.Managers
         //meta! sender="AgentCarService", id="83", type="Response"
         public void ProcessReserveParkingPlaceInWorkshop(MessageForm message)
         {
+            var msg = (MsgCarService)message;
+            msg.Customer.WaitForCarTakeoverFinished();
+            MyAgent.StatisticWaitForCarTakeover.AddSample(msg.Customer.WaitForCarTakeoverTotal);
+
             message.Addressee = MyAgent.FindAssistant(SimId.PROCESS_CAR_TAKEOVER);
             StartContinualAssistant(message);
         }
