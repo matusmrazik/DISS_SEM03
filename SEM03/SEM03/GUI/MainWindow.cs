@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Windows.Forms;
+using SEM03.Entities;
 using SEM03.Simulation;
 
 namespace SEM03.GUI
@@ -42,6 +44,7 @@ namespace SEM03.GUI
             spinBoxTimeInServiceFixWorkers2.Minimum = spinBoxWorkers2.Value;
             spinBoxTimeInServiceFixWorkers2.Maximum = spinBoxWorkers2.Value;
 
+            PrepareDataGrids();
             PrepareCharts();
 
             _sim.OnReplicationWillStart(ReplicationStarted);
@@ -51,6 +54,41 @@ namespace SEM03.GUI
             _sim.OnBestWorkerCountFound += BestWorkerCountFound;
             _sim.OnRunFinished += RunFinished;
             _sim.OnRefreshUI(RefreshTriggered);
+        }
+
+        private void PrepareDataGrids()
+        {
+            dataGridViewCustomers.AutoGenerateColumns = false;
+            dataGridViewCustomers.Columns.Add(CreateDataGridViewColumn("Sys. ID", "Id"));
+            dataGridViewCustomers.Columns.Add(CreateDataGridViewColumn("Stav", "State"));
+            dataGridViewCustomers.Columns.Add(CreateDataGridViewColumn("Čas čakania na zadanie objednávky", "WaitInQueueDurationStr"));
+            dataGridViewCustomers.Columns.Add(CreateDataGridViewColumn("Počet požadovaných opráv", "RequestedRepairCount"));
+            dataGridViewCustomers.Columns.Add(CreateDataGridViewColumn("Očakávané trvanie vykonania opráv", "TotalRepairDurationStr"));
+            dataGridViewCustomers.Columns.Add(CreateDataGridViewColumn("Čas čakania na opravu", "WaitForRepairDurationStr"));
+            dataGridViewCustomers.Columns.Add(CreateDataGridViewColumn("Čas strávený v servise", "TimeInServiseStr"));
+
+            dataGridViewWorkers1.AutoGenerateColumns = false;
+            dataGridViewWorkers1.Columns.Add(CreateDataGridViewColumn("Stav", "State"));
+            dataGridViewWorkers1.Columns.Add(CreateDataGridViewColumn("ID zákazníka", "CustomerId"));
+            dataGridViewWorkers1.Columns.Add(CreateDataGridViewColumn("Celkový čas práce", "TotalWorkingTimeStr"));
+            dataGridViewWorkers1.Columns.Add(CreateDataGridViewColumn("Celkový čas nečinnosti", "TotalIdleTimeStr"));
+            dataGridViewWorkers1.Columns.Add(CreateDataGridViewColumn("Vyťaženie (percentá)", "TotalWorkingRatioStr"));
+
+            dataGridViewWorkers2.AutoGenerateColumns = false;
+            dataGridViewWorkers2.Columns.Add(CreateDataGridViewColumn("Stav", "State"));
+            dataGridViewWorkers2.Columns.Add(CreateDataGridViewColumn("ID zákazníka", "CustomerId"));
+            dataGridViewWorkers2.Columns.Add(CreateDataGridViewColumn("Celkový čas práce", "TotalWorkingTimeStr"));
+            dataGridViewWorkers2.Columns.Add(CreateDataGridViewColumn("Celkový čas nečinnosti", "TotalIdleTimeStr"));
+            dataGridViewWorkers2.Columns.Add(CreateDataGridViewColumn("Vyťaženie (percentá)", "TotalWorkingRatioStr"));
+        }
+
+        private DataGridViewTextBoxColumn CreateDataGridViewColumn(string columnName, string propertyName)
+        {
+            return new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = propertyName,
+                HeaderText = columnName
+            };
         }
 
         private void PrepareCharts()
@@ -74,7 +112,7 @@ namespace SEM03.GUI
 
         private void ReplicationStarted(OSPABA.Simulation sim)
         {
-            labelReplicationValue.Text = $@"{_sim.CurrentReplication + 1}";
+            ExecuteOnGuiThread(labelReplicationValue, () => labelReplicationValue.Text = $@"{_sim.CurrentReplication + 1}");
         }
 
         private void ReplicationFinished(OSPABA.Simulation sim)
@@ -84,26 +122,32 @@ namespace SEM03.GUI
                 return;
             }
 
+            var queueLengthMean = _sim.StatisticQueueLengthTotal.Mean;
+            var carsForRepairQueueLengthMean = _sim.StatisticCarsForRepairQueueLengthTotal.Mean;
+            var repairedQueueLengthMean = _sim.StatisticRepairedQueueLengthTotal.Mean;
+            var waitInQueueMean = _sim.StatisticWaitInQueueTotal.Mean;
+            var waitForRepairMean = _sim.StatisticWaitForRepairTotal.Mean;
+            var timeInServiceMean = _sim.StatisticTimeInServiceTotal.Mean;
             var waitForRepair90Ci = _sim.StatisticWaitForRepairTotal.ConfidenceInterval90;
             var timeInService90Ci = _sim.StatisticTimeInServiceTotal.ConfidenceInterval90;
             var waitInQueue90Ci = _sim.StatisticWaitInQueueTotal.ConfidenceInterval90;
 
-            labelAVGCustomerQueueLenSimValue.Text = $@"{_sim.StatisticQueueLengthTotal.Mean:0.000000}";
-            labelAVGQueueForRepairLenSimValue.Text = $@"{_sim.StatisticCarsForRepairQueueLengthTotal.Mean:0.000000}";
-            labelAVGRepairedQueueLenSimValue.Text = $@"{_sim.StatisticRepairedQueueLengthTotal.Mean:0.000000}";
-            labelWaitInQueueDurSimValue.Text = SimTimeHelper.DurationAsString(_sim.StatisticWaitInQueueTotal.Mean);
-            labelWaitForRepairDurSimValue.Text = SimTimeHelper.DurationAsString(_sim.StatisticWaitForRepairTotal.Mean);
-            labelTimeInServiceDurSimValue.Text = SimTimeHelper.DurationAsString(_sim.StatisticTimeInServiceTotal.Mean);
-            labelWaitForRepairCIValue.Text = $@"<{SimTimeHelper.DurationAsString(waitForRepair90Ci[0])}, {SimTimeHelper.DurationAsString(waitForRepair90Ci[1])}>";
-            labelTimeInSystemCIValue.Text = $@"<{SimTimeHelper.DurationAsString(timeInService90Ci[0])}, {SimTimeHelper.DurationAsString(timeInService90Ci[1])}>";
-            labelWaitInQueueCIValue.Text = $@"<{SimTimeHelper.DurationAsString(waitInQueue90Ci[0])}, {SimTimeHelper.DurationAsString(waitInQueue90Ci[1])}>";
+            ExecuteOnGuiThread(labelAVGCustomerQueueLenSimValue, () => labelAVGCustomerQueueLenSimValue.Text = $@"{queueLengthMean:0.000000}");
+            ExecuteOnGuiThread(labelAVGQueueForRepairLenSimValue, () => labelAVGQueueForRepairLenSimValue.Text = $@"{carsForRepairQueueLengthMean:0.000000}");
+            ExecuteOnGuiThread(labelAVGRepairedQueueLenSimValue, () => labelAVGRepairedQueueLenSimValue.Text = $@"{repairedQueueLengthMean:0.000000}");
+            ExecuteOnGuiThread(labelWaitInQueueDurSimValue, () => labelWaitInQueueDurSimValue.Text = SimTimeHelper.DurationAsString(waitInQueueMean));
+            ExecuteOnGuiThread(labelWaitForRepairDurSimValue, () => labelWaitForRepairDurSimValue.Text = SimTimeHelper.DurationAsString(waitForRepairMean));
+            ExecuteOnGuiThread(labelTimeInServiceDurSimValue, () => labelTimeInServiceDurSimValue.Text = SimTimeHelper.DurationAsString(timeInServiceMean));
+            ExecuteOnGuiThread(labelWaitForRepairCIValue, () => labelWaitForRepairCIValue.Text = $@"<{SimTimeHelper.DurationAsString(waitForRepair90Ci[0])}, {SimTimeHelper.DurationAsString(waitForRepair90Ci[1])}>");
+            ExecuteOnGuiThread(labelTimeInSystemCIValue, () => labelTimeInSystemCIValue.Text = $@"<{SimTimeHelper.DurationAsString(timeInService90Ci[0])}, {SimTimeHelper.DurationAsString(timeInService90Ci[1])}>");
+            ExecuteOnGuiThread(labelWaitInQueueCIValue, () => labelWaitInQueueCIValue.Text = $@"<{SimTimeHelper.DurationAsString(waitInQueue90Ci[0])}, {SimTimeHelper.DurationAsString(waitInQueue90Ci[1])}>");
         }
 
         private void SimulationStarted(OSPABA.Simulation sim)
         {
-            labelWorkers1CurrentValue.Text = $@"{_sim.Workers1Count}";
-            labelWorkers2CurrentValue.Text = $@"{_sim.Workers2Count}";
-            labelUsedSeedValue.Text = $@"{_sim.Seed}";
+            ExecuteOnGuiThread(labelWorkers1CurrentValue, () => labelWorkers1CurrentValue.Text = $@"{_sim.Workers1Count}");
+            ExecuteOnGuiThread(labelWorkers2CurrentValue, () => labelWorkers2CurrentValue.Text = $@"{_sim.Workers2Count}");
+            ExecuteOnGuiThread(labelUsedSeedValue, () => labelUsedSeedValue.Text = $@"{_sim.Seed}");
         }
 
         private void SimulationFinished(OSPABA.Simulation sim)
@@ -113,90 +157,109 @@ namespace SEM03.GUI
                 return;
             }
 
-            /*if (workers1 == spinBoxQueueLenFixWorkers1.Value)
+            var workers1 = _sim.Workers1Count;
+            var workers2 = _sim.Workers2Count;
+            var queueLengthMean = _sim.StatisticQueueLengthTotal.Mean;
+            var timeInServiceMean = SimTimeHelper.ToHours(_sim.StatisticTimeInServiceTotal.Mean);
+
+            if (workers1 == spinBoxQueueLenFixWorkers1.Value)
             {
-                widgetPlotQueueLenWorkers2->graph(0)->addData(workers2, queue_len_total);
-                widgetPlotQueueLenWorkers2->rescaleAxes();
-                widgetPlotQueueLenWorkers2->replot();
+                ExecuteOnGuiThread(widgetPlotQueueLenWorkers2, () =>
+                {
+                    widgetPlotQueueLenWorkers2.Series[0].Points.AddXY(workers2, queueLengthMean);
+                    widgetPlotQueueLenWorkers2.Refresh();
+                });
             }
             if (workers2 == spinBoxQueueLenFixWorkers2.Value)
             {
-                widgetPlotQueueLenWorkers1->graph(0)->addData(workers1, queue_len_total);
-                widgetPlotQueueLenWorkers1->rescaleAxes();
-                widgetPlotQueueLenWorkers1->replot();
+                ExecuteOnGuiThread(widgetPlotQueueLenWorkers1, () =>
+                {
+                    widgetPlotQueueLenWorkers1.Series[0].Points.AddXY(workers1, queueLengthMean);
+                    widgetPlotQueueLenWorkers1.Refresh();
+                });
             }
             if (workers1 == spinBoxTimeInServiceFixWorkers1.Value)
             {
-                widgetPlotTimeInServiceWorkers2->graph(0)->addData(workers2, to_hours(time_in_service_total));
-                widgetPlotTimeInServiceWorkers2->rescaleAxes();
-                widgetPlotTimeInServiceWorkers2->replot();
+                ExecuteOnGuiThread(widgetPlotTimeInServiceWorkers2, () =>
+                {
+                    widgetPlotTimeInServiceWorkers2.Series[0].Points.AddXY(workers2, timeInServiceMean);
+                    widgetPlotTimeInServiceWorkers2.Refresh();
+                });
             }
             if (workers2 == spinBoxTimeInServiceFixWorkers2.Value)
             {
-                widgetPlotTimeInServiceWorkers1->graph(0)->addData(workers1, to_hours(time_in_service_total));
-                widgetPlotTimeInServiceWorkers1->rescaleAxes();
-                widgetPlotTimeInServiceWorkers1->replot();
-            }*/
-
-            if (_sim.Workers1Count == spinBoxQueueLenFixWorkers1.Value)
-            {
-                widgetPlotQueueLenWorkers2.Series[0].Points.AddXY(_sim.Workers2Count, _sim.StatisticQueueLengthTotal.Mean);
-                widgetPlotQueueLenWorkers2.Refresh();
-            }
-            if (_sim.Workers2Count == spinBoxQueueLenFixWorkers2.Value)
-            {
-                widgetPlotQueueLenWorkers1.Series[0].Points.AddXY(_sim.Workers1Count, _sim.StatisticQueueLengthTotal.Mean);
-                widgetPlotQueueLenWorkers1.Refresh();
-            }
-            if (_sim.Workers1Count == spinBoxTimeInServiceFixWorkers1.Value)
-            {
-                widgetPlotTimeInServiceWorkers2.Series[0].Points.AddXY(_sim.Workers2Count, SimTimeHelper.ToHours(_sim.StatisticTimeInServiceTotal.Mean));
-                widgetPlotTimeInServiceWorkers2.Refresh();
-            }
-            if (_sim.Workers2Count == spinBoxTimeInServiceFixWorkers2.Value)
-            {
-                widgetPlotTimeInServiceWorkers1.Series[0].Points.AddXY(_sim.Workers1Count, SimTimeHelper.ToHours(_sim.StatisticTimeInServiceTotal.Mean));
-                widgetPlotTimeInServiceWorkers1.Refresh();
+                ExecuteOnGuiThread(widgetPlotTimeInServiceWorkers1, () =>
+                {
+                    widgetPlotTimeInServiceWorkers1.Series[0].Points.AddXY(workers1, timeInServiceMean);
+                    widgetPlotTimeInServiceWorkers1.Refresh();
+                });
             }
         }
 
         private void BestWorkerCountFound(int workers1Count, int workers2Count, double earnedMoney)
         {
-            labelIdealWorkers1CountValue.Text = workers1Count == 0 ? "-" : $@"{workers1Count}";
-            labelIdealWorkers2CountValue.Text = workers2Count == 0 ? "-" : $@"{workers2Count}";
-            labelProfitValue.Text = workers1Count == 0 ? "-" : $@"{earnedMoney:0.00} EUR";
+            ExecuteOnGuiThread(labelIdealWorkers1CountValue, () => labelIdealWorkers1CountValue.Text = workers1Count == 0 ? "-" : $@"{workers1Count}");
+            ExecuteOnGuiThread(labelIdealWorkers2CountValue, () => labelIdealWorkers2CountValue.Text = workers2Count == 0 ? "-" : $@"{workers2Count}");
+            ExecuteOnGuiThread(labelProfitValue, () => labelProfitValue.Text = workers1Count == 0 ? "-" : $@"{earnedMoney:0.00} EUR");
         }
 
         private void RunFinished()
         {
-            //_thr.Join(); // TODO remove
-
-            pushButtonStartSimulation.Enabled = true;
-            pushButtonPauseResumeSimulation.Enabled = false;
-            pushButtonPauseResumeSimulation.Text = PAUSE_TEXT;
-            pushButtonStopSimulation.Enabled = false;
-            groupBoxSeed.Enabled = true;
-            groupBoxParameters.Enabled = true;
-            spinBoxQueueLenFixWorkers1.Enabled = true;
-            spinBoxQueueLenFixWorkers2.Enabled = true;
-            spinBoxTimeInServiceFixWorkers1.Enabled = true;
-            spinBoxTimeInServiceFixWorkers2.Enabled = true;
+            ExecuteOnGuiThread(this, () => SetUpControlsOnStartStop(false));
         }
 
         private void RefreshTriggered(OSPABA.Simulation sim)
         {
-            labelTimeValue.Text = SimTimeHelper.SimTimeAsString(_sim.CurrentTime);
-            labelWorkers1WorkingValue.Text = $@"{_sim.Workers1Working}";
-            labelWorkers2WorkingValue.Text = $@"{_sim.Workers2Working}";
-            labelCustomerQueueLenValue.Text = $@"{_sim.CustomerQueueLength}";
-            labelQueueForRepairLenValue.Text = $@"{_sim.CarsForRepairQueueLength}";
-            labelRepairedQueueLenValue.Text = $@"{_sim.RepairedCarsQueueLength}";
-            labelAVGCustomerQueueLenValue.Text = $@"{_sim.StatisticQueueLength.Mean:0.000000}";
-            labelAVGQueueForRepairLenValue.Text = $@"{_sim.StatisticCarsForRepairQueueLength.Mean:0.000000}";
-            labelAVGRepairedQueueLenValue.Text = $@"{_sim.StatisticRepairedQueueLength.Mean:0.000000}";
-            labelWaitInQueueDurValue.Text = SimTimeHelper.DurationAsString(_sim.StatisticWaitInQueue.Mean);
-            labelWaitForRepairDurValue.Text = SimTimeHelper.DurationAsString(_sim.StatisticWaitForRepair.Mean);
-            labelTimeInServiceDurValue.Text = SimTimeHelper.DurationAsString(_sim.StatisticTimeInService.Mean);
+            var currentTime = SimTimeHelper.SimTimeAsString(_sim.CurrentTime);
+            var workers1Working = _sim.Workers1Working;
+            var workers2Working = _sim.Workers2Working;
+            var customerQueueLength = _sim.CustomerQueueLength;
+            var carsForRepairQueueLength = _sim.CarsForRepairQueueLength;
+            var repairedCarsQueueLength = _sim.RepairedCarsQueueLength;
+            var customerQueueLengthMean = _sim.StatisticQueueLength.Mean;
+            var carsForRepairQueueLengthMean = _sim.StatisticCarsForRepairQueueLength.Mean;
+            var repairedCarsQueueLengthMean = _sim.StatisticRepairedQueueLength.Mean;
+            var waitInQueueMean = SimTimeHelper.DurationAsString(_sim.StatisticWaitInQueue.Mean);
+            var waitForRepairMean = SimTimeHelper.DurationAsString(_sim.StatisticWaitForRepair.Mean);
+            var timeInServiceMean = SimTimeHelper.DurationAsString(_sim.StatisticTimeInService.Mean);
+
+            ExecuteOnGuiThread(labelTimeValue, () => labelTimeValue.Text = currentTime);
+            ExecuteOnGuiThread(labelWorkers1WorkingValue, () => labelWorkers1WorkingValue.Text = $@"{workers1Working}");
+            ExecuteOnGuiThread(labelWorkers2WorkingValue, () => labelWorkers2WorkingValue.Text = $@"{workers2Working}");
+            ExecuteOnGuiThread(labelCustomerQueueLenValue, () => labelCustomerQueueLenValue.Text = $@"{customerQueueLength}");
+            ExecuteOnGuiThread(labelQueueForRepairLenValue, () => labelQueueForRepairLenValue.Text = $@"{carsForRepairQueueLength}");
+            ExecuteOnGuiThread(labelRepairedQueueLenValue, () => labelRepairedQueueLenValue.Text = $@"{repairedCarsQueueLength}");
+            ExecuteOnGuiThread(labelAVGCustomerQueueLenValue, () => labelAVGCustomerQueueLenValue.Text = $@"{customerQueueLengthMean:0.000000}");
+            ExecuteOnGuiThread(labelAVGQueueForRepairLenValue, () => labelAVGQueueForRepairLenValue.Text = $@"{carsForRepairQueueLengthMean:0.000000}");
+            ExecuteOnGuiThread(labelAVGRepairedQueueLenValue, () => labelAVGRepairedQueueLenValue.Text = $@"{repairedCarsQueueLengthMean:0.000000}");
+            ExecuteOnGuiThread(labelWaitInQueueDurValue, () => labelWaitInQueueDurValue.Text = waitInQueueMean);
+            ExecuteOnGuiThread(labelWaitForRepairDurValue, () => labelWaitForRepairDurValue.Text = waitForRepairMean);
+            ExecuteOnGuiThread(labelTimeInServiceDurValue, () => labelTimeInServiceDurValue.Text = timeInServiceMean);
+
+            var customers = new List<Customer>(_sim.Customers.Count);
+            customers.AddRange(_sim.Customers);
+            ExecuteOnGuiThread(dataGridViewCustomers, () =>
+            {
+                dataGridViewCustomers.DataSource = customers;
+                dataGridViewCustomers.Refresh();
+            });
+
+            var workers1 = new List<WorkerWithCustomers>(_sim.Workers1Count);
+            workers1.AddRange(_sim.AgentService.Workers);
+            ExecuteOnGuiThread(dataGridViewWorkers1, () =>
+            {
+                dataGridViewWorkers1.DataSource = workers1;
+                dataGridViewWorkers1.Refresh();
+            });
+
+            var workers2 = new List<Mechanic>(_sim.Workers2Count);
+            workers2.AddRange(_sim.AgentWorkshop.Workers);
+
+            ExecuteOnGuiThread(dataGridViewWorkers2, () =>
+            {
+                dataGridViewWorkers2.DataSource = workers2;
+                dataGridViewWorkers2.Refresh();
+            });
         }
 
         private void RadioButtonCustomSeed_CheckedChanged(object sender, EventArgs e)
@@ -296,24 +359,7 @@ namespace SEM03.GUI
 
         private void PushButtonStartSimulation_Click(object sender, EventArgs e)
         {
-            pushButtonStartSimulation.Enabled = false;
-            pushButtonPauseResumeSimulation.Enabled = true;
-            pushButtonStopSimulation.Enabled = true;
-            groupBoxSeed.Enabled = false;
-            groupBoxParameters.Enabled = false;
-            spinBoxQueueLenFixWorkers1.Enabled = false;
-            spinBoxQueueLenFixWorkers2.Enabled = false;
-            spinBoxTimeInServiceFixWorkers1.Enabled = false;
-            spinBoxTimeInServiceFixWorkers2.Enabled = false;
-
-            /*_ui->widgetPlotQueueLenWorkers1->graph(0)->clearData();
-            _ui->widgetPlotQueueLenWorkers1->replot();
-            _ui->widgetPlotQueueLenWorkers2->graph(0)->clearData();
-            _ui->widgetPlotQueueLenWorkers2->replot();
-            _ui->widgetPlotTimeInServiceWorkers1->graph(0)->clearData();
-            _ui->widgetPlotTimeInServiceWorkers1->replot();
-            _ui->widgetPlotTimeInServiceWorkers2->graph(0)->clearData();
-            _ui->widgetPlotTimeInServiceWorkers2->replot();*/
+            SetUpControlsOnStartStop(true);
 
             widgetPlotQueueLenWorkers1.Series[0].Points.Clear();
             widgetPlotQueueLenWorkers1.Refresh();
@@ -323,6 +369,17 @@ namespace SEM03.GUI
             widgetPlotTimeInServiceWorkers1.Refresh();
             widgetPlotTimeInServiceWorkers2.Series[0].Points.Clear();
             widgetPlotTimeInServiceWorkers2.Refresh();
+
+            if (checkBoxWatchModeEnabled.Checked)
+            {
+                var interval = horizontalSliderSimRefreshRate.Value;
+                var duration = (horizontalSliderSimSpeed.Maximum - horizontalSliderSimSpeed.Value) / 1000.0;
+                _sim.SetSimSpeed(interval, duration);
+            }
+            else
+            {
+                _sim.SetMaxSimSpeed();
+            }
 
             var replications = (int)spinBoxReplications.Value;
             var unitIndex = comboBoxTimeUnit.SelectedIndex;
@@ -362,48 +419,89 @@ namespace SEM03.GUI
 
         private void PushButtonPauseResumeSimulation_Click(object sender, EventArgs e)
         {
-            var running = _sim.IsRunning();
-            _sim.PauseSimulation();
-            pushButtonPauseResumeSimulation.Text = running ? RESUME_TEXT : PAUSE_TEXT;
+            if (!_sim.IsRunning())
+            {
+                return;
+            }
+
+            if (_sim.IsPaused())
+            {
+                _sim.ResumeSimulation();
+                pushButtonPauseResumeSimulation.Text = PAUSE_TEXT;
+            }
+            else
+            {
+                _sim.PauseSimulation();
+                pushButtonPauseResumeSimulation.Text = RESUME_TEXT;
+            }
         }
 
         private void PushButtonStopSimulation_Click(object sender, EventArgs e)
         {
             _sim.StopSimulation();
-            _thr.Join();
+            //_thr.Join();
 
-            pushButtonStartSimulation.Enabled = true;
-            pushButtonPauseResumeSimulation.Enabled = false;
-            pushButtonPauseResumeSimulation.Text = PAUSE_TEXT;
-            pushButtonStopSimulation.Enabled = false;
-            groupBoxSeed.Enabled = true;
-            groupBoxParameters.Enabled = true;
-            spinBoxQueueLenFixWorkers1.Enabled = true;
-            spinBoxQueueLenFixWorkers2.Enabled = true;
-            spinBoxTimeInServiceFixWorkers1.Enabled = true;
-            spinBoxTimeInServiceFixWorkers2.Enabled = true;
+            SetUpControlsOnStartStop(false);
         }
 
         private void CheckBoxWatchModeEnabled_CheckedChanged(object sender, EventArgs e)
         {
             var isChecked = checkBoxWatchModeEnabled.Checked;
-            //_sim->set_watch_mode_active(isChecked);
             horizontalSliderSimSpeed.Enabled = isChecked;
             horizontalSliderSimRefreshRate.Enabled = isChecked;
+            if (isChecked)
+            {
+                var interval = horizontalSliderSimRefreshRate.Value;
+                var duration = (horizontalSliderSimSpeed.Maximum - horizontalSliderSimSpeed.Value) / 1000.0;
+                _sim.SetSimSpeed(interval, duration);
+            }
+            else
+            {
+                _sim.SetMaxSimSpeed();
+            }
         }
 
         private void HorizontalSliderSimSpeed_ValueChanged(object sender, EventArgs e)
         {
             var value = horizontalSliderSimSpeed.Value;
-            //_sim.SetSimSpeed(horizontalSliderSimSpeed.Maximum - value);
+            var interval = horizontalSliderSimRefreshRate.Value;
+            var duration = (horizontalSliderSimSpeed.Maximum - value) / 1000.0;
+            _sim.SetSimSpeed(interval, duration);
             labelSimSpeedValue.Text = $@"{value}";
         }
 
         private void HorizontalSliderSimRefreshRate_ValueChanged(object sender, EventArgs e)
         {
-            var value = horizontalSliderSimRefreshRate.Value;
-            //_sim.SetRefreshRate(value);
-            labelSimRefreshRateValue.Text = $@"{value} s";
+            var interval = horizontalSliderSimRefreshRate.Value;
+            var duration = (horizontalSliderSimSpeed.Maximum - horizontalSliderSimSpeed.Value) / 1000.0;
+            _sim.SetSimSpeed(interval, duration);
+            labelSimRefreshRateValue.Text = $@"{interval} s";
+        }
+
+        private void SetUpControlsOnStartStop(bool start)
+        {
+            pushButtonStartSimulation.Enabled = !start;
+            pushButtonPauseResumeSimulation.Enabled = start;
+            pushButtonPauseResumeSimulation.Text = PAUSE_TEXT;
+            pushButtonStopSimulation.Enabled = start;
+            groupBoxSeed.Enabled = !start;
+            groupBoxParameters.Enabled = !start;
+            spinBoxQueueLenFixWorkers1.Enabled = !start;
+            spinBoxQueueLenFixWorkers2.Enabled = !start;
+            spinBoxTimeInServiceFixWorkers1.Enabled = !start;
+            spinBoxTimeInServiceFixWorkers2.Enabled = !start;
+        }
+
+        private static void ExecuteOnGuiThread(Control control, Action action)
+        {
+            if (control.InvokeRequired)
+            {
+                control.Invoke(action);
+            }
+            else
+            {
+                action();
+            }
         }
     }
 }

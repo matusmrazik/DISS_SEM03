@@ -4,6 +4,8 @@
     {
         public Customer CustomerOfCar { get; private set; }
 
+        public string CustomerId => CustomerOfCar == null ? "-" : $"{CustomerOfCar.Id}";
+
         public Mechanic(OSPABA.Simulation mySim)
             : base(mySim)
         {

@@ -8,6 +8,7 @@ namespace SEM03.Managers
     public class ManagerService : Manager
     {
         public new AgentService MyAgent => (AgentService)base.MyAgent;
+        public new SimCarService MySim => (SimCarService)base.MySim;
 
         public ManagerService(int id, OSPABA.Simulation mySim, Agent myAgent)
             : base(id, mySim, myAgent)
@@ -110,8 +111,7 @@ namespace SEM03.Managers
             if (MyAgent.ParkingPlaceQueue.Remove(msg))
             {
                 MyAgent.StatisticQueueLength.AddSample(MyAgent.QueueLength);
-                msg.Customer.WaitInQueueFinished();
-                msg.Customer.Served = false;
+                msg.Customer.WaitInQueueFinished(false);
                 msg.Code = Mc.PROCESS_ORDER_SERVICE;
                 msg.Addressee = MySim.FindAgent(SimId.AGENT_CAR_SERVICE);
                 Response(msg);
@@ -120,8 +120,7 @@ namespace SEM03.Managers
             if (MyAgent.OrdersQueue.Remove(msg))
             {
                 MyAgent.StatisticQueueLength.AddSample(MyAgent.QueueLength);
-                msg.Customer.WaitInQueueFinished();
-                msg.Customer.Served = false;
+                msg.Customer.WaitInQueueFinished(false);
                 msg.ParkingPlace.SetFree();
                 msg.ParkingPlace = null;
                 msg.Code = Mc.PROCESS_ORDER_SERVICE;
@@ -133,10 +132,22 @@ namespace SEM03.Managers
         //meta! sender="SchedulerWorkdayEnd", id="104", type="Finish"
         public void ProcessFinishSchedulerWorkdayEnd(MessageForm message)
         {
+            foreach (var msg in MyAgent.ParkingPlaceQueue)
+            {
+                msg.Customer.WaitInQueueFinished(false);
+                msg.Code = Mc.PROCESS_ORDER_SERVICE;
+                msg.Addressee = MySim.FindAgent(SimId.AGENT_CAR_SERVICE);
+                Response(msg);
+            }
             MyAgent.ParkingPlaceQueue.Clear();
             foreach (var msg in MyAgent.OrdersQueue)
             {
+                msg.Customer.WaitInQueueFinished(false);
                 msg.ParkingPlace.SetFree();
+                msg.ParkingPlace = null;
+                msg.Code = Mc.PROCESS_ORDER_SERVICE;
+                msg.Addressee = MySim.FindAgent(SimId.AGENT_CAR_SERVICE);
+                Response(msg);
             }
             MyAgent.OrdersQueue.Clear();
             MyAgent.StatisticQueueLength.AddSample(MyAgent.QueueLength);
@@ -172,11 +183,13 @@ namespace SEM03.Managers
             var msg = (MsgCarService)message;
             if (msg.ParkingPlace == null)
             {
+                msg.Mechanic.State = "Čaká na voľné miesto na parkovisku";
                 MyAgent.RepairedQueue.Enqueue(msg);
                 MyAgent.StatisticRepairedQueueLength.AddSample(MyAgent.RepairedQueue.Count);
                 return;
             }
 
+            msg.Mechanic.State = "Parkuje opravené auto na parkovisko";
             Response(message);
         }
 
@@ -186,9 +199,6 @@ namespace SEM03.Managers
             var msg = (MsgCarService)message;
             if (msg.ParkingPlace == null)
             {
-                if (MyAgent.ParkingPlaceQueue.Contains(msg)) // TODO remove
-                    throw new OSPExceptions.SimException("Parking place queue already contains msg");
-
                 MyAgent.ParkingPlaceQueue.Enqueue(msg);
                 MyAgent.StatisticQueueLength.AddSample(MyAgent.QueueLength);
                 return;
@@ -290,6 +300,7 @@ namespace SEM03.Managers
             }
 
             var msg = MyAgent.RepairedQueue.Dequeue();
+            msg.Mechanic.State = "Parkuje opravené auto na parkovisko";
             MyAgent.StatisticRepairedQueueLength.AddSample(MyAgent.RepairedQueue.Count);
             parkingPlace.SetOccupied();
             msg.ParkingPlace = parkingPlace;

@@ -35,7 +35,6 @@ namespace SEM03.Managers
         public void ProcessCustomerArrived(MessageForm message)
         {
             var msg = (MsgCarService)message;
-            msg.Customer.ArrivedToRamp();
 
             if (ArrivalRampQueue.Count == 0 && !ArrivalRampOpen)
             {
@@ -45,6 +44,7 @@ namespace SEM03.Managers
             }
             else
             {
+                msg.Customer.State = "Čaká pred vstupnou rampou";
                 ArrivalRampQueue.Enqueue(msg);
             }
         }
@@ -96,7 +96,9 @@ namespace SEM03.Managers
             }
             else
             {
-                DepartureRampQueue.Enqueue((MsgCarService)message);
+                var msg = (MsgCarService)message;
+                msg.Customer.State = "Čaká pred výstupnou rampou";
+                DepartureRampQueue.Enqueue(msg);
             }
         }
 

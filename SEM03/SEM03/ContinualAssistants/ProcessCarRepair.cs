@@ -18,6 +18,7 @@ namespace SEM03.ContinualAssistants
         public void ProcessStart(MessageForm message)
         {
             var msg = (MsgCarService)message;
+            msg.Mechanic.State = "Opravuje auto";
             var time = msg.Customer.TotalRepairDuration;
             message.Code = Mc.CAR_REPAIR_FINISHED;
             Hold(time, message);

@@ -20,8 +20,8 @@ namespace SEM03.ContinualAssistants
         {
             var msg = (MsgCarService)message;
             msg.Customer.GenerateRepairDuration();
-            msg.Customer.WaitInQueueFinished();
-            msg.Customer.Served = true;
+            msg.Customer.WaitInQueueFinished(true);
+            msg.WorkerWithCustomers.State = "Prijíma objednávku";
             MyAgent.StatisticWaitInQueue.AddSample(msg.Customer.WaitInQueueTotal);
             var time = MySim.GeneratorOrderEntryDuration.Next();
             message.Code = Mc.CUSTOMER_ORDER_ENTRY_FINISHED;

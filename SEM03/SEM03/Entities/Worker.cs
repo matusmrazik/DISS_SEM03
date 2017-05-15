@@ -1,4 +1,5 @@
 ﻿using OSPABA;
+using SEM03.Simulation;
 using SEM03.Statistics;
 
 namespace SEM03.Entities
@@ -18,6 +19,11 @@ namespace SEM03.Entities
             }
         }
 
+        public string State { get; set; }
+        public string TotalWorkingTimeStr => SimTimeHelper.DurationAsString(TotalWorkingTime);
+        public string TotalIdleTimeStr => SimTimeHelper.DurationAsString(MySim.CurrentTime - TotalWorkingTime);
+        public string TotalWorkingRatioStr => $"{100.0 * (TotalWorkingTime / MySim.CurrentTime):0.00} %";
+
         public Worker(OSPABA.Simulation mySim)
             : base(mySim)
         {
@@ -29,12 +35,14 @@ namespace SEM03.Entities
         {
             StatisticWorkingDuration.AddSample(1.0);
             IsWorking = true;
+            State = "Pracuje";
         }
 
         public virtual void StopWork()
         {
             StatisticWorkingDuration.AddSample(0.0);
             IsWorking = false;
+            State = "Nepracuje";
         }
 
         public virtual void Reset()
@@ -46,6 +54,7 @@ namespace SEM03.Entities
         private void Init()
         {
             IsWorking = false;
+            State = "Nepracuje";
         }
     }
 }

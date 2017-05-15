@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using RandomLib;
 using SEM03.Agents;
+using SEM03.Entities;
 using SEM03.Logging;
 using SEM03.Statistics;
 
@@ -16,12 +18,14 @@ namespace SEM03.Simulation
 
         public int Seed { get; private set; }
 
+        public List<Customer> Customers { get; private set; }
+
         public int Workers1Count => AgentService.Workers.Count;
         public int Workers2Count => AgentWorkshop.Workers.Count;
 
         public int Workers1Working => AgentService.WorkersWorking;
         public int Workers2Working => AgentWorkshop.WorkersWorking;
-        public int CustomerQueueLength => AgentService.OrdersQueue.Count;
+        public int CustomerQueueLength => AgentService.QueueLength;
         public int CarsForRepairQueueLength => AgentWorkshop.OrdersQueue.Count;
         public int RepairedCarsQueueLength => AgentService.RepairedQueue.Count;
 
@@ -200,6 +204,8 @@ namespace SEM03.Simulation
         {
             base.PrepareReplication();
 
+            Customers.Clear();
+
             Logger.LogInfo($@"Beží replikácia {CurrentReplication + 1}");
         }
 
@@ -238,6 +244,8 @@ namespace SEM03.Simulation
         private void Init()
         {
             Seed = new Random().Next();
+
+            Customers = new List<Customer>();
 
             AgentModel = new AgentModel(SimId.AGENT_MODEL, this, null);
             AgentEnvironment = new AgentEnvironment(SimId.AGENT_ENVIRONMENT, this, AgentModel);

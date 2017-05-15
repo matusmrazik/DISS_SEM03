@@ -124,6 +124,8 @@
             this.labelIdealWorkers1Count = new System.Windows.Forms.Label();
             this.labelIdealWorkers1CountValue = new System.Windows.Forms.Label();
             this.labelIdealWorkers2CountValue = new System.Windows.Forms.Label();
+            this.labelProfitValue = new System.Windows.Forms.Label();
+            this.labelProfit = new System.Windows.Forms.Label();
             this.groupBoxOutputSimulation = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanelOutputSimulation = new System.Windows.Forms.TableLayoutPanel();
             this.labelAVGCustomerQueueLenSim = new System.Windows.Forms.Label();
@@ -145,7 +147,7 @@
             this.labelWaitForRepairCI = new System.Windows.Forms.Label();
             this.labelTimeInSystemCI = new System.Windows.Forms.Label();
             this.groupBoxVisualization = new System.Windows.Forms.GroupBox();
-            this.tabWidgetVisualization = new System.Windows.Forms.TabControl();
+            this.tabWidgetOutput = new System.Windows.Forms.TabControl();
             this.tabQueueLenWorkers1 = new System.Windows.Forms.TabPage();
             this.widgetPlotQueueLenWorkers1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.frameQueueLenWorkers1 = new System.Windows.Forms.Panel();
@@ -167,8 +169,20 @@
             this.spinBoxTimeInServiceFixWorkers1 = new System.Windows.Forms.NumericUpDown();
             this.labelTimeInServiceFixWorkers1 = new System.Windows.Forms.Label();
             this.centralWidget = new System.Windows.Forms.Panel();
-            this.labelProfitValue = new System.Windows.Forms.Label();
-            this.labelProfit = new System.Windows.Forms.Label();
+            this.tabCustomers = new System.Windows.Forms.TabPage();
+            this.tabWorkers1 = new System.Windows.Forms.TabPage();
+            this.tabWorkers2 = new System.Windows.Forms.TabPage();
+            this.tabCarParks = new System.Windows.Forms.TabPage();
+            this.tabCarParkService = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanelCustomers = new System.Windows.Forms.TableLayoutPanel();
+            this.dataGridViewCustomers = new System.Windows.Forms.DataGridView();
+            this.groupBoxCustomersStats = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanelWorkers1 = new System.Windows.Forms.TableLayoutPanel();
+            this.dataGridViewWorkers1 = new System.Windows.Forms.DataGridView();
+            this.groupBoxWorkers1Stats = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanelWorkers2 = new System.Windows.Forms.TableLayoutPanel();
+            this.dataGridViewWorkers2 = new System.Windows.Forms.DataGridView();
+            this.groupBoxWorkers2Stats = new System.Windows.Forms.GroupBox();
             this.groupBoxSimulation.SuspendLayout();
             this.frameResults.SuspendLayout();
             this.groupBoxSimulationControl.SuspendLayout();
@@ -194,7 +208,7 @@
             this.groupBoxOutputSimulation.SuspendLayout();
             this.tableLayoutPanelOutputSimulation.SuspendLayout();
             this.groupBoxVisualization.SuspendLayout();
-            this.tabWidgetVisualization.SuspendLayout();
+            this.tabWidgetOutput.SuspendLayout();
             this.tabQueueLenWorkers1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.widgetPlotQueueLenWorkers1)).BeginInit();
             this.frameQueueLenWorkers1.SuspendLayout();
@@ -212,6 +226,15 @@
             this.frameTimeInServiceWorkers2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinBoxTimeInServiceFixWorkers1)).BeginInit();
             this.centralWidget.SuspendLayout();
+            this.tabCustomers.SuspendLayout();
+            this.tabWorkers1.SuspendLayout();
+            this.tabWorkers2.SuspendLayout();
+            this.tableLayoutPanelCustomers.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomers)).BeginInit();
+            this.tableLayoutPanelWorkers1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWorkers1)).BeginInit();
+            this.tableLayoutPanelWorkers2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWorkers2)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxSimulation
@@ -1312,6 +1335,28 @@
             this.labelIdealWorkers2CountValue.Text = "-";
             this.labelIdealWorkers2CountValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // labelProfitValue
+            // 
+            this.labelProfitValue.AutoSize = true;
+            this.labelProfitValue.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelProfitValue.Location = new System.Drawing.Point(213, 38);
+            this.labelProfitValue.Name = "labelProfitValue";
+            this.labelProfitValue.Size = new System.Drawing.Size(204, 21);
+            this.labelProfitValue.TabIndex = 7;
+            this.labelProfitValue.Text = "-";
+            this.labelProfitValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelProfit
+            // 
+            this.labelProfit.AutoSize = true;
+            this.labelProfit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelProfit.Location = new System.Drawing.Point(3, 38);
+            this.labelProfit.Name = "labelProfit";
+            this.labelProfit.Size = new System.Drawing.Size(204, 21);
+            this.labelProfit.TabIndex = 8;
+            this.labelProfit.Text = "Hospodársky výsledok:";
+            this.labelProfit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // groupBoxOutputSimulation
             // 
             this.groupBoxOutputSimulation.Controls.Add(this.tableLayoutPanelOutputSimulation);
@@ -1567,7 +1612,7 @@
             this.groupBoxVisualization.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxVisualization.Controls.Add(this.tabWidgetVisualization);
+            this.groupBoxVisualization.Controls.Add(this.tabWidgetOutput);
             this.groupBoxVisualization.Location = new System.Drawing.Point(464, 264);
             this.groupBoxVisualization.Name = "groupBoxVisualization";
             this.groupBoxVisualization.Padding = new System.Windows.Forms.Padding(9);
@@ -1576,18 +1621,23 @@
             this.groupBoxVisualization.TabStop = false;
             this.groupBoxVisualization.Text = "Grafický výstup";
             // 
-            // tabWidgetVisualization
+            // tabWidgetOutput
             // 
-            this.tabWidgetVisualization.Controls.Add(this.tabQueueLenWorkers1);
-            this.tabWidgetVisualization.Controls.Add(this.tabQueueLenWorkers2);
-            this.tabWidgetVisualization.Controls.Add(this.tabTimeInServiceWorkers1);
-            this.tabWidgetVisualization.Controls.Add(this.tabTimeInServiceWorkers2);
-            this.tabWidgetVisualization.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabWidgetVisualization.Location = new System.Drawing.Point(9, 22);
-            this.tabWidgetVisualization.Name = "tabWidgetVisualization";
-            this.tabWidgetVisualization.SelectedIndex = 0;
-            this.tabWidgetVisualization.Size = new System.Drawing.Size(665, 512);
-            this.tabWidgetVisualization.TabIndex = 0;
+            this.tabWidgetOutput.Controls.Add(this.tabCustomers);
+            this.tabWidgetOutput.Controls.Add(this.tabWorkers1);
+            this.tabWidgetOutput.Controls.Add(this.tabWorkers2);
+            this.tabWidgetOutput.Controls.Add(this.tabCarParkService);
+            this.tabWidgetOutput.Controls.Add(this.tabCarParks);
+            this.tabWidgetOutput.Controls.Add(this.tabQueueLenWorkers1);
+            this.tabWidgetOutput.Controls.Add(this.tabQueueLenWorkers2);
+            this.tabWidgetOutput.Controls.Add(this.tabTimeInServiceWorkers1);
+            this.tabWidgetOutput.Controls.Add(this.tabTimeInServiceWorkers2);
+            this.tabWidgetOutput.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabWidgetOutput.Location = new System.Drawing.Point(9, 22);
+            this.tabWidgetOutput.Name = "tabWidgetOutput";
+            this.tabWidgetOutput.SelectedIndex = 0;
+            this.tabWidgetOutput.Size = new System.Drawing.Size(665, 512);
+            this.tabWidgetOutput.TabIndex = 0;
             // 
             // tabQueueLenWorkers1
             // 
@@ -1858,27 +1908,168 @@
             this.centralWidget.Size = new System.Drawing.Size(1156, 816);
             this.centralWidget.TabIndex = 3;
             // 
-            // labelProfitValue
+            // tabCustomers
             // 
-            this.labelProfitValue.AutoSize = true;
-            this.labelProfitValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelProfitValue.Location = new System.Drawing.Point(213, 38);
-            this.labelProfitValue.Name = "labelProfitValue";
-            this.labelProfitValue.Size = new System.Drawing.Size(204, 21);
-            this.labelProfitValue.TabIndex = 7;
-            this.labelProfitValue.Text = "-";
-            this.labelProfitValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tabCustomers.Controls.Add(this.tableLayoutPanelCustomers);
+            this.tabCustomers.Location = new System.Drawing.Point(4, 22);
+            this.tabCustomers.Name = "tabCustomers";
+            this.tabCustomers.Padding = new System.Windows.Forms.Padding(3);
+            this.tabCustomers.Size = new System.Drawing.Size(657, 486);
+            this.tabCustomers.TabIndex = 4;
+            this.tabCustomers.Text = "Zákazníci";
+            this.tabCustomers.UseVisualStyleBackColor = true;
             // 
-            // labelProfit
+            // tabWorkers1
             // 
-            this.labelProfit.AutoSize = true;
-            this.labelProfit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelProfit.Location = new System.Drawing.Point(3, 38);
-            this.labelProfit.Name = "labelProfit";
-            this.labelProfit.Size = new System.Drawing.Size(204, 21);
-            this.labelProfit.TabIndex = 8;
-            this.labelProfit.Text = "Hospodársky výsledok:";
-            this.labelProfit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tabWorkers1.Controls.Add(this.tableLayoutPanelWorkers1);
+            this.tabWorkers1.Location = new System.Drawing.Point(4, 22);
+            this.tabWorkers1.Name = "tabWorkers1";
+            this.tabWorkers1.Size = new System.Drawing.Size(657, 486);
+            this.tabWorkers1.TabIndex = 5;
+            this.tabWorkers1.Text = "Pracovníci skupiny 1";
+            this.tabWorkers1.UseVisualStyleBackColor = true;
+            // 
+            // tabWorkers2
+            // 
+            this.tabWorkers2.Controls.Add(this.tableLayoutPanelWorkers2);
+            this.tabWorkers2.Location = new System.Drawing.Point(4, 22);
+            this.tabWorkers2.Name = "tabWorkers2";
+            this.tabWorkers2.Size = new System.Drawing.Size(657, 486);
+            this.tabWorkers2.TabIndex = 6;
+            this.tabWorkers2.Text = "Pracovníci skupiny 2";
+            this.tabWorkers2.UseVisualStyleBackColor = true;
+            // 
+            // tabCarParks
+            // 
+            this.tabCarParks.Location = new System.Drawing.Point(4, 22);
+            this.tabCarParks.Name = "tabCarParks";
+            this.tabCarParks.Size = new System.Drawing.Size(657, 486);
+            this.tabCarParks.TabIndex = 7;
+            this.tabCarParks.Text = "Parkoviská";
+            this.tabCarParks.UseVisualStyleBackColor = true;
+            // 
+            // tabCarParkService
+            // 
+            this.tabCarParkService.Location = new System.Drawing.Point(4, 22);
+            this.tabCarParkService.Name = "tabCarParkService";
+            this.tabCarParkService.Size = new System.Drawing.Size(657, 486);
+            this.tabCarParkService.TabIndex = 8;
+            this.tabCarParkService.Text = "Parkovisko pred servisom";
+            this.tabCarParkService.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanelCustomers
+            // 
+            this.tableLayoutPanelCustomers.ColumnCount = 1;
+            this.tableLayoutPanelCustomers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelCustomers.Controls.Add(this.dataGridViewCustomers, 0, 0);
+            this.tableLayoutPanelCustomers.Controls.Add(this.groupBoxCustomersStats, 0, 1);
+            this.tableLayoutPanelCustomers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelCustomers.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanelCustomers.Name = "tableLayoutPanelCustomers";
+            this.tableLayoutPanelCustomers.RowCount = 2;
+            this.tableLayoutPanelCustomers.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelCustomers.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelCustomers.Size = new System.Drawing.Size(651, 480);
+            this.tableLayoutPanelCustomers.TabIndex = 0;
+            // 
+            // dataGridViewCustomers
+            // 
+            this.dataGridViewCustomers.AllowUserToAddRows = false;
+            this.dataGridViewCustomers.AllowUserToDeleteRows = false;
+            this.dataGridViewCustomers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCustomers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewCustomers.Location = new System.Drawing.Point(3, 3);
+            this.dataGridViewCustomers.Name = "dataGridViewCustomers";
+            this.dataGridViewCustomers.ReadOnly = true;
+            this.dataGridViewCustomers.Size = new System.Drawing.Size(645, 234);
+            this.dataGridViewCustomers.TabIndex = 0;
+            // 
+            // groupBoxCustomersStats
+            // 
+            this.groupBoxCustomersStats.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxCustomersStats.Location = new System.Drawing.Point(3, 243);
+            this.groupBoxCustomersStats.Name = "groupBoxCustomersStats";
+            this.groupBoxCustomersStats.Size = new System.Drawing.Size(645, 234);
+            this.groupBoxCustomersStats.TabIndex = 1;
+            this.groupBoxCustomersStats.TabStop = false;
+            this.groupBoxCustomersStats.Text = "Štatistiky";
+            // 
+            // tableLayoutPanelWorkers1
+            // 
+            this.tableLayoutPanelWorkers1.ColumnCount = 1;
+            this.tableLayoutPanelWorkers1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelWorkers1.Controls.Add(this.groupBoxWorkers1Stats, 0, 1);
+            this.tableLayoutPanelWorkers1.Controls.Add(this.dataGridViewWorkers1, 0, 0);
+            this.tableLayoutPanelWorkers1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelWorkers1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanelWorkers1.Name = "tableLayoutPanelWorkers1";
+            this.tableLayoutPanelWorkers1.RowCount = 2;
+            this.tableLayoutPanelWorkers1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelWorkers1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelWorkers1.Size = new System.Drawing.Size(657, 486);
+            this.tableLayoutPanelWorkers1.TabIndex = 0;
+            // 
+            // dataGridViewWorkers1
+            // 
+            this.dataGridViewWorkers1.AllowUserToAddRows = false;
+            this.dataGridViewWorkers1.AllowUserToDeleteRows = false;
+            this.dataGridViewWorkers1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewWorkers1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewWorkers1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewWorkers1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridViewWorkers1.Name = "dataGridViewWorkers1";
+            this.dataGridViewWorkers1.ReadOnly = true;
+            this.dataGridViewWorkers1.Size = new System.Drawing.Size(651, 237);
+            this.dataGridViewWorkers1.TabIndex = 1;
+            // 
+            // groupBoxWorkers1Stats
+            // 
+            this.groupBoxWorkers1Stats.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxWorkers1Stats.Location = new System.Drawing.Point(3, 246);
+            this.groupBoxWorkers1Stats.Name = "groupBoxWorkers1Stats";
+            this.groupBoxWorkers1Stats.Size = new System.Drawing.Size(651, 237);
+            this.groupBoxWorkers1Stats.TabIndex = 2;
+            this.groupBoxWorkers1Stats.TabStop = false;
+            this.groupBoxWorkers1Stats.Text = "Štatistiky";
+            // 
+            // tableLayoutPanelWorkers2
+            // 
+            this.tableLayoutPanelWorkers2.ColumnCount = 1;
+            this.tableLayoutPanelWorkers2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelWorkers2.Controls.Add(this.groupBoxWorkers2Stats, 0, 1);
+            this.tableLayoutPanelWorkers2.Controls.Add(this.dataGridViewWorkers2, 0, 0);
+            this.tableLayoutPanelWorkers2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelWorkers2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanelWorkers2.Name = "tableLayoutPanelWorkers2";
+            this.tableLayoutPanelWorkers2.RowCount = 2;
+            this.tableLayoutPanelWorkers2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelWorkers2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelWorkers2.Size = new System.Drawing.Size(657, 486);
+            this.tableLayoutPanelWorkers2.TabIndex = 0;
+            // 
+            // dataGridViewWorkers2
+            // 
+            this.dataGridViewWorkers2.AllowUserToAddRows = false;
+            this.dataGridViewWorkers2.AllowUserToDeleteRows = false;
+            this.dataGridViewWorkers2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewWorkers2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewWorkers2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewWorkers2.Location = new System.Drawing.Point(3, 3);
+            this.dataGridViewWorkers2.Name = "dataGridViewWorkers2";
+            this.dataGridViewWorkers2.ReadOnly = true;
+            this.dataGridViewWorkers2.Size = new System.Drawing.Size(651, 237);
+            this.dataGridViewWorkers2.TabIndex = 2;
+            // 
+            // groupBoxWorkers2Stats
+            // 
+            this.groupBoxWorkers2Stats.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxWorkers2Stats.Location = new System.Drawing.Point(3, 246);
+            this.groupBoxWorkers2Stats.Name = "groupBoxWorkers2Stats";
+            this.groupBoxWorkers2Stats.Size = new System.Drawing.Size(651, 237);
+            this.groupBoxWorkers2Stats.TabIndex = 3;
+            this.groupBoxWorkers2Stats.TabStop = false;
+            this.groupBoxWorkers2Stats.Text = "Štatistiky";
             // 
             // MainWindow
             // 
@@ -1919,7 +2110,7 @@
             this.tableLayoutPanelOutputSimulation.ResumeLayout(false);
             this.tableLayoutPanelOutputSimulation.PerformLayout();
             this.groupBoxVisualization.ResumeLayout(false);
-            this.tabWidgetVisualization.ResumeLayout(false);
+            this.tabWidgetOutput.ResumeLayout(false);
             this.tabQueueLenWorkers1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.widgetPlotQueueLenWorkers1)).EndInit();
             this.frameQueueLenWorkers1.ResumeLayout(false);
@@ -1937,6 +2128,15 @@
             this.frameTimeInServiceWorkers2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spinBoxTimeInServiceFixWorkers1)).EndInit();
             this.centralWidget.ResumeLayout(false);
+            this.tabCustomers.ResumeLayout(false);
+            this.tabWorkers1.ResumeLayout(false);
+            this.tabWorkers2.ResumeLayout(false);
+            this.tableLayoutPanelCustomers.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomers)).EndInit();
+            this.tableLayoutPanelWorkers1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWorkers1)).EndInit();
+            this.tableLayoutPanelWorkers2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWorkers2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1998,7 +2198,7 @@
         private System.Windows.Forms.Label labelWorkers1CurrentValue;
         private System.Windows.Forms.Label labelWorkers2Current;
         private System.Windows.Forms.Label labelWorkers2CurrentValue;
-        private System.Windows.Forms.TabControl tabWidgetVisualization;
+        private System.Windows.Forms.TabControl tabWidgetOutput;
         private System.Windows.Forms.TabPage tabQueueLenWorkers1;
         private System.Windows.Forms.TabPage tabQueueLenWorkers2;
         private System.Windows.Forms.TabPage tabTimeInServiceWorkers1;
@@ -2072,5 +2272,19 @@
         private System.Windows.Forms.Label labelIdealWorkers2CountValue;
         private System.Windows.Forms.Label labelProfitValue;
         private System.Windows.Forms.Label labelProfit;
+        private System.Windows.Forms.TabPage tabCustomers;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelCustomers;
+        private System.Windows.Forms.DataGridView dataGridViewCustomers;
+        private System.Windows.Forms.GroupBox groupBoxCustomersStats;
+        private System.Windows.Forms.TabPage tabWorkers1;
+        private System.Windows.Forms.TabPage tabWorkers2;
+        private System.Windows.Forms.TabPage tabCarParkService;
+        private System.Windows.Forms.TabPage tabCarParks;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelWorkers1;
+        private System.Windows.Forms.DataGridView dataGridViewWorkers1;
+        private System.Windows.Forms.GroupBox groupBoxWorkers1Stats;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelWorkers2;
+        private System.Windows.Forms.GroupBox groupBoxWorkers2Stats;
+        private System.Windows.Forms.DataGridView dataGridViewWorkers2;
     }
 }

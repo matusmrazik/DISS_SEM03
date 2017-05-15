@@ -18,6 +18,9 @@ namespace SEM03.ContinualAssistants
         //meta! sender="AgentService", id="94", type="Start"
         public void ProcessStart(MessageForm message)
         {
+            var msg = (MsgCarService) message;
+            msg.WorkerWithCustomers.State = "Odovzdáva opravené auto";
+            msg.Customer.State = "Preberá opravené auto";
             var time = MySim.GeneratorCarReturnDuration.Next();
             message.Code = Mc.CAR_RETURN_FINISHED;
             Hold(time, message);

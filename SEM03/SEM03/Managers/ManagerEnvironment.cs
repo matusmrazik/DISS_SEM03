@@ -26,6 +26,7 @@ namespace SEM03.Managers
             MyAgent.CustomersLeftTotal.Add();
             if (msg.Customer.Served) MyAgent.CustomersLeftServed.Add();
             else MyAgent.CustomersLeftNotServed.Add();
+            MySim.Customers.Remove(msg.Customer);
         }
 
         //meta! sender="SchedulerCustomerArrival", id="42", type="Finish"
@@ -35,6 +36,7 @@ namespace SEM03.Managers
             messageCopy.Addressee = MySim.FindAgent(SimId.AGENT_MODEL);
             messageCopy.Code = Mc.CUSTOMER_ARRIVED;
             messageCopy.Customer = new Customer(MySim);
+            MySim.Customers.Add(messageCopy.Customer);
             Notice(messageCopy);
 
             MyAgent.CustomersArrivedTotal.Add();
