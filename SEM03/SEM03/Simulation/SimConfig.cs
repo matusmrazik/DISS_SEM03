@@ -1,11 +1,13 @@
-﻿namespace SEM03.Simulation
+﻿using System;
+
+namespace SEM03.Simulation
 {
     public static class SimConfig
     {
         public const double DAYS_IN_MONTH = SimTimeHelper.DAYS_IN_MONTH;
         public const double WORKDAY_HOURS = SimTimeHelper.WORKDAY_HOURS;
         public const double WORKDAY_START_HOUR = SimTimeHelper.WORKDAY_START_HOUR;
-        public const double TIME_BETWEEN_CUSTOMERS = 20.0 * SimTimeHelper.MINUTE;
+        public const double CUSTOMERS_PER_HOUR = 3.0;
         public const double MAX_WAIT_IN_QUEUE_TIME = 10.0 * SimTimeHelper.MINUTE;
 
         public const double HEAT_UP_TIME = 0.0;
@@ -14,6 +16,15 @@
         public static double ReplicationDuration { get; set; } = 21.0 * SimTimeHelper.DAY;
         public static double ReplicationEndTime => REPLICATION_START_TIME + ReplicationDuration;
         public static double TotalReplicationDuration => HEAT_UP_TIME + ReplicationDuration + COOL_DOWN_TIME;
+
+        public const double CUSTOMERS_RAISE_MAX = 0.78;
+        public const double CUSTOMERS_RAISE_FOR_1000_EUR = 0.16;
+        public const double CUSTOMERS_RAISE_FOR_1_EUR = CUSTOMERS_RAISE_FOR_1000_EUR / 1000.0;
+        public static double AdvertisingInvestment { get; set; } = 0.0;
+        public static double CustomersRaise => 1.0 + Math.Min(CUSTOMERS_RAISE_MAX, AdvertisingInvestment * CUSTOMERS_RAISE_FOR_1_EUR);
+
+        public static double CustomersPerHour => CUSTOMERS_PER_HOUR * CustomersRaise;
+        public static double TimeBetweenCustomers => SimTimeHelper.HOUR / CustomersPerHour;
 
         public const double WORKER_1_COSTS_MONTH = 1150.0;
         public const double WORKER_2_COSTS_MONTH = 1600.0;

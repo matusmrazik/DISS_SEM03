@@ -296,6 +296,9 @@
             this.labelSimCarPark1RatioISValue = new System.Windows.Forms.Label();
             this.labelSimCarPark2RatioIS = new System.Windows.Forms.Label();
             this.labelSimCarPark2RatioISValue = new System.Windows.Forms.Label();
+            this.labelAdInvestment = new System.Windows.Forms.Label();
+            this.spinBoxAdInvestment = new System.Windows.Forms.NumericUpDown();
+            this.labelEuro = new System.Windows.Forms.Label();
             this.groupBoxSimulation.SuspendLayout();
             this.frameResults.SuspendLayout();
             this.groupBoxSimulationControl.SuspendLayout();
@@ -364,6 +367,7 @@
             this.tableLayoutPanelIdealWorkersCount.SuspendLayout();
             this.groupBoxSimulationStats.SuspendLayout();
             this.tableLayoutPanelSimulationStats.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spinBoxAdInvestment)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxSimulation
@@ -661,6 +665,9 @@
             // 
             this.groupBoxParameters.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxParameters.Controls.Add(this.labelEuro);
+            this.groupBoxParameters.Controls.Add(this.spinBoxAdInvestment);
+            this.groupBoxParameters.Controls.Add(this.labelAdInvestment);
             this.groupBoxParameters.Controls.Add(this.comboBoxTimeUnit);
             this.groupBoxParameters.Controls.Add(this.spinBoxReplicationDuration);
             this.groupBoxParameters.Controls.Add(this.labelReplicationDuration);
@@ -876,7 +883,6 @@
             this.line.Name = "line";
             this.line.Size = new System.Drawing.Size(2, 90);
             this.line.TabIndex = 7;
-            this.line.Text = "label1";
             // 
             // spinBoxWorkers1Max
             // 
@@ -1035,13 +1041,13 @@
             this.radioButtonCustomSeed.Name = "radioButtonCustomSeed";
             this.radioButtonCustomSeed.Size = new System.Drawing.Size(75, 20);
             this.radioButtonCustomSeed.TabIndex = 1;
-            this.radioButtonCustomSeed.TabStop = true;
             this.radioButtonCustomSeed.Text = "vlastná";
             this.radioButtonCustomSeed.UseVisualStyleBackColor = true;
             this.radioButtonCustomSeed.CheckedChanged += new System.EventHandler(this.RadioButtonCustomSeed_CheckedChanged);
             // 
             // radioButtonRandomSeed
             // 
+            this.radioButtonRandomSeed.Checked = true;
             this.radioButtonRandomSeed.Location = new System.Drawing.Point(13, 33);
             this.radioButtonRandomSeed.Name = "radioButtonRandomSeed";
             this.radioButtonRandomSeed.Size = new System.Drawing.Size(75, 20);
@@ -3440,6 +3446,48 @@
             this.labelSimCarPark2RatioISValue.Text = "-";
             this.labelSimCarPark2RatioISValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // labelAdInvestment
+            // 
+            this.labelAdInvestment.Location = new System.Drawing.Point(10, 123);
+            this.labelAdInvestment.Name = "labelAdInvestment";
+            this.labelAdInvestment.Size = new System.Drawing.Size(120, 20);
+            this.labelAdInvestment.TabIndex = 21;
+            this.labelAdInvestment.Text = "Investovať do reklamy:";
+            this.labelAdInvestment.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // spinBoxAdInvestment
+            // 
+            this.spinBoxAdInvestment.DecimalPlaces = 2;
+            this.spinBoxAdInvestment.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.spinBoxAdInvestment.Location = new System.Drawing.Point(140, 123);
+            this.spinBoxAdInvestment.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.spinBoxAdInvestment.Name = "spinBoxAdInvestment";
+            this.spinBoxAdInvestment.Size = new System.Drawing.Size(71, 20);
+            this.spinBoxAdInvestment.TabIndex = 22;
+            this.spinBoxAdInvestment.Tag = "";
+            this.spinBoxAdInvestment.Value = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            // 
+            // labelEuro
+            // 
+            this.labelEuro.Location = new System.Drawing.Point(220, 123);
+            this.labelEuro.Name = "labelEuro";
+            this.labelEuro.Size = new System.Drawing.Size(31, 20);
+            this.labelEuro.TabIndex = 23;
+            this.labelEuro.Text = "EUR";
+            this.labelEuro.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3518,6 +3566,7 @@
             this.tableLayoutPanelIdealWorkersCount.ResumeLayout(false);
             this.groupBoxSimulationStats.ResumeLayout(false);
             this.tableLayoutPanelSimulationStats.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.spinBoxAdInvestment)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3780,5 +3829,8 @@
         private System.Windows.Forms.Label labelSimCustomerInQueueIS;
         private System.Windows.Forms.Label labelSimCustomersInServiceISValue;
         private System.Windows.Forms.Label labelSimCustomersInServiceIS;
+        private System.Windows.Forms.Label labelEuro;
+        private System.Windows.Forms.NumericUpDown spinBoxAdInvestment;
+        private System.Windows.Forms.Label labelAdInvestment;
     }
 }

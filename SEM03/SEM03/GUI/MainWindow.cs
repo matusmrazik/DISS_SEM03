@@ -544,13 +544,15 @@ namespace SEM03.GUI
             var rangeWorkers1 = checkBoxRangeWorkers1.Checked;
             var rangeWorkers2 = checkBoxRangeWorkers2.Checked;
 
+            var adInvestment = (double)spinBoxAdInvestment.Value;
+
             int? seed = null;
             if (!rangeWorkers1 && !rangeWorkers2)
             {
                 var w1 = (int)spinBoxWorkers1.Value;
                 var w2 = (int)spinBoxWorkers2.Value;
                 if (radioButtonCustomSeed.Checked) seed = (int)spinBoxCustomSeed.Value;
-                _thr = _sim.SingleRunAsync(replications, SimConfig.TotalReplicationDuration, w1, w2, seed);
+                _thr = _sim.SingleRunAsync(replications, SimConfig.TotalReplicationDuration, w1, w2, adInvestment, seed);
                 return;
             }
 
@@ -570,7 +572,7 @@ namespace SEM03.GUI
             }
 
             if (radioButtonCustomSeed.Checked) seed = (int)spinBoxCustomSeed.Value;
-            _thr = _sim.MultiRunAsync(replications, SimConfig.TotalReplicationDuration, w1Min, w1Max, w2Min, w2Max, seed);
+            _thr = _sim.MultiRunAsync(replications, SimConfig.TotalReplicationDuration, w1Min, w1Max, w2Min, w2Max, adInvestment, seed);
         }
 
         private void PushButtonPauseResumeSimulation_Click(object sender, EventArgs e)
@@ -646,6 +648,7 @@ namespace SEM03.GUI
             spinBoxQueueLenFixWorkers2.Enabled = !start;
             spinBoxTimeInServiceFixWorkers1.Enabled = !start;
             spinBoxTimeInServiceFixWorkers2.Enabled = !start;
+            spinBoxAdInvestment.Enabled = !start;
         }
 
         private static void ExecuteOnGuiThread(Control control, Action action)

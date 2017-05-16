@@ -99,11 +99,13 @@ namespace SEM03.Simulation
             Init();
         }
 
-        public void Init(int group1Workers, int group2Workers, int? seed = null)
+        public void Init(int group1Workers, int group2Workers, double advertisingInvestment, int? seed = null)
         {
             Stopped = false;
 
             Seed = seed ?? new Random().Next();
+
+            SimConfig.AdvertisingInvestment = advertisingInvestment;
 
             AgentService.SetWorkersCount(group1Workers);
             AgentWorkshop.SetWorkersCount(group2Workers);
@@ -111,7 +113,7 @@ namespace SEM03.Simulation
             AgentService.SetCarParkPlaces(SimConfig.CAR_PARK_2_PARKING_PLACES);
 
             GeneratorSeed = new Random(Seed);
-            GeneratorCustomerArrivals.Seed(GeneratorSeed.Next());
+            GeneratorCustomerArrivals = new ExponentialDistributionGenerator(SimConfig.TimeBetweenCustomers, GeneratorSeed.Next());
             GeneratorRepairCount.Seed(GeneratorSeed.Next());
             GeneratorRepairType.Seed(GeneratorSeed.Next());
             GeneratorSimpleRepairDuration.Seed(GeneratorSeed.Next());
@@ -122,9 +124,9 @@ namespace SEM03.Simulation
             GeneratorCarReturnDuration.Seed(GeneratorSeed.Next());
         }
 
-        public void SingleRun(int replicationCount, double simEndTime, int workers1Count, int workers2Count, int? seed = null)
+        public void SingleRun(int replicationCount, double simEndTime, int workers1Count, int workers2Count, double advertisingInvestment, int? seed = null)
         {
-            Init(workers1Count, workers2Count, seed);
+            Init(workers1Count, workers2Count, advertisingInvestment, seed);
             Simulate(replicationCount, simEndTime);
             if (!Stopped)
             {
@@ -132,9 +134,9 @@ namespace SEM03.Simulation
             }
         }
 
-        public Thread SingleRunAsync(int replicationCount, double simEndTime, int workers1Count, int workers2Count, int? seed = null)
+        public Thread SingleRunAsync(int replicationCount, double simEndTime, int workers1Count, int workers2Count, double advertisingInvestment, int? seed = null)
         {
-            var thread = new Thread(() => SingleRun(replicationCount, simEndTime, workers1Count, workers2Count, seed))
+            var thread = new Thread(() => SingleRun(replicationCount, simEndTime, workers1Count, workers2Count, advertisingInvestment, seed))
             {
                 Name = "ABASim - simulation thread",
                 IsBackground = true,
@@ -144,7 +146,7 @@ namespace SEM03.Simulation
             return thread;
         }
 
-        public void MultiRun(int replicationCount, double simEndTime, int workers1Min, int workers1Max, int workers2Min, int workers2Max, int? seed = null)
+        public void MultiRun(int replicationCount, double simEndTime, int workers1Min, int workers1Max, int workers2Min, int workers2Max, double advertisingInvestment, int? seed = null)
         {
             var seedGen = seed.HasValue ? new Random(seed.Value) : new Random();
 
@@ -157,12 +159,13 @@ namespace SEM03.Simulation
             {
                 for (var w2 = workers2Min; w2 <= workers2Max; ++w2)
                 {
-                    Init(w1, w2, seedGen.Next());
+                    Init(w1, w2, advertisingInvestment, seedGen.Next());
                     Simulate(replicationCount, simEndTime);
                     if (Stopped) return;
                     result[0] = StatisticWaitForRepairTotal.Mean;
                     result[1] = StatisticIncomesTotal.Mean;
-                    if (ComputeProfit(w1, w2, result[0], result[1]) > ComputeProfit(bestWorkers1, bestWorkers2, bestResult[0], bestResult[1]))
+                    if (ComputeProfit(w1, w2, result[0], result[1]) >
+                        ComputeProfit(bestWorkers1, bestWorkers2, bestResult[0], bestResult[1]))
                     {
                         bestResult[0] = result[0];
                         bestResult[1] = result[1];
@@ -177,9 +180,9 @@ namespace SEM03.Simulation
             OnRunFinished?.Invoke();
         }
 
-        public Thread MultiRunAsync(int replicationCount, double simEndTime, int workers1Min, int workers1Max, int workers2Min, int workers2Max, int? seed = null)
+        public Thread MultiRunAsync(int replicationCount, double simEndTime, int workers1Min, int workers1Max, int workers2Min, int workers2Max, double advertisingInvestment, int? seed = null)
         {
-            var thread = new Thread(() => MultiRun(replicationCount, simEndTime, workers1Min, workers1Max, workers2Min, workers2Max, seed))
+            var thread = new Thread(() => MultiRun(replicationCount, simEndTime, workers1Min, workers1Max, workers2Min, workers2Max, advertisingInvestment, seed))
             {
                 Name = "ABASim - simulation thread",
                 IsBackground = true,
@@ -299,7 +302,7 @@ namespace SEM03.Simulation
             AgentWorkshop = new AgentWorkshop(SimId.AGENT_WORKSHOP, this, AgentCarService);
 
             GeneratorSeed = new Random(Seed);
-            GeneratorCustomerArrivals = new ExponentialDistributionGenerator(SimConfig.TIME_BETWEEN_CUSTOMERS, GeneratorSeed.Next());
+            GeneratorCustomerArrivals = new ExponentialDistributionGenerator(SimConfig.TimeBetweenCustomers, GeneratorSeed.Next());
             GeneratorRepairCount = new EmpiricalIntDistributionGenerator(new[]
             {
                 new EmpiricalIntDistributionGenerator.IntervalDefinition(1, 2, 0.0544),
@@ -356,7 +359,7 @@ namespace SEM03.Simulation
             var duration = SimTimeHelper.ToDays(SimConfig.ReplicationDuration);
             var operatingExpenses = duration * SimConfig.OPERATING_EXPENSES_DAY;
             var workersCosts = workers1 * duration * SimConfig.WORKER_1_COSTS_DAY + workers2 * duration * SimConfig.WORKER_2_COSTS_DAY;
-            return totalIncomes - operatingExpenses - workersCosts;
+            return totalIncomes - operatingExpenses - workersCosts - SimConfig.AdvertisingInvestment;
         }
     }
 }
