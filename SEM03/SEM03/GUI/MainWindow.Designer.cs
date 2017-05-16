@@ -111,16 +111,16 @@
             this.labelCustomersServedValue = new System.Windows.Forms.Label();
             this.labelCustomersNotServedValue = new System.Windows.Forms.Label();
             this.labelCustomersServedRatioValue = new System.Windows.Forms.Label();
-            this.labelCustomersInServiceAvg = new System.Windows.Forms.Label();
-            this.labelCustomersInQueueAvg = new System.Windows.Forms.Label();
-            this.labelCustomersWaitInQueueAvg = new System.Windows.Forms.Label();
-            this.labelCustomersWaitForRepairAvg = new System.Windows.Forms.Label();
-            this.labelCustomersTimeInServiceAvg = new System.Windows.Forms.Label();
-            this.labelCustomersInServiceAvgValue = new System.Windows.Forms.Label();
-            this.labelCustomersInQueueAvgValue = new System.Windows.Forms.Label();
-            this.labelCustomersWaitInQueueAvgValue = new System.Windows.Forms.Label();
-            this.labelCustomersWaitForRepairAvgValue = new System.Windows.Forms.Label();
-            this.labelCustomersTimeInServiceAvgValue = new System.Windows.Forms.Label();
+            this.labelCustomersAvgInService = new System.Windows.Forms.Label();
+            this.labelCustomersAvgInQueue = new System.Windows.Forms.Label();
+            this.labelCustomersAvgWaitInQueue = new System.Windows.Forms.Label();
+            this.labelCustomersAvgWaitForRepair = new System.Windows.Forms.Label();
+            this.labelCustomersAvgTimeInService = new System.Windows.Forms.Label();
+            this.labelCustomersAvgInServiceValue = new System.Windows.Forms.Label();
+            this.labelCustomersAvgInQueueValue = new System.Windows.Forms.Label();
+            this.labelCustomersAvgWaitInQueueValue = new System.Windows.Forms.Label();
+            this.labelCustomersAvgWaitForRepairValue = new System.Windows.Forms.Label();
+            this.labelCustomersAvgTimeInServiceValue = new System.Windows.Forms.Label();
             this.tabWorkers1 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanelWorkers1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBoxWorkers1Stats = new System.Windows.Forms.GroupBox();
@@ -1158,16 +1158,16 @@
             this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersServedValue, 1, 3);
             this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersNotServedValue, 1, 4);
             this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersServedRatioValue, 1, 5);
-            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersInServiceAvg, 2, 0);
-            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersInQueueAvg, 2, 1);
-            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersWaitInQueueAvg, 2, 2);
-            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersWaitForRepairAvg, 2, 3);
-            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersTimeInServiceAvg, 2, 4);
-            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersInServiceAvgValue, 3, 0);
-            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersInQueueAvgValue, 3, 1);
-            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersWaitInQueueAvgValue, 3, 2);
-            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersWaitForRepairAvgValue, 3, 3);
-            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersTimeInServiceAvgValue, 3, 4);
+            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersAvgInService, 2, 0);
+            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersAvgInQueue, 2, 1);
+            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersAvgWaitInQueue, 2, 2);
+            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersAvgWaitForRepair, 2, 3);
+            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersAvgTimeInService, 2, 4);
+            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersAvgInServiceValue, 3, 0);
+            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersAvgInQueueValue, 3, 1);
+            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersAvgWaitInQueueValue, 3, 2);
+            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersAvgWaitForRepairValue, 3, 3);
+            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersAvgTimeInServiceValue, 3, 4);
             this.tableLayoutPanelCustomersStats.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelCustomersStats.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanelCustomersStats.Name = "tableLayoutPanelCustomersStats";
@@ -1302,105 +1302,105 @@
             this.labelCustomersServedRatioValue.Text = "-";
             this.labelCustomersServedRatioValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // labelCustomersInServiceAvg
+            // labelCustomersAvgInService
             // 
-            this.labelCustomersInServiceAvg.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.labelCustomersInServiceAvg.Location = new System.Drawing.Point(641, 2);
-            this.labelCustomersInServiceAvg.Name = "labelCustomersInServiceAvg";
-            this.labelCustomersInServiceAvg.Size = new System.Drawing.Size(250, 15);
-            this.labelCustomersInServiceAvg.TabIndex = 12;
-            this.labelCustomersInServiceAvg.Text = "Priemerný počet zákazníkov v servise:";
-            this.labelCustomersInServiceAvg.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelCustomersAvgInService.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelCustomersAvgInService.Location = new System.Drawing.Point(641, 2);
+            this.labelCustomersAvgInService.Name = "labelCustomersAvgInService";
+            this.labelCustomersAvgInService.Size = new System.Drawing.Size(250, 15);
+            this.labelCustomersAvgInService.TabIndex = 12;
+            this.labelCustomersAvgInService.Text = "Priemerný počet zákazníkov v servise:";
+            this.labelCustomersAvgInService.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // labelCustomersInQueueAvg
+            // labelCustomersAvgInQueue
             // 
-            this.labelCustomersInQueueAvg.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.labelCustomersInQueueAvg.Location = new System.Drawing.Point(641, 22);
-            this.labelCustomersInQueueAvg.Name = "labelCustomersInQueueAvg";
-            this.labelCustomersInQueueAvg.Size = new System.Drawing.Size(250, 15);
-            this.labelCustomersInQueueAvg.TabIndex = 13;
-            this.labelCustomersInQueueAvg.Text = "Priemerný počet čakajúcich v rade:";
-            this.labelCustomersInQueueAvg.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelCustomersAvgInQueue.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelCustomersAvgInQueue.Location = new System.Drawing.Point(641, 22);
+            this.labelCustomersAvgInQueue.Name = "labelCustomersAvgInQueue";
+            this.labelCustomersAvgInQueue.Size = new System.Drawing.Size(250, 15);
+            this.labelCustomersAvgInQueue.TabIndex = 13;
+            this.labelCustomersAvgInQueue.Text = "Priemerný počet čakajúcich v rade:";
+            this.labelCustomersAvgInQueue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // labelCustomersWaitInQueueAvg
+            // labelCustomersAvgWaitInQueue
             // 
-            this.labelCustomersWaitInQueueAvg.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.labelCustomersWaitInQueueAvg.Location = new System.Drawing.Point(641, 42);
-            this.labelCustomersWaitInQueueAvg.Name = "labelCustomersWaitInQueueAvg";
-            this.labelCustomersWaitInQueueAvg.Size = new System.Drawing.Size(250, 15);
-            this.labelCustomersWaitInQueueAvg.TabIndex = 16;
-            this.labelCustomersWaitInQueueAvg.Text = "Priemerný čas čakania vo fronte:";
-            this.labelCustomersWaitInQueueAvg.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelCustomersAvgWaitInQueue.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelCustomersAvgWaitInQueue.Location = new System.Drawing.Point(641, 42);
+            this.labelCustomersAvgWaitInQueue.Name = "labelCustomersAvgWaitInQueue";
+            this.labelCustomersAvgWaitInQueue.Size = new System.Drawing.Size(250, 15);
+            this.labelCustomersAvgWaitInQueue.TabIndex = 16;
+            this.labelCustomersAvgWaitInQueue.Text = "Priemerný čas čakania vo fronte:";
+            this.labelCustomersAvgWaitInQueue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // labelCustomersWaitForRepairAvg
+            // labelCustomersAvgWaitForRepair
             // 
-            this.labelCustomersWaitForRepairAvg.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.labelCustomersWaitForRepairAvg.Location = new System.Drawing.Point(641, 62);
-            this.labelCustomersWaitForRepairAvg.Name = "labelCustomersWaitForRepairAvg";
-            this.labelCustomersWaitForRepairAvg.Size = new System.Drawing.Size(250, 15);
-            this.labelCustomersWaitForRepairAvg.TabIndex = 17;
-            this.labelCustomersWaitForRepairAvg.Text = "Priemerný čas čakania na opravu:";
-            this.labelCustomersWaitForRepairAvg.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelCustomersAvgWaitForRepair.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelCustomersAvgWaitForRepair.Location = new System.Drawing.Point(641, 62);
+            this.labelCustomersAvgWaitForRepair.Name = "labelCustomersAvgWaitForRepair";
+            this.labelCustomersAvgWaitForRepair.Size = new System.Drawing.Size(250, 15);
+            this.labelCustomersAvgWaitForRepair.TabIndex = 17;
+            this.labelCustomersAvgWaitForRepair.Text = "Priemerný čas čakania na opravu:";
+            this.labelCustomersAvgWaitForRepair.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // labelCustomersTimeInServiceAvg
+            // labelCustomersAvgTimeInService
             // 
-            this.labelCustomersTimeInServiceAvg.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.labelCustomersTimeInServiceAvg.Location = new System.Drawing.Point(641, 82);
-            this.labelCustomersTimeInServiceAvg.Name = "labelCustomersTimeInServiceAvg";
-            this.labelCustomersTimeInServiceAvg.Size = new System.Drawing.Size(250, 15);
-            this.labelCustomersTimeInServiceAvg.TabIndex = 18;
-            this.labelCustomersTimeInServiceAvg.Text = "Priemerný čas strávený v servise:";
-            this.labelCustomersTimeInServiceAvg.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelCustomersAvgTimeInService.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelCustomersAvgTimeInService.Location = new System.Drawing.Point(641, 82);
+            this.labelCustomersAvgTimeInService.Name = "labelCustomersAvgTimeInService";
+            this.labelCustomersAvgTimeInService.Size = new System.Drawing.Size(250, 15);
+            this.labelCustomersAvgTimeInService.TabIndex = 18;
+            this.labelCustomersAvgTimeInService.Text = "Priemerný čas strávený v servise:";
+            this.labelCustomersAvgTimeInService.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // labelCustomersInServiceAvgValue
+            // labelCustomersAvgInServiceValue
             // 
-            this.labelCustomersInServiceAvgValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelCustomersInServiceAvgValue.Location = new System.Drawing.Point(897, 2);
-            this.labelCustomersInServiceAvgValue.Name = "labelCustomersInServiceAvgValue";
-            this.labelCustomersInServiceAvgValue.Size = new System.Drawing.Size(250, 15);
-            this.labelCustomersInServiceAvgValue.TabIndex = 19;
-            this.labelCustomersInServiceAvgValue.Text = "-";
-            this.labelCustomersInServiceAvgValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelCustomersAvgInServiceValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelCustomersAvgInServiceValue.Location = new System.Drawing.Point(897, 2);
+            this.labelCustomersAvgInServiceValue.Name = "labelCustomersAvgInServiceValue";
+            this.labelCustomersAvgInServiceValue.Size = new System.Drawing.Size(250, 15);
+            this.labelCustomersAvgInServiceValue.TabIndex = 19;
+            this.labelCustomersAvgInServiceValue.Text = "-";
+            this.labelCustomersAvgInServiceValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // labelCustomersInQueueAvgValue
+            // labelCustomersAvgInQueueValue
             // 
-            this.labelCustomersInQueueAvgValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelCustomersInQueueAvgValue.Location = new System.Drawing.Point(897, 22);
-            this.labelCustomersInQueueAvgValue.Name = "labelCustomersInQueueAvgValue";
-            this.labelCustomersInQueueAvgValue.Size = new System.Drawing.Size(250, 15);
-            this.labelCustomersInQueueAvgValue.TabIndex = 20;
-            this.labelCustomersInQueueAvgValue.Text = "-";
-            this.labelCustomersInQueueAvgValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelCustomersAvgInQueueValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelCustomersAvgInQueueValue.Location = new System.Drawing.Point(897, 22);
+            this.labelCustomersAvgInQueueValue.Name = "labelCustomersAvgInQueueValue";
+            this.labelCustomersAvgInQueueValue.Size = new System.Drawing.Size(250, 15);
+            this.labelCustomersAvgInQueueValue.TabIndex = 20;
+            this.labelCustomersAvgInQueueValue.Text = "-";
+            this.labelCustomersAvgInQueueValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // labelCustomersWaitInQueueAvgValue
+            // labelCustomersAvgWaitInQueueValue
             // 
-            this.labelCustomersWaitInQueueAvgValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelCustomersWaitInQueueAvgValue.Location = new System.Drawing.Point(897, 42);
-            this.labelCustomersWaitInQueueAvgValue.Name = "labelCustomersWaitInQueueAvgValue";
-            this.labelCustomersWaitInQueueAvgValue.Size = new System.Drawing.Size(250, 15);
-            this.labelCustomersWaitInQueueAvgValue.TabIndex = 23;
-            this.labelCustomersWaitInQueueAvgValue.Text = "-";
-            this.labelCustomersWaitInQueueAvgValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelCustomersAvgWaitInQueueValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelCustomersAvgWaitInQueueValue.Location = new System.Drawing.Point(897, 42);
+            this.labelCustomersAvgWaitInQueueValue.Name = "labelCustomersAvgWaitInQueueValue";
+            this.labelCustomersAvgWaitInQueueValue.Size = new System.Drawing.Size(250, 15);
+            this.labelCustomersAvgWaitInQueueValue.TabIndex = 23;
+            this.labelCustomersAvgWaitInQueueValue.Text = "-";
+            this.labelCustomersAvgWaitInQueueValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // labelCustomersWaitForRepairAvgValue
+            // labelCustomersAvgWaitForRepairValue
             // 
-            this.labelCustomersWaitForRepairAvgValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelCustomersWaitForRepairAvgValue.Location = new System.Drawing.Point(897, 62);
-            this.labelCustomersWaitForRepairAvgValue.Name = "labelCustomersWaitForRepairAvgValue";
-            this.labelCustomersWaitForRepairAvgValue.Size = new System.Drawing.Size(250, 15);
-            this.labelCustomersWaitForRepairAvgValue.TabIndex = 24;
-            this.labelCustomersWaitForRepairAvgValue.Text = "-";
-            this.labelCustomersWaitForRepairAvgValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelCustomersAvgWaitForRepairValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelCustomersAvgWaitForRepairValue.Location = new System.Drawing.Point(897, 62);
+            this.labelCustomersAvgWaitForRepairValue.Name = "labelCustomersAvgWaitForRepairValue";
+            this.labelCustomersAvgWaitForRepairValue.Size = new System.Drawing.Size(250, 15);
+            this.labelCustomersAvgWaitForRepairValue.TabIndex = 24;
+            this.labelCustomersAvgWaitForRepairValue.Text = "-";
+            this.labelCustomersAvgWaitForRepairValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // labelCustomersTimeInServiceAvgValue
+            // labelCustomersAvgTimeInServiceValue
             // 
-            this.labelCustomersTimeInServiceAvgValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelCustomersTimeInServiceAvgValue.Location = new System.Drawing.Point(897, 82);
-            this.labelCustomersTimeInServiceAvgValue.Name = "labelCustomersTimeInServiceAvgValue";
-            this.labelCustomersTimeInServiceAvgValue.Size = new System.Drawing.Size(250, 15);
-            this.labelCustomersTimeInServiceAvgValue.TabIndex = 25;
-            this.labelCustomersTimeInServiceAvgValue.Text = "-";
-            this.labelCustomersTimeInServiceAvgValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelCustomersAvgTimeInServiceValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelCustomersAvgTimeInServiceValue.Location = new System.Drawing.Point(897, 82);
+            this.labelCustomersAvgTimeInServiceValue.Name = "labelCustomersAvgTimeInServiceValue";
+            this.labelCustomersAvgTimeInServiceValue.Size = new System.Drawing.Size(250, 15);
+            this.labelCustomersAvgTimeInServiceValue.TabIndex = 25;
+            this.labelCustomersAvgTimeInServiceValue.Text = "-";
+            this.labelCustomersAvgTimeInServiceValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tabWorkers1
             // 
@@ -3682,16 +3682,16 @@
         private System.Windows.Forms.Label labelCustomersServedValue;
         private System.Windows.Forms.Label labelCustomersNotServedValue;
         private System.Windows.Forms.Label labelCustomersServedRatioValue;
-        private System.Windows.Forms.Label labelCustomersInServiceAvg;
-        private System.Windows.Forms.Label labelCustomersInQueueAvg;
-        private System.Windows.Forms.Label labelCustomersWaitInQueueAvg;
-        private System.Windows.Forms.Label labelCustomersWaitForRepairAvg;
-        private System.Windows.Forms.Label labelCustomersTimeInServiceAvg;
-        private System.Windows.Forms.Label labelCustomersInServiceAvgValue;
-        private System.Windows.Forms.Label labelCustomersInQueueAvgValue;
-        private System.Windows.Forms.Label labelCustomersWaitInQueueAvgValue;
-        private System.Windows.Forms.Label labelCustomersWaitForRepairAvgValue;
-        private System.Windows.Forms.Label labelCustomersTimeInServiceAvgValue;
+        private System.Windows.Forms.Label labelCustomersAvgInService;
+        private System.Windows.Forms.Label labelCustomersAvgInQueue;
+        private System.Windows.Forms.Label labelCustomersAvgWaitInQueue;
+        private System.Windows.Forms.Label labelCustomersAvgWaitForRepair;
+        private System.Windows.Forms.Label labelCustomersAvgTimeInService;
+        private System.Windows.Forms.Label labelCustomersAvgInServiceValue;
+        private System.Windows.Forms.Label labelCustomersAvgInQueueValue;
+        private System.Windows.Forms.Label labelCustomersAvgWaitInQueueValue;
+        private System.Windows.Forms.Label labelCustomersAvgWaitForRepairValue;
+        private System.Windows.Forms.Label labelCustomersAvgTimeInServiceValue;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelWorkers1Stats;
         private System.Windows.Forms.Label labelWorkers1WorkingCount;
         private System.Windows.Forms.Label labelWorkers1WorkingCountValue;

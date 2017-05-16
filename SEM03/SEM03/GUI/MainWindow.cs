@@ -283,11 +283,17 @@ namespace SEM03.GUI
 
         private void RunFinished()
         {
-            ExecuteOnGuiThread(this, () => SetUpControlsOnStartStop(false));
+            ExecuteOnGuiThread(this, () =>
+            {
+                SetUpControlsOnStartStop(false);
+                ClearReplicationControls();
+            });
         }
 
         private void RefreshTriggered(OSPABA.Simulation sim)
         {
+            if (_sim.Stopped) return;
+
             var currentTime = SimTimeHelper.SimTimeAsString(_sim.CurrentTime);
             ExecuteOnGuiThread(labelTimeValue, () => labelTimeValue.Text = currentTime);
 
@@ -310,11 +316,11 @@ namespace SEM03.GUI
                 labelCustomersServedValue.Text = $@"{customersServedTotal}";
                 labelCustomersNotServedValue.Text = $@"{customersNotServedTotal}";
                 labelCustomersServedRatioValue.Text = customersServedRatio;
-                labelCustomersInServiceAvgValue.Text = $@"{customersInServiceMean:0.000000}";
-                labelCustomersInQueueAvgValue.Text = $@"{customersQueueLengthMean:0.000000}";
-                labelCustomersWaitInQueueAvgValue.Text = waitInQueueMean;
-                labelCustomersWaitForRepairAvgValue.Text = waitForRepairMean;
-                labelCustomersTimeInServiceAvgValue.Text = timeInServiceMean;
+                labelCustomersAvgInServiceValue.Text = $@"{customersInServiceMean:0.000000}";
+                labelCustomersAvgInQueueValue.Text = $@"{customersQueueLengthMean:0.000000}";
+                labelCustomersAvgWaitInQueueValue.Text = waitInQueueMean;
+                labelCustomersAvgWaitForRepairValue.Text = waitForRepairMean;
+                labelCustomersAvgTimeInServiceValue.Text = timeInServiceMean;
             });
 
             var workers1Working = _sim.Workers1Working;
@@ -516,15 +522,7 @@ namespace SEM03.GUI
         private void PushButtonStartSimulation_Click(object sender, EventArgs e)
         {
             SetUpControlsOnStartStop(true);
-
-            widgetPlotQueueLenWorkers1.Series[0].Points.Clear();
-            widgetPlotQueueLenWorkers1.Refresh();
-            widgetPlotQueueLenWorkers2.Series[0].Points.Clear();
-            widgetPlotQueueLenWorkers2.Refresh();
-            widgetPlotTimeInServiceWorkers1.Series[0].Points.Clear();
-            widgetPlotTimeInServiceWorkers1.Refresh();
-            widgetPlotTimeInServiceWorkers2.Series[0].Points.Clear();
-            widgetPlotTimeInServiceWorkers2.Refresh();
+            ClearSimulationControls();
 
             if (checkBoxWatchModeEnabled.Checked)
             {
@@ -597,9 +595,10 @@ namespace SEM03.GUI
         private void PushButtonStopSimulation_Click(object sender, EventArgs e)
         {
             _sim.StopSimulation();
-            //_thr.Join();
+            //_thr.Join(); // TODO uncomment
 
             SetUpControlsOnStartStop(false);
+            ClearReplicationControls();
         }
 
         private void CheckBoxWatchModeEnabled_CheckedChanged(object sender, EventArgs e)
@@ -649,6 +648,116 @@ namespace SEM03.GUI
             spinBoxTimeInServiceFixWorkers1.Enabled = !start;
             spinBoxTimeInServiceFixWorkers2.Enabled = !start;
             spinBoxAdInvestment.Enabled = !start;
+        }
+
+        private void ClearReplicationControls()
+        {
+            labelTimeValue.Text = @"-";
+            labelReplicationValue.Text = @"-";
+            labelWorkers1CurrentValue.Text = @"-";
+            labelWorkers2CurrentValue.Text = @"-";
+
+            dataGridViewCustomers.DataSource = null;
+            dataGridViewCustomers.Refresh();
+            labelCustomersInServiceValue.Text = @"-";
+            labelCustomersInQueueValue.Text = @"-";
+            labelCustomersTotalValue.Text = @"-";
+            labelCustomersServedValue.Text = @"-";
+            labelCustomersNotServedValue.Text = @"-";
+            labelCustomersServedRatioValue.Text = @"-";
+            labelCustomersAvgInServiceValue.Text = @"-";
+            labelCustomersAvgInQueueValue.Text = @"-";
+            labelCustomersAvgWaitInQueueValue.Text = @"-";
+            labelCustomersAvgWaitForRepairValue.Text = @"-";
+            labelCustomersAvgTimeInServiceValue.Text = @"-";
+
+            dataGridViewWorkers1.DataSource = null;
+            dataGridViewWorkers1.Refresh();
+            labelWorkers1WorkingCountValue.Text = @"-";
+            labelWorkers1WorkingRatioValue.Text = @"-";
+            labelWorkers1ReturnQueueLengthValue.Text = @"-";
+            labelWorkers1AvgWorkingCountValue.Text = @"-";
+            labelWorkers1AvgWorkingRatioValue.Text = @"-";
+            labelWorkers1AvgReturnQueueLengthValue.Text = @"-";
+
+            dataGridViewWorkers2.DataSource = null;
+            dataGridViewWorkers2.Refresh();
+            labelWorkers2WorkingCountValue.Text = @"-";
+            labelWorkers2WorkingRatioValue.Text = @"-";
+            labelWorkers2ToRepairQueueLengthValue.Text = @"-";
+            labelWorkers2RepairedQueueLengthValue.Text = @"-";
+            labelWorkers2AvgWorkingCountValue.Text = @"-";
+            labelWorkers2AvgWorkingRatioValue.Text = @"-";
+            labelWorkers2AvgToRepairQueueLengthValue.Text = @"-";
+            labelWorkers2AvgRepairedQueueLengthValue.Text = @"-";
+
+            dataGridViewCarPark1.DataSource = null;
+            dataGridViewCarPark1.Refresh();
+            dataGridViewCarPark2.DataSource = null;
+            dataGridViewCarPark2.Refresh();
+            labelCarPark1OccupiedCountValue.Text = @"-";
+            labelCarPark1AvgOccupiedCountValue.Text = @"-";
+            labelCarPark1OccupiedRatioValue.Text = @"-";
+            labelCarPark1AvgOccupiedRatioValue.Text = @"-";
+            labelCarPark2OccupiedCountValue.Text = @"-";
+            labelCarPark2AvgOccupiedCountValue.Text = @"-";
+            labelCarPark2OccupiedRatioValue.Text = @"-";
+            labelCarPark2AvgOccupiedRatioValue.Text = @"-";
+            labelCarParkServiceCountValue.Text = @"-";
+            labelCarParkServiceAvgCountValue.Text = @"-";
+        }
+
+        private void ClearSimulationControls()
+        {
+            labelSimCustomersInServiceValue.Text = @"-";
+            labelSimCustomerInQueueValue.Text = @"-";
+            labelSimToRepairQueueLengthValue.Text = @"-";
+            labelSimRepairedQueueLengthValue.Text = @"-";
+            labelSimReturnQueueLengthValue.Text = @"-";
+            labelSimCustomersServedRatioValue.Text = @"-";
+            labelSimWaitInQueueValue.Text = @"-";
+            labelSimWaitForRepairValue.Text = @"-";
+            labelSimTimeInServiceValue.Text = @"-";
+            labelSimWorking1CountValue.Text = @"-";
+            labelSimWorking2CountValue.Text = @"-";
+            labelSimWorking1RatioValue.Text = @"-";
+            labelSimWorking2RatioValue.Text = @"-";
+            labelSimCarPark1CountValue.Text = @"-";
+            labelSimCarPark2CountValue.Text = @"-";
+            labelSimCarParkServiceCountValue.Text = @"-";
+            labelSimCarPark1RatioValue.Text = @"-";
+            labelSimCarPark2RatioValue.Text = @"-";
+            labelSimCustomersInServiceISValue.Text = @"-";
+            labelSimCustomerInQueueISValue.Text = @"-";
+            labelSimToRepairQueueLengthISValue.Text = @"-";
+            labelSimRepairedQueueLengthISValue.Text = @"-";
+            labelSimReturnQueueLengthISValue.Text = @"-";
+            labelSimCustomersServedRatioISValue.Text = @"-";
+            labelSimWaitInQueueISValue.Text = @"-";
+            labelSimWaitForRepairISValue.Text = @"-";
+            labelSimTimeInServiceISValue.Text = @"-";
+            labelSimWorking1CountISValue.Text = @"-";
+            labelSimWorking2CountISValue.Text = @"-";
+            labelSimWorking1RatioISValue.Text = @"-";
+            labelSimWorking2RatioISValue.Text = @"-";
+            labelSimCarPark1CountISValue.Text = @"-";
+            labelSimCarPark2CountISValue.Text = @"-";
+            labelSimCarParkServiceCountISValue.Text = @"-";
+            labelSimCarPark1RatioISValue.Text = @"-";
+            labelSimCarPark2RatioISValue.Text = @"-";
+
+            labelIdealWorkers1CountValue.Text = @"-";
+            labelIdealWorkers2CountValue.Text = @"-";
+            labelProfitValue.Text = @"-";
+
+            widgetPlotQueueLenWorkers1.Series[0].Points.Clear();
+            widgetPlotQueueLenWorkers1.Refresh();
+            widgetPlotQueueLenWorkers2.Series[0].Points.Clear();
+            widgetPlotQueueLenWorkers2.Refresh();
+            widgetPlotTimeInServiceWorkers1.Series[0].Points.Clear();
+            widgetPlotTimeInServiceWorkers1.Refresh();
+            widgetPlotTimeInServiceWorkers2.Series[0].Points.Clear();
+            widgetPlotTimeInServiceWorkers2.Refresh();
         }
 
         private static void ExecuteOnGuiThread(Control control, Action action)
