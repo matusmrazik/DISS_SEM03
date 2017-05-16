@@ -1,53 +1,91 @@
 ﻿using OSPABA;
+using Action = System.Action;
 
 namespace SEM03.Entities
 {
     public class ParkingPlace : Entity
     {
-        public State Availability { get; set; }
+        public event Action OnAvailabilityChanged;
+
+        private State _availability;
+
+        public double OccupiedStart { get; private set; }
+        public double OccupiedSum { get; private set; }
+
+        public double TotalOccupiedTime
+        {
+            get
+            {
+                if (!IsOccupied()) return OccupiedSum;
+                return OccupiedSum + (MySim.CurrentTime - OccupiedStart);
+            }
+        }
+
+        public string StateStr
+        {
+            get
+            {
+                if (IsFree()) return "Voľné";
+                if (IsReserved()) return "Rezervované";
+                return "Obsadené";
+            }
+        }
+
+        public string OccupiedRatioStr => MySim.CurrentTime == 0.0 ? "-" : $"{100.0 * (TotalOccupiedTime / MySim.CurrentTime):0.00} %";
 
         public ParkingPlace(OSPABA.Simulation mySim)
             : base(mySim)
         {
-            Availability = State.Free;
+            Reset();
         }
 
         public bool IsFree()
         {
-            return Availability == State.Free;
+            return _availability == State.Free;
         }
 
         public bool IsReserved()
         {
-            return Availability == State.Reserved;
+            return _availability == State.Reserved;
         }
 
         public bool IsOccupied()
         {
-            return Availability == State.Occupied;
+            return _availability == State.Occupied;
         }
 
         public void SetFree()
         {
-            Availability = State.Free;
+            if (IsFree()) return;
+            if (IsOccupied()) OccupiedSum += MySim.CurrentTime - OccupiedStart;
+            _availability = State.Free;
+            OnAvailabilityChanged?.Invoke();
         }
 
         public void SetReserved()
         {
-            Availability = State.Reserved;
+            if (IsReserved()) return;
+            if (IsOccupied()) OccupiedSum += MySim.CurrentTime - OccupiedStart;
+            _availability = State.Reserved;
+            OnAvailabilityChanged?.Invoke();
         }
 
         public void SetOccupied()
         {
-            Availability = State.Occupied;
+            if (IsOccupied()) return;
+            OccupiedStart = MySim.CurrentTime;
+            _availability = State.Occupied;
+            OnAvailabilityChanged?.Invoke();
         }
 
-        public override string ToString()
+        public void Reset()
         {
-            return Availability.ToString();
+            _availability = State.Free;
+            OccupiedStart = 0.0;
+            OccupiedSum = 0.0;
         }
 
-        public enum State
+        private enum State
         {
             Free, Reserved, Occupied
         }

@@ -8,6 +8,7 @@ namespace SEM03.Managers
     public class ManagerModel : Manager
     {
         public new AgentModel MyAgent => (AgentModel)base.MyAgent;
+        public new SimCarService MySim => (SimCarService)base.MySim;
 
         public bool ArrivalRampOpen { get; private set; }
         public bool DepartureRampOpen { get; private set; }
@@ -52,6 +53,7 @@ namespace SEM03.Managers
         //meta! sender="AgentCarService", id="54", type="Response"
         public void ProcessCustomerService(MessageForm message)
         {
+            MySim.CarParkServiceOccupied--;
             message.Addressee = MyAgent.FindAssistant(SimId.PROCESS_LEAVE_CAR_PARK);
             StartContinualAssistant(message);
         }
@@ -59,6 +61,7 @@ namespace SEM03.Managers
         //meta! sender="ProcessParkCar", id="50", type="Finish"
         public void ProcessFinishProcessParkCar(MessageForm message)
         {
+            MySim.CarParkServiceOccupied++;
             message.Code = Mc.CUSTOMER_SERVICE;
             message.Addressee = MySim.FindAgent(SimId.AGENT_CAR_SERVICE);
             Request(message);

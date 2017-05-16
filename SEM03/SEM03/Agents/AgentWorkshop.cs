@@ -15,11 +15,13 @@ namespace SEM03.Agents
         public List<Mechanic> Workers { get; private set; }
         public List<ParkingPlace> CarPark { get; private set; }
         public CustomQueue<MsgCarService> OrdersQueue { get; private set; }
-        //public CustomQueue<MsgCarService> ParkingPlaceRequests { get; private set; }
 
         public WStat StatisticCarsForRepairQueueLength { get; private set; }
+        public WStat StatisticWorkersWorking { get; private set; }
+        public WStat StatisticCarParkOccupied { get; private set; }
 
         public int WorkersWorking => Workers.Count(worker => worker.IsWorking);
+        public int CarParkOccupied => CarPark.Count(place => place.IsOccupied());
         public double TotalWorkingTime => Workers.Sum(worker => worker.TotalWorkingTime);
 
         public AgentWorkshop(int id, OSPABA.Simulation mySim, Agent parent)
@@ -33,9 +35,10 @@ namespace SEM03.Agents
             base.PrepareReplication();
 
             OrdersQueue.Clear();
-            //ParkingPlaceRequests.Clear();
 
             StatisticCarsForRepairQueueLength.Clear();
+            StatisticWorkersWorking.Clear();
+            StatisticCarParkOccupied.Clear();
 
             ResetWorkers();
             ResetCarPark();
@@ -58,7 +61,9 @@ namespace SEM03.Agents
             CarPark.Clear();
             for (var i = 0; i < count; ++i)
             {
-                CarPark.Add(new ParkingPlace(MySim));
+                var parkingPlace = new ParkingPlace(MySim);
+                parkingPlace.OnAvailabilityChanged += () => StatisticCarParkOccupied.AddSample(CarParkOccupied);
+                CarPark.Add(parkingPlace);
             }
         }
 
@@ -74,7 +79,7 @@ namespace SEM03.Agents
         {
             foreach (var parkingPlace in CarPark)
             {
-                parkingPlace.SetFree();
+                parkingPlace.Reset();
             }
         }
 
@@ -116,9 +121,10 @@ namespace SEM03.Agents
             Workers = new List<Mechanic>();
             CarPark = new List<ParkingPlace>();
             OrdersQueue = new CustomQueue<MsgCarService>();
-            //ParkingPlaceRequests = new CustomQueue<MsgCarService>();
 
             StatisticCarsForRepairQueueLength = new WStat(MySim);
+            StatisticWorkersWorking = new WStat(MySim);
+            StatisticCarParkOccupied = new WStat(MySim);
         }
     }
 }

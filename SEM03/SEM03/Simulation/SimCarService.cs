@@ -14,20 +14,37 @@ namespace SEM03.Simulation
         public event Action OnRunFinished;
         public event Action<int, int, double> OnBestWorkerCountFound;
 
+        private int _carParkServiceOccupied;
+
         public bool Stopped { get; private set; }
 
         public int Seed { get; private set; }
 
         public List<Customer> Customers { get; private set; }
 
+        public int CarParkServiceOccupied
+        {
+            get => _carParkServiceOccupied;
+            set
+            {
+                _carParkServiceOccupied = value;
+                StatisticCarParkServiceOccupied.AddSample(_carParkServiceOccupied);
+            }
+        }
+
         public int Workers1Count => AgentService.Workers.Count;
         public int Workers2Count => AgentWorkshop.Workers.Count;
+        public int CarPark1Capacity => AgentWorkshop.CarPark.Count;
+        public int CarPark2Capacity => AgentService.CarPark.Count;
 
         public int Workers1Working => AgentService.WorkersWorking;
         public int Workers2Working => AgentWorkshop.WorkersWorking;
+        public int CarPark1Occupied => AgentWorkshop.CarParkOccupied;
+        public int CarPark2Occupied => AgentService.CarParkOccupied;
         public int CustomerQueueLength => AgentService.QueueLength;
         public int CarsForRepairQueueLength => AgentWorkshop.OrdersQueue.Count;
         public int RepairedCarsQueueLength => AgentService.RepairedQueue.Count;
+        public int ReturnQueueLength => AgentService.ReturnQueue.Count;
 
         public AgentModel AgentModel { get; private set; }
         public AgentEnvironment AgentEnvironment { get; private set; }
@@ -46,6 +63,8 @@ namespace SEM03.Simulation
         public UniformRealDistributionGenerator GeneratorCarTakeoverDuration { get; private set; }
         public UniformRealDistributionGenerator GeneratorCarReturnDuration { get; private set; }
 
+        public WStat StatisticCustomersInService { get; private set; }
+        public WStat StatisticCarParkServiceOccupied { get; private set; }
         public Stat StatisticWaitForRepair => AgentService.StatisticWaitForRepair;
         public Stat StatisticWaitInQueue => AgentService.StatisticWaitInQueue;
         public WStat StatisticQueueLength => AgentService.StatisticQueueLength;
@@ -54,6 +73,10 @@ namespace SEM03.Simulation
         public WStat StatisticReadyToReturnQueueLength => AgentService.StatisticReadyToReturnQueueLength;
         public Stat StatisticTimeInService => AgentEnvironment.StatisticTimeInService;
         public Stat StatisticIncomes => AgentService.StatisticIncomes;
+        public WStat StatisticWorkers1Working => AgentService.StatisticWorkersWorking;
+        public WStat StatisticWorkers2Working => AgentWorkshop.StatisticWorkersWorking;
+        public WStat StatisticCarPark1Occupied => AgentWorkshop.StatisticCarParkOccupied;
+        public WStat StatisticCarPark2Occupied => AgentService.StatisticCarParkOccupied;
 
         public Stat StatisticWaitForRepairTotal { get; private set; }
         public Stat StatisticWaitInQueueTotal { get; private set; }
@@ -64,6 +87,12 @@ namespace SEM03.Simulation
         public Stat StatisticTimeInServiceTotal { get; private set; }
         public Stat StatisticServedPrecentageTotal { get; private set; }
         public Stat StatisticIncomesTotal { get; private set; }
+        public Stat StatisticCustomersInServiceTotal { get; private set; }
+        public Stat StatisticWorkers1WorkingTotal { get; private set; }
+        public Stat StatisticWorkers2WorkingTotal { get; private set; }
+        public Stat StatisticCarPark1OccupiedTotal { get; private set; }
+        public Stat StatisticCarPark2OccupiedTotal { get; private set; }
+        public Stat StatisticCarParkServiceOccupiedTotal { get; private set; }
 
         public SimCarService()
         {
@@ -198,6 +227,12 @@ namespace SEM03.Simulation
             StatisticTimeInServiceTotal.Clear();
             StatisticServedPrecentageTotal.Clear();
             StatisticIncomesTotal.Clear();
+            StatisticCustomersInServiceTotal.Clear();
+            StatisticWorkers1WorkingTotal.Clear();
+            StatisticWorkers2WorkingTotal.Clear();
+            StatisticCarPark1OccupiedTotal.Clear();
+            StatisticCarPark2OccupiedTotal.Clear();
+            StatisticCarParkServiceOccupiedTotal.Clear();
         }
 
         protected override void PrepareReplication()
@@ -205,6 +240,10 @@ namespace SEM03.Simulation
             base.PrepareReplication();
 
             Customers.Clear();
+            StatisticCustomersInService.Clear();
+            StatisticCarParkServiceOccupied.Clear();
+
+            _carParkServiceOccupied = 0;
 
             Logger.LogInfo($@"Beží replikácia {CurrentReplication + 1}");
         }
@@ -222,6 +261,12 @@ namespace SEM03.Simulation
             StatisticTimeInServiceTotal.AddSample(StatisticTimeInService.Mean);
             StatisticServedPrecentageTotal.AddSample((double)AgentEnvironment.CustomersLeftServed.Count / AgentEnvironment.CustomersLeftTotal.Count);
             StatisticIncomesTotal.AddSample(StatisticIncomes.Sum);
+            StatisticCustomersInServiceTotal.AddSample(StatisticCustomersInService.Mean);
+            StatisticWorkers1WorkingTotal.AddSample(StatisticWorkers1Working.Mean);
+            StatisticWorkers2WorkingTotal.AddSample(StatisticWorkers2Working.Mean);
+            StatisticCarPark1OccupiedTotal.AddSample(StatisticCarPark1Occupied.Mean);
+            StatisticCarPark2OccupiedTotal.AddSample(StatisticCarPark2Occupied.Mean);
+            StatisticCarParkServiceOccupiedTotal.AddSample(StatisticCarParkServiceOccupied.Mean);
         }
 
         protected override void SimulationFinished()
@@ -282,6 +327,11 @@ namespace SEM03.Simulation
             GeneratorCarTakeoverDuration = new UniformRealDistributionGenerator(80, 160, GeneratorSeed.Next());
             GeneratorCarReturnDuration = new UniformRealDistributionGenerator(123, 257, GeneratorSeed.Next());
 
+            _carParkServiceOccupied = 0;
+
+            StatisticCustomersInService = new WStat(this);
+            StatisticCarParkServiceOccupied = new WStat(this);
+
             StatisticWaitForRepairTotal = new Stat(this);
             StatisticWaitInQueueTotal = new Stat(this);
             StatisticQueueLengthTotal = new Stat(this);
@@ -291,6 +341,12 @@ namespace SEM03.Simulation
             StatisticTimeInServiceTotal = new Stat(this);
             StatisticServedPrecentageTotal = new Stat(this);
             StatisticIncomesTotal = new Stat(this);
+            StatisticCustomersInServiceTotal = new Stat(this);
+            StatisticWorkers1WorkingTotal = new Stat(this);
+            StatisticWorkers2WorkingTotal = new Stat(this);
+            StatisticCarPark1OccupiedTotal = new Stat(this);
+            StatisticCarPark2OccupiedTotal = new Stat(this);
+            StatisticCarParkServiceOccupiedTotal = new Stat(this);
         }
 
         private static double ComputeProfit(int workers1, int workers2, double averageWaitForRepairTime, double totalIncomes)

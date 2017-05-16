@@ -18,16 +18,19 @@ namespace SEM03.Agents
         public CustomQueue<MsgCarService> OrdersQueue { get; private set; } // incoming orders waiting for a free worker
         public CustomQueue<MsgCarService> RepairedQueue { get; private set; } // repaired cars waiting to be parked to car park
         public CustomQueue<MsgCarService> ReturnQueue { get; private set; } // cars ready to be returned to their owners
-        
+
         public Stat StatisticWaitForRepair { get; private set; }
         public Stat StatisticWaitInQueue { get; private set; }
         public WStat StatisticQueueLength { get; private set; }
         public WStat StatisticRepairedQueueLength { get; private set; }
         public WStat StatisticReadyToReturnQueueLength { get; private set; }
         public Stat StatisticIncomes { get; private set; }
+        public WStat StatisticWorkersWorking { get; private set; }
+        public WStat StatisticCarParkOccupied { get; private set; }
 
         public int QueueLength => ParkingPlaceQueue.Count + OrdersQueue.Count;
         public int WorkersWorking => Workers.Count(worker => worker.IsWorking);
+        public int CarParkOccupied => CarPark.Count(place => place.IsOccupied());
         public double TotalWorkingTime => Workers.Sum(worker => worker.TotalWorkingTime);
 
         public AgentService(int id, OSPABA.Simulation mySim, Agent parent)
@@ -51,6 +54,8 @@ namespace SEM03.Agents
             StatisticRepairedQueueLength.Clear();
             StatisticReadyToReturnQueueLength.Clear();
             StatisticIncomes.Clear();
+            StatisticWorkersWorking.Clear();
+            StatisticCarParkOccupied.Clear();
 
             ResetWorkers();
             ResetCarPark();
@@ -76,7 +81,9 @@ namespace SEM03.Agents
             CarPark.Clear();
             for (var i = 0; i < count; ++i)
             {
-                CarPark.Add(new ParkingPlace(MySim));
+                var parkingPlace = new ParkingPlace(MySim);
+                parkingPlace.OnAvailabilityChanged += () => StatisticCarParkOccupied.AddSample(CarParkOccupied);
+                CarPark.Add(parkingPlace);
             }
         }
 
@@ -92,7 +99,7 @@ namespace SEM03.Agents
         {
             foreach (var parkingPlace in CarPark)
             {
-                parkingPlace.SetFree();
+                parkingPlace.Reset();
             }
         }
 
@@ -152,6 +159,8 @@ namespace SEM03.Agents
             StatisticRepairedQueueLength = new WStat(MySim);
             StatisticReadyToReturnQueueLength = new WStat(MySim);
             StatisticIncomes = new Stat(MySim);
+            StatisticWorkersWorking = new WStat(MySim);
+            StatisticCarParkOccupied = new WStat(MySim);
         }
     }
 }

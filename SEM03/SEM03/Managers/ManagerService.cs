@@ -79,6 +79,7 @@ namespace SEM03.Managers
         //meta! sender="ProcessParkFromWorkshop", id="92", type="Finish"
         public void ProcessFinishProcessParkFromWorkshop(MessageForm message)
         {
+            MySim.CarParkServiceOccupied++;
             message.Addressee = MyAgent.FindAssistant(SimId.PROCESS_CAR_RETURN);
             StartContinualAssistant(message);
         }
@@ -171,6 +172,7 @@ namespace SEM03.Managers
         {
             var msg = (MsgCarService)message;
             msg.Customer.WaitForRepairStarted();
+            MySim.CarParkServiceOccupied--;
             message.Addressee = MyAgent.FindAssistant(SimId.PROCESS_PARK_TO_WORKSHOP);
             StartContinualAssistant(message);
         }

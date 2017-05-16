@@ -28,6 +28,9 @@ namespace SEM03.Statistics
         public double Min => _n == 0 ? 0.0 : _min;
         public double Max => _n == 0 ? 0.0 : _max;
 
+        public double CurrentSum => _sum + _curValue * (_mySim.CurrentTime - _curTime);
+        public double CurrentMean => (_sum + _curValue * (_mySim.CurrentTime - _curTime)) / (_weightSum + (_mySim.CurrentTime - _curTime));
+
         public WStat(OSPABA.Simulation mySim)
         {
             _mySim = mySim;

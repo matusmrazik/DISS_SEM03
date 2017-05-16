@@ -93,61 +93,52 @@
             this.radioButtonCustomSeed = new System.Windows.Forms.RadioButton();
             this.radioButtonRandomSeed = new System.Windows.Forms.RadioButton();
             this.groupBoxOutput = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanelOutput = new System.Windows.Forms.TableLayoutPanel();
-            this.groupBoxOutputReplication = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanelOutputReplication = new System.Windows.Forms.TableLayoutPanel();
-            this.labelTimeInServiceDur = new System.Windows.Forms.Label();
-            this.labelWaitForRepairDurValue = new System.Windows.Forms.Label();
-            this.labelWaitForRepairDur = new System.Windows.Forms.Label();
-            this.labelWaitInQueueDurValue = new System.Windows.Forms.Label();
-            this.labelWaitInQueueDur = new System.Windows.Forms.Label();
-            this.labelAVGRepairedQueueLenValue = new System.Windows.Forms.Label();
-            this.labelAVGRepairedQueueLen = new System.Windows.Forms.Label();
-            this.labelAVGQueueForRepairLenValue = new System.Windows.Forms.Label();
-            this.labelAVGQueueForRepairLen = new System.Windows.Forms.Label();
-            this.labelAVGCustomerQueueLenValue = new System.Windows.Forms.Label();
-            this.labelAVGCustomerQueueLen = new System.Windows.Forms.Label();
-            this.labelRepairedQueueLenValue = new System.Windows.Forms.Label();
-            this.labelRepairedQueueLen = new System.Windows.Forms.Label();
-            this.labelQueueForRepairLenValue = new System.Windows.Forms.Label();
-            this.labelQueueForRepairLen = new System.Windows.Forms.Label();
-            this.labelCustomerQueueLenValue = new System.Windows.Forms.Label();
-            this.labelCustomerQueueLen = new System.Windows.Forms.Label();
-            this.labelWorkers2WorkingValue = new System.Windows.Forms.Label();
-            this.labelWorkers2Working = new System.Windows.Forms.Label();
-            this.labelWorkers1WorkingValue = new System.Windows.Forms.Label();
-            this.labelWorkers1Working = new System.Windows.Forms.Label();
-            this.labelTimeInServiceDurValue = new System.Windows.Forms.Label();
-            this.groupBoxIdealWorkersCount = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanelIdealWorkersCount = new System.Windows.Forms.TableLayoutPanel();
-            this.labelIdealWorkers2Count = new System.Windows.Forms.Label();
-            this.labelIdealWorkers1Count = new System.Windows.Forms.Label();
-            this.labelIdealWorkers1CountValue = new System.Windows.Forms.Label();
-            this.labelIdealWorkers2CountValue = new System.Windows.Forms.Label();
-            this.labelProfitValue = new System.Windows.Forms.Label();
-            this.labelProfit = new System.Windows.Forms.Label();
-            this.groupBoxOutputSimulation = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanelOutputSimulation = new System.Windows.Forms.TableLayoutPanel();
-            this.labelAVGCustomerQueueLenSim = new System.Windows.Forms.Label();
-            this.labelAVGCustomerQueueLenSimValue = new System.Windows.Forms.Label();
-            this.labelAVGQueueForRepairLenSimValue = new System.Windows.Forms.Label();
-            this.labelAVGRepairedQueueLenSimValue = new System.Windows.Forms.Label();
-            this.labelWaitInQueueDurSimValue = new System.Windows.Forms.Label();
-            this.labelWaitForRepairDurSimValue = new System.Windows.Forms.Label();
-            this.labelTimeInServiceDurSimValue = new System.Windows.Forms.Label();
-            this.labelWaitInQueueCIValue = new System.Windows.Forms.Label();
-            this.labelWaitForRepairCIValue = new System.Windows.Forms.Label();
-            this.labelTimeInSystemCIValue = new System.Windows.Forms.Label();
-            this.labelAVGQueueForRepairLenSim = new System.Windows.Forms.Label();
-            this.labelAVGRepairedQueueLenSim = new System.Windows.Forms.Label();
-            this.labelWaitInQueueDurSim = new System.Windows.Forms.Label();
-            this.labelWaitForRepairDurSim = new System.Windows.Forms.Label();
-            this.labelTimeInServiceDurSim = new System.Windows.Forms.Label();
-            this.labelWaitInQueueCI = new System.Windows.Forms.Label();
-            this.labelWaitForRepairCI = new System.Windows.Forms.Label();
-            this.labelTimeInSystemCI = new System.Windows.Forms.Label();
-            this.groupBoxVisualization = new System.Windows.Forms.GroupBox();
             this.tabWidgetOutput = new System.Windows.Forms.TabControl();
+            this.tabCustomers = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanelCustomers = new System.Windows.Forms.TableLayoutPanel();
+            this.dataGridViewCustomers = new System.Windows.Forms.DataGridView();
+            this.groupBoxCustomersStats = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanelCustomersStats = new System.Windows.Forms.TableLayoutPanel();
+            this.labelCustomersInService = new System.Windows.Forms.Label();
+            this.labelCustomersInQueue = new System.Windows.Forms.Label();
+            this.labelCustomersTotal = new System.Windows.Forms.Label();
+            this.labelCustomersServed = new System.Windows.Forms.Label();
+            this.labelCustomersNotServed = new System.Windows.Forms.Label();
+            this.labelCustomersServedRatio = new System.Windows.Forms.Label();
+            this.labelCustomersInServiceValue = new System.Windows.Forms.Label();
+            this.labelCustomersInQueueValue = new System.Windows.Forms.Label();
+            this.labelCustomersTotalValue = new System.Windows.Forms.Label();
+            this.labelCustomersServedValue = new System.Windows.Forms.Label();
+            this.labelCustomersNotServedValue = new System.Windows.Forms.Label();
+            this.labelCustomersServedRatioValue = new System.Windows.Forms.Label();
+            this.labelCustomersInServiceAvg = new System.Windows.Forms.Label();
+            this.labelCustomersInQueueAvg = new System.Windows.Forms.Label();
+            this.labelCustomersWaitInQueueAvg = new System.Windows.Forms.Label();
+            this.labelCustomersWaitForRepairAvg = new System.Windows.Forms.Label();
+            this.labelCustomersTimeInServiceAvg = new System.Windows.Forms.Label();
+            this.labelCustomersInServiceAvgValue = new System.Windows.Forms.Label();
+            this.labelCustomersInQueueAvgValue = new System.Windows.Forms.Label();
+            this.labelCustomersWaitInQueueAvgValue = new System.Windows.Forms.Label();
+            this.labelCustomersWaitForRepairAvgValue = new System.Windows.Forms.Label();
+            this.labelCustomersTimeInServiceAvgValue = new System.Windows.Forms.Label();
+            this.tabWorkers1 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanelWorkers1 = new System.Windows.Forms.TableLayoutPanel();
+            this.groupBoxWorkers1Stats = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanelWorkers1Stats = new System.Windows.Forms.TableLayoutPanel();
+            this.dataGridViewWorkers1 = new System.Windows.Forms.DataGridView();
+            this.tabWorkers2 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanelWorkers2 = new System.Windows.Forms.TableLayoutPanel();
+            this.groupBoxWorkers2Stats = new System.Windows.Forms.GroupBox();
+            this.dataGridViewWorkers2 = new System.Windows.Forms.DataGridView();
+            this.tabCarParks = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanelCarParks = new System.Windows.Forms.TableLayoutPanel();
+            this.groupBoxCarPark1 = new System.Windows.Forms.GroupBox();
+            this.dataGridViewCarPark1 = new System.Windows.Forms.DataGridView();
+            this.groupBoxCarPark2 = new System.Windows.Forms.GroupBox();
+            this.dataGridViewCarPark2 = new System.Windows.Forms.DataGridView();
+            this.groupBoxCarPark1Stats = new System.Windows.Forms.GroupBox();
+            this.groupBoxCarPark2Stats = new System.Windows.Forms.GroupBox();
+            this.groupBoxCarParkService = new System.Windows.Forms.GroupBox();
             this.tabQueueLenWorkers1 = new System.Windows.Forms.TabPage();
             this.widgetPlotQueueLenWorkers1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.frameQueueLenWorkers1 = new System.Windows.Forms.Panel();
@@ -169,20 +160,142 @@
             this.spinBoxTimeInServiceFixWorkers1 = new System.Windows.Forms.NumericUpDown();
             this.labelTimeInServiceFixWorkers1 = new System.Windows.Forms.Label();
             this.centralWidget = new System.Windows.Forms.Panel();
-            this.tabCustomers = new System.Windows.Forms.TabPage();
-            this.tabWorkers1 = new System.Windows.Forms.TabPage();
-            this.tabWorkers2 = new System.Windows.Forms.TabPage();
-            this.tabCarParks = new System.Windows.Forms.TabPage();
-            this.tabCarParkService = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanelCustomers = new System.Windows.Forms.TableLayoutPanel();
-            this.dataGridViewCustomers = new System.Windows.Forms.DataGridView();
-            this.groupBoxCustomersStats = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanelWorkers1 = new System.Windows.Forms.TableLayoutPanel();
-            this.dataGridViewWorkers1 = new System.Windows.Forms.DataGridView();
-            this.groupBoxWorkers1Stats = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanelWorkers2 = new System.Windows.Forms.TableLayoutPanel();
-            this.dataGridViewWorkers2 = new System.Windows.Forms.DataGridView();
-            this.groupBoxWorkers2Stats = new System.Windows.Forms.GroupBox();
+            this.labelWorkers1WorkingCount = new System.Windows.Forms.Label();
+            this.labelWorkers1WorkingCountValue = new System.Windows.Forms.Label();
+            this.labelWorkers1WorkingRatio = new System.Windows.Forms.Label();
+            this.labelWorkers1WorkingRatioValue = new System.Windows.Forms.Label();
+            this.labelWorkers1ReturnQueueLength = new System.Windows.Forms.Label();
+            this.labelWorkers1ReturnQueueLengthValue = new System.Windows.Forms.Label();
+            this.labelWorkers1AvgWorkingCount = new System.Windows.Forms.Label();
+            this.labelWorkers1AvgWorkingRatio = new System.Windows.Forms.Label();
+            this.labelWorkers1AvgReturnQueueLength = new System.Windows.Forms.Label();
+            this.labelWorkers1AvgWorkingCountValue = new System.Windows.Forms.Label();
+            this.labelWorkers1AvgWorkingRatioValue = new System.Windows.Forms.Label();
+            this.labelWorkers1AvgReturnQueueLengthValue = new System.Windows.Forms.Label();
+            this.tableLayoutPanelWorkers2Stats = new System.Windows.Forms.TableLayoutPanel();
+            this.labelWorkers2WorkingCount = new System.Windows.Forms.Label();
+            this.labelWorkers2WorkingCountValue = new System.Windows.Forms.Label();
+            this.labelWorkers2WorkingRatio = new System.Windows.Forms.Label();
+            this.labelWorkers2WorkingRatioValue = new System.Windows.Forms.Label();
+            this.labelWorkers2ToRepairQueueLength = new System.Windows.Forms.Label();
+            this.labelWorkers2ToRepairQueueLengthValue = new System.Windows.Forms.Label();
+            this.labelWorkers2AvgWorkingCount = new System.Windows.Forms.Label();
+            this.labelWorkers2AvgWorkingRatio = new System.Windows.Forms.Label();
+            this.labelWorkers2AvgToRepairQueueLength = new System.Windows.Forms.Label();
+            this.labelWorkers2AvgWorkingCountValue = new System.Windows.Forms.Label();
+            this.labelWorkers2AvgWorkingRatioValue = new System.Windows.Forms.Label();
+            this.labelWorkers2AvgToRepairQueueLengthValue = new System.Windows.Forms.Label();
+            this.labelWorkers2RepairedQueueLength = new System.Windows.Forms.Label();
+            this.labelWorkers2RepairedQueueLengthValue = new System.Windows.Forms.Label();
+            this.labelWorkers2AvgRepairedQueueLength = new System.Windows.Forms.Label();
+            this.labelWorkers2AvgRepairedQueueLengthValue = new System.Windows.Forms.Label();
+            this.tableLayoutPanelCarPark1Stats = new System.Windows.Forms.TableLayoutPanel();
+            this.labelCarPark1OccupiedCount = new System.Windows.Forms.Label();
+            this.labelCarPark1AvgOccupiedCount = new System.Windows.Forms.Label();
+            this.labelCarPark1OccupiedRatio = new System.Windows.Forms.Label();
+            this.labelCarPark1AvgOccupiedRatio = new System.Windows.Forms.Label();
+            this.labelCarPark1OccupiedCountValue = new System.Windows.Forms.Label();
+            this.labelCarPark1AvgOccupiedCountValue = new System.Windows.Forms.Label();
+            this.labelCarPark1OccupiedRatioValue = new System.Windows.Forms.Label();
+            this.labelCarPark1AvgOccupiedRatioValue = new System.Windows.Forms.Label();
+            this.tableLayoutPanelCarPark2Stats = new System.Windows.Forms.TableLayoutPanel();
+            this.labelCarPark2OccupiedCount = new System.Windows.Forms.Label();
+            this.labelCarPark2AvgOccupiedCount = new System.Windows.Forms.Label();
+            this.labelCarPark2OccupiedRatio = new System.Windows.Forms.Label();
+            this.labelCarPark2AvgOccupiedRatio = new System.Windows.Forms.Label();
+            this.labelCarPark2OccupiedCountValue = new System.Windows.Forms.Label();
+            this.labelCarPark2AvgOccupiedCountValue = new System.Windows.Forms.Label();
+            this.labelCarPark2OccupiedRatioValue = new System.Windows.Forms.Label();
+            this.labelCarPark2AvgOccupiedRatioValue = new System.Windows.Forms.Label();
+            this.tableLayoutPanelCarParkService = new System.Windows.Forms.TableLayoutPanel();
+            this.labelCarParkServiceCount = new System.Windows.Forms.Label();
+            this.labelCarParkServiceAvgCount = new System.Windows.Forms.Label();
+            this.labelCarParkServiceCountValue = new System.Windows.Forms.Label();
+            this.labelCarParkServiceAvgCountValue = new System.Windows.Forms.Label();
+            this.tabSimulation = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanelSimulation = new System.Windows.Forms.TableLayoutPanel();
+            this.groupBoxIdealWorkersCount = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanelIdealWorkersCount = new System.Windows.Forms.TableLayoutPanel();
+            this.labelIdealWorkers2Count = new System.Windows.Forms.Label();
+            this.labelIdealWorkers1Count = new System.Windows.Forms.Label();
+            this.labelIdealWorkers1CountValue = new System.Windows.Forms.Label();
+            this.labelIdealWorkers2CountValue = new System.Windows.Forms.Label();
+            this.labelProfitValue = new System.Windows.Forms.Label();
+            this.labelProfit = new System.Windows.Forms.Label();
+            this.groupBoxSimulationStats = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanelSimulationStats = new System.Windows.Forms.TableLayoutPanel();
+            this.labelSimCustomerInQueue = new System.Windows.Forms.Label();
+            this.labelSimCustomerInQueueValue = new System.Windows.Forms.Label();
+            this.labelSimToRepairQueueLengthValue = new System.Windows.Forms.Label();
+            this.labelSimReturnQueueLengthValue = new System.Windows.Forms.Label();
+            this.labelSimWaitInQueueValue = new System.Windows.Forms.Label();
+            this.labelSimWaitForRepairValue = new System.Windows.Forms.Label();
+            this.labelSimTimeInServiceValue = new System.Windows.Forms.Label();
+            this.labelSimWaitInQueueISValue = new System.Windows.Forms.Label();
+            this.labelSimWaitForRepairISValue = new System.Windows.Forms.Label();
+            this.labelSimTimeInServiceISValue = new System.Windows.Forms.Label();
+            this.labelSimToRepairQueueLength = new System.Windows.Forms.Label();
+            this.labelSimReturnQueueLength = new System.Windows.Forms.Label();
+            this.labelSimWaitInQueue = new System.Windows.Forms.Label();
+            this.labelSimWaitForRepair = new System.Windows.Forms.Label();
+            this.labelSimTimeInService = new System.Windows.Forms.Label();
+            this.labelSimWaitInQueueIS = new System.Windows.Forms.Label();
+            this.labelSimWaitForRepairIS = new System.Windows.Forms.Label();
+            this.labelSimTimeInServiceIS = new System.Windows.Forms.Label();
+            this.labelSimCustomersInService = new System.Windows.Forms.Label();
+            this.labelSimCustomersInServiceValue = new System.Windows.Forms.Label();
+            this.labelSimRepairedQueueLength = new System.Windows.Forms.Label();
+            this.labelSimCustomersServedRatio = new System.Windows.Forms.Label();
+            this.labelSimRepairedQueueLengthValue = new System.Windows.Forms.Label();
+            this.labelSimCustomersServedRatioValue = new System.Windows.Forms.Label();
+            this.labelSimWorking1Count = new System.Windows.Forms.Label();
+            this.labelSimWorking2Count = new System.Windows.Forms.Label();
+            this.labelSimWorking1Ratio = new System.Windows.Forms.Label();
+            this.labelSimWorking2Ratio = new System.Windows.Forms.Label();
+            this.labelSimCarPark1Count = new System.Windows.Forms.Label();
+            this.labelSimCarPark2Count = new System.Windows.Forms.Label();
+            this.labelSimCarParkServiceCount = new System.Windows.Forms.Label();
+            this.labelSimCarPark1Ratio = new System.Windows.Forms.Label();
+            this.labelSimCarPark2Ratio = new System.Windows.Forms.Label();
+            this.labelSimWorking1CountValue = new System.Windows.Forms.Label();
+            this.labelSimWorking2CountValue = new System.Windows.Forms.Label();
+            this.labelSimWorking1RatioValue = new System.Windows.Forms.Label();
+            this.labelSimWorking2RatioValue = new System.Windows.Forms.Label();
+            this.labelSimCarPark1CountValue = new System.Windows.Forms.Label();
+            this.labelSimCarPark2CountValue = new System.Windows.Forms.Label();
+            this.labelSimCarParkServiceCountValue = new System.Windows.Forms.Label();
+            this.labelSimCarPark1RatioValue = new System.Windows.Forms.Label();
+            this.labelSimCarPark2RatioValue = new System.Windows.Forms.Label();
+            this.labelSimCustomersInServiceIS = new System.Windows.Forms.Label();
+            this.labelSimCustomersInServiceISValue = new System.Windows.Forms.Label();
+            this.labelSimCustomerInQueueIS = new System.Windows.Forms.Label();
+            this.labelSimCustomerInQueueISValue = new System.Windows.Forms.Label();
+            this.labelSimToRepairQueueLengthIS = new System.Windows.Forms.Label();
+            this.labelSimToRepairQueueLengthISValue = new System.Windows.Forms.Label();
+            this.labelSimRepairedQueueLengthIS = new System.Windows.Forms.Label();
+            this.labelSimRepairedQueueLengthISValue = new System.Windows.Forms.Label();
+            this.labelSimReturnQueueLengthIS = new System.Windows.Forms.Label();
+            this.labelSimReturnQueueLengthISValue = new System.Windows.Forms.Label();
+            this.labelSimCustomersServedRatioIS = new System.Windows.Forms.Label();
+            this.labelSimCustomersServedRatioISValue = new System.Windows.Forms.Label();
+            this.labelSimWorking1CountIS = new System.Windows.Forms.Label();
+            this.labelSimWorking1CountISValue = new System.Windows.Forms.Label();
+            this.labelSimWorking2CountIS = new System.Windows.Forms.Label();
+            this.labelSimWorking2CountISValue = new System.Windows.Forms.Label();
+            this.labelSimWorking1RatioIS = new System.Windows.Forms.Label();
+            this.labelSimWorking1RatioISValue = new System.Windows.Forms.Label();
+            this.labelSimWorking2RatioIS = new System.Windows.Forms.Label();
+            this.labelSimWorking2RatioISValue = new System.Windows.Forms.Label();
+            this.labelSimCarPark1CountIS = new System.Windows.Forms.Label();
+            this.labelSimCarPark1CountISValue = new System.Windows.Forms.Label();
+            this.labelSimCarPark2CountIS = new System.Windows.Forms.Label();
+            this.labelSimCarPark2CountISValue = new System.Windows.Forms.Label();
+            this.labelSimCarParkServiceCountIS = new System.Windows.Forms.Label();
+            this.labelSimCarParkServiceCountISValue = new System.Windows.Forms.Label();
+            this.labelSimCarPark1RatioIS = new System.Windows.Forms.Label();
+            this.labelSimCarPark1RatioISValue = new System.Windows.Forms.Label();
+            this.labelSimCarPark2RatioIS = new System.Windows.Forms.Label();
+            this.labelSimCarPark2RatioISValue = new System.Windows.Forms.Label();
             this.groupBoxSimulation.SuspendLayout();
             this.frameResults.SuspendLayout();
             this.groupBoxSimulationControl.SuspendLayout();
@@ -200,15 +313,30 @@
             this.groupBoxSeed.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinBoxCustomSeed)).BeginInit();
             this.groupBoxOutput.SuspendLayout();
-            this.tableLayoutPanelOutput.SuspendLayout();
-            this.groupBoxOutputReplication.SuspendLayout();
-            this.tableLayoutPanelOutputReplication.SuspendLayout();
-            this.groupBoxIdealWorkersCount.SuspendLayout();
-            this.tableLayoutPanelIdealWorkersCount.SuspendLayout();
-            this.groupBoxOutputSimulation.SuspendLayout();
-            this.tableLayoutPanelOutputSimulation.SuspendLayout();
-            this.groupBoxVisualization.SuspendLayout();
             this.tabWidgetOutput.SuspendLayout();
+            this.tabCustomers.SuspendLayout();
+            this.tableLayoutPanelCustomers.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomers)).BeginInit();
+            this.groupBoxCustomersStats.SuspendLayout();
+            this.tableLayoutPanelCustomersStats.SuspendLayout();
+            this.tabWorkers1.SuspendLayout();
+            this.tableLayoutPanelWorkers1.SuspendLayout();
+            this.groupBoxWorkers1Stats.SuspendLayout();
+            this.tableLayoutPanelWorkers1Stats.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWorkers1)).BeginInit();
+            this.tabWorkers2.SuspendLayout();
+            this.tableLayoutPanelWorkers2.SuspendLayout();
+            this.groupBoxWorkers2Stats.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWorkers2)).BeginInit();
+            this.tabCarParks.SuspendLayout();
+            this.tableLayoutPanelCarParks.SuspendLayout();
+            this.groupBoxCarPark1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCarPark1)).BeginInit();
+            this.groupBoxCarPark2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCarPark2)).BeginInit();
+            this.groupBoxCarPark1Stats.SuspendLayout();
+            this.groupBoxCarPark2Stats.SuspendLayout();
+            this.groupBoxCarParkService.SuspendLayout();
             this.tabQueueLenWorkers1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.widgetPlotQueueLenWorkers1)).BeginInit();
             this.frameQueueLenWorkers1.SuspendLayout();
@@ -226,15 +354,16 @@
             this.frameTimeInServiceWorkers2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinBoxTimeInServiceFixWorkers1)).BeginInit();
             this.centralWidget.SuspendLayout();
-            this.tabCustomers.SuspendLayout();
-            this.tabWorkers1.SuspendLayout();
-            this.tabWorkers2.SuspendLayout();
-            this.tableLayoutPanelCustomers.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomers)).BeginInit();
-            this.tableLayoutPanelWorkers1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWorkers1)).BeginInit();
-            this.tableLayoutPanelWorkers2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWorkers2)).BeginInit();
+            this.tableLayoutPanelWorkers2Stats.SuspendLayout();
+            this.tableLayoutPanelCarPark1Stats.SuspendLayout();
+            this.tableLayoutPanelCarPark2Stats.SuspendLayout();
+            this.tableLayoutPanelCarParkService.SuspendLayout();
+            this.tabSimulation.SuspendLayout();
+            this.tableLayoutPanelSimulation.SuspendLayout();
+            this.groupBoxIdealWorkersCount.SuspendLayout();
+            this.tableLayoutPanelIdealWorkersCount.SuspendLayout();
+            this.groupBoxSimulationStats.SuspendLayout();
+            this.tableLayoutPanelSimulationStats.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxSimulation
@@ -248,7 +377,7 @@
             this.groupBoxSimulation.Location = new System.Drawing.Point(9, 9);
             this.groupBoxSimulation.Margin = new System.Windows.Forms.Padding(9);
             this.groupBoxSimulation.Name = "groupBoxSimulation";
-            this.groupBoxSimulation.Size = new System.Drawing.Size(1138, 250);
+            this.groupBoxSimulation.Size = new System.Drawing.Size(1239, 250);
             this.groupBoxSimulation.TabIndex = 0;
             this.groupBoxSimulation.TabStop = false;
             this.groupBoxSimulation.Text = "Simulácia";
@@ -278,95 +407,87 @@
             this.frameResults.Name = "frameResults";
             this.frameResults.RowCount = 1;
             this.frameResults.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.frameResults.Size = new System.Drawing.Size(1126, 30);
+            this.frameResults.Size = new System.Drawing.Size(1227, 30);
             this.frameResults.TabIndex = 3;
             // 
             // labelTime
             // 
-            this.labelTime.AutoSize = true;
-            this.labelTime.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelTime.Location = new System.Drawing.Point(3, 0);
+            this.labelTime.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelTime.Location = new System.Drawing.Point(20, 5);
             this.labelTime.Name = "labelTime";
-            this.labelTime.Size = new System.Drawing.Size(134, 30);
+            this.labelTime.Size = new System.Drawing.Size(130, 20);
             this.labelTime.TabIndex = 1;
             this.labelTime.Text = "Simulačný čas:";
             this.labelTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // labelTimeValue
             // 
-            this.labelTimeValue.AutoSize = true;
-            this.labelTimeValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelTimeValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelTimeValue.Location = new System.Drawing.Point(143, 0);
+            this.labelTimeValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelTimeValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelTimeValue.Location = new System.Drawing.Point(156, 5);
             this.labelTimeValue.Name = "labelTimeValue";
-            this.labelTimeValue.Size = new System.Drawing.Size(134, 30);
+            this.labelTimeValue.Size = new System.Drawing.Size(130, 20);
             this.labelTimeValue.TabIndex = 0;
             this.labelTimeValue.Text = "-";
             this.labelTimeValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelReplication
             // 
-            this.labelReplication.AutoSize = true;
-            this.labelReplication.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelReplication.Location = new System.Drawing.Point(283, 0);
+            this.labelReplication.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelReplication.Location = new System.Drawing.Point(326, 5);
             this.labelReplication.Name = "labelReplication";
-            this.labelReplication.Size = new System.Drawing.Size(134, 30);
+            this.labelReplication.Size = new System.Drawing.Size(130, 20);
             this.labelReplication.TabIndex = 2;
             this.labelReplication.Text = "Replikácia:";
             this.labelReplication.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // labelReplicationValue
             // 
-            this.labelReplicationValue.AutoSize = true;
-            this.labelReplicationValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelReplicationValue.Location = new System.Drawing.Point(423, 0);
+            this.labelReplicationValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelReplicationValue.Location = new System.Drawing.Point(462, 5);
             this.labelReplicationValue.Name = "labelReplicationValue";
-            this.labelReplicationValue.Size = new System.Drawing.Size(134, 30);
+            this.labelReplicationValue.Size = new System.Drawing.Size(120, 20);
             this.labelReplicationValue.TabIndex = 3;
             this.labelReplicationValue.Text = "-";
             this.labelReplicationValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelWorkers1Current
             // 
-            this.labelWorkers1Current.AutoSize = true;
-            this.labelWorkers1Current.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelWorkers1Current.Location = new System.Drawing.Point(563, 0);
+            this.labelWorkers1Current.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelWorkers1Current.Location = new System.Drawing.Point(632, 5);
             this.labelWorkers1Current.Name = "labelWorkers1Current";
-            this.labelWorkers1Current.Size = new System.Drawing.Size(134, 30);
+            this.labelWorkers1Current.Size = new System.Drawing.Size(130, 20);
             this.labelWorkers1Current.TabIndex = 4;
             this.labelWorkers1Current.Text = "Počet pracovníkov 1:";
             this.labelWorkers1Current.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // labelWorkers1CurrentValue
             // 
-            this.labelWorkers1CurrentValue.AutoSize = true;
-            this.labelWorkers1CurrentValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelWorkers1CurrentValue.Location = new System.Drawing.Point(703, 0);
+            this.labelWorkers1CurrentValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelWorkers1CurrentValue.Location = new System.Drawing.Point(768, 5);
             this.labelWorkers1CurrentValue.Name = "labelWorkers1CurrentValue";
-            this.labelWorkers1CurrentValue.Size = new System.Drawing.Size(134, 30);
+            this.labelWorkers1CurrentValue.Size = new System.Drawing.Size(120, 20);
             this.labelWorkers1CurrentValue.TabIndex = 5;
             this.labelWorkers1CurrentValue.Text = "-";
             this.labelWorkers1CurrentValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelWorkers2Current
             // 
-            this.labelWorkers2Current.AutoSize = true;
-            this.labelWorkers2Current.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelWorkers2Current.Location = new System.Drawing.Point(843, 0);
+            this.labelWorkers2Current.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelWorkers2Current.Location = new System.Drawing.Point(938, 5);
             this.labelWorkers2Current.Name = "labelWorkers2Current";
-            this.labelWorkers2Current.Size = new System.Drawing.Size(134, 30);
+            this.labelWorkers2Current.Size = new System.Drawing.Size(130, 20);
             this.labelWorkers2Current.TabIndex = 6;
             this.labelWorkers2Current.Text = "Počet pracovníkov 2:";
             this.labelWorkers2Current.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // labelWorkers2CurrentValue
             // 
-            this.labelWorkers2CurrentValue.AutoSize = true;
-            this.labelWorkers2CurrentValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelWorkers2CurrentValue.Location = new System.Drawing.Point(983, 0);
+            this.labelWorkers2CurrentValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelWorkers2CurrentValue.Location = new System.Drawing.Point(1074, 5);
             this.labelWorkers2CurrentValue.Name = "labelWorkers2CurrentValue";
-            this.labelWorkers2CurrentValue.Size = new System.Drawing.Size(140, 30);
+            this.labelWorkers2CurrentValue.Size = new System.Drawing.Size(120, 20);
             this.labelWorkers2CurrentValue.TabIndex = 7;
             this.labelWorkers2CurrentValue.Text = "-";
             this.labelWorkers2CurrentValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -388,7 +509,7 @@
             this.groupBoxSimulationControl.Controls.Add(this.pushButtonStopSimulation);
             this.groupBoxSimulationControl.Controls.Add(this.pushButtonPauseResumeSimulation);
             this.groupBoxSimulationControl.Controls.Add(this.pushButtonStartSimulation);
-            this.groupBoxSimulationControl.Location = new System.Drawing.Point(782, 19);
+            this.groupBoxSimulationControl.Location = new System.Drawing.Point(883, 19);
             this.groupBoxSimulationControl.MinimumSize = new System.Drawing.Size(350, 0);
             this.groupBoxSimulationControl.Name = "groupBoxSimulationControl";
             this.groupBoxSimulationControl.Size = new System.Drawing.Size(350, 190);
@@ -563,7 +684,7 @@
             this.groupBoxParameters.Location = new System.Drawing.Point(251, 19);
             this.groupBoxParameters.MinimumSize = new System.Drawing.Size(520, 0);
             this.groupBoxParameters.Name = "groupBoxParameters";
-            this.groupBoxParameters.Size = new System.Drawing.Size(526, 190);
+            this.groupBoxParameters.Size = new System.Drawing.Size(627, 190);
             this.groupBoxParameters.TabIndex = 1;
             this.groupBoxParameters.TabStop = false;
             this.groupBoxParameters.Text = "Parametre simulácie";
@@ -931,702 +1052,24 @@
             // 
             // groupBoxOutput
             // 
-            this.groupBoxOutput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBoxOutput.Controls.Add(this.tableLayoutPanelOutput);
+            this.groupBoxOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxOutput.Controls.Add(this.tabWidgetOutput);
             this.groupBoxOutput.Location = new System.Drawing.Point(9, 264);
-            this.groupBoxOutput.MinimumSize = new System.Drawing.Size(450, 0);
             this.groupBoxOutput.Name = "groupBoxOutput";
             this.groupBoxOutput.Padding = new System.Windows.Forms.Padding(9);
-            this.groupBoxOutput.Size = new System.Drawing.Size(450, 543);
-            this.groupBoxOutput.TabIndex = 1;
+            this.groupBoxOutput.Size = new System.Drawing.Size(1239, 552);
+            this.groupBoxOutput.TabIndex = 2;
             this.groupBoxOutput.TabStop = false;
             this.groupBoxOutput.Text = "Výstup";
             // 
-            // tableLayoutPanelOutput
-            // 
-            this.tableLayoutPanelOutput.ColumnCount = 1;
-            this.tableLayoutPanelOutput.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelOutput.Controls.Add(this.groupBoxOutputReplication, 0, 0);
-            this.tableLayoutPanelOutput.Controls.Add(this.groupBoxIdealWorkersCount, 0, 2);
-            this.tableLayoutPanelOutput.Controls.Add(this.groupBoxOutputSimulation, 0, 1);
-            this.tableLayoutPanelOutput.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelOutput.Location = new System.Drawing.Point(9, 22);
-            this.tableLayoutPanelOutput.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanelOutput.Name = "tableLayoutPanelOutput";
-            this.tableLayoutPanelOutput.RowCount = 3;
-            this.tableLayoutPanelOutput.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.7F));
-            this.tableLayoutPanelOutput.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 38.28F));
-            this.tableLayoutPanelOutput.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.02F));
-            this.tableLayoutPanelOutput.Size = new System.Drawing.Size(432, 512);
-            this.tableLayoutPanelOutput.TabIndex = 3;
-            // 
-            // groupBoxOutputReplication
-            // 
-            this.groupBoxOutputReplication.Controls.Add(this.tableLayoutPanelOutputReplication);
-            this.groupBoxOutputReplication.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxOutputReplication.Location = new System.Drawing.Point(3, 3);
-            this.groupBoxOutputReplication.Name = "groupBoxOutputReplication";
-            this.groupBoxOutputReplication.Size = new System.Drawing.Size(426, 227);
-            this.groupBoxOutputReplication.TabIndex = 0;
-            this.groupBoxOutputReplication.TabStop = false;
-            this.groupBoxOutputReplication.Text = "Aktuálna replikácia";
-            // 
-            // tableLayoutPanelOutputReplication
-            // 
-            this.tableLayoutPanelOutputReplication.ColumnCount = 2;
-            this.tableLayoutPanelOutputReplication.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelOutputReplication.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelOutputReplication.Controls.Add(this.labelTimeInServiceDur, 0, 10);
-            this.tableLayoutPanelOutputReplication.Controls.Add(this.labelWaitForRepairDurValue, 1, 9);
-            this.tableLayoutPanelOutputReplication.Controls.Add(this.labelWaitForRepairDur, 0, 9);
-            this.tableLayoutPanelOutputReplication.Controls.Add(this.labelWaitInQueueDurValue, 1, 8);
-            this.tableLayoutPanelOutputReplication.Controls.Add(this.labelWaitInQueueDur, 0, 8);
-            this.tableLayoutPanelOutputReplication.Controls.Add(this.labelAVGRepairedQueueLenValue, 1, 7);
-            this.tableLayoutPanelOutputReplication.Controls.Add(this.labelAVGRepairedQueueLen, 0, 7);
-            this.tableLayoutPanelOutputReplication.Controls.Add(this.labelAVGQueueForRepairLenValue, 1, 6);
-            this.tableLayoutPanelOutputReplication.Controls.Add(this.labelAVGQueueForRepairLen, 0, 6);
-            this.tableLayoutPanelOutputReplication.Controls.Add(this.labelAVGCustomerQueueLenValue, 1, 5);
-            this.tableLayoutPanelOutputReplication.Controls.Add(this.labelAVGCustomerQueueLen, 0, 5);
-            this.tableLayoutPanelOutputReplication.Controls.Add(this.labelRepairedQueueLenValue, 1, 4);
-            this.tableLayoutPanelOutputReplication.Controls.Add(this.labelRepairedQueueLen, 0, 4);
-            this.tableLayoutPanelOutputReplication.Controls.Add(this.labelQueueForRepairLenValue, 1, 3);
-            this.tableLayoutPanelOutputReplication.Controls.Add(this.labelQueueForRepairLen, 0, 3);
-            this.tableLayoutPanelOutputReplication.Controls.Add(this.labelCustomerQueueLenValue, 1, 2);
-            this.tableLayoutPanelOutputReplication.Controls.Add(this.labelCustomerQueueLen, 0, 2);
-            this.tableLayoutPanelOutputReplication.Controls.Add(this.labelWorkers2WorkingValue, 1, 1);
-            this.tableLayoutPanelOutputReplication.Controls.Add(this.labelWorkers2Working, 0, 1);
-            this.tableLayoutPanelOutputReplication.Controls.Add(this.labelWorkers1WorkingValue, 1, 0);
-            this.tableLayoutPanelOutputReplication.Controls.Add(this.labelWorkers1Working, 0, 0);
-            this.tableLayoutPanelOutputReplication.Controls.Add(this.labelTimeInServiceDurValue, 1, 10);
-            this.tableLayoutPanelOutputReplication.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelOutputReplication.Location = new System.Drawing.Point(3, 16);
-            this.tableLayoutPanelOutputReplication.Name = "tableLayoutPanelOutputReplication";
-            this.tableLayoutPanelOutputReplication.RowCount = 11;
-            this.tableLayoutPanelOutputReplication.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
-            this.tableLayoutPanelOutputReplication.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
-            this.tableLayoutPanelOutputReplication.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
-            this.tableLayoutPanelOutputReplication.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
-            this.tableLayoutPanelOutputReplication.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
-            this.tableLayoutPanelOutputReplication.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
-            this.tableLayoutPanelOutputReplication.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
-            this.tableLayoutPanelOutputReplication.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
-            this.tableLayoutPanelOutputReplication.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
-            this.tableLayoutPanelOutputReplication.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
-            this.tableLayoutPanelOutputReplication.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
-            this.tableLayoutPanelOutputReplication.Size = new System.Drawing.Size(420, 208);
-            this.tableLayoutPanelOutputReplication.TabIndex = 0;
-            // 
-            // labelTimeInServiceDur
-            // 
-            this.labelTimeInServiceDur.AutoSize = true;
-            this.labelTimeInServiceDur.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelTimeInServiceDur.Location = new System.Drawing.Point(3, 180);
-            this.labelTimeInServiceDur.Name = "labelTimeInServiceDur";
-            this.labelTimeInServiceDur.Size = new System.Drawing.Size(204, 28);
-            this.labelTimeInServiceDur.TabIndex = 21;
-            this.labelTimeInServiceDur.Text = "Priemerný čas strávený v servise:";
-            this.labelTimeInServiceDur.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelWaitForRepairDurValue
-            // 
-            this.labelWaitForRepairDurValue.AutoSize = true;
-            this.labelWaitForRepairDurValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelWaitForRepairDurValue.Location = new System.Drawing.Point(213, 162);
-            this.labelWaitForRepairDurValue.Name = "labelWaitForRepairDurValue";
-            this.labelWaitForRepairDurValue.Size = new System.Drawing.Size(204, 18);
-            this.labelWaitForRepairDurValue.TabIndex = 20;
-            this.labelWaitForRepairDurValue.Text = "-";
-            this.labelWaitForRepairDurValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelWaitForRepairDur
-            // 
-            this.labelWaitForRepairDur.AutoSize = true;
-            this.labelWaitForRepairDur.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelWaitForRepairDur.Location = new System.Drawing.Point(3, 162);
-            this.labelWaitForRepairDur.Name = "labelWaitForRepairDur";
-            this.labelWaitForRepairDur.Size = new System.Drawing.Size(204, 18);
-            this.labelWaitForRepairDur.TabIndex = 19;
-            this.labelWaitForRepairDur.Text = "Priemerný čas čakania na opravu:";
-            this.labelWaitForRepairDur.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelWaitInQueueDurValue
-            // 
-            this.labelWaitInQueueDurValue.AutoSize = true;
-            this.labelWaitInQueueDurValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelWaitInQueueDurValue.Location = new System.Drawing.Point(213, 144);
-            this.labelWaitInQueueDurValue.Name = "labelWaitInQueueDurValue";
-            this.labelWaitInQueueDurValue.Size = new System.Drawing.Size(204, 18);
-            this.labelWaitInQueueDurValue.TabIndex = 18;
-            this.labelWaitInQueueDurValue.Text = "-";
-            this.labelWaitInQueueDurValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelWaitInQueueDur
-            // 
-            this.labelWaitInQueueDur.AutoSize = true;
-            this.labelWaitInQueueDur.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelWaitInQueueDur.Location = new System.Drawing.Point(3, 144);
-            this.labelWaitInQueueDur.Name = "labelWaitInQueueDur";
-            this.labelWaitInQueueDur.Size = new System.Drawing.Size(204, 18);
-            this.labelWaitInQueueDur.TabIndex = 17;
-            this.labelWaitInQueueDur.Text = "Priemerný čas čakania vo fronte:";
-            this.labelWaitInQueueDur.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelAVGRepairedQueueLenValue
-            // 
-            this.labelAVGRepairedQueueLenValue.AutoSize = true;
-            this.labelAVGRepairedQueueLenValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelAVGRepairedQueueLenValue.Location = new System.Drawing.Point(213, 126);
-            this.labelAVGRepairedQueueLenValue.Name = "labelAVGRepairedQueueLenValue";
-            this.labelAVGRepairedQueueLenValue.Size = new System.Drawing.Size(204, 18);
-            this.labelAVGRepairedQueueLenValue.TabIndex = 16;
-            this.labelAVGRepairedQueueLenValue.Text = "-";
-            this.labelAVGRepairedQueueLenValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelAVGRepairedQueueLen
-            // 
-            this.labelAVGRepairedQueueLen.AutoSize = true;
-            this.labelAVGRepairedQueueLen.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelAVGRepairedQueueLen.Location = new System.Drawing.Point(3, 126);
-            this.labelAVGRepairedQueueLen.Name = "labelAVGRepairedQueueLen";
-            this.labelAVGRepairedQueueLen.Size = new System.Drawing.Size(204, 18);
-            this.labelAVGRepairedQueueLen.TabIndex = 15;
-            this.labelAVGRepairedQueueLen.Text = "Priemerný počet áut na odovzdanie:";
-            this.labelAVGRepairedQueueLen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelAVGQueueForRepairLenValue
-            // 
-            this.labelAVGQueueForRepairLenValue.AutoSize = true;
-            this.labelAVGQueueForRepairLenValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelAVGQueueForRepairLenValue.Location = new System.Drawing.Point(213, 108);
-            this.labelAVGQueueForRepairLenValue.Name = "labelAVGQueueForRepairLenValue";
-            this.labelAVGQueueForRepairLenValue.Size = new System.Drawing.Size(204, 18);
-            this.labelAVGQueueForRepairLenValue.TabIndex = 14;
-            this.labelAVGQueueForRepairLenValue.Text = "-";
-            this.labelAVGQueueForRepairLenValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelAVGQueueForRepairLen
-            // 
-            this.labelAVGQueueForRepairLen.AutoSize = true;
-            this.labelAVGQueueForRepairLen.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelAVGQueueForRepairLen.Location = new System.Drawing.Point(3, 108);
-            this.labelAVGQueueForRepairLen.Name = "labelAVGQueueForRepairLen";
-            this.labelAVGQueueForRepairLen.Size = new System.Drawing.Size(204, 18);
-            this.labelAVGQueueForRepairLen.TabIndex = 13;
-            this.labelAVGQueueForRepairLen.Text = "Priemerný počet áut na opravu:";
-            this.labelAVGQueueForRepairLen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelAVGCustomerQueueLenValue
-            // 
-            this.labelAVGCustomerQueueLenValue.AutoSize = true;
-            this.labelAVGCustomerQueueLenValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelAVGCustomerQueueLenValue.Location = new System.Drawing.Point(213, 90);
-            this.labelAVGCustomerQueueLenValue.Name = "labelAVGCustomerQueueLenValue";
-            this.labelAVGCustomerQueueLenValue.Size = new System.Drawing.Size(204, 18);
-            this.labelAVGCustomerQueueLenValue.TabIndex = 12;
-            this.labelAVGCustomerQueueLenValue.Text = "-";
-            this.labelAVGCustomerQueueLenValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelAVGCustomerQueueLen
-            // 
-            this.labelAVGCustomerQueueLen.AutoSize = true;
-            this.labelAVGCustomerQueueLen.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelAVGCustomerQueueLen.Location = new System.Drawing.Point(3, 90);
-            this.labelAVGCustomerQueueLen.Name = "labelAVGCustomerQueueLen";
-            this.labelAVGCustomerQueueLen.Size = new System.Drawing.Size(204, 18);
-            this.labelAVGCustomerQueueLen.TabIndex = 11;
-            this.labelAVGCustomerQueueLen.Text = "Priemerná dĺžka frontu čakajúcich:";
-            this.labelAVGCustomerQueueLen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelRepairedQueueLenValue
-            // 
-            this.labelRepairedQueueLenValue.AutoSize = true;
-            this.labelRepairedQueueLenValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelRepairedQueueLenValue.Location = new System.Drawing.Point(213, 72);
-            this.labelRepairedQueueLenValue.Name = "labelRepairedQueueLenValue";
-            this.labelRepairedQueueLenValue.Size = new System.Drawing.Size(204, 18);
-            this.labelRepairedQueueLenValue.TabIndex = 10;
-            this.labelRepairedQueueLenValue.Text = "-";
-            this.labelRepairedQueueLenValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelRepairedQueueLen
-            // 
-            this.labelRepairedQueueLen.AutoSize = true;
-            this.labelRepairedQueueLen.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelRepairedQueueLen.Location = new System.Drawing.Point(3, 72);
-            this.labelRepairedQueueLen.Name = "labelRepairedQueueLen";
-            this.labelRepairedQueueLen.Size = new System.Drawing.Size(204, 18);
-            this.labelRepairedQueueLen.TabIndex = 9;
-            this.labelRepairedQueueLen.Text = "Počet opravených áut na odovzdanie:";
-            this.labelRepairedQueueLen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelQueueForRepairLenValue
-            // 
-            this.labelQueueForRepairLenValue.AutoSize = true;
-            this.labelQueueForRepairLenValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelQueueForRepairLenValue.Location = new System.Drawing.Point(213, 54);
-            this.labelQueueForRepairLenValue.Name = "labelQueueForRepairLenValue";
-            this.labelQueueForRepairLenValue.Size = new System.Drawing.Size(204, 18);
-            this.labelQueueForRepairLenValue.TabIndex = 8;
-            this.labelQueueForRepairLenValue.Text = "-";
-            this.labelQueueForRepairLenValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelQueueForRepairLen
-            // 
-            this.labelQueueForRepairLen.AutoSize = true;
-            this.labelQueueForRepairLen.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelQueueForRepairLen.Location = new System.Drawing.Point(3, 54);
-            this.labelQueueForRepairLen.Name = "labelQueueForRepairLen";
-            this.labelQueueForRepairLen.Size = new System.Drawing.Size(204, 18);
-            this.labelQueueForRepairLen.TabIndex = 7;
-            this.labelQueueForRepairLen.Text = "Počet áut čakajúcich na opravu:";
-            this.labelQueueForRepairLen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelCustomerQueueLenValue
-            // 
-            this.labelCustomerQueueLenValue.AutoSize = true;
-            this.labelCustomerQueueLenValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelCustomerQueueLenValue.Location = new System.Drawing.Point(213, 36);
-            this.labelCustomerQueueLenValue.Name = "labelCustomerQueueLenValue";
-            this.labelCustomerQueueLenValue.Size = new System.Drawing.Size(204, 18);
-            this.labelCustomerQueueLenValue.TabIndex = 6;
-            this.labelCustomerQueueLenValue.Text = "-";
-            this.labelCustomerQueueLenValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelCustomerQueueLen
-            // 
-            this.labelCustomerQueueLen.AutoSize = true;
-            this.labelCustomerQueueLen.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelCustomerQueueLen.Location = new System.Drawing.Point(3, 36);
-            this.labelCustomerQueueLen.Name = "labelCustomerQueueLen";
-            this.labelCustomerQueueLen.Size = new System.Drawing.Size(204, 18);
-            this.labelCustomerQueueLen.TabIndex = 5;
-            this.labelCustomerQueueLen.Text = "Dĺžka frontu čakajúcich:";
-            this.labelCustomerQueueLen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelWorkers2WorkingValue
-            // 
-            this.labelWorkers2WorkingValue.AutoSize = true;
-            this.labelWorkers2WorkingValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelWorkers2WorkingValue.Location = new System.Drawing.Point(213, 18);
-            this.labelWorkers2WorkingValue.Name = "labelWorkers2WorkingValue";
-            this.labelWorkers2WorkingValue.Size = new System.Drawing.Size(204, 18);
-            this.labelWorkers2WorkingValue.TabIndex = 4;
-            this.labelWorkers2WorkingValue.Text = "-";
-            this.labelWorkers2WorkingValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelWorkers2Working
-            // 
-            this.labelWorkers2Working.AutoSize = true;
-            this.labelWorkers2Working.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelWorkers2Working.Location = new System.Drawing.Point(3, 18);
-            this.labelWorkers2Working.Name = "labelWorkers2Working";
-            this.labelWorkers2Working.Size = new System.Drawing.Size(204, 18);
-            this.labelWorkers2Working.TabIndex = 3;
-            this.labelWorkers2Working.Text = "Aktívni pracovníci v skupine 2:";
-            this.labelWorkers2Working.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelWorkers1WorkingValue
-            // 
-            this.labelWorkers1WorkingValue.AutoSize = true;
-            this.labelWorkers1WorkingValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelWorkers1WorkingValue.Location = new System.Drawing.Point(213, 0);
-            this.labelWorkers1WorkingValue.Name = "labelWorkers1WorkingValue";
-            this.labelWorkers1WorkingValue.Size = new System.Drawing.Size(204, 18);
-            this.labelWorkers1WorkingValue.TabIndex = 2;
-            this.labelWorkers1WorkingValue.Text = "-";
-            this.labelWorkers1WorkingValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelWorkers1Working
-            // 
-            this.labelWorkers1Working.AutoSize = true;
-            this.labelWorkers1Working.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelWorkers1Working.Location = new System.Drawing.Point(3, 0);
-            this.labelWorkers1Working.Name = "labelWorkers1Working";
-            this.labelWorkers1Working.Size = new System.Drawing.Size(204, 18);
-            this.labelWorkers1Working.TabIndex = 1;
-            this.labelWorkers1Working.Text = "Aktívni pracovníci v skupine 1:";
-            this.labelWorkers1Working.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelTimeInServiceDurValue
-            // 
-            this.labelTimeInServiceDurValue.AutoSize = true;
-            this.labelTimeInServiceDurValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelTimeInServiceDurValue.Location = new System.Drawing.Point(213, 180);
-            this.labelTimeInServiceDurValue.Name = "labelTimeInServiceDurValue";
-            this.labelTimeInServiceDurValue.Size = new System.Drawing.Size(204, 28);
-            this.labelTimeInServiceDurValue.TabIndex = 0;
-            this.labelTimeInServiceDurValue.Text = "-";
-            this.labelTimeInServiceDurValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // groupBoxIdealWorkersCount
-            // 
-            this.groupBoxIdealWorkersCount.Controls.Add(this.tableLayoutPanelIdealWorkersCount);
-            this.groupBoxIdealWorkersCount.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxIdealWorkersCount.Location = new System.Drawing.Point(3, 431);
-            this.groupBoxIdealWorkersCount.Name = "groupBoxIdealWorkersCount";
-            this.groupBoxIdealWorkersCount.Size = new System.Drawing.Size(426, 78);
-            this.groupBoxIdealWorkersCount.TabIndex = 2;
-            this.groupBoxIdealWorkersCount.TabStop = false;
-            this.groupBoxIdealWorkersCount.Text = "Ideálny počet pracovníkov";
-            // 
-            // tableLayoutPanelIdealWorkersCount
-            // 
-            this.tableLayoutPanelIdealWorkersCount.ColumnCount = 2;
-            this.tableLayoutPanelIdealWorkersCount.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelIdealWorkersCount.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelIdealWorkersCount.Controls.Add(this.labelIdealWorkers2Count, 0, 1);
-            this.tableLayoutPanelIdealWorkersCount.Controls.Add(this.labelIdealWorkers1Count, 0, 0);
-            this.tableLayoutPanelIdealWorkersCount.Controls.Add(this.labelIdealWorkers1CountValue, 1, 0);
-            this.tableLayoutPanelIdealWorkersCount.Controls.Add(this.labelIdealWorkers2CountValue, 1, 1);
-            this.tableLayoutPanelIdealWorkersCount.Controls.Add(this.labelProfitValue, 1, 2);
-            this.tableLayoutPanelIdealWorkersCount.Controls.Add(this.labelProfit, 0, 2);
-            this.tableLayoutPanelIdealWorkersCount.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelIdealWorkersCount.Location = new System.Drawing.Point(3, 16);
-            this.tableLayoutPanelIdealWorkersCount.Name = "tableLayoutPanelIdealWorkersCount";
-            this.tableLayoutPanelIdealWorkersCount.RowCount = 3;
-            this.tableLayoutPanelIdealWorkersCount.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanelIdealWorkersCount.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanelIdealWorkersCount.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanelIdealWorkersCount.Size = new System.Drawing.Size(420, 59);
-            this.tableLayoutPanelIdealWorkersCount.TabIndex = 0;
-            // 
-            // labelIdealWorkers2Count
-            // 
-            this.labelIdealWorkers2Count.AutoSize = true;
-            this.labelIdealWorkers2Count.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelIdealWorkers2Count.Location = new System.Drawing.Point(3, 19);
-            this.labelIdealWorkers2Count.Name = "labelIdealWorkers2Count";
-            this.labelIdealWorkers2Count.Size = new System.Drawing.Size(204, 19);
-            this.labelIdealWorkers2Count.TabIndex = 4;
-            this.labelIdealWorkers2Count.Text = "Počet pracovníkov skupiny 2:";
-            this.labelIdealWorkers2Count.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelIdealWorkers1Count
-            // 
-            this.labelIdealWorkers1Count.AutoSize = true;
-            this.labelIdealWorkers1Count.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelIdealWorkers1Count.Location = new System.Drawing.Point(3, 0);
-            this.labelIdealWorkers1Count.Name = "labelIdealWorkers1Count";
-            this.labelIdealWorkers1Count.Size = new System.Drawing.Size(204, 19);
-            this.labelIdealWorkers1Count.TabIndex = 3;
-            this.labelIdealWorkers1Count.Text = "Počet pracovníkov skupiny 1:";
-            this.labelIdealWorkers1Count.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelIdealWorkers1CountValue
-            // 
-            this.labelIdealWorkers1CountValue.AutoSize = true;
-            this.labelIdealWorkers1CountValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelIdealWorkers1CountValue.Location = new System.Drawing.Point(213, 0);
-            this.labelIdealWorkers1CountValue.Name = "labelIdealWorkers1CountValue";
-            this.labelIdealWorkers1CountValue.Size = new System.Drawing.Size(204, 19);
-            this.labelIdealWorkers1CountValue.TabIndex = 5;
-            this.labelIdealWorkers1CountValue.Text = "-";
-            this.labelIdealWorkers1CountValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelIdealWorkers2CountValue
-            // 
-            this.labelIdealWorkers2CountValue.AutoSize = true;
-            this.labelIdealWorkers2CountValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelIdealWorkers2CountValue.Location = new System.Drawing.Point(213, 19);
-            this.labelIdealWorkers2CountValue.Name = "labelIdealWorkers2CountValue";
-            this.labelIdealWorkers2CountValue.Size = new System.Drawing.Size(204, 19);
-            this.labelIdealWorkers2CountValue.TabIndex = 6;
-            this.labelIdealWorkers2CountValue.Text = "-";
-            this.labelIdealWorkers2CountValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelProfitValue
-            // 
-            this.labelProfitValue.AutoSize = true;
-            this.labelProfitValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelProfitValue.Location = new System.Drawing.Point(213, 38);
-            this.labelProfitValue.Name = "labelProfitValue";
-            this.labelProfitValue.Size = new System.Drawing.Size(204, 21);
-            this.labelProfitValue.TabIndex = 7;
-            this.labelProfitValue.Text = "-";
-            this.labelProfitValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelProfit
-            // 
-            this.labelProfit.AutoSize = true;
-            this.labelProfit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelProfit.Location = new System.Drawing.Point(3, 38);
-            this.labelProfit.Name = "labelProfit";
-            this.labelProfit.Size = new System.Drawing.Size(204, 21);
-            this.labelProfit.TabIndex = 8;
-            this.labelProfit.Text = "Hospodársky výsledok:";
-            this.labelProfit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // groupBoxOutputSimulation
-            // 
-            this.groupBoxOutputSimulation.Controls.Add(this.tableLayoutPanelOutputSimulation);
-            this.groupBoxOutputSimulation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxOutputSimulation.Location = new System.Drawing.Point(3, 236);
-            this.groupBoxOutputSimulation.Name = "groupBoxOutputSimulation";
-            this.groupBoxOutputSimulation.Size = new System.Drawing.Size(426, 189);
-            this.groupBoxOutputSimulation.TabIndex = 1;
-            this.groupBoxOutputSimulation.TabStop = false;
-            this.groupBoxOutputSimulation.Text = "Simulácia";
-            // 
-            // tableLayoutPanelOutputSimulation
-            // 
-            this.tableLayoutPanelOutputSimulation.ColumnCount = 2;
-            this.tableLayoutPanelOutputSimulation.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelOutputSimulation.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelOutputSimulation.Controls.Add(this.labelAVGCustomerQueueLenSim, 0, 0);
-            this.tableLayoutPanelOutputSimulation.Controls.Add(this.labelAVGCustomerQueueLenSimValue, 1, 0);
-            this.tableLayoutPanelOutputSimulation.Controls.Add(this.labelAVGQueueForRepairLenSimValue, 1, 1);
-            this.tableLayoutPanelOutputSimulation.Controls.Add(this.labelAVGRepairedQueueLenSimValue, 1, 2);
-            this.tableLayoutPanelOutputSimulation.Controls.Add(this.labelWaitInQueueDurSimValue, 1, 3);
-            this.tableLayoutPanelOutputSimulation.Controls.Add(this.labelWaitForRepairDurSimValue, 1, 4);
-            this.tableLayoutPanelOutputSimulation.Controls.Add(this.labelTimeInServiceDurSimValue, 1, 5);
-            this.tableLayoutPanelOutputSimulation.Controls.Add(this.labelWaitInQueueCIValue, 1, 6);
-            this.tableLayoutPanelOutputSimulation.Controls.Add(this.labelWaitForRepairCIValue, 1, 7);
-            this.tableLayoutPanelOutputSimulation.Controls.Add(this.labelTimeInSystemCIValue, 1, 8);
-            this.tableLayoutPanelOutputSimulation.Controls.Add(this.labelAVGQueueForRepairLenSim, 0, 1);
-            this.tableLayoutPanelOutputSimulation.Controls.Add(this.labelAVGRepairedQueueLenSim, 0, 2);
-            this.tableLayoutPanelOutputSimulation.Controls.Add(this.labelWaitInQueueDurSim, 0, 3);
-            this.tableLayoutPanelOutputSimulation.Controls.Add(this.labelWaitForRepairDurSim, 0, 4);
-            this.tableLayoutPanelOutputSimulation.Controls.Add(this.labelTimeInServiceDurSim, 0, 5);
-            this.tableLayoutPanelOutputSimulation.Controls.Add(this.labelWaitInQueueCI, 0, 6);
-            this.tableLayoutPanelOutputSimulation.Controls.Add(this.labelWaitForRepairCI, 0, 7);
-            this.tableLayoutPanelOutputSimulation.Controls.Add(this.labelTimeInSystemCI, 0, 8);
-            this.tableLayoutPanelOutputSimulation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelOutputSimulation.Location = new System.Drawing.Point(3, 16);
-            this.tableLayoutPanelOutputSimulation.Name = "tableLayoutPanelOutputSimulation";
-            this.tableLayoutPanelOutputSimulation.RowCount = 9;
-            this.tableLayoutPanelOutputSimulation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanelOutputSimulation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanelOutputSimulation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanelOutputSimulation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanelOutputSimulation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanelOutputSimulation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanelOutputSimulation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanelOutputSimulation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanelOutputSimulation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanelOutputSimulation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelOutputSimulation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelOutputSimulation.Size = new System.Drawing.Size(420, 170);
-            this.tableLayoutPanelOutputSimulation.TabIndex = 0;
-            // 
-            // labelAVGCustomerQueueLenSim
-            // 
-            this.labelAVGCustomerQueueLenSim.AutoSize = true;
-            this.labelAVGCustomerQueueLenSim.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelAVGCustomerQueueLenSim.Location = new System.Drawing.Point(3, 0);
-            this.labelAVGCustomerQueueLenSim.Name = "labelAVGCustomerQueueLenSim";
-            this.labelAVGCustomerQueueLenSim.Size = new System.Drawing.Size(204, 18);
-            this.labelAVGCustomerQueueLenSim.TabIndex = 2;
-            this.labelAVGCustomerQueueLenSim.Text = "Priemerná dĺžka frontu čakajúcich:";
-            this.labelAVGCustomerQueueLenSim.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelAVGCustomerQueueLenSimValue
-            // 
-            this.labelAVGCustomerQueueLenSimValue.AutoSize = true;
-            this.labelAVGCustomerQueueLenSimValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelAVGCustomerQueueLenSimValue.Location = new System.Drawing.Point(213, 0);
-            this.labelAVGCustomerQueueLenSimValue.Name = "labelAVGCustomerQueueLenSimValue";
-            this.labelAVGCustomerQueueLenSimValue.Size = new System.Drawing.Size(204, 18);
-            this.labelAVGCustomerQueueLenSimValue.TabIndex = 3;
-            this.labelAVGCustomerQueueLenSimValue.Text = "-";
-            this.labelAVGCustomerQueueLenSimValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelAVGQueueForRepairLenSimValue
-            // 
-            this.labelAVGQueueForRepairLenSimValue.AutoSize = true;
-            this.labelAVGQueueForRepairLenSimValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelAVGQueueForRepairLenSimValue.Location = new System.Drawing.Point(213, 18);
-            this.labelAVGQueueForRepairLenSimValue.Name = "labelAVGQueueForRepairLenSimValue";
-            this.labelAVGQueueForRepairLenSimValue.Size = new System.Drawing.Size(204, 18);
-            this.labelAVGQueueForRepairLenSimValue.TabIndex = 4;
-            this.labelAVGQueueForRepairLenSimValue.Text = "-";
-            this.labelAVGQueueForRepairLenSimValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelAVGRepairedQueueLenSimValue
-            // 
-            this.labelAVGRepairedQueueLenSimValue.AutoSize = true;
-            this.labelAVGRepairedQueueLenSimValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelAVGRepairedQueueLenSimValue.Location = new System.Drawing.Point(213, 36);
-            this.labelAVGRepairedQueueLenSimValue.Name = "labelAVGRepairedQueueLenSimValue";
-            this.labelAVGRepairedQueueLenSimValue.Size = new System.Drawing.Size(204, 18);
-            this.labelAVGRepairedQueueLenSimValue.TabIndex = 5;
-            this.labelAVGRepairedQueueLenSimValue.Text = "-";
-            this.labelAVGRepairedQueueLenSimValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelWaitInQueueDurSimValue
-            // 
-            this.labelWaitInQueueDurSimValue.AutoSize = true;
-            this.labelWaitInQueueDurSimValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelWaitInQueueDurSimValue.Location = new System.Drawing.Point(213, 54);
-            this.labelWaitInQueueDurSimValue.Name = "labelWaitInQueueDurSimValue";
-            this.labelWaitInQueueDurSimValue.Size = new System.Drawing.Size(204, 18);
-            this.labelWaitInQueueDurSimValue.TabIndex = 6;
-            this.labelWaitInQueueDurSimValue.Text = "-";
-            this.labelWaitInQueueDurSimValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelWaitForRepairDurSimValue
-            // 
-            this.labelWaitForRepairDurSimValue.AutoSize = true;
-            this.labelWaitForRepairDurSimValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelWaitForRepairDurSimValue.Location = new System.Drawing.Point(213, 72);
-            this.labelWaitForRepairDurSimValue.Name = "labelWaitForRepairDurSimValue";
-            this.labelWaitForRepairDurSimValue.Size = new System.Drawing.Size(204, 18);
-            this.labelWaitForRepairDurSimValue.TabIndex = 7;
-            this.labelWaitForRepairDurSimValue.Text = "-";
-            this.labelWaitForRepairDurSimValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelTimeInServiceDurSimValue
-            // 
-            this.labelTimeInServiceDurSimValue.AutoSize = true;
-            this.labelTimeInServiceDurSimValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelTimeInServiceDurSimValue.Location = new System.Drawing.Point(213, 90);
-            this.labelTimeInServiceDurSimValue.Name = "labelTimeInServiceDurSimValue";
-            this.labelTimeInServiceDurSimValue.Size = new System.Drawing.Size(204, 18);
-            this.labelTimeInServiceDurSimValue.TabIndex = 8;
-            this.labelTimeInServiceDurSimValue.Text = "-";
-            this.labelTimeInServiceDurSimValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelWaitInQueueCIValue
-            // 
-            this.labelWaitInQueueCIValue.AutoSize = true;
-            this.labelWaitInQueueCIValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelWaitInQueueCIValue.Location = new System.Drawing.Point(213, 108);
-            this.labelWaitInQueueCIValue.Name = "labelWaitInQueueCIValue";
-            this.labelWaitInQueueCIValue.Size = new System.Drawing.Size(204, 18);
-            this.labelWaitInQueueCIValue.TabIndex = 9;
-            this.labelWaitInQueueCIValue.Text = "-";
-            this.labelWaitInQueueCIValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelWaitForRepairCIValue
-            // 
-            this.labelWaitForRepairCIValue.AutoSize = true;
-            this.labelWaitForRepairCIValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelWaitForRepairCIValue.Location = new System.Drawing.Point(213, 126);
-            this.labelWaitForRepairCIValue.Name = "labelWaitForRepairCIValue";
-            this.labelWaitForRepairCIValue.Size = new System.Drawing.Size(204, 18);
-            this.labelWaitForRepairCIValue.TabIndex = 10;
-            this.labelWaitForRepairCIValue.Text = "-";
-            this.labelWaitForRepairCIValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelTimeInSystemCIValue
-            // 
-            this.labelTimeInSystemCIValue.AutoSize = true;
-            this.labelTimeInSystemCIValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelTimeInSystemCIValue.Location = new System.Drawing.Point(213, 144);
-            this.labelTimeInSystemCIValue.Name = "labelTimeInSystemCIValue";
-            this.labelTimeInSystemCIValue.Size = new System.Drawing.Size(204, 26);
-            this.labelTimeInSystemCIValue.TabIndex = 11;
-            this.labelTimeInSystemCIValue.Text = "-";
-            this.labelTimeInSystemCIValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelAVGQueueForRepairLenSim
-            // 
-            this.labelAVGQueueForRepairLenSim.AutoSize = true;
-            this.labelAVGQueueForRepairLenSim.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelAVGQueueForRepairLenSim.Location = new System.Drawing.Point(3, 18);
-            this.labelAVGQueueForRepairLenSim.Name = "labelAVGQueueForRepairLenSim";
-            this.labelAVGQueueForRepairLenSim.Size = new System.Drawing.Size(204, 18);
-            this.labelAVGQueueForRepairLenSim.TabIndex = 12;
-            this.labelAVGQueueForRepairLenSim.Text = "Priemerný počet áut na opravu:";
-            this.labelAVGQueueForRepairLenSim.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelAVGRepairedQueueLenSim
-            // 
-            this.labelAVGRepairedQueueLenSim.AutoSize = true;
-            this.labelAVGRepairedQueueLenSim.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelAVGRepairedQueueLenSim.Location = new System.Drawing.Point(3, 36);
-            this.labelAVGRepairedQueueLenSim.Name = "labelAVGRepairedQueueLenSim";
-            this.labelAVGRepairedQueueLenSim.Size = new System.Drawing.Size(204, 18);
-            this.labelAVGRepairedQueueLenSim.TabIndex = 13;
-            this.labelAVGRepairedQueueLenSim.Text = "Priemerný počet áut na odovzdanie:";
-            this.labelAVGRepairedQueueLenSim.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelWaitInQueueDurSim
-            // 
-            this.labelWaitInQueueDurSim.AutoSize = true;
-            this.labelWaitInQueueDurSim.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelWaitInQueueDurSim.Location = new System.Drawing.Point(3, 54);
-            this.labelWaitInQueueDurSim.Name = "labelWaitInQueueDurSim";
-            this.labelWaitInQueueDurSim.Size = new System.Drawing.Size(204, 18);
-            this.labelWaitInQueueDurSim.TabIndex = 14;
-            this.labelWaitInQueueDurSim.Text = "Priemerný čas čakania vo fronte:";
-            this.labelWaitInQueueDurSim.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelWaitForRepairDurSim
-            // 
-            this.labelWaitForRepairDurSim.AutoSize = true;
-            this.labelWaitForRepairDurSim.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelWaitForRepairDurSim.Location = new System.Drawing.Point(3, 72);
-            this.labelWaitForRepairDurSim.Name = "labelWaitForRepairDurSim";
-            this.labelWaitForRepairDurSim.Size = new System.Drawing.Size(204, 18);
-            this.labelWaitForRepairDurSim.TabIndex = 15;
-            this.labelWaitForRepairDurSim.Text = "Priemerný čas čakania na opravu:";
-            this.labelWaitForRepairDurSim.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelTimeInServiceDurSim
-            // 
-            this.labelTimeInServiceDurSim.AutoSize = true;
-            this.labelTimeInServiceDurSim.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelTimeInServiceDurSim.Location = new System.Drawing.Point(3, 90);
-            this.labelTimeInServiceDurSim.Name = "labelTimeInServiceDurSim";
-            this.labelTimeInServiceDurSim.Size = new System.Drawing.Size(204, 18);
-            this.labelTimeInServiceDurSim.TabIndex = 16;
-            this.labelTimeInServiceDurSim.Text = "Priemerný čas strávený v servise:";
-            this.labelTimeInServiceDurSim.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelWaitInQueueCI
-            // 
-            this.labelWaitInQueueCI.AutoSize = true;
-            this.labelWaitInQueueCI.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelWaitInQueueCI.Location = new System.Drawing.Point(3, 108);
-            this.labelWaitInQueueCI.Name = "labelWaitInQueueCI";
-            this.labelWaitInQueueCI.Size = new System.Drawing.Size(204, 18);
-            this.labelWaitInQueueCI.TabIndex = 17;
-            this.labelWaitInQueueCI.Text = "90% IS času čakania vo fronte:";
-            this.labelWaitInQueueCI.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelWaitForRepairCI
-            // 
-            this.labelWaitForRepairCI.AutoSize = true;
-            this.labelWaitForRepairCI.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelWaitForRepairCI.Location = new System.Drawing.Point(3, 126);
-            this.labelWaitForRepairCI.Name = "labelWaitForRepairCI";
-            this.labelWaitForRepairCI.Size = new System.Drawing.Size(204, 18);
-            this.labelWaitForRepairCI.TabIndex = 18;
-            this.labelWaitForRepairCI.Text = "90% IS času čakania na opravu:";
-            this.labelWaitForRepairCI.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelTimeInSystemCI
-            // 
-            this.labelTimeInSystemCI.AutoSize = true;
-            this.labelTimeInSystemCI.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelTimeInSystemCI.Location = new System.Drawing.Point(3, 144);
-            this.labelTimeInSystemCI.Name = "labelTimeInSystemCI";
-            this.labelTimeInSystemCI.Size = new System.Drawing.Size(204, 26);
-            this.labelTimeInSystemCI.TabIndex = 19;
-            this.labelTimeInSystemCI.Text = "90% IS času stráveného v servise:";
-            this.labelTimeInSystemCI.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // groupBoxVisualization
-            // 
-            this.groupBoxVisualization.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxVisualization.Controls.Add(this.tabWidgetOutput);
-            this.groupBoxVisualization.Location = new System.Drawing.Point(464, 264);
-            this.groupBoxVisualization.Name = "groupBoxVisualization";
-            this.groupBoxVisualization.Padding = new System.Windows.Forms.Padding(9);
-            this.groupBoxVisualization.Size = new System.Drawing.Size(683, 543);
-            this.groupBoxVisualization.TabIndex = 2;
-            this.groupBoxVisualization.TabStop = false;
-            this.groupBoxVisualization.Text = "Grafický výstup";
-            // 
             // tabWidgetOutput
             // 
+            this.tabWidgetOutput.Controls.Add(this.tabSimulation);
             this.tabWidgetOutput.Controls.Add(this.tabCustomers);
             this.tabWidgetOutput.Controls.Add(this.tabWorkers1);
             this.tabWidgetOutput.Controls.Add(this.tabWorkers2);
-            this.tabWidgetOutput.Controls.Add(this.tabCarParkService);
             this.tabWidgetOutput.Controls.Add(this.tabCarParks);
             this.tabWidgetOutput.Controls.Add(this.tabQueueLenWorkers1);
             this.tabWidgetOutput.Controls.Add(this.tabQueueLenWorkers2);
@@ -1636,8 +1079,565 @@
             this.tabWidgetOutput.Location = new System.Drawing.Point(9, 22);
             this.tabWidgetOutput.Name = "tabWidgetOutput";
             this.tabWidgetOutput.SelectedIndex = 0;
-            this.tabWidgetOutput.Size = new System.Drawing.Size(665, 512);
+            this.tabWidgetOutput.Size = new System.Drawing.Size(1221, 521);
             this.tabWidgetOutput.TabIndex = 0;
+            // 
+            // tabCustomers
+            // 
+            this.tabCustomers.Controls.Add(this.tableLayoutPanelCustomers);
+            this.tabCustomers.Location = new System.Drawing.Point(4, 22);
+            this.tabCustomers.Name = "tabCustomers";
+            this.tabCustomers.Padding = new System.Windows.Forms.Padding(3);
+            this.tabCustomers.Size = new System.Drawing.Size(1213, 495);
+            this.tabCustomers.TabIndex = 4;
+            this.tabCustomers.Text = "Zákazníci";
+            this.tabCustomers.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanelCustomers
+            // 
+            this.tableLayoutPanelCustomers.ColumnCount = 1;
+            this.tableLayoutPanelCustomers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelCustomers.Controls.Add(this.dataGridViewCustomers, 0, 0);
+            this.tableLayoutPanelCustomers.Controls.Add(this.groupBoxCustomersStats, 0, 1);
+            this.tableLayoutPanelCustomers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelCustomers.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanelCustomers.Name = "tableLayoutPanelCustomers";
+            this.tableLayoutPanelCustomers.RowCount = 2;
+            this.tableLayoutPanelCustomers.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelCustomers.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanelCustomers.Size = new System.Drawing.Size(1207, 489);
+            this.tableLayoutPanelCustomers.TabIndex = 0;
+            // 
+            // dataGridViewCustomers
+            // 
+            this.dataGridViewCustomers.AllowUserToAddRows = false;
+            this.dataGridViewCustomers.AllowUserToDeleteRows = false;
+            this.dataGridViewCustomers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCustomers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewCustomers.Location = new System.Drawing.Point(3, 3);
+            this.dataGridViewCustomers.Name = "dataGridViewCustomers";
+            this.dataGridViewCustomers.ReadOnly = true;
+            this.dataGridViewCustomers.RowHeadersVisible = false;
+            this.dataGridViewCustomers.Size = new System.Drawing.Size(1201, 333);
+            this.dataGridViewCustomers.TabIndex = 0;
+            // 
+            // groupBoxCustomersStats
+            // 
+            this.groupBoxCustomersStats.Controls.Add(this.tableLayoutPanelCustomersStats);
+            this.groupBoxCustomersStats.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxCustomersStats.Location = new System.Drawing.Point(3, 342);
+            this.groupBoxCustomersStats.Name = "groupBoxCustomersStats";
+            this.groupBoxCustomersStats.Size = new System.Drawing.Size(1201, 144);
+            this.groupBoxCustomersStats.TabIndex = 1;
+            this.groupBoxCustomersStats.TabStop = false;
+            this.groupBoxCustomersStats.Text = "Štatistiky";
+            // 
+            // tableLayoutPanelCustomersStats
+            // 
+            this.tableLayoutPanelCustomersStats.ColumnCount = 4;
+            this.tableLayoutPanelCustomersStats.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelCustomersStats.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelCustomersStats.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelCustomersStats.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersInService, 0, 0);
+            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersInQueue, 0, 1);
+            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersTotal, 0, 2);
+            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersServed, 0, 3);
+            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersNotServed, 0, 4);
+            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersServedRatio, 0, 5);
+            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersInServiceValue, 1, 0);
+            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersInQueueValue, 1, 1);
+            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersTotalValue, 1, 2);
+            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersServedValue, 1, 3);
+            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersNotServedValue, 1, 4);
+            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersServedRatioValue, 1, 5);
+            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersInServiceAvg, 2, 0);
+            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersInQueueAvg, 2, 1);
+            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersWaitInQueueAvg, 2, 2);
+            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersWaitForRepairAvg, 2, 3);
+            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersTimeInServiceAvg, 2, 4);
+            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersInServiceAvgValue, 3, 0);
+            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersInQueueAvgValue, 3, 1);
+            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersWaitInQueueAvgValue, 3, 2);
+            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersWaitForRepairAvgValue, 3, 3);
+            this.tableLayoutPanelCustomersStats.Controls.Add(this.labelCustomersTimeInServiceAvgValue, 3, 4);
+            this.tableLayoutPanelCustomersStats.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelCustomersStats.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanelCustomersStats.Name = "tableLayoutPanelCustomersStats";
+            this.tableLayoutPanelCustomersStats.RowCount = 6;
+            this.tableLayoutPanelCustomersStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66666F));
+            this.tableLayoutPanelCustomersStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanelCustomersStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanelCustomersStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanelCustomersStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanelCustomersStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66666F));
+            this.tableLayoutPanelCustomersStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanelCustomersStats.Size = new System.Drawing.Size(1195, 125);
+            this.tableLayoutPanelCustomersStats.TabIndex = 0;
+            // 
+            // labelCustomersInService
+            // 
+            this.labelCustomersInService.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelCustomersInService.Location = new System.Drawing.Point(45, 2);
+            this.labelCustomersInService.Name = "labelCustomersInService";
+            this.labelCustomersInService.Size = new System.Drawing.Size(250, 15);
+            this.labelCustomersInService.TabIndex = 0;
+            this.labelCustomersInService.Text = "Počet zákazníkov v servise:";
+            this.labelCustomersInService.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelCustomersInQueue
+            // 
+            this.labelCustomersInQueue.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelCustomersInQueue.Location = new System.Drawing.Point(45, 22);
+            this.labelCustomersInQueue.Name = "labelCustomersInQueue";
+            this.labelCustomersInQueue.Size = new System.Drawing.Size(250, 15);
+            this.labelCustomersInQueue.TabIndex = 1;
+            this.labelCustomersInQueue.Text = "Počet čakajúcich v rade:";
+            this.labelCustomersInQueue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelCustomersTotal
+            // 
+            this.labelCustomersTotal.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelCustomersTotal.Location = new System.Drawing.Point(45, 42);
+            this.labelCustomersTotal.Name = "labelCustomersTotal";
+            this.labelCustomersTotal.Size = new System.Drawing.Size(250, 15);
+            this.labelCustomersTotal.TabIndex = 2;
+            this.labelCustomersTotal.Text = "Celkový počet zákazníkov:";
+            this.labelCustomersTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelCustomersServed
+            // 
+            this.labelCustomersServed.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelCustomersServed.Location = new System.Drawing.Point(45, 62);
+            this.labelCustomersServed.Name = "labelCustomersServed";
+            this.labelCustomersServed.Size = new System.Drawing.Size(250, 15);
+            this.labelCustomersServed.TabIndex = 3;
+            this.labelCustomersServed.Text = "Celkový počet obslúžených:";
+            this.labelCustomersServed.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelCustomersNotServed
+            // 
+            this.labelCustomersNotServed.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelCustomersNotServed.Location = new System.Drawing.Point(45, 82);
+            this.labelCustomersNotServed.Name = "labelCustomersNotServed";
+            this.labelCustomersNotServed.Size = new System.Drawing.Size(250, 15);
+            this.labelCustomersNotServed.TabIndex = 4;
+            this.labelCustomersNotServed.Text = "Celkový počet neobslúžených:";
+            this.labelCustomersNotServed.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelCustomersServedRatio
+            // 
+            this.labelCustomersServedRatio.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelCustomersServedRatio.Location = new System.Drawing.Point(45, 105);
+            this.labelCustomersServedRatio.Name = "labelCustomersServedRatio";
+            this.labelCustomersServedRatio.Size = new System.Drawing.Size(250, 15);
+            this.labelCustomersServedRatio.TabIndex = 5;
+            this.labelCustomersServedRatio.Text = "Pomer obslúžených:";
+            this.labelCustomersServedRatio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelCustomersInServiceValue
+            // 
+            this.labelCustomersInServiceValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelCustomersInServiceValue.Location = new System.Drawing.Point(301, 2);
+            this.labelCustomersInServiceValue.Name = "labelCustomersInServiceValue";
+            this.labelCustomersInServiceValue.Size = new System.Drawing.Size(250, 15);
+            this.labelCustomersInServiceValue.TabIndex = 6;
+            this.labelCustomersInServiceValue.Text = "-";
+            this.labelCustomersInServiceValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelCustomersInQueueValue
+            // 
+            this.labelCustomersInQueueValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelCustomersInQueueValue.Location = new System.Drawing.Point(301, 22);
+            this.labelCustomersInQueueValue.Name = "labelCustomersInQueueValue";
+            this.labelCustomersInQueueValue.Size = new System.Drawing.Size(250, 15);
+            this.labelCustomersInQueueValue.TabIndex = 7;
+            this.labelCustomersInQueueValue.Text = "-";
+            this.labelCustomersInQueueValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelCustomersTotalValue
+            // 
+            this.labelCustomersTotalValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelCustomersTotalValue.Location = new System.Drawing.Point(301, 42);
+            this.labelCustomersTotalValue.Name = "labelCustomersTotalValue";
+            this.labelCustomersTotalValue.Size = new System.Drawing.Size(250, 15);
+            this.labelCustomersTotalValue.TabIndex = 8;
+            this.labelCustomersTotalValue.Text = "-";
+            this.labelCustomersTotalValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelCustomersServedValue
+            // 
+            this.labelCustomersServedValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelCustomersServedValue.Location = new System.Drawing.Point(301, 62);
+            this.labelCustomersServedValue.Name = "labelCustomersServedValue";
+            this.labelCustomersServedValue.Size = new System.Drawing.Size(250, 15);
+            this.labelCustomersServedValue.TabIndex = 9;
+            this.labelCustomersServedValue.Text = "-";
+            this.labelCustomersServedValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelCustomersNotServedValue
+            // 
+            this.labelCustomersNotServedValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelCustomersNotServedValue.Location = new System.Drawing.Point(301, 82);
+            this.labelCustomersNotServedValue.Name = "labelCustomersNotServedValue";
+            this.labelCustomersNotServedValue.Size = new System.Drawing.Size(250, 15);
+            this.labelCustomersNotServedValue.TabIndex = 10;
+            this.labelCustomersNotServedValue.Text = "-";
+            this.labelCustomersNotServedValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelCustomersServedRatioValue
+            // 
+            this.labelCustomersServedRatioValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelCustomersServedRatioValue.Location = new System.Drawing.Point(301, 105);
+            this.labelCustomersServedRatioValue.Name = "labelCustomersServedRatioValue";
+            this.labelCustomersServedRatioValue.Size = new System.Drawing.Size(250, 15);
+            this.labelCustomersServedRatioValue.TabIndex = 11;
+            this.labelCustomersServedRatioValue.Text = "-";
+            this.labelCustomersServedRatioValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelCustomersInServiceAvg
+            // 
+            this.labelCustomersInServiceAvg.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelCustomersInServiceAvg.Location = new System.Drawing.Point(641, 2);
+            this.labelCustomersInServiceAvg.Name = "labelCustomersInServiceAvg";
+            this.labelCustomersInServiceAvg.Size = new System.Drawing.Size(250, 15);
+            this.labelCustomersInServiceAvg.TabIndex = 12;
+            this.labelCustomersInServiceAvg.Text = "Priemerný počet zákazníkov v servise:";
+            this.labelCustomersInServiceAvg.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelCustomersInQueueAvg
+            // 
+            this.labelCustomersInQueueAvg.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelCustomersInQueueAvg.Location = new System.Drawing.Point(641, 22);
+            this.labelCustomersInQueueAvg.Name = "labelCustomersInQueueAvg";
+            this.labelCustomersInQueueAvg.Size = new System.Drawing.Size(250, 15);
+            this.labelCustomersInQueueAvg.TabIndex = 13;
+            this.labelCustomersInQueueAvg.Text = "Priemerný počet čakajúcich v rade:";
+            this.labelCustomersInQueueAvg.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelCustomersWaitInQueueAvg
+            // 
+            this.labelCustomersWaitInQueueAvg.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelCustomersWaitInQueueAvg.Location = new System.Drawing.Point(641, 42);
+            this.labelCustomersWaitInQueueAvg.Name = "labelCustomersWaitInQueueAvg";
+            this.labelCustomersWaitInQueueAvg.Size = new System.Drawing.Size(250, 15);
+            this.labelCustomersWaitInQueueAvg.TabIndex = 16;
+            this.labelCustomersWaitInQueueAvg.Text = "Priemerný čas čakania vo fronte:";
+            this.labelCustomersWaitInQueueAvg.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelCustomersWaitForRepairAvg
+            // 
+            this.labelCustomersWaitForRepairAvg.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelCustomersWaitForRepairAvg.Location = new System.Drawing.Point(641, 62);
+            this.labelCustomersWaitForRepairAvg.Name = "labelCustomersWaitForRepairAvg";
+            this.labelCustomersWaitForRepairAvg.Size = new System.Drawing.Size(250, 15);
+            this.labelCustomersWaitForRepairAvg.TabIndex = 17;
+            this.labelCustomersWaitForRepairAvg.Text = "Priemerný čas čakania na opravu:";
+            this.labelCustomersWaitForRepairAvg.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelCustomersTimeInServiceAvg
+            // 
+            this.labelCustomersTimeInServiceAvg.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelCustomersTimeInServiceAvg.Location = new System.Drawing.Point(641, 82);
+            this.labelCustomersTimeInServiceAvg.Name = "labelCustomersTimeInServiceAvg";
+            this.labelCustomersTimeInServiceAvg.Size = new System.Drawing.Size(250, 15);
+            this.labelCustomersTimeInServiceAvg.TabIndex = 18;
+            this.labelCustomersTimeInServiceAvg.Text = "Priemerný čas strávený v servise:";
+            this.labelCustomersTimeInServiceAvg.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelCustomersInServiceAvgValue
+            // 
+            this.labelCustomersInServiceAvgValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelCustomersInServiceAvgValue.Location = new System.Drawing.Point(897, 2);
+            this.labelCustomersInServiceAvgValue.Name = "labelCustomersInServiceAvgValue";
+            this.labelCustomersInServiceAvgValue.Size = new System.Drawing.Size(250, 15);
+            this.labelCustomersInServiceAvgValue.TabIndex = 19;
+            this.labelCustomersInServiceAvgValue.Text = "-";
+            this.labelCustomersInServiceAvgValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelCustomersInQueueAvgValue
+            // 
+            this.labelCustomersInQueueAvgValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelCustomersInQueueAvgValue.Location = new System.Drawing.Point(897, 22);
+            this.labelCustomersInQueueAvgValue.Name = "labelCustomersInQueueAvgValue";
+            this.labelCustomersInQueueAvgValue.Size = new System.Drawing.Size(250, 15);
+            this.labelCustomersInQueueAvgValue.TabIndex = 20;
+            this.labelCustomersInQueueAvgValue.Text = "-";
+            this.labelCustomersInQueueAvgValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelCustomersWaitInQueueAvgValue
+            // 
+            this.labelCustomersWaitInQueueAvgValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelCustomersWaitInQueueAvgValue.Location = new System.Drawing.Point(897, 42);
+            this.labelCustomersWaitInQueueAvgValue.Name = "labelCustomersWaitInQueueAvgValue";
+            this.labelCustomersWaitInQueueAvgValue.Size = new System.Drawing.Size(250, 15);
+            this.labelCustomersWaitInQueueAvgValue.TabIndex = 23;
+            this.labelCustomersWaitInQueueAvgValue.Text = "-";
+            this.labelCustomersWaitInQueueAvgValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelCustomersWaitForRepairAvgValue
+            // 
+            this.labelCustomersWaitForRepairAvgValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelCustomersWaitForRepairAvgValue.Location = new System.Drawing.Point(897, 62);
+            this.labelCustomersWaitForRepairAvgValue.Name = "labelCustomersWaitForRepairAvgValue";
+            this.labelCustomersWaitForRepairAvgValue.Size = new System.Drawing.Size(250, 15);
+            this.labelCustomersWaitForRepairAvgValue.TabIndex = 24;
+            this.labelCustomersWaitForRepairAvgValue.Text = "-";
+            this.labelCustomersWaitForRepairAvgValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelCustomersTimeInServiceAvgValue
+            // 
+            this.labelCustomersTimeInServiceAvgValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelCustomersTimeInServiceAvgValue.Location = new System.Drawing.Point(897, 82);
+            this.labelCustomersTimeInServiceAvgValue.Name = "labelCustomersTimeInServiceAvgValue";
+            this.labelCustomersTimeInServiceAvgValue.Size = new System.Drawing.Size(250, 15);
+            this.labelCustomersTimeInServiceAvgValue.TabIndex = 25;
+            this.labelCustomersTimeInServiceAvgValue.Text = "-";
+            this.labelCustomersTimeInServiceAvgValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tabWorkers1
+            // 
+            this.tabWorkers1.Controls.Add(this.tableLayoutPanelWorkers1);
+            this.tabWorkers1.Location = new System.Drawing.Point(4, 22);
+            this.tabWorkers1.Name = "tabWorkers1";
+            this.tabWorkers1.Size = new System.Drawing.Size(1213, 495);
+            this.tabWorkers1.TabIndex = 5;
+            this.tabWorkers1.Text = "Pracovníci skupiny 1";
+            this.tabWorkers1.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanelWorkers1
+            // 
+            this.tableLayoutPanelWorkers1.ColumnCount = 1;
+            this.tableLayoutPanelWorkers1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelWorkers1.Controls.Add(this.groupBoxWorkers1Stats, 0, 1);
+            this.tableLayoutPanelWorkers1.Controls.Add(this.dataGridViewWorkers1, 0, 0);
+            this.tableLayoutPanelWorkers1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelWorkers1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanelWorkers1.Name = "tableLayoutPanelWorkers1";
+            this.tableLayoutPanelWorkers1.RowCount = 2;
+            this.tableLayoutPanelWorkers1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelWorkers1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 105F));
+            this.tableLayoutPanelWorkers1.Size = new System.Drawing.Size(1213, 495);
+            this.tableLayoutPanelWorkers1.TabIndex = 0;
+            // 
+            // groupBoxWorkers1Stats
+            // 
+            this.groupBoxWorkers1Stats.Controls.Add(this.tableLayoutPanelWorkers1Stats);
+            this.groupBoxWorkers1Stats.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxWorkers1Stats.Location = new System.Drawing.Point(3, 393);
+            this.groupBoxWorkers1Stats.Name = "groupBoxWorkers1Stats";
+            this.groupBoxWorkers1Stats.Size = new System.Drawing.Size(1207, 99);
+            this.groupBoxWorkers1Stats.TabIndex = 2;
+            this.groupBoxWorkers1Stats.TabStop = false;
+            this.groupBoxWorkers1Stats.Text = "Štatistiky";
+            // 
+            // tableLayoutPanelWorkers1Stats
+            // 
+            this.tableLayoutPanelWorkers1Stats.ColumnCount = 4;
+            this.tableLayoutPanelWorkers1Stats.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelWorkers1Stats.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelWorkers1Stats.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelWorkers1Stats.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelWorkers1Stats.Controls.Add(this.labelWorkers1WorkingCount, 0, 0);
+            this.tableLayoutPanelWorkers1Stats.Controls.Add(this.labelWorkers1WorkingCountValue, 1, 0);
+            this.tableLayoutPanelWorkers1Stats.Controls.Add(this.labelWorkers1WorkingRatio, 0, 1);
+            this.tableLayoutPanelWorkers1Stats.Controls.Add(this.labelWorkers1WorkingRatioValue, 1, 1);
+            this.tableLayoutPanelWorkers1Stats.Controls.Add(this.labelWorkers1ReturnQueueLength, 0, 2);
+            this.tableLayoutPanelWorkers1Stats.Controls.Add(this.labelWorkers1ReturnQueueLengthValue, 1, 2);
+            this.tableLayoutPanelWorkers1Stats.Controls.Add(this.labelWorkers1AvgWorkingCount, 2, 0);
+            this.tableLayoutPanelWorkers1Stats.Controls.Add(this.labelWorkers1AvgWorkingRatio, 2, 1);
+            this.tableLayoutPanelWorkers1Stats.Controls.Add(this.labelWorkers1AvgReturnQueueLength, 2, 2);
+            this.tableLayoutPanelWorkers1Stats.Controls.Add(this.labelWorkers1AvgWorkingCountValue, 3, 0);
+            this.tableLayoutPanelWorkers1Stats.Controls.Add(this.labelWorkers1AvgWorkingRatioValue, 3, 1);
+            this.tableLayoutPanelWorkers1Stats.Controls.Add(this.labelWorkers1AvgReturnQueueLengthValue, 3, 2);
+            this.tableLayoutPanelWorkers1Stats.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelWorkers1Stats.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanelWorkers1Stats.Name = "tableLayoutPanelWorkers1Stats";
+            this.tableLayoutPanelWorkers1Stats.RowCount = 3;
+            this.tableLayoutPanelWorkers1Stats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanelWorkers1Stats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanelWorkers1Stats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanelWorkers1Stats.Size = new System.Drawing.Size(1201, 80);
+            this.tableLayoutPanelWorkers1Stats.TabIndex = 0;
+            // 
+            // dataGridViewWorkers1
+            // 
+            this.dataGridViewWorkers1.AllowUserToAddRows = false;
+            this.dataGridViewWorkers1.AllowUserToDeleteRows = false;
+            this.dataGridViewWorkers1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewWorkers1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewWorkers1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewWorkers1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridViewWorkers1.Name = "dataGridViewWorkers1";
+            this.dataGridViewWorkers1.ReadOnly = true;
+            this.dataGridViewWorkers1.RowHeadersVisible = false;
+            this.dataGridViewWorkers1.Size = new System.Drawing.Size(1207, 384);
+            this.dataGridViewWorkers1.TabIndex = 1;
+            // 
+            // tabWorkers2
+            // 
+            this.tabWorkers2.Controls.Add(this.tableLayoutPanelWorkers2);
+            this.tabWorkers2.Location = new System.Drawing.Point(4, 22);
+            this.tabWorkers2.Name = "tabWorkers2";
+            this.tabWorkers2.Size = new System.Drawing.Size(1213, 495);
+            this.tabWorkers2.TabIndex = 6;
+            this.tabWorkers2.Text = "Pracovníci skupiny 2";
+            this.tabWorkers2.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanelWorkers2
+            // 
+            this.tableLayoutPanelWorkers2.ColumnCount = 1;
+            this.tableLayoutPanelWorkers2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelWorkers2.Controls.Add(this.groupBoxWorkers2Stats, 0, 1);
+            this.tableLayoutPanelWorkers2.Controls.Add(this.dataGridViewWorkers2, 0, 0);
+            this.tableLayoutPanelWorkers2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelWorkers2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanelWorkers2.Name = "tableLayoutPanelWorkers2";
+            this.tableLayoutPanelWorkers2.RowCount = 2;
+            this.tableLayoutPanelWorkers2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelWorkers2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 105F));
+            this.tableLayoutPanelWorkers2.Size = new System.Drawing.Size(1213, 495);
+            this.tableLayoutPanelWorkers2.TabIndex = 0;
+            // 
+            // groupBoxWorkers2Stats
+            // 
+            this.groupBoxWorkers2Stats.Controls.Add(this.tableLayoutPanelWorkers2Stats);
+            this.groupBoxWorkers2Stats.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxWorkers2Stats.Location = new System.Drawing.Point(3, 393);
+            this.groupBoxWorkers2Stats.Name = "groupBoxWorkers2Stats";
+            this.groupBoxWorkers2Stats.Size = new System.Drawing.Size(1207, 99);
+            this.groupBoxWorkers2Stats.TabIndex = 3;
+            this.groupBoxWorkers2Stats.TabStop = false;
+            this.groupBoxWorkers2Stats.Text = "Štatistiky";
+            // 
+            // dataGridViewWorkers2
+            // 
+            this.dataGridViewWorkers2.AllowUserToAddRows = false;
+            this.dataGridViewWorkers2.AllowUserToDeleteRows = false;
+            this.dataGridViewWorkers2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewWorkers2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewWorkers2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewWorkers2.Location = new System.Drawing.Point(3, 3);
+            this.dataGridViewWorkers2.Name = "dataGridViewWorkers2";
+            this.dataGridViewWorkers2.ReadOnly = true;
+            this.dataGridViewWorkers2.RowHeadersVisible = false;
+            this.dataGridViewWorkers2.Size = new System.Drawing.Size(1207, 384);
+            this.dataGridViewWorkers2.TabIndex = 2;
+            // 
+            // tabCarParks
+            // 
+            this.tabCarParks.Controls.Add(this.tableLayoutPanelCarParks);
+            this.tabCarParks.Location = new System.Drawing.Point(4, 22);
+            this.tabCarParks.Name = "tabCarParks";
+            this.tabCarParks.Size = new System.Drawing.Size(1213, 495);
+            this.tabCarParks.TabIndex = 7;
+            this.tabCarParks.Text = "Parkoviská";
+            this.tabCarParks.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanelCarParks
+            // 
+            this.tableLayoutPanelCarParks.ColumnCount = 2;
+            this.tableLayoutPanelCarParks.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelCarParks.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelCarParks.Controls.Add(this.groupBoxCarPark1, 0, 0);
+            this.tableLayoutPanelCarParks.Controls.Add(this.groupBoxCarPark2, 1, 0);
+            this.tableLayoutPanelCarParks.Controls.Add(this.groupBoxCarPark1Stats, 0, 1);
+            this.tableLayoutPanelCarParks.Controls.Add(this.groupBoxCarPark2Stats, 1, 1);
+            this.tableLayoutPanelCarParks.Controls.Add(this.groupBoxCarParkService, 0, 2);
+            this.tableLayoutPanelCarParks.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelCarParks.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanelCarParks.Name = "tableLayoutPanelCarParks";
+            this.tableLayoutPanelCarParks.RowCount = 3;
+            this.tableLayoutPanelCarParks.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelCarParks.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 105F));
+            this.tableLayoutPanelCarParks.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.tableLayoutPanelCarParks.Size = new System.Drawing.Size(1213, 495);
+            this.tableLayoutPanelCarParks.TabIndex = 0;
+            // 
+            // groupBoxCarPark1
+            // 
+            this.groupBoxCarPark1.Controls.Add(this.dataGridViewCarPark1);
+            this.groupBoxCarPark1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxCarPark1.Location = new System.Drawing.Point(3, 3);
+            this.groupBoxCarPark1.Name = "groupBoxCarPark1";
+            this.groupBoxCarPark1.Size = new System.Drawing.Size(600, 319);
+            this.groupBoxCarPark1.TabIndex = 0;
+            this.groupBoxCarPark1.TabStop = false;
+            this.groupBoxCarPark1.Text = "Parkovisko 1";
+            // 
+            // dataGridViewCarPark1
+            // 
+            this.dataGridViewCarPark1.AllowUserToAddRows = false;
+            this.dataGridViewCarPark1.AllowUserToDeleteRows = false;
+            this.dataGridViewCarPark1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewCarPark1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCarPark1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewCarPark1.Location = new System.Drawing.Point(3, 16);
+            this.dataGridViewCarPark1.Name = "dataGridViewCarPark1";
+            this.dataGridViewCarPark1.ReadOnly = true;
+            this.dataGridViewCarPark1.RowHeadersVisible = false;
+            this.dataGridViewCarPark1.Size = new System.Drawing.Size(594, 300);
+            this.dataGridViewCarPark1.TabIndex = 3;
+            // 
+            // groupBoxCarPark2
+            // 
+            this.groupBoxCarPark2.Controls.Add(this.dataGridViewCarPark2);
+            this.groupBoxCarPark2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxCarPark2.Location = new System.Drawing.Point(609, 3);
+            this.groupBoxCarPark2.Name = "groupBoxCarPark2";
+            this.groupBoxCarPark2.Size = new System.Drawing.Size(601, 319);
+            this.groupBoxCarPark2.TabIndex = 1;
+            this.groupBoxCarPark2.TabStop = false;
+            this.groupBoxCarPark2.Text = "Parkovisko 2";
+            // 
+            // dataGridViewCarPark2
+            // 
+            this.dataGridViewCarPark2.AllowUserToAddRows = false;
+            this.dataGridViewCarPark2.AllowUserToDeleteRows = false;
+            this.dataGridViewCarPark2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewCarPark2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCarPark2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewCarPark2.Location = new System.Drawing.Point(3, 16);
+            this.dataGridViewCarPark2.Name = "dataGridViewCarPark2";
+            this.dataGridViewCarPark2.ReadOnly = true;
+            this.dataGridViewCarPark2.RowHeadersVisible = false;
+            this.dataGridViewCarPark2.Size = new System.Drawing.Size(595, 300);
+            this.dataGridViewCarPark2.TabIndex = 3;
+            // 
+            // groupBoxCarPark1Stats
+            // 
+            this.groupBoxCarPark1Stats.Controls.Add(this.tableLayoutPanelCarPark1Stats);
+            this.groupBoxCarPark1Stats.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxCarPark1Stats.Location = new System.Drawing.Point(3, 328);
+            this.groupBoxCarPark1Stats.Name = "groupBoxCarPark1Stats";
+            this.groupBoxCarPark1Stats.Size = new System.Drawing.Size(600, 99);
+            this.groupBoxCarPark1Stats.TabIndex = 2;
+            this.groupBoxCarPark1Stats.TabStop = false;
+            this.groupBoxCarPark1Stats.Text = "Štatistiky parkoviska 1";
+            // 
+            // groupBoxCarPark2Stats
+            // 
+            this.groupBoxCarPark2Stats.Controls.Add(this.tableLayoutPanelCarPark2Stats);
+            this.groupBoxCarPark2Stats.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxCarPark2Stats.Location = new System.Drawing.Point(609, 328);
+            this.groupBoxCarPark2Stats.Name = "groupBoxCarPark2Stats";
+            this.groupBoxCarPark2Stats.Size = new System.Drawing.Size(601, 99);
+            this.groupBoxCarPark2Stats.TabIndex = 3;
+            this.groupBoxCarPark2Stats.TabStop = false;
+            this.groupBoxCarPark2Stats.Text = "Štatistiky parkoviska 2";
+            // 
+            // groupBoxCarParkService
+            // 
+            this.tableLayoutPanelCarParks.SetColumnSpan(this.groupBoxCarParkService, 2);
+            this.groupBoxCarParkService.Controls.Add(this.tableLayoutPanelCarParkService);
+            this.groupBoxCarParkService.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxCarParkService.Location = new System.Drawing.Point(3, 433);
+            this.groupBoxCarParkService.Name = "groupBoxCarParkService";
+            this.groupBoxCarParkService.Size = new System.Drawing.Size(1207, 59);
+            this.groupBoxCarParkService.TabIndex = 4;
+            this.groupBoxCarParkService.TabStop = false;
+            this.groupBoxCarParkService.Text = "Parkovisko pred servisom";
             // 
             // tabQueueLenWorkers1
             // 
@@ -1646,7 +1646,7 @@
             this.tabQueueLenWorkers1.Location = new System.Drawing.Point(4, 22);
             this.tabQueueLenWorkers1.Name = "tabQueueLenWorkers1";
             this.tabQueueLenWorkers1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabQueueLenWorkers1.Size = new System.Drawing.Size(657, 486);
+            this.tabQueueLenWorkers1.Size = new System.Drawing.Size(1213, 495);
             this.tabQueueLenWorkers1.TabIndex = 0;
             this.tabQueueLenWorkers1.Text = "Počet čakajúcich podľa počtu pracovníkov 1";
             this.tabQueueLenWorkers1.UseVisualStyleBackColor = true;
@@ -1664,7 +1664,7 @@
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series1.Name = "Series1";
             this.widgetPlotQueueLenWorkers1.Series.Add(series1);
-            this.widgetPlotQueueLenWorkers1.Size = new System.Drawing.Size(647, 444);
+            this.widgetPlotQueueLenWorkers1.Size = new System.Drawing.Size(1052, 453);
             this.widgetPlotQueueLenWorkers1.TabIndex = 1;
             this.widgetPlotQueueLenWorkers1.Text = "chart1";
             title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
@@ -1680,7 +1680,7 @@
             this.frameQueueLenWorkers1.Location = new System.Drawing.Point(5, 5);
             this.frameQueueLenWorkers1.MinimumSize = new System.Drawing.Size(0, 25);
             this.frameQueueLenWorkers1.Name = "frameQueueLenWorkers1";
-            this.frameQueueLenWorkers1.Size = new System.Drawing.Size(647, 25);
+            this.frameQueueLenWorkers1.Size = new System.Drawing.Size(1052, 25);
             this.frameQueueLenWorkers1.TabIndex = 0;
             // 
             // spinBoxQueueLenFixWorkers2
@@ -1711,7 +1711,7 @@
             this.tabQueueLenWorkers2.Location = new System.Drawing.Point(4, 22);
             this.tabQueueLenWorkers2.Name = "tabQueueLenWorkers2";
             this.tabQueueLenWorkers2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabQueueLenWorkers2.Size = new System.Drawing.Size(657, 486);
+            this.tabQueueLenWorkers2.Size = new System.Drawing.Size(808, 486);
             this.tabQueueLenWorkers2.TabIndex = 1;
             this.tabQueueLenWorkers2.Text = "Počet čakajúcich podľa počtu pracovníkov 2";
             this.tabQueueLenWorkers2.UseVisualStyleBackColor = true;
@@ -1775,7 +1775,7 @@
             this.tabTimeInServiceWorkers1.Controls.Add(this.frameTimeInServiceWorkers1);
             this.tabTimeInServiceWorkers1.Location = new System.Drawing.Point(4, 22);
             this.tabTimeInServiceWorkers1.Name = "tabTimeInServiceWorkers1";
-            this.tabTimeInServiceWorkers1.Size = new System.Drawing.Size(657, 486);
+            this.tabTimeInServiceWorkers1.Size = new System.Drawing.Size(808, 486);
             this.tabTimeInServiceWorkers1.TabIndex = 2;
             this.tabTimeInServiceWorkers1.Text = "Priemerný čas strávený v servise podľa počtu pracovníkov 1";
             this.tabTimeInServiceWorkers1.UseVisualStyleBackColor = true;
@@ -1839,7 +1839,7 @@
             this.tabTimeInServiceWorkers2.Controls.Add(this.frameTimeInServiceWorkers2);
             this.tabTimeInServiceWorkers2.Location = new System.Drawing.Point(4, 22);
             this.tabTimeInServiceWorkers2.Name = "tabTimeInServiceWorkers2";
-            this.tabTimeInServiceWorkers2.Size = new System.Drawing.Size(657, 486);
+            this.tabTimeInServiceWorkers2.Size = new System.Drawing.Size(808, 486);
             this.tabTimeInServiceWorkers2.TabIndex = 3;
             this.tabTimeInServiceWorkers2.Text = "Priemerný čas strávený v servise podľa počtu pracovníkov 2";
             this.tabTimeInServiceWorkers2.UseVisualStyleBackColor = true;
@@ -1899,190 +1899,1558 @@
             // 
             // centralWidget
             // 
-            this.centralWidget.Controls.Add(this.groupBoxVisualization);
-            this.centralWidget.Controls.Add(this.groupBoxSimulation);
             this.centralWidget.Controls.Add(this.groupBoxOutput);
+            this.centralWidget.Controls.Add(this.groupBoxSimulation);
             this.centralWidget.Dock = System.Windows.Forms.DockStyle.Fill;
             this.centralWidget.Location = new System.Drawing.Point(0, 0);
             this.centralWidget.Name = "centralWidget";
-            this.centralWidget.Size = new System.Drawing.Size(1156, 816);
+            this.centralWidget.Size = new System.Drawing.Size(1257, 825);
             this.centralWidget.TabIndex = 3;
             // 
-            // tabCustomers
+            // labelWorkers1WorkingCount
             // 
-            this.tabCustomers.Controls.Add(this.tableLayoutPanelCustomers);
-            this.tabCustomers.Location = new System.Drawing.Point(4, 22);
-            this.tabCustomers.Name = "tabCustomers";
-            this.tabCustomers.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCustomers.Size = new System.Drawing.Size(657, 486);
-            this.tabCustomers.TabIndex = 4;
-            this.tabCustomers.Text = "Zákazníci";
-            this.tabCustomers.UseVisualStyleBackColor = true;
+            this.labelWorkers1WorkingCount.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelWorkers1WorkingCount.Location = new System.Drawing.Point(47, 5);
+            this.labelWorkers1WorkingCount.Name = "labelWorkers1WorkingCount";
+            this.labelWorkers1WorkingCount.Size = new System.Drawing.Size(250, 15);
+            this.labelWorkers1WorkingCount.TabIndex = 0;
+            this.labelWorkers1WorkingCount.Text = "Počet pracujúcich:";
+            this.labelWorkers1WorkingCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // tabWorkers1
+            // labelWorkers1WorkingCountValue
             // 
-            this.tabWorkers1.Controls.Add(this.tableLayoutPanelWorkers1);
-            this.tabWorkers1.Location = new System.Drawing.Point(4, 22);
-            this.tabWorkers1.Name = "tabWorkers1";
-            this.tabWorkers1.Size = new System.Drawing.Size(657, 486);
-            this.tabWorkers1.TabIndex = 5;
-            this.tabWorkers1.Text = "Pracovníci skupiny 1";
-            this.tabWorkers1.UseVisualStyleBackColor = true;
+            this.labelWorkers1WorkingCountValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelWorkers1WorkingCountValue.Location = new System.Drawing.Point(303, 5);
+            this.labelWorkers1WorkingCountValue.Name = "labelWorkers1WorkingCountValue";
+            this.labelWorkers1WorkingCountValue.Size = new System.Drawing.Size(250, 15);
+            this.labelWorkers1WorkingCountValue.TabIndex = 1;
+            this.labelWorkers1WorkingCountValue.Text = "-";
+            this.labelWorkers1WorkingCountValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // tabWorkers2
+            // labelWorkers1WorkingRatio
             // 
-            this.tabWorkers2.Controls.Add(this.tableLayoutPanelWorkers2);
-            this.tabWorkers2.Location = new System.Drawing.Point(4, 22);
-            this.tabWorkers2.Name = "tabWorkers2";
-            this.tabWorkers2.Size = new System.Drawing.Size(657, 486);
-            this.tabWorkers2.TabIndex = 6;
-            this.tabWorkers2.Text = "Pracovníci skupiny 2";
-            this.tabWorkers2.UseVisualStyleBackColor = true;
+            this.labelWorkers1WorkingRatio.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelWorkers1WorkingRatio.Location = new System.Drawing.Point(47, 31);
+            this.labelWorkers1WorkingRatio.Name = "labelWorkers1WorkingRatio";
+            this.labelWorkers1WorkingRatio.Size = new System.Drawing.Size(250, 15);
+            this.labelWorkers1WorkingRatio.TabIndex = 2;
+            this.labelWorkers1WorkingRatio.Text = "Vyťaženie pracoviska:";
+            this.labelWorkers1WorkingRatio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // tabCarParks
+            // labelWorkers1WorkingRatioValue
             // 
-            this.tabCarParks.Location = new System.Drawing.Point(4, 22);
-            this.tabCarParks.Name = "tabCarParks";
-            this.tabCarParks.Size = new System.Drawing.Size(657, 486);
-            this.tabCarParks.TabIndex = 7;
-            this.tabCarParks.Text = "Parkoviská";
-            this.tabCarParks.UseVisualStyleBackColor = true;
+            this.labelWorkers1WorkingRatioValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelWorkers1WorkingRatioValue.Location = new System.Drawing.Point(303, 31);
+            this.labelWorkers1WorkingRatioValue.Name = "labelWorkers1WorkingRatioValue";
+            this.labelWorkers1WorkingRatioValue.Size = new System.Drawing.Size(250, 15);
+            this.labelWorkers1WorkingRatioValue.TabIndex = 3;
+            this.labelWorkers1WorkingRatioValue.Text = "-";
+            this.labelWorkers1WorkingRatioValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // tabCarParkService
+            // labelWorkers1ReturnQueueLength
             // 
-            this.tabCarParkService.Location = new System.Drawing.Point(4, 22);
-            this.tabCarParkService.Name = "tabCarParkService";
-            this.tabCarParkService.Size = new System.Drawing.Size(657, 486);
-            this.tabCarParkService.TabIndex = 8;
-            this.tabCarParkService.Text = "Parkovisko pred servisom";
-            this.tabCarParkService.UseVisualStyleBackColor = true;
+            this.labelWorkers1ReturnQueueLength.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelWorkers1ReturnQueueLength.Location = new System.Drawing.Point(47, 58);
+            this.labelWorkers1ReturnQueueLength.Name = "labelWorkers1ReturnQueueLength";
+            this.labelWorkers1ReturnQueueLength.Size = new System.Drawing.Size(250, 15);
+            this.labelWorkers1ReturnQueueLength.TabIndex = 4;
+            this.labelWorkers1ReturnQueueLength.Text = "Dĺžka frontu áut na vrátenie:";
+            this.labelWorkers1ReturnQueueLength.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // tableLayoutPanelCustomers
+            // labelWorkers1ReturnQueueLengthValue
             // 
-            this.tableLayoutPanelCustomers.ColumnCount = 1;
-            this.tableLayoutPanelCustomers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelCustomers.Controls.Add(this.dataGridViewCustomers, 0, 0);
-            this.tableLayoutPanelCustomers.Controls.Add(this.groupBoxCustomersStats, 0, 1);
-            this.tableLayoutPanelCustomers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelCustomers.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanelCustomers.Name = "tableLayoutPanelCustomers";
-            this.tableLayoutPanelCustomers.RowCount = 2;
-            this.tableLayoutPanelCustomers.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelCustomers.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelCustomers.Size = new System.Drawing.Size(651, 480);
-            this.tableLayoutPanelCustomers.TabIndex = 0;
+            this.labelWorkers1ReturnQueueLengthValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelWorkers1ReturnQueueLengthValue.Location = new System.Drawing.Point(303, 58);
+            this.labelWorkers1ReturnQueueLengthValue.Name = "labelWorkers1ReturnQueueLengthValue";
+            this.labelWorkers1ReturnQueueLengthValue.Size = new System.Drawing.Size(250, 15);
+            this.labelWorkers1ReturnQueueLengthValue.TabIndex = 5;
+            this.labelWorkers1ReturnQueueLengthValue.Text = "-";
+            this.labelWorkers1ReturnQueueLengthValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // dataGridViewCustomers
+            // labelWorkers1AvgWorkingCount
             // 
-            this.dataGridViewCustomers.AllowUserToAddRows = false;
-            this.dataGridViewCustomers.AllowUserToDeleteRows = false;
-            this.dataGridViewCustomers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewCustomers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewCustomers.Location = new System.Drawing.Point(3, 3);
-            this.dataGridViewCustomers.Name = "dataGridViewCustomers";
-            this.dataGridViewCustomers.ReadOnly = true;
-            this.dataGridViewCustomers.Size = new System.Drawing.Size(645, 234);
-            this.dataGridViewCustomers.TabIndex = 0;
+            this.labelWorkers1AvgWorkingCount.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelWorkers1AvgWorkingCount.Location = new System.Drawing.Point(647, 5);
+            this.labelWorkers1AvgWorkingCount.Name = "labelWorkers1AvgWorkingCount";
+            this.labelWorkers1AvgWorkingCount.Size = new System.Drawing.Size(250, 15);
+            this.labelWorkers1AvgWorkingCount.TabIndex = 6;
+            this.labelWorkers1AvgWorkingCount.Text = "Priemerný počet pracujúcich:";
+            this.labelWorkers1AvgWorkingCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // groupBoxCustomersStats
+            // labelWorkers1AvgWorkingRatio
             // 
-            this.groupBoxCustomersStats.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxCustomersStats.Location = new System.Drawing.Point(3, 243);
-            this.groupBoxCustomersStats.Name = "groupBoxCustomersStats";
-            this.groupBoxCustomersStats.Size = new System.Drawing.Size(645, 234);
-            this.groupBoxCustomersStats.TabIndex = 1;
-            this.groupBoxCustomersStats.TabStop = false;
-            this.groupBoxCustomersStats.Text = "Štatistiky";
+            this.labelWorkers1AvgWorkingRatio.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelWorkers1AvgWorkingRatio.Location = new System.Drawing.Point(647, 31);
+            this.labelWorkers1AvgWorkingRatio.Name = "labelWorkers1AvgWorkingRatio";
+            this.labelWorkers1AvgWorkingRatio.Size = new System.Drawing.Size(250, 15);
+            this.labelWorkers1AvgWorkingRatio.TabIndex = 7;
+            this.labelWorkers1AvgWorkingRatio.Text = "Priemerné vyťaženie pracoviska:";
+            this.labelWorkers1AvgWorkingRatio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // tableLayoutPanelWorkers1
+            // labelWorkers1AvgReturnQueueLength
             // 
-            this.tableLayoutPanelWorkers1.ColumnCount = 1;
-            this.tableLayoutPanelWorkers1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelWorkers1.Controls.Add(this.groupBoxWorkers1Stats, 0, 1);
-            this.tableLayoutPanelWorkers1.Controls.Add(this.dataGridViewWorkers1, 0, 0);
-            this.tableLayoutPanelWorkers1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelWorkers1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanelWorkers1.Name = "tableLayoutPanelWorkers1";
-            this.tableLayoutPanelWorkers1.RowCount = 2;
-            this.tableLayoutPanelWorkers1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelWorkers1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelWorkers1.Size = new System.Drawing.Size(657, 486);
-            this.tableLayoutPanelWorkers1.TabIndex = 0;
+            this.labelWorkers1AvgReturnQueueLength.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelWorkers1AvgReturnQueueLength.Location = new System.Drawing.Point(647, 58);
+            this.labelWorkers1AvgReturnQueueLength.Name = "labelWorkers1AvgReturnQueueLength";
+            this.labelWorkers1AvgReturnQueueLength.Size = new System.Drawing.Size(250, 15);
+            this.labelWorkers1AvgReturnQueueLength.TabIndex = 8;
+            this.labelWorkers1AvgReturnQueueLength.Text = "Priemerná dĺžka frontu áut na vrátenie:";
+            this.labelWorkers1AvgReturnQueueLength.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // dataGridViewWorkers1
+            // labelWorkers1AvgWorkingCountValue
             // 
-            this.dataGridViewWorkers1.AllowUserToAddRows = false;
-            this.dataGridViewWorkers1.AllowUserToDeleteRows = false;
-            this.dataGridViewWorkers1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewWorkers1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewWorkers1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewWorkers1.Location = new System.Drawing.Point(3, 3);
-            this.dataGridViewWorkers1.Name = "dataGridViewWorkers1";
-            this.dataGridViewWorkers1.ReadOnly = true;
-            this.dataGridViewWorkers1.Size = new System.Drawing.Size(651, 237);
-            this.dataGridViewWorkers1.TabIndex = 1;
+            this.labelWorkers1AvgWorkingCountValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelWorkers1AvgWorkingCountValue.Location = new System.Drawing.Point(903, 5);
+            this.labelWorkers1AvgWorkingCountValue.Name = "labelWorkers1AvgWorkingCountValue";
+            this.labelWorkers1AvgWorkingCountValue.Size = new System.Drawing.Size(250, 15);
+            this.labelWorkers1AvgWorkingCountValue.TabIndex = 9;
+            this.labelWorkers1AvgWorkingCountValue.Text = "-";
+            this.labelWorkers1AvgWorkingCountValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // groupBoxWorkers1Stats
+            // labelWorkers1AvgWorkingRatioValue
             // 
-            this.groupBoxWorkers1Stats.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxWorkers1Stats.Location = new System.Drawing.Point(3, 246);
-            this.groupBoxWorkers1Stats.Name = "groupBoxWorkers1Stats";
-            this.groupBoxWorkers1Stats.Size = new System.Drawing.Size(651, 237);
-            this.groupBoxWorkers1Stats.TabIndex = 2;
-            this.groupBoxWorkers1Stats.TabStop = false;
-            this.groupBoxWorkers1Stats.Text = "Štatistiky";
+            this.labelWorkers1AvgWorkingRatioValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelWorkers1AvgWorkingRatioValue.Location = new System.Drawing.Point(903, 31);
+            this.labelWorkers1AvgWorkingRatioValue.Name = "labelWorkers1AvgWorkingRatioValue";
+            this.labelWorkers1AvgWorkingRatioValue.Size = new System.Drawing.Size(250, 15);
+            this.labelWorkers1AvgWorkingRatioValue.TabIndex = 10;
+            this.labelWorkers1AvgWorkingRatioValue.Text = "-";
+            this.labelWorkers1AvgWorkingRatioValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // tableLayoutPanelWorkers2
+            // labelWorkers1AvgReturnQueueLengthValue
             // 
-            this.tableLayoutPanelWorkers2.ColumnCount = 1;
-            this.tableLayoutPanelWorkers2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelWorkers2.Controls.Add(this.groupBoxWorkers2Stats, 0, 1);
-            this.tableLayoutPanelWorkers2.Controls.Add(this.dataGridViewWorkers2, 0, 0);
-            this.tableLayoutPanelWorkers2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelWorkers2.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanelWorkers2.Name = "tableLayoutPanelWorkers2";
-            this.tableLayoutPanelWorkers2.RowCount = 2;
-            this.tableLayoutPanelWorkers2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelWorkers2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelWorkers2.Size = new System.Drawing.Size(657, 486);
-            this.tableLayoutPanelWorkers2.TabIndex = 0;
+            this.labelWorkers1AvgReturnQueueLengthValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelWorkers1AvgReturnQueueLengthValue.Location = new System.Drawing.Point(903, 58);
+            this.labelWorkers1AvgReturnQueueLengthValue.Name = "labelWorkers1AvgReturnQueueLengthValue";
+            this.labelWorkers1AvgReturnQueueLengthValue.Size = new System.Drawing.Size(250, 15);
+            this.labelWorkers1AvgReturnQueueLengthValue.TabIndex = 11;
+            this.labelWorkers1AvgReturnQueueLengthValue.Text = "-";
+            this.labelWorkers1AvgReturnQueueLengthValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // dataGridViewWorkers2
+            // tableLayoutPanelWorkers2Stats
             // 
-            this.dataGridViewWorkers2.AllowUserToAddRows = false;
-            this.dataGridViewWorkers2.AllowUserToDeleteRows = false;
-            this.dataGridViewWorkers2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewWorkers2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewWorkers2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewWorkers2.Location = new System.Drawing.Point(3, 3);
-            this.dataGridViewWorkers2.Name = "dataGridViewWorkers2";
-            this.dataGridViewWorkers2.ReadOnly = true;
-            this.dataGridViewWorkers2.Size = new System.Drawing.Size(651, 237);
-            this.dataGridViewWorkers2.TabIndex = 2;
+            this.tableLayoutPanelWorkers2Stats.ColumnCount = 4;
+            this.tableLayoutPanelWorkers2Stats.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelWorkers2Stats.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelWorkers2Stats.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelWorkers2Stats.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelWorkers2Stats.Controls.Add(this.labelWorkers2WorkingCount, 0, 0);
+            this.tableLayoutPanelWorkers2Stats.Controls.Add(this.labelWorkers2WorkingCountValue, 1, 0);
+            this.tableLayoutPanelWorkers2Stats.Controls.Add(this.labelWorkers2WorkingRatio, 0, 1);
+            this.tableLayoutPanelWorkers2Stats.Controls.Add(this.labelWorkers2WorkingRatioValue, 1, 1);
+            this.tableLayoutPanelWorkers2Stats.Controls.Add(this.labelWorkers2ToRepairQueueLength, 0, 2);
+            this.tableLayoutPanelWorkers2Stats.Controls.Add(this.labelWorkers2ToRepairQueueLengthValue, 1, 2);
+            this.tableLayoutPanelWorkers2Stats.Controls.Add(this.labelWorkers2AvgWorkingCount, 2, 0);
+            this.tableLayoutPanelWorkers2Stats.Controls.Add(this.labelWorkers2AvgWorkingRatio, 2, 1);
+            this.tableLayoutPanelWorkers2Stats.Controls.Add(this.labelWorkers2AvgToRepairQueueLength, 2, 2);
+            this.tableLayoutPanelWorkers2Stats.Controls.Add(this.labelWorkers2AvgWorkingCountValue, 3, 0);
+            this.tableLayoutPanelWorkers2Stats.Controls.Add(this.labelWorkers2AvgWorkingRatioValue, 3, 1);
+            this.tableLayoutPanelWorkers2Stats.Controls.Add(this.labelWorkers2AvgToRepairQueueLengthValue, 3, 2);
+            this.tableLayoutPanelWorkers2Stats.Controls.Add(this.labelWorkers2RepairedQueueLength, 0, 3);
+            this.tableLayoutPanelWorkers2Stats.Controls.Add(this.labelWorkers2RepairedQueueLengthValue, 1, 3);
+            this.tableLayoutPanelWorkers2Stats.Controls.Add(this.labelWorkers2AvgRepairedQueueLength, 2, 3);
+            this.tableLayoutPanelWorkers2Stats.Controls.Add(this.labelWorkers2AvgRepairedQueueLengthValue, 3, 3);
+            this.tableLayoutPanelWorkers2Stats.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelWorkers2Stats.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanelWorkers2Stats.Name = "tableLayoutPanelWorkers2Stats";
+            this.tableLayoutPanelWorkers2Stats.RowCount = 4;
+            this.tableLayoutPanelWorkers2Stats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelWorkers2Stats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelWorkers2Stats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelWorkers2Stats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelWorkers2Stats.Size = new System.Drawing.Size(1201, 80);
+            this.tableLayoutPanelWorkers2Stats.TabIndex = 1;
             // 
-            // groupBoxWorkers2Stats
+            // labelWorkers2WorkingCount
             // 
-            this.groupBoxWorkers2Stats.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxWorkers2Stats.Location = new System.Drawing.Point(3, 246);
-            this.groupBoxWorkers2Stats.Name = "groupBoxWorkers2Stats";
-            this.groupBoxWorkers2Stats.Size = new System.Drawing.Size(651, 237);
-            this.groupBoxWorkers2Stats.TabIndex = 3;
-            this.groupBoxWorkers2Stats.TabStop = false;
-            this.groupBoxWorkers2Stats.Text = "Štatistiky";
+            this.labelWorkers2WorkingCount.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelWorkers2WorkingCount.Location = new System.Drawing.Point(47, 2);
+            this.labelWorkers2WorkingCount.Name = "labelWorkers2WorkingCount";
+            this.labelWorkers2WorkingCount.Size = new System.Drawing.Size(250, 15);
+            this.labelWorkers2WorkingCount.TabIndex = 0;
+            this.labelWorkers2WorkingCount.Text = "Počet pracujúcich:";
+            this.labelWorkers2WorkingCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelWorkers2WorkingCountValue
+            // 
+            this.labelWorkers2WorkingCountValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelWorkers2WorkingCountValue.Location = new System.Drawing.Point(303, 2);
+            this.labelWorkers2WorkingCountValue.Name = "labelWorkers2WorkingCountValue";
+            this.labelWorkers2WorkingCountValue.Size = new System.Drawing.Size(250, 15);
+            this.labelWorkers2WorkingCountValue.TabIndex = 1;
+            this.labelWorkers2WorkingCountValue.Text = "-";
+            this.labelWorkers2WorkingCountValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelWorkers2WorkingRatio
+            // 
+            this.labelWorkers2WorkingRatio.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelWorkers2WorkingRatio.Location = new System.Drawing.Point(47, 22);
+            this.labelWorkers2WorkingRatio.Name = "labelWorkers2WorkingRatio";
+            this.labelWorkers2WorkingRatio.Size = new System.Drawing.Size(250, 15);
+            this.labelWorkers2WorkingRatio.TabIndex = 2;
+            this.labelWorkers2WorkingRatio.Text = "Vyťaženie pracoviska:";
+            this.labelWorkers2WorkingRatio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelWorkers2WorkingRatioValue
+            // 
+            this.labelWorkers2WorkingRatioValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelWorkers2WorkingRatioValue.Location = new System.Drawing.Point(303, 22);
+            this.labelWorkers2WorkingRatioValue.Name = "labelWorkers2WorkingRatioValue";
+            this.labelWorkers2WorkingRatioValue.Size = new System.Drawing.Size(250, 15);
+            this.labelWorkers2WorkingRatioValue.TabIndex = 3;
+            this.labelWorkers2WorkingRatioValue.Text = "-";
+            this.labelWorkers2WorkingRatioValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelWorkers2ToRepairQueueLength
+            // 
+            this.labelWorkers2ToRepairQueueLength.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelWorkers2ToRepairQueueLength.Location = new System.Drawing.Point(47, 42);
+            this.labelWorkers2ToRepairQueueLength.Name = "labelWorkers2ToRepairQueueLength";
+            this.labelWorkers2ToRepairQueueLength.Size = new System.Drawing.Size(250, 15);
+            this.labelWorkers2ToRepairQueueLength.TabIndex = 4;
+            this.labelWorkers2ToRepairQueueLength.Text = "Dĺžka frontu áut na opravu:";
+            this.labelWorkers2ToRepairQueueLength.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelWorkers2ToRepairQueueLengthValue
+            // 
+            this.labelWorkers2ToRepairQueueLengthValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelWorkers2ToRepairQueueLengthValue.Location = new System.Drawing.Point(303, 42);
+            this.labelWorkers2ToRepairQueueLengthValue.Name = "labelWorkers2ToRepairQueueLengthValue";
+            this.labelWorkers2ToRepairQueueLengthValue.Size = new System.Drawing.Size(250, 15);
+            this.labelWorkers2ToRepairQueueLengthValue.TabIndex = 5;
+            this.labelWorkers2ToRepairQueueLengthValue.Text = "-";
+            this.labelWorkers2ToRepairQueueLengthValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelWorkers2AvgWorkingCount
+            // 
+            this.labelWorkers2AvgWorkingCount.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelWorkers2AvgWorkingCount.Location = new System.Drawing.Point(647, 2);
+            this.labelWorkers2AvgWorkingCount.Name = "labelWorkers2AvgWorkingCount";
+            this.labelWorkers2AvgWorkingCount.Size = new System.Drawing.Size(250, 15);
+            this.labelWorkers2AvgWorkingCount.TabIndex = 6;
+            this.labelWorkers2AvgWorkingCount.Text = "Priemerný počet pracujúcich:";
+            this.labelWorkers2AvgWorkingCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelWorkers2AvgWorkingRatio
+            // 
+            this.labelWorkers2AvgWorkingRatio.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelWorkers2AvgWorkingRatio.Location = new System.Drawing.Point(647, 22);
+            this.labelWorkers2AvgWorkingRatio.Name = "labelWorkers2AvgWorkingRatio";
+            this.labelWorkers2AvgWorkingRatio.Size = new System.Drawing.Size(250, 15);
+            this.labelWorkers2AvgWorkingRatio.TabIndex = 7;
+            this.labelWorkers2AvgWorkingRatio.Text = "Priemerné vyťaženie pracoviska:";
+            this.labelWorkers2AvgWorkingRatio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelWorkers2AvgToRepairQueueLength
+            // 
+            this.labelWorkers2AvgToRepairQueueLength.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelWorkers2AvgToRepairQueueLength.Location = new System.Drawing.Point(647, 42);
+            this.labelWorkers2AvgToRepairQueueLength.Name = "labelWorkers2AvgToRepairQueueLength";
+            this.labelWorkers2AvgToRepairQueueLength.Size = new System.Drawing.Size(250, 15);
+            this.labelWorkers2AvgToRepairQueueLength.TabIndex = 8;
+            this.labelWorkers2AvgToRepairQueueLength.Text = "Priemerná dĺžka frontu áut na opravu:";
+            this.labelWorkers2AvgToRepairQueueLength.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelWorkers2AvgWorkingCountValue
+            // 
+            this.labelWorkers2AvgWorkingCountValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelWorkers2AvgWorkingCountValue.Location = new System.Drawing.Point(903, 2);
+            this.labelWorkers2AvgWorkingCountValue.Name = "labelWorkers2AvgWorkingCountValue";
+            this.labelWorkers2AvgWorkingCountValue.Size = new System.Drawing.Size(250, 15);
+            this.labelWorkers2AvgWorkingCountValue.TabIndex = 9;
+            this.labelWorkers2AvgWorkingCountValue.Text = "-";
+            this.labelWorkers2AvgWorkingCountValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelWorkers2AvgWorkingRatioValue
+            // 
+            this.labelWorkers2AvgWorkingRatioValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelWorkers2AvgWorkingRatioValue.Location = new System.Drawing.Point(903, 22);
+            this.labelWorkers2AvgWorkingRatioValue.Name = "labelWorkers2AvgWorkingRatioValue";
+            this.labelWorkers2AvgWorkingRatioValue.Size = new System.Drawing.Size(250, 15);
+            this.labelWorkers2AvgWorkingRatioValue.TabIndex = 10;
+            this.labelWorkers2AvgWorkingRatioValue.Text = "-";
+            this.labelWorkers2AvgWorkingRatioValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelWorkers2AvgToRepairQueueLengthValue
+            // 
+            this.labelWorkers2AvgToRepairQueueLengthValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelWorkers2AvgToRepairQueueLengthValue.Location = new System.Drawing.Point(903, 42);
+            this.labelWorkers2AvgToRepairQueueLengthValue.Name = "labelWorkers2AvgToRepairQueueLengthValue";
+            this.labelWorkers2AvgToRepairQueueLengthValue.Size = new System.Drawing.Size(250, 15);
+            this.labelWorkers2AvgToRepairQueueLengthValue.TabIndex = 11;
+            this.labelWorkers2AvgToRepairQueueLengthValue.Text = "-";
+            this.labelWorkers2AvgToRepairQueueLengthValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelWorkers2RepairedQueueLength
+            // 
+            this.labelWorkers2RepairedQueueLength.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelWorkers2RepairedQueueLength.Location = new System.Drawing.Point(47, 62);
+            this.labelWorkers2RepairedQueueLength.Name = "labelWorkers2RepairedQueueLength";
+            this.labelWorkers2RepairedQueueLength.Size = new System.Drawing.Size(250, 15);
+            this.labelWorkers2RepairedQueueLength.TabIndex = 12;
+            this.labelWorkers2RepairedQueueLength.Text = "Dĺžka frontu opravených áut:";
+            this.labelWorkers2RepairedQueueLength.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelWorkers2RepairedQueueLengthValue
+            // 
+            this.labelWorkers2RepairedQueueLengthValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelWorkers2RepairedQueueLengthValue.Location = new System.Drawing.Point(303, 62);
+            this.labelWorkers2RepairedQueueLengthValue.Name = "labelWorkers2RepairedQueueLengthValue";
+            this.labelWorkers2RepairedQueueLengthValue.Size = new System.Drawing.Size(250, 15);
+            this.labelWorkers2RepairedQueueLengthValue.TabIndex = 13;
+            this.labelWorkers2RepairedQueueLengthValue.Text = "-";
+            this.labelWorkers2RepairedQueueLengthValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelWorkers2AvgRepairedQueueLength
+            // 
+            this.labelWorkers2AvgRepairedQueueLength.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelWorkers2AvgRepairedQueueLength.Location = new System.Drawing.Point(647, 62);
+            this.labelWorkers2AvgRepairedQueueLength.Name = "labelWorkers2AvgRepairedQueueLength";
+            this.labelWorkers2AvgRepairedQueueLength.Size = new System.Drawing.Size(250, 15);
+            this.labelWorkers2AvgRepairedQueueLength.TabIndex = 14;
+            this.labelWorkers2AvgRepairedQueueLength.Text = "Priemerná dĺžka frontu opravených áut:";
+            this.labelWorkers2AvgRepairedQueueLength.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelWorkers2AvgRepairedQueueLengthValue
+            // 
+            this.labelWorkers2AvgRepairedQueueLengthValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelWorkers2AvgRepairedQueueLengthValue.Location = new System.Drawing.Point(903, 62);
+            this.labelWorkers2AvgRepairedQueueLengthValue.Name = "labelWorkers2AvgRepairedQueueLengthValue";
+            this.labelWorkers2AvgRepairedQueueLengthValue.Size = new System.Drawing.Size(250, 15);
+            this.labelWorkers2AvgRepairedQueueLengthValue.TabIndex = 15;
+            this.labelWorkers2AvgRepairedQueueLengthValue.Text = "-";
+            this.labelWorkers2AvgRepairedQueueLengthValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tableLayoutPanelCarPark1Stats
+            // 
+            this.tableLayoutPanelCarPark1Stats.ColumnCount = 2;
+            this.tableLayoutPanelCarPark1Stats.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelCarPark1Stats.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelCarPark1Stats.Controls.Add(this.labelCarPark1OccupiedCount, 0, 0);
+            this.tableLayoutPanelCarPark1Stats.Controls.Add(this.labelCarPark1AvgOccupiedCount, 0, 1);
+            this.tableLayoutPanelCarPark1Stats.Controls.Add(this.labelCarPark1OccupiedRatio, 0, 2);
+            this.tableLayoutPanelCarPark1Stats.Controls.Add(this.labelCarPark1AvgOccupiedRatio, 0, 3);
+            this.tableLayoutPanelCarPark1Stats.Controls.Add(this.labelCarPark1OccupiedCountValue, 1, 0);
+            this.tableLayoutPanelCarPark1Stats.Controls.Add(this.labelCarPark1AvgOccupiedCountValue, 1, 1);
+            this.tableLayoutPanelCarPark1Stats.Controls.Add(this.labelCarPark1OccupiedRatioValue, 1, 2);
+            this.tableLayoutPanelCarPark1Stats.Controls.Add(this.labelCarPark1AvgOccupiedRatioValue, 1, 3);
+            this.tableLayoutPanelCarPark1Stats.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelCarPark1Stats.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanelCarPark1Stats.Name = "tableLayoutPanelCarPark1Stats";
+            this.tableLayoutPanelCarPark1Stats.RowCount = 4;
+            this.tableLayoutPanelCarPark1Stats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelCarPark1Stats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelCarPark1Stats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelCarPark1Stats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelCarPark1Stats.Size = new System.Drawing.Size(594, 80);
+            this.tableLayoutPanelCarPark1Stats.TabIndex = 0;
+            // 
+            // labelCarPark1OccupiedCount
+            // 
+            this.labelCarPark1OccupiedCount.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelCarPark1OccupiedCount.Location = new System.Drawing.Point(44, 2);
+            this.labelCarPark1OccupiedCount.Name = "labelCarPark1OccupiedCount";
+            this.labelCarPark1OccupiedCount.Size = new System.Drawing.Size(250, 15);
+            this.labelCarPark1OccupiedCount.TabIndex = 0;
+            this.labelCarPark1OccupiedCount.Text = "Počet obsadených miest:";
+            this.labelCarPark1OccupiedCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelCarPark1AvgOccupiedCount
+            // 
+            this.labelCarPark1AvgOccupiedCount.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelCarPark1AvgOccupiedCount.Location = new System.Drawing.Point(44, 22);
+            this.labelCarPark1AvgOccupiedCount.Name = "labelCarPark1AvgOccupiedCount";
+            this.labelCarPark1AvgOccupiedCount.Size = new System.Drawing.Size(250, 15);
+            this.labelCarPark1AvgOccupiedCount.TabIndex = 1;
+            this.labelCarPark1AvgOccupiedCount.Text = "Priemerný počet obsadených miest:";
+            this.labelCarPark1AvgOccupiedCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelCarPark1OccupiedRatio
+            // 
+            this.labelCarPark1OccupiedRatio.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelCarPark1OccupiedRatio.Location = new System.Drawing.Point(44, 42);
+            this.labelCarPark1OccupiedRatio.Name = "labelCarPark1OccupiedRatio";
+            this.labelCarPark1OccupiedRatio.Size = new System.Drawing.Size(250, 15);
+            this.labelCarPark1OccupiedRatio.TabIndex = 2;
+            this.labelCarPark1OccupiedRatio.Text = "Vyťaženie:";
+            this.labelCarPark1OccupiedRatio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelCarPark1AvgOccupiedRatio
+            // 
+            this.labelCarPark1AvgOccupiedRatio.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelCarPark1AvgOccupiedRatio.Location = new System.Drawing.Point(44, 62);
+            this.labelCarPark1AvgOccupiedRatio.Name = "labelCarPark1AvgOccupiedRatio";
+            this.labelCarPark1AvgOccupiedRatio.Size = new System.Drawing.Size(250, 15);
+            this.labelCarPark1AvgOccupiedRatio.TabIndex = 3;
+            this.labelCarPark1AvgOccupiedRatio.Text = "Priemerné vyťaženie:";
+            this.labelCarPark1AvgOccupiedRatio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelCarPark1OccupiedCountValue
+            // 
+            this.labelCarPark1OccupiedCountValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelCarPark1OccupiedCountValue.Location = new System.Drawing.Point(300, 2);
+            this.labelCarPark1OccupiedCountValue.Name = "labelCarPark1OccupiedCountValue";
+            this.labelCarPark1OccupiedCountValue.Size = new System.Drawing.Size(250, 15);
+            this.labelCarPark1OccupiedCountValue.TabIndex = 4;
+            this.labelCarPark1OccupiedCountValue.Text = "-";
+            this.labelCarPark1OccupiedCountValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelCarPark1AvgOccupiedCountValue
+            // 
+            this.labelCarPark1AvgOccupiedCountValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelCarPark1AvgOccupiedCountValue.Location = new System.Drawing.Point(300, 22);
+            this.labelCarPark1AvgOccupiedCountValue.Name = "labelCarPark1AvgOccupiedCountValue";
+            this.labelCarPark1AvgOccupiedCountValue.Size = new System.Drawing.Size(250, 15);
+            this.labelCarPark1AvgOccupiedCountValue.TabIndex = 5;
+            this.labelCarPark1AvgOccupiedCountValue.Text = "-";
+            this.labelCarPark1AvgOccupiedCountValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelCarPark1OccupiedRatioValue
+            // 
+            this.labelCarPark1OccupiedRatioValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelCarPark1OccupiedRatioValue.Location = new System.Drawing.Point(300, 42);
+            this.labelCarPark1OccupiedRatioValue.Name = "labelCarPark1OccupiedRatioValue";
+            this.labelCarPark1OccupiedRatioValue.Size = new System.Drawing.Size(250, 15);
+            this.labelCarPark1OccupiedRatioValue.TabIndex = 6;
+            this.labelCarPark1OccupiedRatioValue.Text = "-";
+            this.labelCarPark1OccupiedRatioValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelCarPark1AvgOccupiedRatioValue
+            // 
+            this.labelCarPark1AvgOccupiedRatioValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelCarPark1AvgOccupiedRatioValue.Location = new System.Drawing.Point(300, 62);
+            this.labelCarPark1AvgOccupiedRatioValue.Name = "labelCarPark1AvgOccupiedRatioValue";
+            this.labelCarPark1AvgOccupiedRatioValue.Size = new System.Drawing.Size(250, 15);
+            this.labelCarPark1AvgOccupiedRatioValue.TabIndex = 7;
+            this.labelCarPark1AvgOccupiedRatioValue.Text = "-";
+            this.labelCarPark1AvgOccupiedRatioValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tableLayoutPanelCarPark2Stats
+            // 
+            this.tableLayoutPanelCarPark2Stats.ColumnCount = 2;
+            this.tableLayoutPanelCarPark2Stats.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelCarPark2Stats.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelCarPark2Stats.Controls.Add(this.labelCarPark2OccupiedCount, 0, 0);
+            this.tableLayoutPanelCarPark2Stats.Controls.Add(this.labelCarPark2AvgOccupiedCount, 0, 1);
+            this.tableLayoutPanelCarPark2Stats.Controls.Add(this.labelCarPark2OccupiedRatio, 0, 2);
+            this.tableLayoutPanelCarPark2Stats.Controls.Add(this.labelCarPark2AvgOccupiedRatio, 0, 3);
+            this.tableLayoutPanelCarPark2Stats.Controls.Add(this.labelCarPark2OccupiedCountValue, 1, 0);
+            this.tableLayoutPanelCarPark2Stats.Controls.Add(this.labelCarPark2AvgOccupiedCountValue, 1, 1);
+            this.tableLayoutPanelCarPark2Stats.Controls.Add(this.labelCarPark2OccupiedRatioValue, 1, 2);
+            this.tableLayoutPanelCarPark2Stats.Controls.Add(this.labelCarPark2AvgOccupiedRatioValue, 1, 3);
+            this.tableLayoutPanelCarPark2Stats.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelCarPark2Stats.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanelCarPark2Stats.Name = "tableLayoutPanelCarPark2Stats";
+            this.tableLayoutPanelCarPark2Stats.RowCount = 4;
+            this.tableLayoutPanelCarPark2Stats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelCarPark2Stats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelCarPark2Stats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelCarPark2Stats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelCarPark2Stats.Size = new System.Drawing.Size(595, 80);
+            this.tableLayoutPanelCarPark2Stats.TabIndex = 1;
+            // 
+            // labelCarPark2OccupiedCount
+            // 
+            this.labelCarPark2OccupiedCount.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelCarPark2OccupiedCount.Location = new System.Drawing.Point(44, 2);
+            this.labelCarPark2OccupiedCount.Name = "labelCarPark2OccupiedCount";
+            this.labelCarPark2OccupiedCount.Size = new System.Drawing.Size(250, 15);
+            this.labelCarPark2OccupiedCount.TabIndex = 0;
+            this.labelCarPark2OccupiedCount.Text = "Počet obsadených miest:";
+            this.labelCarPark2OccupiedCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelCarPark2AvgOccupiedCount
+            // 
+            this.labelCarPark2AvgOccupiedCount.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelCarPark2AvgOccupiedCount.Location = new System.Drawing.Point(44, 22);
+            this.labelCarPark2AvgOccupiedCount.Name = "labelCarPark2AvgOccupiedCount";
+            this.labelCarPark2AvgOccupiedCount.Size = new System.Drawing.Size(250, 15);
+            this.labelCarPark2AvgOccupiedCount.TabIndex = 1;
+            this.labelCarPark2AvgOccupiedCount.Text = "Priemerný počet obsadených miest:";
+            this.labelCarPark2AvgOccupiedCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelCarPark2OccupiedRatio
+            // 
+            this.labelCarPark2OccupiedRatio.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelCarPark2OccupiedRatio.Location = new System.Drawing.Point(44, 42);
+            this.labelCarPark2OccupiedRatio.Name = "labelCarPark2OccupiedRatio";
+            this.labelCarPark2OccupiedRatio.Size = new System.Drawing.Size(250, 15);
+            this.labelCarPark2OccupiedRatio.TabIndex = 2;
+            this.labelCarPark2OccupiedRatio.Text = "Vyťaženie:";
+            this.labelCarPark2OccupiedRatio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelCarPark2AvgOccupiedRatio
+            // 
+            this.labelCarPark2AvgOccupiedRatio.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelCarPark2AvgOccupiedRatio.Location = new System.Drawing.Point(44, 62);
+            this.labelCarPark2AvgOccupiedRatio.Name = "labelCarPark2AvgOccupiedRatio";
+            this.labelCarPark2AvgOccupiedRatio.Size = new System.Drawing.Size(250, 15);
+            this.labelCarPark2AvgOccupiedRatio.TabIndex = 3;
+            this.labelCarPark2AvgOccupiedRatio.Text = "Priemerné vyťaženie:";
+            this.labelCarPark2AvgOccupiedRatio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelCarPark2OccupiedCountValue
+            // 
+            this.labelCarPark2OccupiedCountValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelCarPark2OccupiedCountValue.Location = new System.Drawing.Point(300, 2);
+            this.labelCarPark2OccupiedCountValue.Name = "labelCarPark2OccupiedCountValue";
+            this.labelCarPark2OccupiedCountValue.Size = new System.Drawing.Size(250, 15);
+            this.labelCarPark2OccupiedCountValue.TabIndex = 4;
+            this.labelCarPark2OccupiedCountValue.Text = "-";
+            this.labelCarPark2OccupiedCountValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelCarPark2AvgOccupiedCountValue
+            // 
+            this.labelCarPark2AvgOccupiedCountValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelCarPark2AvgOccupiedCountValue.Location = new System.Drawing.Point(300, 22);
+            this.labelCarPark2AvgOccupiedCountValue.Name = "labelCarPark2AvgOccupiedCountValue";
+            this.labelCarPark2AvgOccupiedCountValue.Size = new System.Drawing.Size(250, 15);
+            this.labelCarPark2AvgOccupiedCountValue.TabIndex = 5;
+            this.labelCarPark2AvgOccupiedCountValue.Text = "-";
+            this.labelCarPark2AvgOccupiedCountValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelCarPark2OccupiedRatioValue
+            // 
+            this.labelCarPark2OccupiedRatioValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelCarPark2OccupiedRatioValue.Location = new System.Drawing.Point(300, 42);
+            this.labelCarPark2OccupiedRatioValue.Name = "labelCarPark2OccupiedRatioValue";
+            this.labelCarPark2OccupiedRatioValue.Size = new System.Drawing.Size(250, 15);
+            this.labelCarPark2OccupiedRatioValue.TabIndex = 6;
+            this.labelCarPark2OccupiedRatioValue.Text = "-";
+            this.labelCarPark2OccupiedRatioValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelCarPark2AvgOccupiedRatioValue
+            // 
+            this.labelCarPark2AvgOccupiedRatioValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelCarPark2AvgOccupiedRatioValue.Location = new System.Drawing.Point(300, 62);
+            this.labelCarPark2AvgOccupiedRatioValue.Name = "labelCarPark2AvgOccupiedRatioValue";
+            this.labelCarPark2AvgOccupiedRatioValue.Size = new System.Drawing.Size(250, 15);
+            this.labelCarPark2AvgOccupiedRatioValue.TabIndex = 7;
+            this.labelCarPark2AvgOccupiedRatioValue.Text = "-";
+            this.labelCarPark2AvgOccupiedRatioValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tableLayoutPanelCarParkService
+            // 
+            this.tableLayoutPanelCarParkService.ColumnCount = 2;
+            this.tableLayoutPanelCarParkService.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelCarParkService.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelCarParkService.Controls.Add(this.labelCarParkServiceCount, 0, 0);
+            this.tableLayoutPanelCarParkService.Controls.Add(this.labelCarParkServiceAvgCount, 0, 1);
+            this.tableLayoutPanelCarParkService.Controls.Add(this.labelCarParkServiceCountValue, 1, 0);
+            this.tableLayoutPanelCarParkService.Controls.Add(this.labelCarParkServiceAvgCountValue, 1, 1);
+            this.tableLayoutPanelCarParkService.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelCarParkService.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanelCarParkService.Name = "tableLayoutPanelCarParkService";
+            this.tableLayoutPanelCarParkService.RowCount = 2;
+            this.tableLayoutPanelCarParkService.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelCarParkService.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelCarParkService.Size = new System.Drawing.Size(1201, 40);
+            this.tableLayoutPanelCarParkService.TabIndex = 0;
+            // 
+            // labelCarParkServiceCount
+            // 
+            this.labelCarParkServiceCount.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelCarParkServiceCount.Location = new System.Drawing.Point(347, 2);
+            this.labelCarParkServiceCount.Name = "labelCarParkServiceCount";
+            this.labelCarParkServiceCount.Size = new System.Drawing.Size(250, 15);
+            this.labelCarParkServiceCount.TabIndex = 0;
+            this.labelCarParkServiceCount.Text = "Počet áut na parkovisku:";
+            this.labelCarParkServiceCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelCarParkServiceAvgCount
+            // 
+            this.labelCarParkServiceAvgCount.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelCarParkServiceAvgCount.Location = new System.Drawing.Point(347, 22);
+            this.labelCarParkServiceAvgCount.Name = "labelCarParkServiceAvgCount";
+            this.labelCarParkServiceAvgCount.Size = new System.Drawing.Size(250, 15);
+            this.labelCarParkServiceAvgCount.TabIndex = 1;
+            this.labelCarParkServiceAvgCount.Text = "Priemerný počet áut na parkovisku:";
+            this.labelCarParkServiceAvgCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelCarParkServiceCountValue
+            // 
+            this.labelCarParkServiceCountValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelCarParkServiceCountValue.Location = new System.Drawing.Point(603, 2);
+            this.labelCarParkServiceCountValue.Name = "labelCarParkServiceCountValue";
+            this.labelCarParkServiceCountValue.Size = new System.Drawing.Size(250, 15);
+            this.labelCarParkServiceCountValue.TabIndex = 2;
+            this.labelCarParkServiceCountValue.Text = "-";
+            this.labelCarParkServiceCountValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelCarParkServiceAvgCountValue
+            // 
+            this.labelCarParkServiceAvgCountValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelCarParkServiceAvgCountValue.Location = new System.Drawing.Point(603, 22);
+            this.labelCarParkServiceAvgCountValue.Name = "labelCarParkServiceAvgCountValue";
+            this.labelCarParkServiceAvgCountValue.Size = new System.Drawing.Size(250, 15);
+            this.labelCarParkServiceAvgCountValue.TabIndex = 3;
+            this.labelCarParkServiceAvgCountValue.Text = "-";
+            this.labelCarParkServiceAvgCountValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tabSimulation
+            // 
+            this.tabSimulation.Controls.Add(this.tableLayoutPanelSimulation);
+            this.tabSimulation.Location = new System.Drawing.Point(4, 22);
+            this.tabSimulation.Name = "tabSimulation";
+            this.tabSimulation.Size = new System.Drawing.Size(1213, 495);
+            this.tabSimulation.TabIndex = 8;
+            this.tabSimulation.Text = "Simulácia";
+            this.tabSimulation.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanelSimulation
+            // 
+            this.tableLayoutPanelSimulation.ColumnCount = 1;
+            this.tableLayoutPanelSimulation.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelSimulation.Controls.Add(this.groupBoxIdealWorkersCount, 0, 1);
+            this.tableLayoutPanelSimulation.Controls.Add(this.groupBoxSimulationStats, 0, 0);
+            this.tableLayoutPanelSimulation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelSimulation.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanelSimulation.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanelSimulation.Name = "tableLayoutPanelSimulation";
+            this.tableLayoutPanelSimulation.RowCount = 2;
+            this.tableLayoutPanelSimulation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelSimulation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 85F));
+            this.tableLayoutPanelSimulation.Size = new System.Drawing.Size(1213, 495);
+            this.tableLayoutPanelSimulation.TabIndex = 4;
+            // 
+            // groupBoxIdealWorkersCount
+            // 
+            this.groupBoxIdealWorkersCount.Controls.Add(this.tableLayoutPanelIdealWorkersCount);
+            this.groupBoxIdealWorkersCount.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxIdealWorkersCount.Location = new System.Drawing.Point(3, 413);
+            this.groupBoxIdealWorkersCount.Name = "groupBoxIdealWorkersCount";
+            this.groupBoxIdealWorkersCount.Size = new System.Drawing.Size(1207, 79);
+            this.groupBoxIdealWorkersCount.TabIndex = 2;
+            this.groupBoxIdealWorkersCount.TabStop = false;
+            this.groupBoxIdealWorkersCount.Text = "Ideálny počet pracovníkov";
+            // 
+            // tableLayoutPanelIdealWorkersCount
+            // 
+            this.tableLayoutPanelIdealWorkersCount.ColumnCount = 2;
+            this.tableLayoutPanelIdealWorkersCount.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelIdealWorkersCount.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelIdealWorkersCount.Controls.Add(this.labelIdealWorkers2Count, 0, 1);
+            this.tableLayoutPanelIdealWorkersCount.Controls.Add(this.labelIdealWorkers1Count, 0, 0);
+            this.tableLayoutPanelIdealWorkersCount.Controls.Add(this.labelIdealWorkers1CountValue, 1, 0);
+            this.tableLayoutPanelIdealWorkersCount.Controls.Add(this.labelIdealWorkers2CountValue, 1, 1);
+            this.tableLayoutPanelIdealWorkersCount.Controls.Add(this.labelProfitValue, 1, 2);
+            this.tableLayoutPanelIdealWorkersCount.Controls.Add(this.labelProfit, 0, 2);
+            this.tableLayoutPanelIdealWorkersCount.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelIdealWorkersCount.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanelIdealWorkersCount.Name = "tableLayoutPanelIdealWorkersCount";
+            this.tableLayoutPanelIdealWorkersCount.RowCount = 3;
+            this.tableLayoutPanelIdealWorkersCount.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanelIdealWorkersCount.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanelIdealWorkersCount.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanelIdealWorkersCount.Size = new System.Drawing.Size(1201, 60);
+            this.tableLayoutPanelIdealWorkersCount.TabIndex = 0;
+            // 
+            // labelIdealWorkers2Count
+            // 
+            this.labelIdealWorkers2Count.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelIdealWorkers2Count.Location = new System.Drawing.Point(347, 22);
+            this.labelIdealWorkers2Count.Name = "labelIdealWorkers2Count";
+            this.labelIdealWorkers2Count.Size = new System.Drawing.Size(250, 15);
+            this.labelIdealWorkers2Count.TabIndex = 4;
+            this.labelIdealWorkers2Count.Text = "Počet pracovníkov skupiny 2:";
+            this.labelIdealWorkers2Count.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelIdealWorkers1Count
+            // 
+            this.labelIdealWorkers1Count.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelIdealWorkers1Count.Location = new System.Drawing.Point(347, 2);
+            this.labelIdealWorkers1Count.Name = "labelIdealWorkers1Count";
+            this.labelIdealWorkers1Count.Size = new System.Drawing.Size(250, 15);
+            this.labelIdealWorkers1Count.TabIndex = 3;
+            this.labelIdealWorkers1Count.Text = "Počet pracovníkov skupiny 1:";
+            this.labelIdealWorkers1Count.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelIdealWorkers1CountValue
+            // 
+            this.labelIdealWorkers1CountValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelIdealWorkers1CountValue.Location = new System.Drawing.Point(603, 2);
+            this.labelIdealWorkers1CountValue.Name = "labelIdealWorkers1CountValue";
+            this.labelIdealWorkers1CountValue.Size = new System.Drawing.Size(250, 15);
+            this.labelIdealWorkers1CountValue.TabIndex = 5;
+            this.labelIdealWorkers1CountValue.Text = "-";
+            this.labelIdealWorkers1CountValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelIdealWorkers2CountValue
+            // 
+            this.labelIdealWorkers2CountValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelIdealWorkers2CountValue.Location = new System.Drawing.Point(603, 22);
+            this.labelIdealWorkers2CountValue.Name = "labelIdealWorkers2CountValue";
+            this.labelIdealWorkers2CountValue.Size = new System.Drawing.Size(250, 15);
+            this.labelIdealWorkers2CountValue.TabIndex = 6;
+            this.labelIdealWorkers2CountValue.Text = "-";
+            this.labelIdealWorkers2CountValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelProfitValue
+            // 
+            this.labelProfitValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelProfitValue.Location = new System.Drawing.Point(603, 42);
+            this.labelProfitValue.Name = "labelProfitValue";
+            this.labelProfitValue.Size = new System.Drawing.Size(250, 15);
+            this.labelProfitValue.TabIndex = 7;
+            this.labelProfitValue.Text = "-";
+            this.labelProfitValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelProfit
+            // 
+            this.labelProfit.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelProfit.Location = new System.Drawing.Point(347, 42);
+            this.labelProfit.Name = "labelProfit";
+            this.labelProfit.Size = new System.Drawing.Size(250, 15);
+            this.labelProfit.TabIndex = 8;
+            this.labelProfit.Text = "Hospodársky výsledok:";
+            this.labelProfit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // groupBoxSimulationStats
+            // 
+            this.groupBoxSimulationStats.Controls.Add(this.tableLayoutPanelSimulationStats);
+            this.groupBoxSimulationStats.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxSimulationStats.Location = new System.Drawing.Point(3, 3);
+            this.groupBoxSimulationStats.Name = "groupBoxSimulationStats";
+            this.groupBoxSimulationStats.Size = new System.Drawing.Size(1207, 404);
+            this.groupBoxSimulationStats.TabIndex = 1;
+            this.groupBoxSimulationStats.TabStop = false;
+            this.groupBoxSimulationStats.Text = "Štatistiky";
+            // 
+            // tableLayoutPanelSimulationStats
+            // 
+            this.tableLayoutPanelSimulationStats.ColumnCount = 4;
+            this.tableLayoutPanelSimulationStats.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelSimulationStats.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelSimulationStats.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelSimulationStats.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimCarPark2RatioISValue, 3, 17);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimCarPark2RatioIS, 2, 17);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimCarPark1RatioISValue, 3, 16);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimCarPark1RatioIS, 2, 16);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimCarParkServiceCountISValue, 3, 15);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimCarParkServiceCountIS, 2, 15);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimCarPark2CountISValue, 3, 14);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimCarPark2CountIS, 2, 14);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimCarPark1CountISValue, 3, 13);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimCarPark1CountIS, 2, 13);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimWorking2RatioISValue, 3, 12);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimWorking2RatioIS, 2, 12);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimWorking1RatioISValue, 3, 11);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimWorking1RatioIS, 2, 11);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimWorking2CountISValue, 3, 10);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimWorking2CountIS, 2, 10);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimWorking1CountISValue, 3, 9);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimWorking1CountIS, 2, 9);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimCustomersServedRatioISValue, 3, 5);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimCustomersServedRatioIS, 2, 5);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimReturnQueueLengthISValue, 3, 4);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimReturnQueueLengthIS, 2, 4);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimRepairedQueueLengthISValue, 3, 3);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimRepairedQueueLengthIS, 2, 3);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimToRepairQueueLengthISValue, 3, 2);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimToRepairQueueLengthIS, 2, 2);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimCustomerInQueueISValue, 3, 1);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimCustomerInQueueIS, 2, 1);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimCustomersInServiceISValue, 3, 0);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimCustomersInServiceIS, 2, 0);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimCustomerInQueue, 0, 1);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimCustomerInQueueValue, 1, 1);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimToRepairQueueLengthValue, 1, 2);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimReturnQueueLengthValue, 1, 4);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimWaitInQueueValue, 1, 6);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimWaitForRepairValue, 1, 7);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimTimeInServiceValue, 1, 8);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimWaitInQueueISValue, 3, 6);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimWaitForRepairISValue, 3, 7);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimTimeInServiceISValue, 3, 8);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimToRepairQueueLength, 0, 2);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimReturnQueueLength, 0, 4);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimWaitInQueue, 0, 6);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimWaitForRepair, 0, 7);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimTimeInService, 0, 8);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimWaitInQueueIS, 2, 6);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimWaitForRepairIS, 2, 7);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimTimeInServiceIS, 2, 8);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimCustomersInService, 0, 0);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimCustomersInServiceValue, 1, 0);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimRepairedQueueLength, 0, 3);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimCustomersServedRatio, 0, 5);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimRepairedQueueLengthValue, 1, 3);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimCustomersServedRatioValue, 1, 5);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimWorking1Count, 0, 9);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimWorking2Count, 0, 10);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimWorking1Ratio, 0, 11);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimWorking2Ratio, 0, 12);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimCarPark1Count, 0, 13);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimCarPark2Count, 0, 14);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimCarParkServiceCount, 0, 15);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimCarPark1Ratio, 0, 16);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimCarPark2Ratio, 0, 17);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimWorking1CountValue, 1, 9);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimWorking2CountValue, 1, 10);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimWorking1RatioValue, 1, 11);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimWorking2RatioValue, 1, 12);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimCarPark1CountValue, 1, 13);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimCarPark2CountValue, 1, 14);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimCarParkServiceCountValue, 1, 15);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimCarPark1RatioValue, 1, 16);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimCarPark2RatioValue, 1, 17);
+            this.tableLayoutPanelSimulationStats.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelSimulationStats.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanelSimulationStats.Name = "tableLayoutPanelSimulationStats";
+            this.tableLayoutPanelSimulationStats.RowCount = 18;
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555555F));
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555555F));
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555555F));
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555555F));
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555555F));
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555555F));
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555555F));
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555555F));
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555555F));
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555555F));
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555555F));
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555555F));
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555555F));
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555555F));
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555555F));
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555555F));
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555555F));
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555555F));
+            this.tableLayoutPanelSimulationStats.Size = new System.Drawing.Size(1201, 385);
+            this.tableLayoutPanelSimulationStats.TabIndex = 0;
+            // 
+            // labelSimCustomerInQueue
+            // 
+            this.labelSimCustomerInQueue.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimCustomerInQueue.Location = new System.Drawing.Point(47, 24);
+            this.labelSimCustomerInQueue.Name = "labelSimCustomerInQueue";
+            this.labelSimCustomerInQueue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimCustomerInQueue.TabIndex = 2;
+            this.labelSimCustomerInQueue.Text = "Priemerná dĺžka frontu čakajúcich:";
+            this.labelSimCustomerInQueue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimCustomerInQueueValue
+            // 
+            this.labelSimCustomerInQueueValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimCustomerInQueueValue.Location = new System.Drawing.Point(303, 24);
+            this.labelSimCustomerInQueueValue.Name = "labelSimCustomerInQueueValue";
+            this.labelSimCustomerInQueueValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimCustomerInQueueValue.TabIndex = 3;
+            this.labelSimCustomerInQueueValue.Text = "-";
+            this.labelSimCustomerInQueueValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimToRepairQueueLengthValue
+            // 
+            this.labelSimToRepairQueueLengthValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimToRepairQueueLengthValue.Location = new System.Drawing.Point(303, 45);
+            this.labelSimToRepairQueueLengthValue.Name = "labelSimToRepairQueueLengthValue";
+            this.labelSimToRepairQueueLengthValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimToRepairQueueLengthValue.TabIndex = 4;
+            this.labelSimToRepairQueueLengthValue.Text = "-";
+            this.labelSimToRepairQueueLengthValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimReturnQueueLengthValue
+            // 
+            this.labelSimReturnQueueLengthValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimReturnQueueLengthValue.Location = new System.Drawing.Point(303, 87);
+            this.labelSimReturnQueueLengthValue.Name = "labelSimReturnQueueLengthValue";
+            this.labelSimReturnQueueLengthValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimReturnQueueLengthValue.TabIndex = 5;
+            this.labelSimReturnQueueLengthValue.Text = "-";
+            this.labelSimReturnQueueLengthValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimWaitInQueueValue
+            // 
+            this.labelSimWaitInQueueValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimWaitInQueueValue.Location = new System.Drawing.Point(303, 129);
+            this.labelSimWaitInQueueValue.Name = "labelSimWaitInQueueValue";
+            this.labelSimWaitInQueueValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimWaitInQueueValue.TabIndex = 6;
+            this.labelSimWaitInQueueValue.Text = "-";
+            this.labelSimWaitInQueueValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimWaitForRepairValue
+            // 
+            this.labelSimWaitForRepairValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimWaitForRepairValue.Location = new System.Drawing.Point(303, 150);
+            this.labelSimWaitForRepairValue.Name = "labelSimWaitForRepairValue";
+            this.labelSimWaitForRepairValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimWaitForRepairValue.TabIndex = 7;
+            this.labelSimWaitForRepairValue.Text = "-";
+            this.labelSimWaitForRepairValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimTimeInServiceValue
+            // 
+            this.labelSimTimeInServiceValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimTimeInServiceValue.Location = new System.Drawing.Point(303, 171);
+            this.labelSimTimeInServiceValue.Name = "labelSimTimeInServiceValue";
+            this.labelSimTimeInServiceValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimTimeInServiceValue.TabIndex = 8;
+            this.labelSimTimeInServiceValue.Text = "-";
+            this.labelSimTimeInServiceValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimWaitInQueueISValue
+            // 
+            this.labelSimWaitInQueueISValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimWaitInQueueISValue.Location = new System.Drawing.Point(903, 129);
+            this.labelSimWaitInQueueISValue.Name = "labelSimWaitInQueueISValue";
+            this.labelSimWaitInQueueISValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimWaitInQueueISValue.TabIndex = 9;
+            this.labelSimWaitInQueueISValue.Text = "-";
+            this.labelSimWaitInQueueISValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimWaitForRepairISValue
+            // 
+            this.labelSimWaitForRepairISValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimWaitForRepairISValue.Location = new System.Drawing.Point(903, 150);
+            this.labelSimWaitForRepairISValue.Name = "labelSimWaitForRepairISValue";
+            this.labelSimWaitForRepairISValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimWaitForRepairISValue.TabIndex = 10;
+            this.labelSimWaitForRepairISValue.Text = "-";
+            this.labelSimWaitForRepairISValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimTimeInServiceISValue
+            // 
+            this.labelSimTimeInServiceISValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimTimeInServiceISValue.Location = new System.Drawing.Point(903, 171);
+            this.labelSimTimeInServiceISValue.Name = "labelSimTimeInServiceISValue";
+            this.labelSimTimeInServiceISValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimTimeInServiceISValue.TabIndex = 11;
+            this.labelSimTimeInServiceISValue.Text = "-";
+            this.labelSimTimeInServiceISValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimToRepairQueueLength
+            // 
+            this.labelSimToRepairQueueLength.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimToRepairQueueLength.Location = new System.Drawing.Point(47, 45);
+            this.labelSimToRepairQueueLength.Name = "labelSimToRepairQueueLength";
+            this.labelSimToRepairQueueLength.Size = new System.Drawing.Size(250, 15);
+            this.labelSimToRepairQueueLength.TabIndex = 12;
+            this.labelSimToRepairQueueLength.Text = "Priemerná dĺžka frontu áut na opravu:";
+            this.labelSimToRepairQueueLength.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimReturnQueueLength
+            // 
+            this.labelSimReturnQueueLength.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimReturnQueueLength.Location = new System.Drawing.Point(47, 87);
+            this.labelSimReturnQueueLength.Name = "labelSimReturnQueueLength";
+            this.labelSimReturnQueueLength.Size = new System.Drawing.Size(250, 15);
+            this.labelSimReturnQueueLength.TabIndex = 13;
+            this.labelSimReturnQueueLength.Text = "Priemerná dĺžka frontu áut na vrátenie:";
+            this.labelSimReturnQueueLength.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimWaitInQueue
+            // 
+            this.labelSimWaitInQueue.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimWaitInQueue.Location = new System.Drawing.Point(47, 129);
+            this.labelSimWaitInQueue.Name = "labelSimWaitInQueue";
+            this.labelSimWaitInQueue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimWaitInQueue.TabIndex = 14;
+            this.labelSimWaitInQueue.Text = "Priemerný čas čakania vo fronte:";
+            this.labelSimWaitInQueue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimWaitForRepair
+            // 
+            this.labelSimWaitForRepair.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimWaitForRepair.Location = new System.Drawing.Point(47, 150);
+            this.labelSimWaitForRepair.Name = "labelSimWaitForRepair";
+            this.labelSimWaitForRepair.Size = new System.Drawing.Size(250, 15);
+            this.labelSimWaitForRepair.TabIndex = 15;
+            this.labelSimWaitForRepair.Text = "Priemerný čas čakania na opravu:";
+            this.labelSimWaitForRepair.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimTimeInService
+            // 
+            this.labelSimTimeInService.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimTimeInService.Location = new System.Drawing.Point(47, 171);
+            this.labelSimTimeInService.Name = "labelSimTimeInService";
+            this.labelSimTimeInService.Size = new System.Drawing.Size(250, 15);
+            this.labelSimTimeInService.TabIndex = 16;
+            this.labelSimTimeInService.Text = "Priemerný čas strávený v servise:";
+            this.labelSimTimeInService.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimWaitInQueueIS
+            // 
+            this.labelSimWaitInQueueIS.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimWaitInQueueIS.Location = new System.Drawing.Point(647, 129);
+            this.labelSimWaitInQueueIS.Name = "labelSimWaitInQueueIS";
+            this.labelSimWaitInQueueIS.Size = new System.Drawing.Size(250, 15);
+            this.labelSimWaitInQueueIS.TabIndex = 17;
+            this.labelSimWaitInQueueIS.Text = "90% IS času čakania vo fronte:";
+            this.labelSimWaitInQueueIS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimWaitForRepairIS
+            // 
+            this.labelSimWaitForRepairIS.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimWaitForRepairIS.Location = new System.Drawing.Point(647, 150);
+            this.labelSimWaitForRepairIS.Name = "labelSimWaitForRepairIS";
+            this.labelSimWaitForRepairIS.Size = new System.Drawing.Size(250, 15);
+            this.labelSimWaitForRepairIS.TabIndex = 18;
+            this.labelSimWaitForRepairIS.Text = "90% IS času čakania na opravu:";
+            this.labelSimWaitForRepairIS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimTimeInServiceIS
+            // 
+            this.labelSimTimeInServiceIS.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimTimeInServiceIS.Location = new System.Drawing.Point(647, 171);
+            this.labelSimTimeInServiceIS.Name = "labelSimTimeInServiceIS";
+            this.labelSimTimeInServiceIS.Size = new System.Drawing.Size(250, 15);
+            this.labelSimTimeInServiceIS.TabIndex = 19;
+            this.labelSimTimeInServiceIS.Text = "90% IS času stráveného v servise:";
+            this.labelSimTimeInServiceIS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimCustomersInService
+            // 
+            this.labelSimCustomersInService.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimCustomersInService.Location = new System.Drawing.Point(47, 3);
+            this.labelSimCustomersInService.Name = "labelSimCustomersInService";
+            this.labelSimCustomersInService.Size = new System.Drawing.Size(250, 15);
+            this.labelSimCustomersInService.TabIndex = 20;
+            this.labelSimCustomersInService.Text = "Priemerný počet zákazníkov v servise:";
+            this.labelSimCustomersInService.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimCustomersInServiceValue
+            // 
+            this.labelSimCustomersInServiceValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimCustomersInServiceValue.Location = new System.Drawing.Point(303, 3);
+            this.labelSimCustomersInServiceValue.Name = "labelSimCustomersInServiceValue";
+            this.labelSimCustomersInServiceValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimCustomersInServiceValue.TabIndex = 21;
+            this.labelSimCustomersInServiceValue.Text = "-";
+            this.labelSimCustomersInServiceValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimRepairedQueueLength
+            // 
+            this.labelSimRepairedQueueLength.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimRepairedQueueLength.Location = new System.Drawing.Point(47, 66);
+            this.labelSimRepairedQueueLength.Name = "labelSimRepairedQueueLength";
+            this.labelSimRepairedQueueLength.Size = new System.Drawing.Size(250, 15);
+            this.labelSimRepairedQueueLength.TabIndex = 22;
+            this.labelSimRepairedQueueLength.Text = "Priemerná dĺžka frontu opravených áut:";
+            this.labelSimRepairedQueueLength.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimCustomersServedRatio
+            // 
+            this.labelSimCustomersServedRatio.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimCustomersServedRatio.Location = new System.Drawing.Point(47, 108);
+            this.labelSimCustomersServedRatio.Name = "labelSimCustomersServedRatio";
+            this.labelSimCustomersServedRatio.Size = new System.Drawing.Size(250, 15);
+            this.labelSimCustomersServedRatio.TabIndex = 23;
+            this.labelSimCustomersServedRatio.Text = "Priemerný pomer obslúžených zákazníkov:";
+            this.labelSimCustomersServedRatio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimRepairedQueueLengthValue
+            // 
+            this.labelSimRepairedQueueLengthValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimRepairedQueueLengthValue.Location = new System.Drawing.Point(303, 66);
+            this.labelSimRepairedQueueLengthValue.Name = "labelSimRepairedQueueLengthValue";
+            this.labelSimRepairedQueueLengthValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimRepairedQueueLengthValue.TabIndex = 24;
+            this.labelSimRepairedQueueLengthValue.Text = "-";
+            this.labelSimRepairedQueueLengthValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimCustomersServedRatioValue
+            // 
+            this.labelSimCustomersServedRatioValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimCustomersServedRatioValue.Location = new System.Drawing.Point(303, 108);
+            this.labelSimCustomersServedRatioValue.Name = "labelSimCustomersServedRatioValue";
+            this.labelSimCustomersServedRatioValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimCustomersServedRatioValue.TabIndex = 25;
+            this.labelSimCustomersServedRatioValue.Text = "-";
+            this.labelSimCustomersServedRatioValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimWorking1Count
+            // 
+            this.labelSimWorking1Count.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimWorking1Count.Location = new System.Drawing.Point(47, 192);
+            this.labelSimWorking1Count.Name = "labelSimWorking1Count";
+            this.labelSimWorking1Count.Size = new System.Drawing.Size(250, 15);
+            this.labelSimWorking1Count.TabIndex = 26;
+            this.labelSimWorking1Count.Text = "Priemerný počet pracujúcich v skupine 1:";
+            this.labelSimWorking1Count.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimWorking2Count
+            // 
+            this.labelSimWorking2Count.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimWorking2Count.Location = new System.Drawing.Point(47, 213);
+            this.labelSimWorking2Count.Name = "labelSimWorking2Count";
+            this.labelSimWorking2Count.Size = new System.Drawing.Size(250, 15);
+            this.labelSimWorking2Count.TabIndex = 27;
+            this.labelSimWorking2Count.Text = "Priemerný počet pracujúcich v skupine 2:";
+            this.labelSimWorking2Count.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimWorking1Ratio
+            // 
+            this.labelSimWorking1Ratio.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimWorking1Ratio.Location = new System.Drawing.Point(47, 234);
+            this.labelSimWorking1Ratio.Name = "labelSimWorking1Ratio";
+            this.labelSimWorking1Ratio.Size = new System.Drawing.Size(250, 15);
+            this.labelSimWorking1Ratio.TabIndex = 28;
+            this.labelSimWorking1Ratio.Text = "Priemerné vyťaženie pracovníkov 1:";
+            this.labelSimWorking1Ratio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimWorking2Ratio
+            // 
+            this.labelSimWorking2Ratio.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimWorking2Ratio.Location = new System.Drawing.Point(47, 255);
+            this.labelSimWorking2Ratio.Name = "labelSimWorking2Ratio";
+            this.labelSimWorking2Ratio.Size = new System.Drawing.Size(250, 15);
+            this.labelSimWorking2Ratio.TabIndex = 29;
+            this.labelSimWorking2Ratio.Text = "Priemerné vyťaženie pracovníkov 2:";
+            this.labelSimWorking2Ratio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimCarPark1Count
+            // 
+            this.labelSimCarPark1Count.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimCarPark1Count.Location = new System.Drawing.Point(47, 276);
+            this.labelSimCarPark1Count.Name = "labelSimCarPark1Count";
+            this.labelSimCarPark1Count.Size = new System.Drawing.Size(250, 15);
+            this.labelSimCarPark1Count.TabIndex = 30;
+            this.labelSimCarPark1Count.Text = "Priemerný počet áut na parkovisku 1:";
+            this.labelSimCarPark1Count.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimCarPark2Count
+            // 
+            this.labelSimCarPark2Count.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimCarPark2Count.Location = new System.Drawing.Point(47, 297);
+            this.labelSimCarPark2Count.Name = "labelSimCarPark2Count";
+            this.labelSimCarPark2Count.Size = new System.Drawing.Size(250, 15);
+            this.labelSimCarPark2Count.TabIndex = 31;
+            this.labelSimCarPark2Count.Text = "Priemerný počet áut na parkovisku 2:";
+            this.labelSimCarPark2Count.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimCarParkServiceCount
+            // 
+            this.labelSimCarParkServiceCount.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimCarParkServiceCount.Location = new System.Drawing.Point(47, 318);
+            this.labelSimCarParkServiceCount.Name = "labelSimCarParkServiceCount";
+            this.labelSimCarParkServiceCount.Size = new System.Drawing.Size(250, 15);
+            this.labelSimCarParkServiceCount.TabIndex = 32;
+            this.labelSimCarParkServiceCount.Text = "Priemerný počet áut na parkovisku pred servisom:";
+            this.labelSimCarParkServiceCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimCarPark1Ratio
+            // 
+            this.labelSimCarPark1Ratio.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimCarPark1Ratio.Location = new System.Drawing.Point(47, 339);
+            this.labelSimCarPark1Ratio.Name = "labelSimCarPark1Ratio";
+            this.labelSimCarPark1Ratio.Size = new System.Drawing.Size(250, 15);
+            this.labelSimCarPark1Ratio.TabIndex = 33;
+            this.labelSimCarPark1Ratio.Text = "Priemerné vyťaženie parkoviska 1:";
+            this.labelSimCarPark1Ratio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimCarPark2Ratio
+            // 
+            this.labelSimCarPark2Ratio.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimCarPark2Ratio.Location = new System.Drawing.Point(47, 363);
+            this.labelSimCarPark2Ratio.Name = "labelSimCarPark2Ratio";
+            this.labelSimCarPark2Ratio.Size = new System.Drawing.Size(250, 15);
+            this.labelSimCarPark2Ratio.TabIndex = 34;
+            this.labelSimCarPark2Ratio.Text = "Priemerné vyťaženie parkoviska 2:";
+            this.labelSimCarPark2Ratio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimWorking1CountValue
+            // 
+            this.labelSimWorking1CountValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimWorking1CountValue.Location = new System.Drawing.Point(303, 192);
+            this.labelSimWorking1CountValue.Name = "labelSimWorking1CountValue";
+            this.labelSimWorking1CountValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimWorking1CountValue.TabIndex = 35;
+            this.labelSimWorking1CountValue.Text = "-";
+            this.labelSimWorking1CountValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimWorking2CountValue
+            // 
+            this.labelSimWorking2CountValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimWorking2CountValue.Location = new System.Drawing.Point(303, 213);
+            this.labelSimWorking2CountValue.Name = "labelSimWorking2CountValue";
+            this.labelSimWorking2CountValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimWorking2CountValue.TabIndex = 36;
+            this.labelSimWorking2CountValue.Text = "-";
+            this.labelSimWorking2CountValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimWorking1RatioValue
+            // 
+            this.labelSimWorking1RatioValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimWorking1RatioValue.Location = new System.Drawing.Point(303, 234);
+            this.labelSimWorking1RatioValue.Name = "labelSimWorking1RatioValue";
+            this.labelSimWorking1RatioValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimWorking1RatioValue.TabIndex = 37;
+            this.labelSimWorking1RatioValue.Text = "-";
+            this.labelSimWorking1RatioValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimWorking2RatioValue
+            // 
+            this.labelSimWorking2RatioValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimWorking2RatioValue.Location = new System.Drawing.Point(303, 255);
+            this.labelSimWorking2RatioValue.Name = "labelSimWorking2RatioValue";
+            this.labelSimWorking2RatioValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimWorking2RatioValue.TabIndex = 38;
+            this.labelSimWorking2RatioValue.Text = "-";
+            this.labelSimWorking2RatioValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimCarPark1CountValue
+            // 
+            this.labelSimCarPark1CountValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimCarPark1CountValue.Location = new System.Drawing.Point(303, 276);
+            this.labelSimCarPark1CountValue.Name = "labelSimCarPark1CountValue";
+            this.labelSimCarPark1CountValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimCarPark1CountValue.TabIndex = 39;
+            this.labelSimCarPark1CountValue.Text = "-";
+            this.labelSimCarPark1CountValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimCarPark2CountValue
+            // 
+            this.labelSimCarPark2CountValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimCarPark2CountValue.Location = new System.Drawing.Point(303, 297);
+            this.labelSimCarPark2CountValue.Name = "labelSimCarPark2CountValue";
+            this.labelSimCarPark2CountValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimCarPark2CountValue.TabIndex = 40;
+            this.labelSimCarPark2CountValue.Text = "-";
+            this.labelSimCarPark2CountValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimCarParkServiceCountValue
+            // 
+            this.labelSimCarParkServiceCountValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimCarParkServiceCountValue.Location = new System.Drawing.Point(303, 318);
+            this.labelSimCarParkServiceCountValue.Name = "labelSimCarParkServiceCountValue";
+            this.labelSimCarParkServiceCountValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimCarParkServiceCountValue.TabIndex = 41;
+            this.labelSimCarParkServiceCountValue.Text = "-";
+            this.labelSimCarParkServiceCountValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimCarPark1RatioValue
+            // 
+            this.labelSimCarPark1RatioValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimCarPark1RatioValue.Location = new System.Drawing.Point(303, 339);
+            this.labelSimCarPark1RatioValue.Name = "labelSimCarPark1RatioValue";
+            this.labelSimCarPark1RatioValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimCarPark1RatioValue.TabIndex = 42;
+            this.labelSimCarPark1RatioValue.Text = "-";
+            this.labelSimCarPark1RatioValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimCarPark2RatioValue
+            // 
+            this.labelSimCarPark2RatioValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimCarPark2RatioValue.Location = new System.Drawing.Point(303, 363);
+            this.labelSimCarPark2RatioValue.Name = "labelSimCarPark2RatioValue";
+            this.labelSimCarPark2RatioValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimCarPark2RatioValue.TabIndex = 43;
+            this.labelSimCarPark2RatioValue.Text = "-";
+            this.labelSimCarPark2RatioValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimCustomersInServiceIS
+            // 
+            this.labelSimCustomersInServiceIS.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimCustomersInServiceIS.Location = new System.Drawing.Point(647, 3);
+            this.labelSimCustomersInServiceIS.Name = "labelSimCustomersInServiceIS";
+            this.labelSimCustomersInServiceIS.Size = new System.Drawing.Size(250, 15);
+            this.labelSimCustomersInServiceIS.TabIndex = 44;
+            this.labelSimCustomersInServiceIS.Text = "90% IS počtu zákazníkov v servise:";
+            this.labelSimCustomersInServiceIS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimCustomersInServiceISValue
+            // 
+            this.labelSimCustomersInServiceISValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimCustomersInServiceISValue.Location = new System.Drawing.Point(903, 3);
+            this.labelSimCustomersInServiceISValue.Name = "labelSimCustomersInServiceISValue";
+            this.labelSimCustomersInServiceISValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimCustomersInServiceISValue.TabIndex = 45;
+            this.labelSimCustomersInServiceISValue.Text = "-";
+            this.labelSimCustomersInServiceISValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimCustomerInQueueIS
+            // 
+            this.labelSimCustomerInQueueIS.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimCustomerInQueueIS.Location = new System.Drawing.Point(647, 24);
+            this.labelSimCustomerInQueueIS.Name = "labelSimCustomerInQueueIS";
+            this.labelSimCustomerInQueueIS.Size = new System.Drawing.Size(250, 15);
+            this.labelSimCustomerInQueueIS.TabIndex = 46;
+            this.labelSimCustomerInQueueIS.Text = "90% IS dĺžky frontu čakajúcich:";
+            this.labelSimCustomerInQueueIS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimCustomerInQueueISValue
+            // 
+            this.labelSimCustomerInQueueISValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimCustomerInQueueISValue.Location = new System.Drawing.Point(903, 24);
+            this.labelSimCustomerInQueueISValue.Name = "labelSimCustomerInQueueISValue";
+            this.labelSimCustomerInQueueISValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimCustomerInQueueISValue.TabIndex = 47;
+            this.labelSimCustomerInQueueISValue.Text = "-";
+            this.labelSimCustomerInQueueISValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimToRepairQueueLengthIS
+            // 
+            this.labelSimToRepairQueueLengthIS.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimToRepairQueueLengthIS.Location = new System.Drawing.Point(647, 45);
+            this.labelSimToRepairQueueLengthIS.Name = "labelSimToRepairQueueLengthIS";
+            this.labelSimToRepairQueueLengthIS.Size = new System.Drawing.Size(250, 15);
+            this.labelSimToRepairQueueLengthIS.TabIndex = 48;
+            this.labelSimToRepairQueueLengthIS.Text = "90% IS dĺžky frontu áut na opravu:";
+            this.labelSimToRepairQueueLengthIS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimToRepairQueueLengthISValue
+            // 
+            this.labelSimToRepairQueueLengthISValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimToRepairQueueLengthISValue.Location = new System.Drawing.Point(903, 45);
+            this.labelSimToRepairQueueLengthISValue.Name = "labelSimToRepairQueueLengthISValue";
+            this.labelSimToRepairQueueLengthISValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimToRepairQueueLengthISValue.TabIndex = 49;
+            this.labelSimToRepairQueueLengthISValue.Text = "-";
+            this.labelSimToRepairQueueLengthISValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimRepairedQueueLengthIS
+            // 
+            this.labelSimRepairedQueueLengthIS.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimRepairedQueueLengthIS.Location = new System.Drawing.Point(647, 66);
+            this.labelSimRepairedQueueLengthIS.Name = "labelSimRepairedQueueLengthIS";
+            this.labelSimRepairedQueueLengthIS.Size = new System.Drawing.Size(250, 15);
+            this.labelSimRepairedQueueLengthIS.TabIndex = 50;
+            this.labelSimRepairedQueueLengthIS.Text = "90% IS dĺžky frontu opravených áut:";
+            this.labelSimRepairedQueueLengthIS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimRepairedQueueLengthISValue
+            // 
+            this.labelSimRepairedQueueLengthISValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimRepairedQueueLengthISValue.Location = new System.Drawing.Point(903, 66);
+            this.labelSimRepairedQueueLengthISValue.Name = "labelSimRepairedQueueLengthISValue";
+            this.labelSimRepairedQueueLengthISValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimRepairedQueueLengthISValue.TabIndex = 51;
+            this.labelSimRepairedQueueLengthISValue.Text = "-";
+            this.labelSimRepairedQueueLengthISValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimReturnQueueLengthIS
+            // 
+            this.labelSimReturnQueueLengthIS.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimReturnQueueLengthIS.Location = new System.Drawing.Point(647, 87);
+            this.labelSimReturnQueueLengthIS.Name = "labelSimReturnQueueLengthIS";
+            this.labelSimReturnQueueLengthIS.Size = new System.Drawing.Size(250, 15);
+            this.labelSimReturnQueueLengthIS.TabIndex = 52;
+            this.labelSimReturnQueueLengthIS.Text = "90% IS dĺžky frontu áut na vrátenie:";
+            this.labelSimReturnQueueLengthIS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimReturnQueueLengthISValue
+            // 
+            this.labelSimReturnQueueLengthISValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimReturnQueueLengthISValue.Location = new System.Drawing.Point(903, 87);
+            this.labelSimReturnQueueLengthISValue.Name = "labelSimReturnQueueLengthISValue";
+            this.labelSimReturnQueueLengthISValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimReturnQueueLengthISValue.TabIndex = 53;
+            this.labelSimReturnQueueLengthISValue.Text = "-";
+            this.labelSimReturnQueueLengthISValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimCustomersServedRatioIS
+            // 
+            this.labelSimCustomersServedRatioIS.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimCustomersServedRatioIS.Location = new System.Drawing.Point(647, 108);
+            this.labelSimCustomersServedRatioIS.Name = "labelSimCustomersServedRatioIS";
+            this.labelSimCustomersServedRatioIS.Size = new System.Drawing.Size(250, 15);
+            this.labelSimCustomersServedRatioIS.TabIndex = 54;
+            this.labelSimCustomersServedRatioIS.Text = "90% IS pomeru obslúžených zákazníkov:";
+            this.labelSimCustomersServedRatioIS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimCustomersServedRatioISValue
+            // 
+            this.labelSimCustomersServedRatioISValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimCustomersServedRatioISValue.Location = new System.Drawing.Point(903, 108);
+            this.labelSimCustomersServedRatioISValue.Name = "labelSimCustomersServedRatioISValue";
+            this.labelSimCustomersServedRatioISValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimCustomersServedRatioISValue.TabIndex = 55;
+            this.labelSimCustomersServedRatioISValue.Text = "-";
+            this.labelSimCustomersServedRatioISValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimWorking1CountIS
+            // 
+            this.labelSimWorking1CountIS.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimWorking1CountIS.Location = new System.Drawing.Point(647, 192);
+            this.labelSimWorking1CountIS.Name = "labelSimWorking1CountIS";
+            this.labelSimWorking1CountIS.Size = new System.Drawing.Size(250, 15);
+            this.labelSimWorking1CountIS.TabIndex = 56;
+            this.labelSimWorking1CountIS.Text = "90% IS počtu pracujúcich v skupine 1:";
+            this.labelSimWorking1CountIS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimWorking1CountISValue
+            // 
+            this.labelSimWorking1CountISValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimWorking1CountISValue.Location = new System.Drawing.Point(903, 192);
+            this.labelSimWorking1CountISValue.Name = "labelSimWorking1CountISValue";
+            this.labelSimWorking1CountISValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimWorking1CountISValue.TabIndex = 57;
+            this.labelSimWorking1CountISValue.Text = "-";
+            this.labelSimWorking1CountISValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimWorking2CountIS
+            // 
+            this.labelSimWorking2CountIS.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimWorking2CountIS.Location = new System.Drawing.Point(647, 213);
+            this.labelSimWorking2CountIS.Name = "labelSimWorking2CountIS";
+            this.labelSimWorking2CountIS.Size = new System.Drawing.Size(250, 15);
+            this.labelSimWorking2CountIS.TabIndex = 58;
+            this.labelSimWorking2CountIS.Text = "90% IS počtu pracujúcich v skupine 2:";
+            this.labelSimWorking2CountIS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimWorking2CountISValue
+            // 
+            this.labelSimWorking2CountISValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimWorking2CountISValue.Location = new System.Drawing.Point(903, 213);
+            this.labelSimWorking2CountISValue.Name = "labelSimWorking2CountISValue";
+            this.labelSimWorking2CountISValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimWorking2CountISValue.TabIndex = 59;
+            this.labelSimWorking2CountISValue.Text = "-";
+            this.labelSimWorking2CountISValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimWorking1RatioIS
+            // 
+            this.labelSimWorking1RatioIS.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimWorking1RatioIS.Location = new System.Drawing.Point(647, 234);
+            this.labelSimWorking1RatioIS.Name = "labelSimWorking1RatioIS";
+            this.labelSimWorking1RatioIS.Size = new System.Drawing.Size(250, 15);
+            this.labelSimWorking1RatioIS.TabIndex = 60;
+            this.labelSimWorking1RatioIS.Text = "90% IS vyťaženia pracovníkov 1:";
+            this.labelSimWorking1RatioIS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimWorking1RatioISValue
+            // 
+            this.labelSimWorking1RatioISValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimWorking1RatioISValue.Location = new System.Drawing.Point(903, 234);
+            this.labelSimWorking1RatioISValue.Name = "labelSimWorking1RatioISValue";
+            this.labelSimWorking1RatioISValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimWorking1RatioISValue.TabIndex = 61;
+            this.labelSimWorking1RatioISValue.Text = "-";
+            this.labelSimWorking1RatioISValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimWorking2RatioIS
+            // 
+            this.labelSimWorking2RatioIS.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimWorking2RatioIS.Location = new System.Drawing.Point(647, 255);
+            this.labelSimWorking2RatioIS.Name = "labelSimWorking2RatioIS";
+            this.labelSimWorking2RatioIS.Size = new System.Drawing.Size(250, 15);
+            this.labelSimWorking2RatioIS.TabIndex = 62;
+            this.labelSimWorking2RatioIS.Text = "90% IS vyťaženia pracovníkov 2:";
+            this.labelSimWorking2RatioIS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimWorking2RatioISValue
+            // 
+            this.labelSimWorking2RatioISValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimWorking2RatioISValue.Location = new System.Drawing.Point(903, 255);
+            this.labelSimWorking2RatioISValue.Name = "labelSimWorking2RatioISValue";
+            this.labelSimWorking2RatioISValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimWorking2RatioISValue.TabIndex = 63;
+            this.labelSimWorking2RatioISValue.Text = "-";
+            this.labelSimWorking2RatioISValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimCarPark1CountIS
+            // 
+            this.labelSimCarPark1CountIS.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimCarPark1CountIS.Location = new System.Drawing.Point(647, 276);
+            this.labelSimCarPark1CountIS.Name = "labelSimCarPark1CountIS";
+            this.labelSimCarPark1CountIS.Size = new System.Drawing.Size(250, 15);
+            this.labelSimCarPark1CountIS.TabIndex = 64;
+            this.labelSimCarPark1CountIS.Text = "90% IS počtu áut na parkovisku 1:";
+            this.labelSimCarPark1CountIS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimCarPark1CountISValue
+            // 
+            this.labelSimCarPark1CountISValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimCarPark1CountISValue.Location = new System.Drawing.Point(903, 276);
+            this.labelSimCarPark1CountISValue.Name = "labelSimCarPark1CountISValue";
+            this.labelSimCarPark1CountISValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimCarPark1CountISValue.TabIndex = 65;
+            this.labelSimCarPark1CountISValue.Text = "-";
+            this.labelSimCarPark1CountISValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimCarPark2CountIS
+            // 
+            this.labelSimCarPark2CountIS.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimCarPark2CountIS.Location = new System.Drawing.Point(647, 297);
+            this.labelSimCarPark2CountIS.Name = "labelSimCarPark2CountIS";
+            this.labelSimCarPark2CountIS.Size = new System.Drawing.Size(250, 15);
+            this.labelSimCarPark2CountIS.TabIndex = 66;
+            this.labelSimCarPark2CountIS.Text = "90% IS počtu áut na parkovisku 2:";
+            this.labelSimCarPark2CountIS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimCarPark2CountISValue
+            // 
+            this.labelSimCarPark2CountISValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimCarPark2CountISValue.Location = new System.Drawing.Point(903, 297);
+            this.labelSimCarPark2CountISValue.Name = "labelSimCarPark2CountISValue";
+            this.labelSimCarPark2CountISValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimCarPark2CountISValue.TabIndex = 67;
+            this.labelSimCarPark2CountISValue.Text = "-";
+            this.labelSimCarPark2CountISValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimCarParkServiceCountIS
+            // 
+            this.labelSimCarParkServiceCountIS.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimCarParkServiceCountIS.Location = new System.Drawing.Point(647, 318);
+            this.labelSimCarParkServiceCountIS.Name = "labelSimCarParkServiceCountIS";
+            this.labelSimCarParkServiceCountIS.Size = new System.Drawing.Size(250, 15);
+            this.labelSimCarParkServiceCountIS.TabIndex = 68;
+            this.labelSimCarParkServiceCountIS.Text = "90% IS počtu áut na parkovisku pred servisom:";
+            this.labelSimCarParkServiceCountIS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimCarParkServiceCountISValue
+            // 
+            this.labelSimCarParkServiceCountISValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimCarParkServiceCountISValue.Location = new System.Drawing.Point(903, 318);
+            this.labelSimCarParkServiceCountISValue.Name = "labelSimCarParkServiceCountISValue";
+            this.labelSimCarParkServiceCountISValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimCarParkServiceCountISValue.TabIndex = 69;
+            this.labelSimCarParkServiceCountISValue.Text = "-";
+            this.labelSimCarParkServiceCountISValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimCarPark1RatioIS
+            // 
+            this.labelSimCarPark1RatioIS.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimCarPark1RatioIS.Location = new System.Drawing.Point(647, 339);
+            this.labelSimCarPark1RatioIS.Name = "labelSimCarPark1RatioIS";
+            this.labelSimCarPark1RatioIS.Size = new System.Drawing.Size(250, 15);
+            this.labelSimCarPark1RatioIS.TabIndex = 70;
+            this.labelSimCarPark1RatioIS.Text = "90% IS vyťaženia parkoviska 1:";
+            this.labelSimCarPark1RatioIS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimCarPark1RatioISValue
+            // 
+            this.labelSimCarPark1RatioISValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimCarPark1RatioISValue.Location = new System.Drawing.Point(903, 339);
+            this.labelSimCarPark1RatioISValue.Name = "labelSimCarPark1RatioISValue";
+            this.labelSimCarPark1RatioISValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimCarPark1RatioISValue.TabIndex = 71;
+            this.labelSimCarPark1RatioISValue.Text = "-";
+            this.labelSimCarPark1RatioISValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimCarPark2RatioIS
+            // 
+            this.labelSimCarPark2RatioIS.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimCarPark2RatioIS.Location = new System.Drawing.Point(647, 363);
+            this.labelSimCarPark2RatioIS.Name = "labelSimCarPark2RatioIS";
+            this.labelSimCarPark2RatioIS.Size = new System.Drawing.Size(250, 15);
+            this.labelSimCarPark2RatioIS.TabIndex = 72;
+            this.labelSimCarPark2RatioIS.Text = "90% IS vyťaženia parkoviska 2:";
+            this.labelSimCarPark2RatioIS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimCarPark2RatioISValue
+            // 
+            this.labelSimCarPark2RatioISValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimCarPark2RatioISValue.Location = new System.Drawing.Point(903, 363);
+            this.labelSimCarPark2RatioISValue.Name = "labelSimCarPark2RatioISValue";
+            this.labelSimCarPark2RatioISValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimCarPark2RatioISValue.TabIndex = 73;
+            this.labelSimCarPark2RatioISValue.Text = "-";
+            this.labelSimCarPark2RatioISValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1156, 816);
+            this.ClientSize = new System.Drawing.Size(1257, 825);
             this.Controls.Add(this.centralWidget);
             this.MinimumSize = new System.Drawing.Size(1172, 855);
             this.Name = "MainWindow";
             this.Text = "Semestrálna práca 3 - Diskrétna simulácia - Matúš Mrázik";
             this.groupBoxSimulation.ResumeLayout(false);
             this.frameResults.ResumeLayout(false);
-            this.frameResults.PerformLayout();
             this.groupBoxSimulationControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.horizontalSliderSimRefreshRate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.horizontalSliderSimSpeed)).EndInit();
@@ -2099,18 +3467,30 @@
             this.groupBoxSeed.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinBoxCustomSeed)).EndInit();
             this.groupBoxOutput.ResumeLayout(false);
-            this.tableLayoutPanelOutput.ResumeLayout(false);
-            this.groupBoxOutputReplication.ResumeLayout(false);
-            this.tableLayoutPanelOutputReplication.ResumeLayout(false);
-            this.tableLayoutPanelOutputReplication.PerformLayout();
-            this.groupBoxIdealWorkersCount.ResumeLayout(false);
-            this.tableLayoutPanelIdealWorkersCount.ResumeLayout(false);
-            this.tableLayoutPanelIdealWorkersCount.PerformLayout();
-            this.groupBoxOutputSimulation.ResumeLayout(false);
-            this.tableLayoutPanelOutputSimulation.ResumeLayout(false);
-            this.tableLayoutPanelOutputSimulation.PerformLayout();
-            this.groupBoxVisualization.ResumeLayout(false);
             this.tabWidgetOutput.ResumeLayout(false);
+            this.tabCustomers.ResumeLayout(false);
+            this.tableLayoutPanelCustomers.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomers)).EndInit();
+            this.groupBoxCustomersStats.ResumeLayout(false);
+            this.tableLayoutPanelCustomersStats.ResumeLayout(false);
+            this.tabWorkers1.ResumeLayout(false);
+            this.tableLayoutPanelWorkers1.ResumeLayout(false);
+            this.groupBoxWorkers1Stats.ResumeLayout(false);
+            this.tableLayoutPanelWorkers1Stats.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWorkers1)).EndInit();
+            this.tabWorkers2.ResumeLayout(false);
+            this.tableLayoutPanelWorkers2.ResumeLayout(false);
+            this.groupBoxWorkers2Stats.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWorkers2)).EndInit();
+            this.tabCarParks.ResumeLayout(false);
+            this.tableLayoutPanelCarParks.ResumeLayout(false);
+            this.groupBoxCarPark1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCarPark1)).EndInit();
+            this.groupBoxCarPark2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCarPark2)).EndInit();
+            this.groupBoxCarPark1Stats.ResumeLayout(false);
+            this.groupBoxCarPark2Stats.ResumeLayout(false);
+            this.groupBoxCarParkService.ResumeLayout(false);
             this.tabQueueLenWorkers1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.widgetPlotQueueLenWorkers1)).EndInit();
             this.frameQueueLenWorkers1.ResumeLayout(false);
@@ -2128,15 +3508,16 @@
             this.frameTimeInServiceWorkers2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spinBoxTimeInServiceFixWorkers1)).EndInit();
             this.centralWidget.ResumeLayout(false);
-            this.tabCustomers.ResumeLayout(false);
-            this.tabWorkers1.ResumeLayout(false);
-            this.tabWorkers2.ResumeLayout(false);
-            this.tableLayoutPanelCustomers.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomers)).EndInit();
-            this.tableLayoutPanelWorkers1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWorkers1)).EndInit();
-            this.tableLayoutPanelWorkers2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWorkers2)).EndInit();
+            this.tableLayoutPanelWorkers2Stats.ResumeLayout(false);
+            this.tableLayoutPanelCarPark1Stats.ResumeLayout(false);
+            this.tableLayoutPanelCarPark2Stats.ResumeLayout(false);
+            this.tableLayoutPanelCarParkService.ResumeLayout(false);
+            this.tabSimulation.ResumeLayout(false);
+            this.tableLayoutPanelSimulation.ResumeLayout(false);
+            this.groupBoxIdealWorkersCount.ResumeLayout(false);
+            this.tableLayoutPanelIdealWorkersCount.ResumeLayout(false);
+            this.groupBoxSimulationStats.ResumeLayout(false);
+            this.tableLayoutPanelSimulationStats.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2145,7 +3526,6 @@
 
         private System.Windows.Forms.GroupBox groupBoxSimulation;
         private System.Windows.Forms.GroupBox groupBoxOutput;
-        private System.Windows.Forms.GroupBox groupBoxVisualization;
         private System.Windows.Forms.Panel centralWidget;
         private System.Windows.Forms.GroupBox groupBoxSeed;
         private System.Windows.Forms.GroupBox groupBoxParameters;
@@ -2219,66 +3599,12 @@
         private System.Windows.Forms.Label labelTimeInServiceFixWorkers2;
         private System.Windows.Forms.NumericUpDown spinBoxTimeInServiceFixWorkers1;
         private System.Windows.Forms.Label labelTimeInServiceFixWorkers1;
-        private System.Windows.Forms.GroupBox groupBoxOutputReplication;
-        private System.Windows.Forms.GroupBox groupBoxOutputSimulation;
-        private System.Windows.Forms.GroupBox groupBoxIdealWorkersCount;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelOutputReplication;
-        private System.Windows.Forms.Label labelTimeInServiceDur;
-        private System.Windows.Forms.Label labelWaitForRepairDurValue;
-        private System.Windows.Forms.Label labelWaitForRepairDur;
-        private System.Windows.Forms.Label labelWaitInQueueDurValue;
-        private System.Windows.Forms.Label labelWaitInQueueDur;
-        private System.Windows.Forms.Label labelAVGRepairedQueueLenValue;
-        private System.Windows.Forms.Label labelAVGRepairedQueueLen;
-        private System.Windows.Forms.Label labelAVGQueueForRepairLenValue;
-        private System.Windows.Forms.Label labelAVGQueueForRepairLen;
-        private System.Windows.Forms.Label labelAVGCustomerQueueLenValue;
-        private System.Windows.Forms.Label labelAVGCustomerQueueLen;
-        private System.Windows.Forms.Label labelRepairedQueueLenValue;
-        private System.Windows.Forms.Label labelRepairedQueueLen;
-        private System.Windows.Forms.Label labelQueueForRepairLenValue;
-        private System.Windows.Forms.Label labelQueueForRepairLen;
-        private System.Windows.Forms.Label labelCustomerQueueLenValue;
-        private System.Windows.Forms.Label labelCustomerQueueLen;
-        private System.Windows.Forms.Label labelWorkers2WorkingValue;
-        private System.Windows.Forms.Label labelWorkers2Working;
-        private System.Windows.Forms.Label labelWorkers1WorkingValue;
-        private System.Windows.Forms.Label labelWorkers1Working;
-        private System.Windows.Forms.Label labelTimeInServiceDurValue;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelOutput;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelIdealWorkersCount;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelOutputSimulation;
-        private System.Windows.Forms.Label labelAVGCustomerQueueLenSim;
-        private System.Windows.Forms.Label labelAVGCustomerQueueLenSimValue;
-        private System.Windows.Forms.Label labelAVGQueueForRepairLenSimValue;
-        private System.Windows.Forms.Label labelAVGRepairedQueueLenSimValue;
-        private System.Windows.Forms.Label labelWaitInQueueDurSimValue;
-        private System.Windows.Forms.Label labelWaitForRepairDurSimValue;
-        private System.Windows.Forms.Label labelTimeInServiceDurSimValue;
-        private System.Windows.Forms.Label labelWaitInQueueCIValue;
-        private System.Windows.Forms.Label labelWaitForRepairCIValue;
-        private System.Windows.Forms.Label labelTimeInSystemCIValue;
-        private System.Windows.Forms.Label labelAVGQueueForRepairLenSim;
-        private System.Windows.Forms.Label labelAVGRepairedQueueLenSim;
-        private System.Windows.Forms.Label labelWaitInQueueDurSim;
-        private System.Windows.Forms.Label labelWaitForRepairDurSim;
-        private System.Windows.Forms.Label labelTimeInServiceDurSim;
-        private System.Windows.Forms.Label labelWaitInQueueCI;
-        private System.Windows.Forms.Label labelWaitForRepairCI;
-        private System.Windows.Forms.Label labelTimeInSystemCI;
-        private System.Windows.Forms.Label labelIdealWorkers2Count;
-        private System.Windows.Forms.Label labelIdealWorkers1Count;
-        private System.Windows.Forms.Label labelIdealWorkers1CountValue;
-        private System.Windows.Forms.Label labelIdealWorkers2CountValue;
-        private System.Windows.Forms.Label labelProfitValue;
-        private System.Windows.Forms.Label labelProfit;
         private System.Windows.Forms.TabPage tabCustomers;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelCustomers;
         private System.Windows.Forms.DataGridView dataGridViewCustomers;
         private System.Windows.Forms.GroupBox groupBoxCustomersStats;
         private System.Windows.Forms.TabPage tabWorkers1;
         private System.Windows.Forms.TabPage tabWorkers2;
-        private System.Windows.Forms.TabPage tabCarParkService;
         private System.Windows.Forms.TabPage tabCarParks;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelWorkers1;
         private System.Windows.Forms.DataGridView dataGridViewWorkers1;
@@ -2286,5 +3612,173 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelWorkers2;
         private System.Windows.Forms.GroupBox groupBoxWorkers2Stats;
         private System.Windows.Forms.DataGridView dataGridViewWorkers2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelCarParks;
+        private System.Windows.Forms.GroupBox groupBoxCarPark1;
+        private System.Windows.Forms.GroupBox groupBoxCarPark2;
+        private System.Windows.Forms.GroupBox groupBoxCarPark1Stats;
+        private System.Windows.Forms.GroupBox groupBoxCarPark2Stats;
+        private System.Windows.Forms.GroupBox groupBoxCarParkService;
+        private System.Windows.Forms.DataGridView dataGridViewCarPark1;
+        private System.Windows.Forms.DataGridView dataGridViewCarPark2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelCustomersStats;
+        private System.Windows.Forms.Label labelCustomersInService;
+        private System.Windows.Forms.Label labelCustomersInQueue;
+        private System.Windows.Forms.Label labelCustomersTotal;
+        private System.Windows.Forms.Label labelCustomersServed;
+        private System.Windows.Forms.Label labelCustomersNotServed;
+        private System.Windows.Forms.Label labelCustomersServedRatio;
+        private System.Windows.Forms.Label labelCustomersInServiceValue;
+        private System.Windows.Forms.Label labelCustomersInQueueValue;
+        private System.Windows.Forms.Label labelCustomersTotalValue;
+        private System.Windows.Forms.Label labelCustomersServedValue;
+        private System.Windows.Forms.Label labelCustomersNotServedValue;
+        private System.Windows.Forms.Label labelCustomersServedRatioValue;
+        private System.Windows.Forms.Label labelCustomersInServiceAvg;
+        private System.Windows.Forms.Label labelCustomersInQueueAvg;
+        private System.Windows.Forms.Label labelCustomersWaitInQueueAvg;
+        private System.Windows.Forms.Label labelCustomersWaitForRepairAvg;
+        private System.Windows.Forms.Label labelCustomersTimeInServiceAvg;
+        private System.Windows.Forms.Label labelCustomersInServiceAvgValue;
+        private System.Windows.Forms.Label labelCustomersInQueueAvgValue;
+        private System.Windows.Forms.Label labelCustomersWaitInQueueAvgValue;
+        private System.Windows.Forms.Label labelCustomersWaitForRepairAvgValue;
+        private System.Windows.Forms.Label labelCustomersTimeInServiceAvgValue;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelWorkers1Stats;
+        private System.Windows.Forms.Label labelWorkers1WorkingCount;
+        private System.Windows.Forms.Label labelWorkers1WorkingCountValue;
+        private System.Windows.Forms.Label labelWorkers1WorkingRatio;
+        private System.Windows.Forms.Label labelWorkers1WorkingRatioValue;
+        private System.Windows.Forms.Label labelWorkers1ReturnQueueLength;
+        private System.Windows.Forms.Label labelWorkers1ReturnQueueLengthValue;
+        private System.Windows.Forms.Label labelWorkers1AvgWorkingCount;
+        private System.Windows.Forms.Label labelWorkers1AvgWorkingRatio;
+        private System.Windows.Forms.Label labelWorkers1AvgReturnQueueLength;
+        private System.Windows.Forms.Label labelWorkers1AvgWorkingCountValue;
+        private System.Windows.Forms.Label labelWorkers1AvgWorkingRatioValue;
+        private System.Windows.Forms.Label labelWorkers1AvgReturnQueueLengthValue;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelWorkers2Stats;
+        private System.Windows.Forms.Label labelWorkers2WorkingCount;
+        private System.Windows.Forms.Label labelWorkers2WorkingCountValue;
+        private System.Windows.Forms.Label labelWorkers2WorkingRatio;
+        private System.Windows.Forms.Label labelWorkers2WorkingRatioValue;
+        private System.Windows.Forms.Label labelWorkers2ToRepairQueueLength;
+        private System.Windows.Forms.Label labelWorkers2ToRepairQueueLengthValue;
+        private System.Windows.Forms.Label labelWorkers2AvgWorkingCount;
+        private System.Windows.Forms.Label labelWorkers2AvgWorkingRatio;
+        private System.Windows.Forms.Label labelWorkers2AvgToRepairQueueLength;
+        private System.Windows.Forms.Label labelWorkers2AvgWorkingCountValue;
+        private System.Windows.Forms.Label labelWorkers2AvgWorkingRatioValue;
+        private System.Windows.Forms.Label labelWorkers2AvgToRepairQueueLengthValue;
+        private System.Windows.Forms.Label labelWorkers2RepairedQueueLength;
+        private System.Windows.Forms.Label labelWorkers2RepairedQueueLengthValue;
+        private System.Windows.Forms.Label labelWorkers2AvgRepairedQueueLength;
+        private System.Windows.Forms.Label labelWorkers2AvgRepairedQueueLengthValue;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelCarPark1Stats;
+        private System.Windows.Forms.Label labelCarPark1OccupiedCount;
+        private System.Windows.Forms.Label labelCarPark1AvgOccupiedCount;
+        private System.Windows.Forms.Label labelCarPark1OccupiedRatio;
+        private System.Windows.Forms.Label labelCarPark1AvgOccupiedRatio;
+        private System.Windows.Forms.Label labelCarPark1OccupiedCountValue;
+        private System.Windows.Forms.Label labelCarPark1AvgOccupiedCountValue;
+        private System.Windows.Forms.Label labelCarPark1OccupiedRatioValue;
+        private System.Windows.Forms.Label labelCarPark1AvgOccupiedRatioValue;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelCarPark2Stats;
+        private System.Windows.Forms.Label labelCarPark2OccupiedCount;
+        private System.Windows.Forms.Label labelCarPark2AvgOccupiedCount;
+        private System.Windows.Forms.Label labelCarPark2OccupiedRatio;
+        private System.Windows.Forms.Label labelCarPark2AvgOccupiedRatio;
+        private System.Windows.Forms.Label labelCarPark2OccupiedCountValue;
+        private System.Windows.Forms.Label labelCarPark2AvgOccupiedCountValue;
+        private System.Windows.Forms.Label labelCarPark2OccupiedRatioValue;
+        private System.Windows.Forms.Label labelCarPark2AvgOccupiedRatioValue;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelCarParkService;
+        private System.Windows.Forms.Label labelCarParkServiceCount;
+        private System.Windows.Forms.Label labelCarParkServiceAvgCount;
+        private System.Windows.Forms.Label labelCarParkServiceCountValue;
+        private System.Windows.Forms.Label labelCarParkServiceAvgCountValue;
+        private System.Windows.Forms.TabPage tabSimulation;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelSimulation;
+        private System.Windows.Forms.GroupBox groupBoxIdealWorkersCount;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelIdealWorkersCount;
+        private System.Windows.Forms.Label labelIdealWorkers2Count;
+        private System.Windows.Forms.Label labelIdealWorkers1Count;
+        private System.Windows.Forms.Label labelIdealWorkers1CountValue;
+        private System.Windows.Forms.Label labelIdealWorkers2CountValue;
+        private System.Windows.Forms.Label labelProfitValue;
+        private System.Windows.Forms.Label labelProfit;
+        private System.Windows.Forms.GroupBox groupBoxSimulationStats;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelSimulationStats;
+        private System.Windows.Forms.Label labelSimCustomerInQueue;
+        private System.Windows.Forms.Label labelSimCustomerInQueueValue;
+        private System.Windows.Forms.Label labelSimToRepairQueueLengthValue;
+        private System.Windows.Forms.Label labelSimReturnQueueLengthValue;
+        private System.Windows.Forms.Label labelSimWaitInQueueValue;
+        private System.Windows.Forms.Label labelSimWaitForRepairValue;
+        private System.Windows.Forms.Label labelSimTimeInServiceValue;
+        private System.Windows.Forms.Label labelSimWaitInQueueISValue;
+        private System.Windows.Forms.Label labelSimWaitForRepairISValue;
+        private System.Windows.Forms.Label labelSimTimeInServiceISValue;
+        private System.Windows.Forms.Label labelSimToRepairQueueLength;
+        private System.Windows.Forms.Label labelSimReturnQueueLength;
+        private System.Windows.Forms.Label labelSimWaitInQueue;
+        private System.Windows.Forms.Label labelSimWaitForRepair;
+        private System.Windows.Forms.Label labelSimTimeInService;
+        private System.Windows.Forms.Label labelSimWaitInQueueIS;
+        private System.Windows.Forms.Label labelSimWaitForRepairIS;
+        private System.Windows.Forms.Label labelSimTimeInServiceIS;
+        private System.Windows.Forms.Label labelSimCustomersInService;
+        private System.Windows.Forms.Label labelSimCustomersInServiceValue;
+        private System.Windows.Forms.Label labelSimRepairedQueueLength;
+        private System.Windows.Forms.Label labelSimCustomersServedRatio;
+        private System.Windows.Forms.Label labelSimRepairedQueueLengthValue;
+        private System.Windows.Forms.Label labelSimCustomersServedRatioValue;
+        private System.Windows.Forms.Label labelSimWorking1Count;
+        private System.Windows.Forms.Label labelSimWorking2Count;
+        private System.Windows.Forms.Label labelSimWorking1Ratio;
+        private System.Windows.Forms.Label labelSimWorking2Ratio;
+        private System.Windows.Forms.Label labelSimCarPark1Count;
+        private System.Windows.Forms.Label labelSimCarPark2Count;
+        private System.Windows.Forms.Label labelSimCarParkServiceCount;
+        private System.Windows.Forms.Label labelSimCarPark1Ratio;
+        private System.Windows.Forms.Label labelSimCarPark2Ratio;
+        private System.Windows.Forms.Label labelSimWorking1CountValue;
+        private System.Windows.Forms.Label labelSimWorking2CountValue;
+        private System.Windows.Forms.Label labelSimWorking1RatioValue;
+        private System.Windows.Forms.Label labelSimWorking2RatioValue;
+        private System.Windows.Forms.Label labelSimCarPark1CountValue;
+        private System.Windows.Forms.Label labelSimCarPark2CountValue;
+        private System.Windows.Forms.Label labelSimCarParkServiceCountValue;
+        private System.Windows.Forms.Label labelSimCarPark1RatioValue;
+        private System.Windows.Forms.Label labelSimCarPark2RatioValue;
+        private System.Windows.Forms.Label labelSimCarPark2RatioISValue;
+        private System.Windows.Forms.Label labelSimCarPark2RatioIS;
+        private System.Windows.Forms.Label labelSimCarPark1RatioISValue;
+        private System.Windows.Forms.Label labelSimCarPark1RatioIS;
+        private System.Windows.Forms.Label labelSimCarParkServiceCountISValue;
+        private System.Windows.Forms.Label labelSimCarParkServiceCountIS;
+        private System.Windows.Forms.Label labelSimCarPark2CountISValue;
+        private System.Windows.Forms.Label labelSimCarPark2CountIS;
+        private System.Windows.Forms.Label labelSimCarPark1CountISValue;
+        private System.Windows.Forms.Label labelSimCarPark1CountIS;
+        private System.Windows.Forms.Label labelSimWorking2RatioISValue;
+        private System.Windows.Forms.Label labelSimWorking2RatioIS;
+        private System.Windows.Forms.Label labelSimWorking1RatioISValue;
+        private System.Windows.Forms.Label labelSimWorking1RatioIS;
+        private System.Windows.Forms.Label labelSimWorking2CountISValue;
+        private System.Windows.Forms.Label labelSimWorking2CountIS;
+        private System.Windows.Forms.Label labelSimWorking1CountISValue;
+        private System.Windows.Forms.Label labelSimWorking1CountIS;
+        private System.Windows.Forms.Label labelSimCustomersServedRatioISValue;
+        private System.Windows.Forms.Label labelSimCustomersServedRatioIS;
+        private System.Windows.Forms.Label labelSimReturnQueueLengthISValue;
+        private System.Windows.Forms.Label labelSimReturnQueueLengthIS;
+        private System.Windows.Forms.Label labelSimRepairedQueueLengthISValue;
+        private System.Windows.Forms.Label labelSimRepairedQueueLengthIS;
+        private System.Windows.Forms.Label labelSimToRepairQueueLengthISValue;
+        private System.Windows.Forms.Label labelSimToRepairQueueLengthIS;
+        private System.Windows.Forms.Label labelSimCustomerInQueueISValue;
+        private System.Windows.Forms.Label labelSimCustomerInQueueIS;
+        private System.Windows.Forms.Label labelSimCustomersInServiceISValue;
+        private System.Windows.Forms.Label labelSimCustomersInServiceIS;
     }
 }

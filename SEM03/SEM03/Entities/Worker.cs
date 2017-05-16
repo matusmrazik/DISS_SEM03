@@ -22,7 +22,7 @@ namespace SEM03.Entities
         public string State { get; set; }
         public string TotalWorkingTimeStr => SimTimeHelper.DurationAsString(TotalWorkingTime);
         public string TotalIdleTimeStr => SimTimeHelper.DurationAsString(MySim.CurrentTime - TotalWorkingTime);
-        public string TotalWorkingRatioStr => $"{100.0 * (TotalWorkingTime / MySim.CurrentTime):0.00} %";
+        public string TotalWorkingRatioStr => MySim.CurrentTime == 0.0 ? "-" : $"{100.0 * (TotalWorkingTime / MySim.CurrentTime):0.00} %";
 
         public Worker(OSPABA.Simulation mySim)
             : base(mySim)

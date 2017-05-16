@@ -8,7 +8,7 @@
         public const double TIME_BETWEEN_CUSTOMERS = 20.0 * SimTimeHelper.MINUTE;
         public const double MAX_WAIT_IN_QUEUE_TIME = 10.0 * SimTimeHelper.MINUTE;
 
-        public const double HEAT_UP_TIME = 0.0; //1.0 * SimTimeHelper.DAY;
+        public const double HEAT_UP_TIME = 0.0;
         public const double COOL_DOWN_TIME = 0.0;
         public const double REPLICATION_START_TIME = HEAT_UP_TIME;
         public static double ReplicationDuration { get; set; } = 21.0 * SimTimeHelper.DAY;
