@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Text;
 
 namespace SEM03.Logging
 {
@@ -21,6 +22,20 @@ namespace SEM03.Logging
         public static void LogError(string logStr, bool newLine = true)
         {
             Log("ERROR", logStr, newLine);
+        }
+
+        public static void NewLine(int count = 1)
+        {
+            if (count == 1)
+            {
+                File.AppendAllText(FileName, Environment.NewLine);
+                return;
+            }
+
+            var builder = new StringBuilder(Environment.NewLine.Length * count);
+            for (var i = 0; i < count; ++i)
+                builder.Append(Environment.NewLine);
+            File.AppendAllText(FileName, builder.ToString());
         }
 
         private static void Log(string logType, string logMessage, bool newLine)

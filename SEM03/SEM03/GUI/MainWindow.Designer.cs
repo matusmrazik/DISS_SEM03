@@ -220,8 +220,8 @@
             this.labelIdealWorkers1Count = new System.Windows.Forms.Label();
             this.labelIdealWorkers1CountValue = new System.Windows.Forms.Label();
             this.labelIdealWorkers2CountValue = new System.Windows.Forms.Label();
-            this.labelProfitValue = new System.Windows.Forms.Label();
-            this.labelProfit = new System.Windows.Forms.Label();
+            this.labelIdealMonthlyProfitValue = new System.Windows.Forms.Label();
+            this.labelIdealMonthlyProfit = new System.Windows.Forms.Label();
             this.groupBoxSimulationStats = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanelSimulationStats = new System.Windows.Forms.TableLayoutPanel();
             this.labelSimCustomerInQueue = new System.Windows.Forms.Label();
@@ -299,6 +299,10 @@
             this.labelAdInvestment = new System.Windows.Forms.Label();
             this.spinBoxAdInvestment = new System.Windows.Forms.NumericUpDown();
             this.labelEuro = new System.Windows.Forms.Label();
+            this.labelSimProfit = new System.Windows.Forms.Label();
+            this.labelSimProfitValue = new System.Windows.Forms.Label();
+            this.labelSimProfitIS = new System.Windows.Forms.Label();
+            this.labelSimProfitISValue = new System.Windows.Forms.Label();
             this.groupBoxSimulation.SuspendLayout();
             this.frameResults.SuspendLayout();
             this.groupBoxSimulationControl.SuspendLayout();
@@ -785,7 +789,7 @@
             this.spinBoxWorkers2Max.Size = new System.Drawing.Size(71, 20);
             this.spinBoxWorkers2Max.TabIndex = 14;
             this.spinBoxWorkers2Max.Value = new decimal(new int[] {
-            26,
+            10,
             0,
             0,
             0});
@@ -809,7 +813,7 @@
             this.spinBoxWorkers2Min.Size = new System.Drawing.Size(71, 20);
             this.spinBoxWorkers2Min.TabIndex = 13;
             this.spinBoxWorkers2Min.Value = new decimal(new int[] {
-            16,
+            1,
             0,
             0,
             0});
@@ -2515,7 +2519,7 @@
             this.tableLayoutPanelSimulation.Name = "tableLayoutPanelSimulation";
             this.tableLayoutPanelSimulation.RowCount = 2;
             this.tableLayoutPanelSimulation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelSimulation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 85F));
+            this.tableLayoutPanelSimulation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
             this.tableLayoutPanelSimulation.Size = new System.Drawing.Size(1213, 495);
             this.tableLayoutPanelSimulation.TabIndex = 4;
             // 
@@ -2523,38 +2527,40 @@
             // 
             this.groupBoxIdealWorkersCount.Controls.Add(this.tableLayoutPanelIdealWorkersCount);
             this.groupBoxIdealWorkersCount.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxIdealWorkersCount.Location = new System.Drawing.Point(3, 413);
+            this.groupBoxIdealWorkersCount.Location = new System.Drawing.Point(3, 433);
             this.groupBoxIdealWorkersCount.Name = "groupBoxIdealWorkersCount";
-            this.groupBoxIdealWorkersCount.Size = new System.Drawing.Size(1207, 79);
+            this.groupBoxIdealWorkersCount.Size = new System.Drawing.Size(1207, 59);
             this.groupBoxIdealWorkersCount.TabIndex = 2;
             this.groupBoxIdealWorkersCount.TabStop = false;
             this.groupBoxIdealWorkersCount.Text = "Ideálny počet pracovníkov";
             // 
             // tableLayoutPanelIdealWorkersCount
             // 
-            this.tableLayoutPanelIdealWorkersCount.ColumnCount = 2;
-            this.tableLayoutPanelIdealWorkersCount.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelIdealWorkersCount.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelIdealWorkersCount.Controls.Add(this.labelIdealWorkers2Count, 0, 1);
+            this.tableLayoutPanelIdealWorkersCount.ColumnCount = 4;
+            this.tableLayoutPanelIdealWorkersCount.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelIdealWorkersCount.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelIdealWorkersCount.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelIdealWorkersCount.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanelIdealWorkersCount.Controls.Add(this.labelIdealWorkers1Count, 0, 0);
             this.tableLayoutPanelIdealWorkersCount.Controls.Add(this.labelIdealWorkers1CountValue, 1, 0);
-            this.tableLayoutPanelIdealWorkersCount.Controls.Add(this.labelIdealWorkers2CountValue, 1, 1);
-            this.tableLayoutPanelIdealWorkersCount.Controls.Add(this.labelProfitValue, 1, 2);
-            this.tableLayoutPanelIdealWorkersCount.Controls.Add(this.labelProfit, 0, 2);
+            this.tableLayoutPanelIdealWorkersCount.Controls.Add(this.labelIdealWorkers2Count, 2, 0);
+            this.tableLayoutPanelIdealWorkersCount.Controls.Add(this.labelIdealWorkers2CountValue, 3, 0);
+            this.tableLayoutPanelIdealWorkersCount.Controls.Add(this.labelIdealMonthlyProfit, 0, 1);
+            this.tableLayoutPanelIdealWorkersCount.Controls.Add(this.labelIdealMonthlyProfitValue, 2, 1);
             this.tableLayoutPanelIdealWorkersCount.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelIdealWorkersCount.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanelIdealWorkersCount.Name = "tableLayoutPanelIdealWorkersCount";
-            this.tableLayoutPanelIdealWorkersCount.RowCount = 3;
+            this.tableLayoutPanelIdealWorkersCount.RowCount = 2;
             this.tableLayoutPanelIdealWorkersCount.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanelIdealWorkersCount.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanelIdealWorkersCount.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanelIdealWorkersCount.Size = new System.Drawing.Size(1201, 60);
+            this.tableLayoutPanelIdealWorkersCount.Size = new System.Drawing.Size(1201, 40);
             this.tableLayoutPanelIdealWorkersCount.TabIndex = 0;
             // 
             // labelIdealWorkers2Count
             // 
             this.labelIdealWorkers2Count.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.labelIdealWorkers2Count.Location = new System.Drawing.Point(347, 22);
+            this.labelIdealWorkers2Count.Location = new System.Drawing.Point(647, 2);
             this.labelIdealWorkers2Count.Name = "labelIdealWorkers2Count";
             this.labelIdealWorkers2Count.Size = new System.Drawing.Size(250, 15);
             this.labelIdealWorkers2Count.TabIndex = 4;
@@ -2564,7 +2570,7 @@
             // labelIdealWorkers1Count
             // 
             this.labelIdealWorkers1Count.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.labelIdealWorkers1Count.Location = new System.Drawing.Point(347, 2);
+            this.labelIdealWorkers1Count.Location = new System.Drawing.Point(47, 2);
             this.labelIdealWorkers1Count.Name = "labelIdealWorkers1Count";
             this.labelIdealWorkers1Count.Size = new System.Drawing.Size(250, 15);
             this.labelIdealWorkers1Count.TabIndex = 3;
@@ -2574,7 +2580,7 @@
             // labelIdealWorkers1CountValue
             // 
             this.labelIdealWorkers1CountValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelIdealWorkers1CountValue.Location = new System.Drawing.Point(603, 2);
+            this.labelIdealWorkers1CountValue.Location = new System.Drawing.Point(303, 2);
             this.labelIdealWorkers1CountValue.Name = "labelIdealWorkers1CountValue";
             this.labelIdealWorkers1CountValue.Size = new System.Drawing.Size(250, 15);
             this.labelIdealWorkers1CountValue.TabIndex = 5;
@@ -2584,32 +2590,34 @@
             // labelIdealWorkers2CountValue
             // 
             this.labelIdealWorkers2CountValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelIdealWorkers2CountValue.Location = new System.Drawing.Point(603, 22);
+            this.labelIdealWorkers2CountValue.Location = new System.Drawing.Point(903, 2);
             this.labelIdealWorkers2CountValue.Name = "labelIdealWorkers2CountValue";
             this.labelIdealWorkers2CountValue.Size = new System.Drawing.Size(250, 15);
             this.labelIdealWorkers2CountValue.TabIndex = 6;
             this.labelIdealWorkers2CountValue.Text = "-";
             this.labelIdealWorkers2CountValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // labelProfitValue
+            // labelIdealMonthlyProfitValue
             // 
-            this.labelProfitValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelProfitValue.Location = new System.Drawing.Point(603, 42);
-            this.labelProfitValue.Name = "labelProfitValue";
-            this.labelProfitValue.Size = new System.Drawing.Size(250, 15);
-            this.labelProfitValue.TabIndex = 7;
-            this.labelProfitValue.Text = "-";
-            this.labelProfitValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelIdealMonthlyProfitValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.tableLayoutPanelIdealWorkersCount.SetColumnSpan(this.labelIdealMonthlyProfitValue, 2);
+            this.labelIdealMonthlyProfitValue.Location = new System.Drawing.Point(603, 22);
+            this.labelIdealMonthlyProfitValue.Name = "labelIdealMonthlyProfitValue";
+            this.labelIdealMonthlyProfitValue.Size = new System.Drawing.Size(400, 15);
+            this.labelIdealMonthlyProfitValue.TabIndex = 7;
+            this.labelIdealMonthlyProfitValue.Text = "-";
+            this.labelIdealMonthlyProfitValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // labelProfit
+            // labelIdealMonthlyProfit
             // 
-            this.labelProfit.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.labelProfit.Location = new System.Drawing.Point(347, 42);
-            this.labelProfit.Name = "labelProfit";
-            this.labelProfit.Size = new System.Drawing.Size(250, 15);
-            this.labelProfit.TabIndex = 8;
-            this.labelProfit.Text = "Hospodársky výsledok:";
-            this.labelProfit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelIdealMonthlyProfit.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.tableLayoutPanelIdealWorkersCount.SetColumnSpan(this.labelIdealMonthlyProfit, 2);
+            this.labelIdealMonthlyProfit.Location = new System.Drawing.Point(197, 22);
+            this.labelIdealMonthlyProfit.Name = "labelIdealMonthlyProfit";
+            this.labelIdealMonthlyProfit.Size = new System.Drawing.Size(400, 15);
+            this.labelIdealMonthlyProfit.TabIndex = 8;
+            this.labelIdealMonthlyProfit.Text = "Mesačný hospodársky výsledok:";
+            this.labelIdealMonthlyProfit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // groupBoxSimulationStats
             // 
@@ -2617,7 +2625,7 @@
             this.groupBoxSimulationStats.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxSimulationStats.Location = new System.Drawing.Point(3, 3);
             this.groupBoxSimulationStats.Name = "groupBoxSimulationStats";
-            this.groupBoxSimulationStats.Size = new System.Drawing.Size(1207, 404);
+            this.groupBoxSimulationStats.Size = new System.Drawing.Size(1207, 424);
             this.groupBoxSimulationStats.TabIndex = 1;
             this.groupBoxSimulationStats.TabStop = false;
             this.groupBoxSimulationStats.Text = "Štatistiky";
@@ -2701,29 +2709,34 @@
             this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimCarParkServiceCountValue, 1, 15);
             this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimCarPark1RatioValue, 1, 16);
             this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimCarPark2RatioValue, 1, 17);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimProfit, 0, 18);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimProfitValue, 1, 18);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimProfitIS, 2, 18);
+            this.tableLayoutPanelSimulationStats.Controls.Add(this.labelSimProfitISValue, 3, 18);
             this.tableLayoutPanelSimulationStats.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelSimulationStats.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanelSimulationStats.Name = "tableLayoutPanelSimulationStats";
-            this.tableLayoutPanelSimulationStats.RowCount = 18;
-            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555555F));
-            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555555F));
-            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555555F));
-            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555555F));
-            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555555F));
-            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555555F));
-            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555555F));
-            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555555F));
-            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555555F));
-            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555555F));
-            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555555F));
-            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555555F));
-            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555555F));
-            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555555F));
-            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555555F));
-            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555555F));
-            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555555F));
-            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555555F));
-            this.tableLayoutPanelSimulationStats.Size = new System.Drawing.Size(1201, 385);
+            this.tableLayoutPanelSimulationStats.RowCount = 19;
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.263158F));
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.263158F));
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.263158F));
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.263158F));
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.263158F));
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.263158F));
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.263158F));
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.263158F));
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.263158F));
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.263158F));
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.263158F));
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.263158F));
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.263158F));
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.263158F));
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.263158F));
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.263158F));
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.263158F));
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.263158F));
+            this.tableLayoutPanelSimulationStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.263158F));
+            this.tableLayoutPanelSimulationStats.Size = new System.Drawing.Size(1201, 405);
             this.tableLayoutPanelSimulationStats.TabIndex = 0;
             // 
             // labelSimCustomerInQueue
@@ -3049,7 +3062,7 @@
             // labelSimCarPark2Ratio
             // 
             this.labelSimCarPark2Ratio.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.labelSimCarPark2Ratio.Location = new System.Drawing.Point(47, 363);
+            this.labelSimCarPark2Ratio.Location = new System.Drawing.Point(47, 360);
             this.labelSimCarPark2Ratio.Name = "labelSimCarPark2Ratio";
             this.labelSimCarPark2Ratio.Size = new System.Drawing.Size(250, 15);
             this.labelSimCarPark2Ratio.TabIndex = 34;
@@ -3139,7 +3152,7 @@
             // labelSimCarPark2RatioValue
             // 
             this.labelSimCarPark2RatioValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelSimCarPark2RatioValue.Location = new System.Drawing.Point(303, 363);
+            this.labelSimCarPark2RatioValue.Location = new System.Drawing.Point(303, 360);
             this.labelSimCarPark2RatioValue.Name = "labelSimCarPark2RatioValue";
             this.labelSimCarPark2RatioValue.Size = new System.Drawing.Size(250, 15);
             this.labelSimCarPark2RatioValue.TabIndex = 43;
@@ -3429,7 +3442,7 @@
             // labelSimCarPark2RatioIS
             // 
             this.labelSimCarPark2RatioIS.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.labelSimCarPark2RatioIS.Location = new System.Drawing.Point(647, 363);
+            this.labelSimCarPark2RatioIS.Location = new System.Drawing.Point(647, 360);
             this.labelSimCarPark2RatioIS.Name = "labelSimCarPark2RatioIS";
             this.labelSimCarPark2RatioIS.Size = new System.Drawing.Size(250, 15);
             this.labelSimCarPark2RatioIS.TabIndex = 72;
@@ -3439,7 +3452,7 @@
             // labelSimCarPark2RatioISValue
             // 
             this.labelSimCarPark2RatioISValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelSimCarPark2RatioISValue.Location = new System.Drawing.Point(903, 363);
+            this.labelSimCarPark2RatioISValue.Location = new System.Drawing.Point(903, 360);
             this.labelSimCarPark2RatioISValue.Name = "labelSimCarPark2RatioISValue";
             this.labelSimCarPark2RatioISValue.Size = new System.Drawing.Size(250, 15);
             this.labelSimCarPark2RatioISValue.TabIndex = 73;
@@ -3450,9 +3463,9 @@
             // 
             this.labelAdInvestment.Location = new System.Drawing.Point(10, 123);
             this.labelAdInvestment.Name = "labelAdInvestment";
-            this.labelAdInvestment.Size = new System.Drawing.Size(120, 20);
+            this.labelAdInvestment.Size = new System.Drawing.Size(170, 20);
             this.labelAdInvestment.TabIndex = 21;
-            this.labelAdInvestment.Text = "Investovať do reklamy:";
+            this.labelAdInvestment.Text = "Investovať mesačne do reklamy:";
             this.labelAdInvestment.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // spinBoxAdInvestment
@@ -3463,7 +3476,7 @@
             0,
             0,
             0});
-            this.spinBoxAdInvestment.Location = new System.Drawing.Point(140, 123);
+            this.spinBoxAdInvestment.Location = new System.Drawing.Point(190, 123);
             this.spinBoxAdInvestment.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -3473,20 +3486,55 @@
             this.spinBoxAdInvestment.Size = new System.Drawing.Size(71, 20);
             this.spinBoxAdInvestment.TabIndex = 22;
             this.spinBoxAdInvestment.Tag = "";
-            this.spinBoxAdInvestment.Value = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
             // 
             // labelEuro
             // 
-            this.labelEuro.Location = new System.Drawing.Point(220, 123);
+            this.labelEuro.Location = new System.Drawing.Point(270, 123);
             this.labelEuro.Name = "labelEuro";
             this.labelEuro.Size = new System.Drawing.Size(31, 20);
             this.labelEuro.TabIndex = 23;
             this.labelEuro.Text = "EUR";
             this.labelEuro.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimProfit
+            // 
+            this.labelSimProfit.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimProfit.Location = new System.Drawing.Point(47, 384);
+            this.labelSimProfit.Name = "labelSimProfit";
+            this.labelSimProfit.Size = new System.Drawing.Size(250, 15);
+            this.labelSimProfit.TabIndex = 74;
+            this.labelSimProfit.Text = "Hospodársky výsledok (zisky - náklady):";
+            this.labelSimProfit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimProfitValue
+            // 
+            this.labelSimProfitValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimProfitValue.Location = new System.Drawing.Point(303, 384);
+            this.labelSimProfitValue.Name = "labelSimProfitValue";
+            this.labelSimProfitValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimProfitValue.TabIndex = 75;
+            this.labelSimProfitValue.Text = "-";
+            this.labelSimProfitValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSimProfitIS
+            // 
+            this.labelSimProfitIS.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSimProfitIS.Location = new System.Drawing.Point(647, 384);
+            this.labelSimProfitIS.Name = "labelSimProfitIS";
+            this.labelSimProfitIS.Size = new System.Drawing.Size(250, 15);
+            this.labelSimProfitIS.TabIndex = 76;
+            this.labelSimProfitIS.Text = "90% IS hospodárskeho výsledku:";
+            this.labelSimProfitIS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSimProfitISValue
+            // 
+            this.labelSimProfitISValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSimProfitISValue.Location = new System.Drawing.Point(903, 384);
+            this.labelSimProfitISValue.Name = "labelSimProfitISValue";
+            this.labelSimProfitISValue.Size = new System.Drawing.Size(250, 15);
+            this.labelSimProfitISValue.TabIndex = 77;
+            this.labelSimProfitISValue.Text = "-";
+            this.labelSimProfitISValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // MainWindow
             // 
@@ -3753,8 +3801,8 @@
         private System.Windows.Forms.Label labelIdealWorkers1Count;
         private System.Windows.Forms.Label labelIdealWorkers1CountValue;
         private System.Windows.Forms.Label labelIdealWorkers2CountValue;
-        private System.Windows.Forms.Label labelProfitValue;
-        private System.Windows.Forms.Label labelProfit;
+        private System.Windows.Forms.Label labelIdealMonthlyProfitValue;
+        private System.Windows.Forms.Label labelIdealMonthlyProfit;
         private System.Windows.Forms.GroupBox groupBoxSimulationStats;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelSimulationStats;
         private System.Windows.Forms.Label labelSimCustomerInQueue;
@@ -3832,5 +3880,9 @@
         private System.Windows.Forms.Label labelEuro;
         private System.Windows.Forms.NumericUpDown spinBoxAdInvestment;
         private System.Windows.Forms.Label labelAdInvestment;
+        private System.Windows.Forms.Label labelSimProfit;
+        private System.Windows.Forms.Label labelSimProfitValue;
+        private System.Windows.Forms.Label labelSimProfitIS;
+        private System.Windows.Forms.Label labelSimProfitISValue;
     }
 }

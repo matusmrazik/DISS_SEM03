@@ -131,6 +131,12 @@ namespace SEM03.GUI
                 return;
             }
 
+            if (_sim.CurrentReplication == 0)
+            {
+                ExecuteOnGuiThread(groupBoxSimulationStats, ClearCiLabels);
+                return;
+            }
+
             var customersInServiceMean = _sim.StatisticCustomersInServiceTotal.Mean;
             var queueLengthMean = _sim.StatisticQueueLengthTotal.Mean;
             var toRepairQueueLengthMean = _sim.StatisticCarsForRepairQueueLengthTotal.Mean;
@@ -149,6 +155,7 @@ namespace SEM03.GUI
             var carParkServiceCountMean = _sim.StatisticCarParkServiceOccupiedTotal.Mean;
             var carPark1RatioMean = $"{100.0 * (carPark1CountMean / _sim.CarPark1Capacity):0.0000} %";
             var carPark2RatioMean = $"{100.0 * (carPark2CountMean / _sim.CarPark2Capacity):0.0000} %";
+            var profitMean = _sim.StatisticProfitTotal.Mean;
 
             var customersInServiceMeanCi = _sim.StatisticCustomersInServiceTotal.ConfidenceInterval90;
             var queueLengthMeanCi = _sim.StatisticQueueLengthTotal.ConfidenceInterval90;
@@ -168,6 +175,7 @@ namespace SEM03.GUI
             var carParkServiceCountMeanCi = _sim.StatisticCarParkServiceOccupiedTotal.ConfidenceInterval90;
             var carPark1RatioMeanCi = new[] { carPark1CountMeanCi[0] / _sim.CarPark1Capacity, carPark1CountMeanCi[1] / _sim.CarPark1Capacity };
             var carPark2RatioMeanCi = new[] { carPark2CountMeanCi[0] / _sim.CarPark2Capacity, carPark2CountMeanCi[1] / _sim.CarPark2Capacity };
+            var profitMeanCi = _sim.StatisticProfitTotal.ConfidenceInterval90;
 
             ExecuteOnGuiThread(groupBoxSimulationStats, () =>
             {
@@ -189,6 +197,7 @@ namespace SEM03.GUI
                 labelSimCarParkServiceCountValue.Text = $@"{carParkServiceCountMean:0.000000}";
                 labelSimCarPark1RatioValue.Text = carPark1RatioMean;
                 labelSimCarPark2RatioValue.Text = carPark2RatioMean;
+                labelSimProfitValue.Text = $@"{profitMean:0.00} EUR";
 
                 labelSimCustomersInServiceISValue.Text = $@"<{customersInServiceMeanCi[0]:0.000000}, {customersInServiceMeanCi[1]:0.000000}>";
                 labelSimCustomerInQueueISValue.Text = $@"<{queueLengthMeanCi[0]:0.000000}, {queueLengthMeanCi[1]:0.000000}>";
@@ -208,6 +217,7 @@ namespace SEM03.GUI
                 labelSimCarParkServiceCountISValue.Text = $@"<{carParkServiceCountMeanCi[0]:0.000000}, {carParkServiceCountMeanCi[1]:0.000000}>";
                 labelSimCarPark1RatioISValue.Text = $@"<{100.0 * carPark1RatioMeanCi[0]:0.0000} %, {100.0 * carPark1RatioMeanCi[1]:0.0000} %>";
                 labelSimCarPark2RatioISValue.Text = $@"<{100.0 * carPark2RatioMeanCi[0]:0.0000} %, {100.0 * carPark2RatioMeanCi[1]:0.0000} %>";
+                labelSimProfitISValue.Text = $@"<{profitMeanCi[0]:0.00} EUR, {profitMeanCi[1]:0.00} EUR>";
             });
         }
 
@@ -277,7 +287,7 @@ namespace SEM03.GUI
             {
                 labelIdealWorkers1CountValue.Text = workers1Count == 0 ? "-" : $@"{workers1Count}";
                 labelIdealWorkers2CountValue.Text = workers2Count == 0 ? "-" : $@"{workers2Count}";
-                labelProfitValue.Text = workers1Count == 0 ? "-" : $@"{earnedMoney:0.00} EUR";
+                labelIdealMonthlyProfitValue.Text = workers1Count == 0 ? "-" : $@"{earnedMoney:0.00} EUR";
             });
         }
 
@@ -727,6 +737,26 @@ namespace SEM03.GUI
             labelSimCarParkServiceCountValue.Text = @"-";
             labelSimCarPark1RatioValue.Text = @"-";
             labelSimCarPark2RatioValue.Text = @"-";
+            labelSimProfitValue.Text = @"-";
+
+            ClearCiLabels();
+
+            labelIdealWorkers1CountValue.Text = @"-";
+            labelIdealWorkers2CountValue.Text = @"-";
+            labelIdealMonthlyProfitValue.Text = @"-";
+
+            widgetPlotQueueLenWorkers1.Series[0].Points.Clear();
+            widgetPlotQueueLenWorkers1.Refresh();
+            widgetPlotQueueLenWorkers2.Series[0].Points.Clear();
+            widgetPlotQueueLenWorkers2.Refresh();
+            widgetPlotTimeInServiceWorkers1.Series[0].Points.Clear();
+            widgetPlotTimeInServiceWorkers1.Refresh();
+            widgetPlotTimeInServiceWorkers2.Series[0].Points.Clear();
+            widgetPlotTimeInServiceWorkers2.Refresh();
+        }
+
+        private void ClearCiLabels()
+        {
             labelSimCustomersInServiceISValue.Text = @"-";
             labelSimCustomerInQueueISValue.Text = @"-";
             labelSimToRepairQueueLengthISValue.Text = @"-";
@@ -745,19 +775,7 @@ namespace SEM03.GUI
             labelSimCarParkServiceCountISValue.Text = @"-";
             labelSimCarPark1RatioISValue.Text = @"-";
             labelSimCarPark2RatioISValue.Text = @"-";
-
-            labelIdealWorkers1CountValue.Text = @"-";
-            labelIdealWorkers2CountValue.Text = @"-";
-            labelProfitValue.Text = @"-";
-
-            widgetPlotQueueLenWorkers1.Series[0].Points.Clear();
-            widgetPlotQueueLenWorkers1.Refresh();
-            widgetPlotQueueLenWorkers2.Series[0].Points.Clear();
-            widgetPlotQueueLenWorkers2.Refresh();
-            widgetPlotTimeInServiceWorkers1.Series[0].Points.Clear();
-            widgetPlotTimeInServiceWorkers1.Refresh();
-            widgetPlotTimeInServiceWorkers2.Series[0].Points.Clear();
-            widgetPlotTimeInServiceWorkers2.Refresh();
+            labelSimProfitISValue.Text = @"-";
         }
 
         private static void ExecuteOnGuiThread(Control control, Action action)

@@ -87,12 +87,19 @@ namespace SEM03.Simulation
         public Stat StatisticTimeInServiceTotal { get; private set; }
         public Stat StatisticServedPrecentageTotal { get; private set; }
         public Stat StatisticIncomesTotal { get; private set; }
+        public Stat StatisticProfitTotal { get; private set; }
         public Stat StatisticCustomersInServiceTotal { get; private set; }
         public Stat StatisticWorkers1WorkingTotal { get; private set; }
         public Stat StatisticWorkers2WorkingTotal { get; private set; }
         public Stat StatisticCarPark1OccupiedTotal { get; private set; }
         public Stat StatisticCarPark2OccupiedTotal { get; private set; }
         public Stat StatisticCarParkServiceOccupiedTotal { get; private set; }
+
+        public double ReplicationOperatingExpenses => SimTimeHelper.ToDays(SimConfig.ReplicationDuration) * SimConfig.OPERATING_EXPENSES_DAY;
+        public double ReplicationWorkers1Expenses => Workers1Count * SimTimeHelper.ToDays(SimConfig.ReplicationDuration) * SimConfig.WORKER_1_COSTS_DAY;
+        public double ReplicationWorkers2Expenses => Workers2Count * SimTimeHelper.ToDays(SimConfig.ReplicationDuration) * SimConfig.WORKER_2_COSTS_DAY;
+        public double ReplicationAdvertisingExpenses => SimTimeHelper.ToDays(SimConfig.ReplicationDuration) * SimConfig.AdvertisingInvestmentDay;
+        public double ReplicationTotalExpenses => ReplicationOperatingExpenses + ReplicationWorkers1Expenses + ReplicationWorkers2Expenses + ReplicationAdvertisingExpenses;
 
         public SimCarService()
         {
@@ -105,7 +112,7 @@ namespace SEM03.Simulation
 
             Seed = seed ?? new Random().Next();
 
-            SimConfig.AdvertisingInvestment = advertisingInvestment;
+            SimConfig.AdvertisingInvestmentMonth = advertisingInvestment;
 
             AgentService.SetWorkersCount(group1Workers);
             AgentWorkshop.SetWorkersCount(group2Workers);
@@ -128,10 +135,9 @@ namespace SEM03.Simulation
         {
             Init(workers1Count, workers2Count, advertisingInvestment, seed);
             Simulate(replicationCount, simEndTime);
-            if (!Stopped)
-            {
-                OnRunFinished?.Invoke();
-            }
+
+            if (Stopped) return;
+            OnRunFinished?.Invoke();
         }
 
         public Thread SingleRunAsync(int replicationCount, double simEndTime, int workers1Count, int workers2Count, double advertisingInvestment, int? seed = null)
@@ -150,10 +156,7 @@ namespace SEM03.Simulation
         {
             var seedGen = seed.HasValue ? new Random(seed.Value) : new Random();
 
-            var result = new[] { 0.0, 0.0 };
-            var bestResult = new[] { long.MaxValue, 0.0 };
-            var bestWorkers1 = 0;
-            var bestWorkers2 = 0;
+            var bestResultValue = double.MinValue;
 
             for (var w1 = workers1Min; w1 <= workers1Max; ++w1)
             {
@@ -162,21 +165,16 @@ namespace SEM03.Simulation
                     Init(w1, w2, advertisingInvestment, seedGen.Next());
                     Simulate(replicationCount, simEndTime);
                     if (Stopped) return;
-                    result[0] = StatisticWaitForRepairTotal.Mean;
-                    result[1] = StatisticIncomesTotal.Mean;
-                    if (ComputeProfit(w1, w2, result[0], result[1]) >
-                        ComputeProfit(bestWorkers1, bestWorkers2, bestResult[0], bestResult[1]))
+                    var resultValue = ResultValue();
+                    if (resultValue > bestResultValue)
                     {
-                        bestResult[0] = result[0];
-                        bestResult[1] = result[1];
-                        bestWorkers1 = w1;
-                        bestWorkers2 = w2;
+                        bestResultValue = resultValue;
+                        OnBestWorkerCountFound?.Invoke(w1, w2, resultValue);
                     }
                 }
             }
 
             if (Stopped) return;
-            OnBestWorkerCountFound?.Invoke(bestWorkers1, bestWorkers2, ComputeProfit(bestWorkers1, bestWorkers2, bestResult[0], bestResult[1]));
             OnRunFinished?.Invoke();
         }
 
@@ -230,6 +228,7 @@ namespace SEM03.Simulation
             StatisticTimeInServiceTotal.Clear();
             StatisticServedPrecentageTotal.Clear();
             StatisticIncomesTotal.Clear();
+            StatisticProfitTotal.Clear();
             StatisticCustomersInServiceTotal.Clear();
             StatisticWorkers1WorkingTotal.Clear();
             StatisticWorkers2WorkingTotal.Clear();
@@ -248,13 +247,11 @@ namespace SEM03.Simulation
 
             _carParkServiceOccupied = 0;
 
-            Logger.LogInfo($@"Beží replikácia {CurrentReplication + 1}");
+            //Logger.LogInfo($@"Beží replikácia {CurrentReplication + 1}");
         }
 
         protected override void ReplicationFinished()
         {
-            base.ReplicationFinished();
-
             StatisticWaitForRepairTotal.AddSample(StatisticWaitForRepair.Mean);
             StatisticWaitInQueueTotal.AddSample(StatisticWaitInQueue.Mean);
             StatisticQueueLengthTotal.AddSample(StatisticQueueLength.Mean);
@@ -264,20 +261,28 @@ namespace SEM03.Simulation
             StatisticTimeInServiceTotal.AddSample(StatisticTimeInService.Mean);
             StatisticServedPrecentageTotal.AddSample((double)AgentEnvironment.CustomersLeftServed.Count / AgentEnvironment.CustomersLeftTotal.Count);
             StatisticIncomesTotal.AddSample(StatisticIncomes.Sum);
+            StatisticProfitTotal.AddSample(StatisticIncomes.Sum - ReplicationTotalExpenses);
             StatisticCustomersInServiceTotal.AddSample(StatisticCustomersInService.Mean);
             StatisticWorkers1WorkingTotal.AddSample(StatisticWorkers1Working.Mean);
             StatisticWorkers2WorkingTotal.AddSample(StatisticWorkers2Working.Mean);
             StatisticCarPark1OccupiedTotal.AddSample(StatisticCarPark1Occupied.Mean);
             StatisticCarPark2OccupiedTotal.AddSample(StatisticCarPark2Occupied.Mean);
             StatisticCarParkServiceOccupiedTotal.AddSample(StatisticCarParkServiceOccupied.Mean);
+
+            base.ReplicationFinished();
         }
 
         protected override void SimulationFinished()
         {
-            base.SimulationFinished();
+            var days = (int)(SimConfig.ReplicationDuration / SimTimeHelper.DAY);
+            var restOfTime = SimConfig.ReplicationDuration - days * SimTimeHelper.DAY;
 
+            Logger.NewLine();
             Logger.LogInfo($@"Počet pracovníkov skupiny 1: {Workers1Count}");
             Logger.LogInfo($@"Počet pracovníkov skupiny 2: {Workers2Count}");
+            Logger.LogInfo($@"Dĺžka jednej replikácie: {days} dní, {SimTimeHelper.DurationAsString(restOfTime)}");
+            Logger.LogInfo($@"Priemerný počet zákazníkov za hodinu: {SimConfig.CustomersPerHour:0.000000}");
+            Logger.LogInfo($@"Priemerný čas medzi zákazníkmi: {SimTimeHelper.DurationAsString(SimConfig.TimeBetweenCustomers)}");
             Logger.LogInfo($@"Priemerný čas čakania na opravu: {SimTimeHelper.DurationAsString(StatisticWaitForRepairTotal.Mean)}");
             Logger.LogInfo($@"Priemerný čas čakania vo fronte: {SimTimeHelper.DurationAsString(StatisticWaitInQueueTotal.Mean)}");
             Logger.LogInfo($@"Priemerná dĺžka frontu čakajúcich: {StatisticQueueLengthTotal.Mean:0.000000}");
@@ -287,6 +292,14 @@ namespace SEM03.Simulation
             Logger.LogInfo($@"Priemerný čas strávený v servise: {SimTimeHelper.DurationAsString(StatisticTimeInServiceTotal.Mean)}");
             Logger.LogInfo($@"Priemerný pomer obslúžených zákazníkov: {StatisticServedPrecentageTotal.Mean * 100.0:0.000000} %");
             Logger.LogInfo($@"Priemerný zisk: {StatisticIncomesTotal.Mean:0.00} EUR");
+            Logger.LogInfo($@"Prevádzkové náklady: {ReplicationOperatingExpenses:0.00} EUR");
+            Logger.LogInfo($@"Náklady na pracovníkov skupiny 1: {ReplicationWorkers1Expenses:0.00} EUR");
+            Logger.LogInfo($@"Náklady na pracovníkov skupiny 2: {ReplicationWorkers2Expenses:0.00} EUR");
+            Logger.LogInfo($@"Náklady na reklamu: {ReplicationAdvertisingExpenses:0.00} EUR");
+            Logger.LogInfo($@"Celkové náklady: {ReplicationTotalExpenses:0.00} EUR");
+            Logger.LogInfo($@"Priemerný hospodársky výsledok: {StatisticProfitTotal.Mean:0.00} EUR");
+
+            base.SimulationFinished();
         }
 
         private void Init()
@@ -344,6 +357,7 @@ namespace SEM03.Simulation
             StatisticTimeInServiceTotal = new Stat(this);
             StatisticServedPrecentageTotal = new Stat(this);
             StatisticIncomesTotal = new Stat(this);
+            StatisticProfitTotal = new Stat(this);
             StatisticCustomersInServiceTotal = new Stat(this);
             StatisticWorkers1WorkingTotal = new Stat(this);
             StatisticWorkers2WorkingTotal = new Stat(this);
@@ -352,14 +366,31 @@ namespace SEM03.Simulation
             StatisticCarParkServiceOccupiedTotal = new Stat(this);
         }
 
-        private static double ComputeProfit(int workers1, int workers2, double averageWaitForRepairTime, double totalIncomes)
+        private double ResultValue()
         {
-            if (averageWaitForRepairTime > SimTimeHelper.Hours(6)) return double.MinValue;
+            return ResultValue(Workers1Count, Workers2Count, SimConfig.ReplicationDuration, StatisticWaitForRepairTotal.Mean, StatisticIncomesTotal.Mean, SimConfig.AdvertisingInvestmentTotal); // StatisticProfitTotal.Mean;
+        }
 
-            var duration = SimTimeHelper.ToDays(SimConfig.ReplicationDuration);
-            var operatingExpenses = duration * SimConfig.OPERATING_EXPENSES_DAY;
-            var workersCosts = workers1 * duration * SimConfig.WORKER_1_COSTS_DAY + workers2 * duration * SimConfig.WORKER_2_COSTS_DAY;
-            return totalIncomes - operatingExpenses - workersCosts - SimConfig.AdvertisingInvestment;
+        private static double ResultValue(int workers1, int workers2, double duration, double averageWaitForRepairTime, double totalIncomes, double advertisingInvestment)
+        {
+            if (averageWaitForRepairTime > SimConfig.MAX_WAIT_FOR_REPAIR_TIME)
+            {
+                return double.MinValue;
+            }
+            return MonthlyProfit(workers1, workers2, duration, totalIncomes, advertisingInvestment);
+        }
+
+        private static double MonthlyProfit(int workers1, int workers2, double duration, double totalIncomes, double advertisingInvestment)
+        {
+            return (totalIncomes - Expenses(workers1, workers2, duration, advertisingInvestment)) / (duration / SimTimeHelper.MONTH);
+        }
+
+        private static double Expenses(int workers1, int workers2, double duration, double advertisingInvestment)
+        {
+            var durationDays = SimTimeHelper.ToDays(duration);
+            var operatingExpenses = durationDays * SimConfig.OPERATING_EXPENSES_DAY;
+            var workersCosts = workers1 * durationDays * SimConfig.WORKER_1_COSTS_DAY + workers2 * durationDays * SimConfig.WORKER_2_COSTS_DAY;
+            return operatingExpenses + workersCosts + advertisingInvestment;
         }
     }
 }

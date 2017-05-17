@@ -70,10 +70,7 @@ namespace SEM03.Managers
             message.Code = Mc.PROCESS_ORDER_SERVICE;
             Response(message);
 
-            if (!TryReturnRepairedCar(worker))
-            {
-                TryProcessNextOrder(worker);
-            }
+            Worker1ActionOnFinishWork(worker);
         }
 
         //meta! sender="ProcessParkFromWorkshop", id="92", type="Finish"
@@ -98,10 +95,7 @@ namespace SEM03.Managers
             message.Code = Mc.RETURN_REPAIRED_CAR;
             Response(message);
 
-            if (!TryReturnRepairedCar(worker))
-            {
-                TryProcessNextOrder(worker);
-            }
+            Worker1ActionOnFinishWork(worker);
         }
 
         //meta! sender="SchedulerLeaveQueue", id="118", type="Finish"
@@ -291,6 +285,35 @@ namespace SEM03.Managers
                 default:
                     ProcessDefault(message);
                     break;
+            }
+        }
+
+        private void Worker1ActionOnFinishWork(WorkerWithCustomers worker)
+        {
+            /*if (!TryReturnRepairedCar(worker))
+            {
+                TryProcessNextOrder(worker);
+            }*/
+
+            if (MyAgent.OrdersQueue.Count == 0)
+            {
+                TryReturnRepairedCar(worker);
+                return;
+            }
+
+            if (MyAgent.ReturnQueue.Count == 0)
+            {
+                TryProcessNextOrder(worker);
+                return;
+            }
+
+            if (MyAgent.WorkersWorking > MyAgent.CarPark.Count - MyAgent.ReturnQueue.Count)
+            {
+                TryReturnRepairedCar(worker);
+            }
+            else
+            {
+                TryProcessNextOrder(worker);
             }
         }
 
