@@ -131,12 +131,6 @@ namespace SEM03.GUI
                 return;
             }
 
-            if (_sim.CurrentReplication == 0)
-            {
-                ExecuteOnGuiThread(groupBoxSimulationStats, ClearCiLabels);
-                return;
-            }
-
             var customersInServiceMean = _sim.StatisticCustomersInServiceTotal.Mean;
             var queueLengthMean = _sim.StatisticQueueLengthTotal.Mean;
             var toRepairQueueLengthMean = _sim.StatisticCarsForRepairQueueLengthTotal.Mean;
@@ -156,6 +150,35 @@ namespace SEM03.GUI
             var carPark1RatioMean = $"{100.0 * (carPark1CountMean / _sim.CarPark1Capacity):0.0000} %";
             var carPark2RatioMean = $"{100.0 * (carPark2CountMean / _sim.CarPark2Capacity):0.0000} %";
             var profitMean = _sim.StatisticProfitTotal.Mean;
+
+            ExecuteOnGuiThread(groupBoxSimulationStats, () =>
+            {
+                labelSimCustomersInServiceValue.Text = $@"{customersInServiceMean:0.000000}";
+                labelSimCustomerInQueueValue.Text = $@"{queueLengthMean:0.000000}";
+                labelSimToRepairQueueLengthValue.Text = $@"{toRepairQueueLengthMean:0.000000}";
+                labelSimRepairedQueueLengthValue.Text = $@"{repairedQueueLengthMean:0.000000}";
+                labelSimReturnQueueLengthValue.Text = $@"{returnQueueLengthMean:0.000000}";
+                labelSimCustomersServedRatioValue.Text = servedRatioMean;
+                labelSimWaitInQueueValue.Text = SimTimeHelper.DurationAsString(waitInQueueMean);
+                labelSimWaitForRepairValue.Text = SimTimeHelper.DurationAsString(waitForRepairMean);
+                labelSimTimeInServiceValue.Text = SimTimeHelper.DurationAsString(timeInServiceMean);
+                labelSimWorking1CountValue.Text = $@"{working1CountMean:0.000000}";
+                labelSimWorking2CountValue.Text = $@"{working2CountMean:0.000000}";
+                labelSimWorking1RatioValue.Text = working1RatioMean;
+                labelSimWorking2RatioValue.Text = working2RatioMean;
+                labelSimCarPark1CountValue.Text = $@"{carPark1CountMean:0.000000}";
+                labelSimCarPark2CountValue.Text = $@"{carPark2CountMean:0.000000}";
+                labelSimCarParkServiceCountValue.Text = $@"{carParkServiceCountMean:0.000000}";
+                labelSimCarPark1RatioValue.Text = carPark1RatioMean;
+                labelSimCarPark2RatioValue.Text = carPark2RatioMean;
+                labelSimProfitValue.Text = $@"{profitMean:0.00} EUR";
+            });
+
+            if (_sim.CurrentReplication == 0)
+            {
+                ExecuteOnGuiThread(groupBoxSimulationStats, ClearCiLabels);
+                return;
+            }
 
             var customersInServiceMeanCi = _sim.StatisticCustomersInServiceTotal.ConfidenceInterval90;
             var queueLengthMeanCi = _sim.StatisticQueueLengthTotal.ConfidenceInterval90;
@@ -179,26 +202,6 @@ namespace SEM03.GUI
 
             ExecuteOnGuiThread(groupBoxSimulationStats, () =>
             {
-                labelSimCustomersInServiceValue.Text = $@"{customersInServiceMean:0.000000}";
-                labelSimCustomerInQueueValue.Text = $@"{queueLengthMean:0.000000}";
-                labelSimToRepairQueueLengthValue.Text = $@"{toRepairQueueLengthMean:0.000000}";
-                labelSimRepairedQueueLengthValue.Text = $@"{repairedQueueLengthMean:0.000000}";
-                labelSimReturnQueueLengthValue.Text = $@"{returnQueueLengthMean:0.000000}";
-                labelSimCustomersServedRatioValue.Text = servedRatioMean;
-                labelSimWaitInQueueValue.Text = SimTimeHelper.DurationAsString(waitInQueueMean);
-                labelSimWaitForRepairValue.Text = SimTimeHelper.DurationAsString(waitForRepairMean);
-                labelSimTimeInServiceValue.Text = SimTimeHelper.DurationAsString(timeInServiceMean);
-                labelSimWorking1CountValue.Text = $@"{working1CountMean:0.000000}";
-                labelSimWorking2CountValue.Text = $@"{working2CountMean:0.000000}";
-                labelSimWorking1RatioValue.Text = working1RatioMean;
-                labelSimWorking2RatioValue.Text = working2RatioMean;
-                labelSimCarPark1CountValue.Text = $@"{carPark1CountMean:0.000000}";
-                labelSimCarPark2CountValue.Text = $@"{carPark2CountMean:0.000000}";
-                labelSimCarParkServiceCountValue.Text = $@"{carParkServiceCountMean:0.000000}";
-                labelSimCarPark1RatioValue.Text = carPark1RatioMean;
-                labelSimCarPark2RatioValue.Text = carPark2RatioMean;
-                labelSimProfitValue.Text = $@"{profitMean:0.00} EUR";
-
                 labelSimCustomersInServiceISValue.Text = $@"<{customersInServiceMeanCi[0]:0.000000}, {customersInServiceMeanCi[1]:0.000000}>";
                 labelSimCustomerInQueueISValue.Text = $@"<{queueLengthMeanCi[0]:0.000000}, {queueLengthMeanCi[1]:0.000000}>";
                 labelSimToRepairQueueLengthISValue.Text = $@"<{toRepairQueueLengthMeanCi[0]:0.000000}, {toRepairQueueLengthMeanCi[1]:0.000000}>";

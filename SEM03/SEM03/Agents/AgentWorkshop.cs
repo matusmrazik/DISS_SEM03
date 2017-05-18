@@ -50,7 +50,7 @@ namespace SEM03.Agents
             for (var i = 0; i < count; ++i)
             {
                 var tmpWorker = new Mechanic(MySim);
-                tmpWorker.StatisticWorkingDuration.IgnoreBefore = SimConfig.HEAT_UP_TIME;
+                tmpWorker.StatisticWorkingDuration.IgnoreBefore = SimConfig.REPLICATION_START_TIME;
                 tmpWorker.StatisticWorkingDuration.IgnoreAfter = SimConfig.ReplicationEndTime;
                 Workers.Add(tmpWorker);
             }

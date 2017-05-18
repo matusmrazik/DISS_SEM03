@@ -202,14 +202,22 @@ namespace SEM03.Simulation
 
             Stopped = false;
 
-            StatisticWaitForRepair.IgnoreBefore = SimConfig.HEAT_UP_TIME;
-            StatisticWaitInQueue.IgnoreBefore = SimConfig.HEAT_UP_TIME;
-            StatisticQueueLength.IgnoreBefore = SimConfig.HEAT_UP_TIME;
-            StatisticCarsForRepairQueueLength.IgnoreBefore = SimConfig.HEAT_UP_TIME;
-            StatisticRepairedQueueLength.IgnoreBefore = SimConfig.HEAT_UP_TIME;
-            StatisticReadyToReturnQueueLength.IgnoreBefore = SimConfig.HEAT_UP_TIME;
-            StatisticTimeInService.IgnoreBefore = SimConfig.HEAT_UP_TIME;
-            StatisticIncomes.IgnoreBefore = SimConfig.HEAT_UP_TIME;
+            StatisticCustomersInService.IgnoreBefore = SimConfig.REPLICATION_START_TIME;
+            StatisticCarParkServiceOccupied.IgnoreBefore = SimConfig.REPLICATION_START_TIME;
+            StatisticWaitForRepair.IgnoreBefore = SimConfig.REPLICATION_START_TIME;
+            StatisticWaitInQueue.IgnoreBefore = SimConfig.REPLICATION_START_TIME;
+            StatisticQueueLength.IgnoreBefore = SimConfig.REPLICATION_START_TIME;
+            StatisticCarsForRepairQueueLength.IgnoreBefore = SimConfig.REPLICATION_START_TIME;
+            StatisticRepairedQueueLength.IgnoreBefore = SimConfig.REPLICATION_START_TIME;
+            StatisticReadyToReturnQueueLength.IgnoreBefore = SimConfig.REPLICATION_START_TIME;
+            StatisticTimeInService.IgnoreBefore = SimConfig.REPLICATION_START_TIME;
+            StatisticIncomes.IgnoreBefore = SimConfig.REPLICATION_START_TIME;
+            StatisticWorkers1Working.IgnoreBefore = SimConfig.REPLICATION_START_TIME;
+            StatisticWorkers2Working.IgnoreBefore = SimConfig.REPLICATION_START_TIME;
+            StatisticCarPark1Occupied.IgnoreBefore = SimConfig.REPLICATION_START_TIME;
+            StatisticCarPark2Occupied.IgnoreBefore = SimConfig.REPLICATION_START_TIME;
+            StatisticCustomersInService.IgnoreAfter = SimConfig.ReplicationEndTime;
+            StatisticCarParkServiceOccupied.IgnoreAfter = SimConfig.ReplicationEndTime;
             StatisticWaitForRepair.IgnoreAfter = SimConfig.ReplicationEndTime;
             StatisticWaitInQueue.IgnoreAfter = SimConfig.ReplicationEndTime;
             StatisticQueueLength.IgnoreAfter = SimConfig.ReplicationEndTime;
@@ -218,6 +226,10 @@ namespace SEM03.Simulation
             StatisticReadyToReturnQueueLength.IgnoreAfter = SimConfig.ReplicationEndTime;
             StatisticTimeInService.IgnoreAfter = SimConfig.ReplicationEndTime;
             StatisticIncomes.IgnoreAfter = SimConfig.ReplicationEndTime;
+            StatisticWorkers1Working.IgnoreAfter = SimConfig.ReplicationEndTime;
+            StatisticWorkers2Working.IgnoreAfter = SimConfig.ReplicationEndTime;
+            StatisticCarPark1Occupied.IgnoreAfter = SimConfig.ReplicationEndTime;
+            StatisticCarPark2Occupied.IgnoreAfter = SimConfig.ReplicationEndTime;
 
             StatisticWaitForRepairTotal.Clear();
             StatisticWaitInQueueTotal.Clear();
@@ -276,6 +288,7 @@ namespace SEM03.Simulation
         {
             var days = (int)(SimConfig.ReplicationDuration / SimTimeHelper.DAY);
             var restOfTime = SimConfig.ReplicationDuration - days * SimTimeHelper.DAY;
+            var profitCi = StatisticProfitTotal.ConfidenceInterval90;
 
             Logger.NewLine();
             Logger.LogInfo($@"Počet pracovníkov skupiny 1: {Workers1Count}");
@@ -298,6 +311,7 @@ namespace SEM03.Simulation
             Logger.LogInfo($@"Náklady na reklamu: {ReplicationAdvertisingExpenses:0.00} EUR");
             Logger.LogInfo($@"Celkové náklady: {ReplicationTotalExpenses:0.00} EUR");
             Logger.LogInfo($@"Priemerný hospodársky výsledok: {StatisticProfitTotal.Mean:0.00} EUR");
+            Logger.LogInfo($@"90% IS priemerného hospodárskeho výsledku: <{profitCi[0]:0.00} EUR, {profitCi[1]:0.00} EUR>");
 
             base.SimulationFinished();
         }
