@@ -328,6 +328,24 @@ namespace SEM03.Managers
             {
                 TryProcessNextOrder(worker);
             }
+
+            //if (MyAgent.WorkersWorking > MyAgent.CarPark.Count - MyAgent.ReturnQueue.Count && MyAgent.CarPark.Count - MyAgent.ReturnQueue.Count < 3)
+            //{
+            //    TryReturnRepairedCar(worker);
+            //}
+            //else
+            //{
+            //    TryProcessNextOrder(worker);
+            //}
+
+            //if (MyAgent.WorkersWorking - (MyAgent.CarPark.Count - MyAgent.ReturnQueue.Count) > 2)
+            //{
+            //    TryReturnRepairedCar(worker);
+            //}
+            //else
+            //{
+            //    TryProcessNextOrder(worker);
+            //}
         }
 
         private bool TryParkRepairedCar(ParkingPlace parkingPlace)
