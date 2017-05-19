@@ -46,6 +46,7 @@ namespace SEM03.Managers
             else
             {
                 msg.Customer.State = "Čaká pred vstupnou rampou";
+                msg.Customer.StateVehicle = "Čaká pred vstupnou rampou";
                 ArrivalRampQueue.Enqueue(msg);
             }
         }
@@ -62,6 +63,7 @@ namespace SEM03.Managers
         public void ProcessFinishProcessParkCar(MessageForm message)
         {
             MySim.CarParkServiceOccupied++;
+            ((MsgCarService)message).Customer.StateVehicle = "Zaparkované pred servisom";
             message.Code = Mc.CUSTOMER_SERVICE;
             message.Addressee = MySim.FindAgent(SimId.AGENT_CAR_SERVICE);
             Request(message);
@@ -101,6 +103,7 @@ namespace SEM03.Managers
             {
                 var msg = (MsgCarService)message;
                 msg.Customer.State = "Čaká pred výstupnou rampou";
+                msg.Customer.StateVehicle = "Čaká pred výstupnou rampou";
                 DepartureRampQueue.Enqueue(msg);
             }
         }

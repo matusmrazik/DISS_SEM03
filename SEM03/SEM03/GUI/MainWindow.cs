@@ -67,6 +67,11 @@ namespace SEM03.GUI
             dataGridViewCustomers.Columns.Add(CreateDataGridViewColumn("Čas čakania na opravu", "WaitForRepairDurationStr"));
             dataGridViewCustomers.Columns.Add(CreateDataGridViewColumn("Čas strávený v servise", "TimeInServiseStr"));
 
+            dataGridViewVehicles.AutoGenerateColumns = false;
+            dataGridViewVehicles.Columns.Add(CreateDataGridViewColumn("Stav", "StateVehicle"));
+            dataGridViewVehicles.Columns.Add(CreateDataGridViewColumn("ID zákazníka", "Id"));
+            dataGridViewVehicles.Columns.Add(CreateDataGridViewColumn("Opravené %", "RepairedPercent"));
+
             dataGridViewWorkers1.AutoGenerateColumns = false;
             dataGridViewWorkers1.Columns.Add(CreateDataGridViewColumn("Stav", "State"));
             dataGridViewWorkers1.Columns.Add(CreateDataGridViewColumn("ID zákazníka", "CustomerId"));
@@ -404,6 +409,12 @@ namespace SEM03.GUI
                 dataGridViewCustomers.Refresh();
             });
 
+            ExecuteOnGuiThread(dataGridViewVehicles, () =>
+            {
+                dataGridViewVehicles.DataSource = customers;
+                dataGridViewVehicles.Refresh();
+            });
+
             var workers1 = new List<WorkerWithCustomers>(_sim.Workers1Count);
             workers1.AddRange(_sim.AgentService.Workers);
             ExecuteOnGuiThread(dataGridViewWorkers1, () =>
@@ -683,6 +694,9 @@ namespace SEM03.GUI
             labelCustomersAvgWaitInQueueValue.Text = @"-";
             labelCustomersAvgWaitForRepairValue.Text = @"-";
             labelCustomersAvgTimeInServiceValue.Text = @"-";
+
+            dataGridViewVehicles.DataSource = null;
+            dataGridViewVehicles.Refresh();
 
             dataGridViewWorkers1.DataSource = null;
             dataGridViewWorkers1.Refresh();

@@ -55,6 +55,7 @@ namespace SEM03.Managers
         //meta! sender="ProcessCarRepair", id="100", type="Finish"
         public void ProcessFinish(MessageForm message)
         {
+            ((MsgCarService)message).Customer.VehicleRepairFinished();
             message.Code = Mc.PARK_REPAIRED_CAR_TO_WORKSHOP;
             message.Addressee = MySim.FindAgent(SimId.AGENT_CAR_SERVICE);
             Request(message);

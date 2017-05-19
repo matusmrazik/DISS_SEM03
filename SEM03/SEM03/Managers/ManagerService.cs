@@ -61,6 +61,7 @@ namespace SEM03.Managers
         public void ProcessFinishProcessParkToWorkshop(MessageForm message)
         {
             var msg = (MsgCarService)message;
+            msg.Customer.StateVehicle = "Zaparkované v dielni, čaká na opravu";
             var worker = msg.WorkerWithCustomers;
 
             msg.WorkerWithCustomers.StopWork();
@@ -77,6 +78,7 @@ namespace SEM03.Managers
         public void ProcessFinishProcessParkFromWorkshop(MessageForm message)
         {
             MySim.CarParkServiceOccupied++;
+            ((MsgCarService)message).Customer.StateVehicle = "Zaparkované pred servisom";
             message.Addressee = MyAgent.FindAssistant(SimId.PROCESS_CAR_RETURN);
             StartContinualAssistant(message);
         }
@@ -87,6 +89,7 @@ namespace SEM03.Managers
             var msg = (MsgCarService)message;
             var worker = msg.WorkerWithCustomers;
 
+            msg.Customer.StateVehicle = "Odchádza";
             msg.Customer.WaitForRepairFinished();
             MyAgent.StatisticWaitForRepair.AddSample(msg.Customer.WaitForRepairTotal);
             msg.WorkerWithCustomers.StopWork();
@@ -107,6 +110,7 @@ namespace SEM03.Managers
             {
                 MyAgent.StatisticQueueLength.AddSample(MyAgent.QueueLength);
                 msg.Customer.WaitInQueueFinished(false);
+                msg.Customer.StateVehicle = "Odchádza";
                 msg.Code = Mc.PROCESS_ORDER_SERVICE;
                 msg.Addressee = MySim.FindAgent(SimId.AGENT_CAR_SERVICE);
                 Response(msg);
@@ -116,6 +120,7 @@ namespace SEM03.Managers
             {
                 MyAgent.StatisticQueueLength.AddSample(MyAgent.QueueLength);
                 msg.Customer.WaitInQueueFinished(false);
+                msg.Customer.StateVehicle = "Odchádza";
                 msg.ParkingPlace.SetFree();
                 msg.ParkingPlace = null;
                 msg.Code = Mc.PROCESS_ORDER_SERVICE;
@@ -130,6 +135,7 @@ namespace SEM03.Managers
             foreach (var msg in MyAgent.ParkingPlaceQueue)
             {
                 msg.Customer.WaitInQueueFinished(false);
+                msg.Customer.StateVehicle = "Odchádza";
                 msg.Code = Mc.PROCESS_ORDER_SERVICE;
                 msg.Addressee = MySim.FindAgent(SimId.AGENT_CAR_SERVICE);
                 Response(msg);
@@ -138,6 +144,7 @@ namespace SEM03.Managers
             foreach (var msg in MyAgent.OrdersQueue)
             {
                 msg.Customer.WaitInQueueFinished(false);
+                msg.Customer.StateVehicle = "Odchádza";
                 msg.ParkingPlace.SetFree();
                 msg.ParkingPlace = null;
                 msg.Code = Mc.PROCESS_ORDER_SERVICE;
@@ -185,6 +192,7 @@ namespace SEM03.Managers
                 return;
             }
 
+            msg.Customer.StateVehicle = "Opravené, čaká na vrátenie";
             msg.Mechanic.State = "Parkuje opravené auto na parkovisko";
             Response(message);
         }
@@ -290,10 +298,15 @@ namespace SEM03.Managers
 
         private void Worker1ActionOnFinishWork(WorkerWithCustomers worker)
         {
-            /*if (!TryReturnRepairedCar(worker))
-            {
-                TryProcessNextOrder(worker);
-            }*/
+            //if (!TryReturnRepairedCar(worker))
+            //{
+            //    TryProcessNextOrder(worker);
+            //}
+
+            //if (!TryProcessNextOrder(worker))
+            //{
+            //    TryReturnRepairedCar(worker);
+            //}
 
             if (MyAgent.OrdersQueue.Count == 0)
             {
@@ -325,6 +338,7 @@ namespace SEM03.Managers
             }
 
             var msg = MyAgent.RepairedQueue.Dequeue();
+            msg.Customer.StateVehicle = "Opravené, čaká na vrátenie";
             msg.Mechanic.State = "Parkuje opravené auto na parkovisko";
             MyAgent.StatisticRepairedQueueLength.AddSample(MyAgent.RepairedQueue.Count);
             parkingPlace.SetOccupied();

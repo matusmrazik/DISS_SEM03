@@ -17,7 +17,9 @@ namespace SEM03.ContinualAssistants
         //meta! sender="AgentModel", id="46", type="Start"
         public void ProcessStart(MessageForm message)
         {
-            ((MsgCarService)message).Customer.State = "Prechádza vstupnou rampou";
+            var msg = (MsgCarService)message;
+            msg.Customer.State = "Prechádza vstupnou rampou";
+            msg.Customer.StateVehicle = "Prechádza vstupnou rampou";
             message.Code = Mc.ARRIVAL_RAMP_CROSSED;
             Hold(SimConfig.CROSS_RAMP_DURATION, message);
         }

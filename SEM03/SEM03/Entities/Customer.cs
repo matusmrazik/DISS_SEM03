@@ -9,12 +9,15 @@ namespace SEM03.Entities
         private bool _waitInQueueFinished;
         private bool _waitForRepairStarted;
         private bool _waitForRepairFinished;
+        private bool _repairStarted;
+        private bool _repairFinished;
         private bool _enteredService;
         private bool _leftService;
 
         public new SimCarService MySim => (SimCarService)base.MySim;
 
         public double ServiceEnterTime { get; private set; }
+        public double RepairStart { get; private set; }
         public double TimeInServiceTotal { get; private set; }
         public double WaitForRepairStart { get; private set; }
         public double WaitForRepairTotal { get; private set; }
@@ -26,6 +29,7 @@ namespace SEM03.Entities
 
         public bool Served { get; set; }
         public string State { get; set; }
+        public string StateVehicle { get; set; }
 
         public string WaitInQueueDurationStr
         {
@@ -57,6 +61,16 @@ namespace SEM03.Entities
             }
         }
 
+        public string RepairedPercent
+        {
+            get
+            {
+                if (_repairFinished) return "100.00 %";
+                if (!_repairStarted) return "0.00 %";
+                return $@"{100.0 * ((MySim.CurrentTime - RepairStart) / TotalRepairDuration):0.00} %";
+            }
+        }
+
         public string TotalRepairDurationStr => SimTimeHelper.DurationAsString(TotalRepairDuration);
 
         public Customer(OSPABA.Simulation mySim)
@@ -66,10 +80,13 @@ namespace SEM03.Entities
             _waitInQueueFinished = false;
             _waitForRepairStarted = false;
             _waitForRepairFinished = false;
+            _repairStarted = false;
+            _repairFinished = false;
             _enteredService = false;
             _leftService = false;
 
             ServiceEnterTime = 0.0;
+            RepairStart = 0.0;
             TimeInServiceTotal = 0.0;
             WaitForRepairStart = 0.0;
             WaitForRepairTotal = 0.0;
@@ -81,6 +98,7 @@ namespace SEM03.Entities
 
             Served = false;
             State = "";
+            StateVehicle = "";
         }
 
         public void EnteredService()
@@ -88,6 +106,7 @@ namespace SEM03.Entities
             _enteredService = true;
             ServiceEnterTime = MySim.CurrentTime;
             State = "Parkuje pred servisom";
+            StateVehicle = "Ide k parkovisku pred servisom";
         }
 
         public void LeftService()
@@ -123,6 +142,21 @@ namespace SEM03.Entities
             Served = served;
             WaitInQueueTotal = MySim.CurrentTime - WaitInQueueStart;
             State = served ? "Zadáva objednávku" : "Odchádza neobslúžený";
+        }
+
+        public void VehicleRepairStarted()
+        {
+            // TODO
+            _repairStarted = true;
+            RepairStart = MySim.CurrentTime;
+            StateVehicle = "Opravuje sa";
+        }
+
+        public void VehicleRepairFinished()
+        {
+            // TODO
+            _repairFinished = true;
+            StateVehicle = "Opravené, čaká na preparkovanie";
         }
 
         public void GenerateRepairDuration()
